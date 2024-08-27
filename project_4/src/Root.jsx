@@ -6,7 +6,6 @@ export function Root() {
   return (
     <BrowserRouter>
       <App />
-      <Navbar />
     </BrowserRouter>
   );
 }
