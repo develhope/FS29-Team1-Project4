@@ -10,7 +10,6 @@ export function Root() {
     <SWRConfig value={{ fetcher }}>
       <BrowserRouter>
         <App />
-        <Navbar />
       </BrowserRouter>
     </SWRConfig>
   );
