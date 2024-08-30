@@ -4,6 +4,8 @@ import { CategorieProIT } from "./CategorieProIT";
 import { Search } from "./Search";
 import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
+import { Link } from "react-router-dom";
+import { SearchPage } from "../pages/SearchPage";
 
 export function Navbar() {
   return (
@@ -11,11 +13,12 @@ export function Navbar() {
       <Logo />
       <CategorieProIT category="WEB DEVELOPER" />
       <CategorieProIT category="WEB DESIGN" />
-      <CategorieProIT category="GAME DEVELOPER" />
-      <CategorieProIT category="3D DESIGN" />
+
       <Search />
       <ChangeLanguage />
-      <LoginRegister />
+      <Link to="/register">
+        <LoginRegister />
+      </Link>
     </nav>
   );
 }
