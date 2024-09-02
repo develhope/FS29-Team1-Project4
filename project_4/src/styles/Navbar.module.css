@@ -9,7 +9,7 @@
   background-color: #004D99;
   
   ul{
-    width: 50%;
+    width: 30%;
     display: flex;
     justify-content: space-evenly;
   }
@@ -19,10 +19,32 @@
     color: whitesmoke;
   }
 
-  input{
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #262626;
+  form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+
+    select{
+      width: 20%;
+      border: none;
+      border-radius: 1rem 0 0 1rem;
+      padding: 0.49rem;
+      background-color: #eaeaea;
+    }
+    input{
+      padding: 0.5rem;
+      width: 70%;
+      box-shadow: 0 5px 20px rgba(0,0,0,.05);
+      border: none;
+    }
+    button{
+      width: 5%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0 1rem 1rem 0;
+      background-color: #eaeaea;
+    }
   }
 
 }
