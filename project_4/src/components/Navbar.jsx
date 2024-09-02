@@ -16,9 +16,7 @@ export function Navbar() {
 
       <Search />
       <ChangeLanguage />
-      <Link to="/register">
-        <LoginRegister />
-      </Link>
+      <LoginRegister />
     </nav>
   );
 }

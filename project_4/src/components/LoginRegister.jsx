@@ -5,7 +5,9 @@ import { RegisterPage } from "../pages/RegisterPage";
 export function LoginRegister() {
   return (
     <div>
-      <CircleButton />
+      <Link to="/register">
+        <CircleButton />
+      </Link>
       <Link to="/register" element={<RegisterPage />} className="dn">
         <p>Register</p>
       </Link>
