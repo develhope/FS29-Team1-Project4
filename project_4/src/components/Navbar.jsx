@@ -9,10 +9,12 @@ export function Navbar() {
   return (
     <nav className={nav_container.nav}>
       <Logo />
-      <CategorieProIT category="WEB DEVELOPER" />
-      <CategorieProIT category="WEB DESIGN" />
-      <CategorieProIT category="GAME DEVELOPER" />
-      <CategorieProIT category="3D DESIGN" />
+      <ul>
+        <CategorieProIT category="Home" />
+        <CategorieProIT category="Services IT" />
+        <CategorieProIT category="Professionals IT" />
+        <CategorieProIT category="News" />
+      </ul>
       <Search />
       <ChangeLanguage />
       <LoginRegister />

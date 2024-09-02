@@ -7,14 +7,5 @@ export function Search() {
     setSearch(e.target.value);
   }
 
-  return (
-    <form action="">
-      <input
-        type="text"
-        placeholder="Search"
-        value={search}
-        onChange={handleSearch}
-      />
-    </form>
-  );
+  return <input type="text" placeholder="Search" value={search} onChange={handleSearch} />;
 }

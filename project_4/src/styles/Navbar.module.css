@@ -3,7 +3,26 @@
   padding: 1rem;
   font-size: 3rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 0.5rem;
+  background-color: #004D99;
+  
+  ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  h6{
+    font-size: 1rem;
+    color: whitesmoke;
+  }
+
+  input{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #262626;
+  }
+
 }
