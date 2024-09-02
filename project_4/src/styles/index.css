@@ -18,3 +18,8 @@ main {
   padding: 1rem; */
   border: 1px solid rgb(9, 117, 42);
 }
+
+/* Classe temporanea */
+.dn {
+  display: none;
+}
