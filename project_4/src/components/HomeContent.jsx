@@ -4,7 +4,7 @@ import { Card } from "./Card";
 import { CircleButton } from "./CircleButton";
 import { Titleh2 } from "./Titleh2";
 
-export function Body() {
+export function HomeContent() {
   return (
     <div className={body_container.container}>
       <div>

@@ -1,11 +1,11 @@
 import { Hero } from "../components/Hero";
-import { Body } from "../components/Body";
+import { HomeContent } from "../components/HomeContent";
 
 export function Home() {
   return (
     <div>
       <Hero />
-      <Body />
+      <HomeContent />
     </div>
   );
 }
