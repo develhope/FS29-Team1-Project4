@@ -9,6 +9,8 @@ import { CategoryPage } from "./pages/CategoryPage";
 import { WebDeveloper } from "./pages/WebDeveloper";
 import { WebDesign } from "./pages/WebDesign";
 import { Design3D } from "./pages/Design3D";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export function App() {
   return (

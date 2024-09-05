@@ -14,6 +14,8 @@
 
   --colore-verde: #00b377;
   --colore-verdeChiaro: #6ee7bf;
+  --colore-viola: #881095;
+  --colore-violaChiaro: #d613ec;
 }
 
 * {
@@ -54,11 +56,13 @@ header {
 }
 
 main {
-  /* margin: 1rem;
-  padding: 1rem; */
+  padding-top: 90px;
   border: 1px solid rgb(9, 117, 42);
 }
 
+button{
+  cursor: pointer;
+}
 /* Classe temporanea */
 .dn {
   display: none;

@@ -27,7 +27,9 @@ export function Search() {
         </optgroup>
       </select>
       <input type="text" placeholder="Search Your Professional IT..." value={search} onChange={handleSearch} />
-      <button onClick={handlePlaySearch}>Go</button>
+      <button onClick={handlePlaySearch}>
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </button>
     </form>
   );
 }
