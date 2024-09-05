@@ -1,5 +1,7 @@
 import body_container from "../styles/Body.module.css";
 import section_card from "../styles/SectionCard.module.css";
+import { ArrowLeftButton } from "./ArrowLeftButton";
+import { ArrowRightButton } from "./ArrowRightButton";
 import { Card } from "./Card";
 import { CircleButton } from "./CircleButton";
 import { Titleh2 } from "./Titleh2";
@@ -10,18 +12,14 @@ export function HomeContent() {
       <div>
         <Titleh2 title={"Our Proffesional IT"} />
         <section className={section_card.section}>
-          <div>
-            <CircleButton />
-          </div>
+          <ArrowLeftButton />
           <Card />
           <Card />
           <Card />
           <Card />
           <Card />
           <Card />
-          <div>
-            <CircleButton />
-          </div>
+          <ArrowRightButton />
         </section>
       </div>
       <br />

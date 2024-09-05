@@ -5,7 +5,11 @@ export const DATA = [
     price: 100,
     image:
       "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript", "Python"],
+    project: ["Project 1", "Project 2"],
+    someExperience: ["Experience 1", "Experience 2"],
   },
   {
     id: 2,
@@ -13,7 +17,11 @@ export const DATA = [
     price: 200,
     image:
       "https://th.bing.com/th/id/OIP.UEmMR4OfczDvWIUratzGkQHaFD?pid=ImgDet&rs=1",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript", "Python"],
+    project: ["Project 1", "Project 2"],
+    someExperience: ["Experience 1", "Experience 2"],
   },
   {
     id: 3,
@@ -21,7 +29,11 @@ export const DATA = [
     price: 10,
     image:
       "https://th.bing.com/th/id/R.b1dca103a08fb09ab6093c1843206e62?rik=poC1LUfrAnasRg&riu=http%3a%2f%2fthesaturnherald.com%2fwp-content%2fuploads%2f2019%2f08%2fThe-Beatles.png&ehk=fRCOKcIZLuTKJTDe5UT%2fU0FlIEhc5Cv3L6jFWg5Rwmk%3d&risl=&pid=ImgRaw&r=0",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript", "Python"],
+    project: ["Project 1", "Project 2"],
+    someExperience: ["Experience 1", "Experience 2"],
   },
   {
     id: 4,
@@ -29,7 +41,11 @@ export const DATA = [
     price: 5,
     image:
       "https://th.bing.com/th/id/OIP.o2UpCnJR1l2GyvdN3wBcqwHaJL?pid=ImgDet&rs=1",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript", "Python"],
+    project: ["Project 1", "Project 2"],
+    someExperience: ["Experience 1", "Experience 2"],
   },
   {
     id: 5,
@@ -37,7 +53,11 @@ export const DATA = [
     price: 500,
     image:
       "https://th.bing.com/th/id/R.ddf77b58ca5a464ab8beb0576111a2a1?rik=pQSCB0LH8fslzA&pid=ImgRaw&r=0",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript", "Python"],
+    project: ["Project 1", "Project 2"],
+    someExperience: ["Experience 1", "Experience 2"],
   },
   {
     id: 6,
@@ -45,7 +65,11 @@ export const DATA = [
     price: 1000,
     image:
       "https://www.gazabhindi.com/wp-content/uploads/2018/05/%E0%A4%95%E0%A4%82%E0%A4%AA%E0%A5%8D%E0%A4%AF%E0%A5%82%E0%A4%9F%E0%A4%B0.png",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript"],
+    project: ["Project 1"],
+    someExperience: ["Experience 1"],
   },
   {
     id: 7,
@@ -53,6 +77,10 @@ export const DATA = [
     price: 25,
     image:
       "https://th.bing.com/th/id/R.a5723d93d4ac34f1a415fabd37b0ea61?rik=VtrekwI2noLTUA&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f1%2fDas-Keyboard-Professional-PNG.png&ehk=E7qV2x5dcZ%2f%2baJbMCCQkADCLW1MBNMRqDWwqjJSISDY%3d&risl=&pid=ImgRaw&r=0",
-    description: "lorem",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
+    program: ["javascript", "Python"],
+    project: ["Project 1", "Project 2"],
+    someExperience: ["Experience 1", "Experience 2"],
   },
 ];

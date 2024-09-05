@@ -1,6 +1,5 @@
 .container {
   margin: 0 auto; 
-  padding: 0 0.5rem; 
   max-width: 1250px; 
   display: flex; 
   flex-flow: row; 
@@ -31,8 +30,8 @@
     border: 1px solid var(--colore-blu);
   }
   button:hover{ 
-    background: var(--colore-verde); 
-    color: var(--colore-nero);
+    background: var(--colore-viola); 
+    color: var(--colore-bianco);
     transition: all 1s cubic-bezier(.215, .61, .355, 1);
   }
 }
@@ -42,13 +41,13 @@
   position: relative;
   height: 600px;
   .blob{
-    position: absolute; top: -25%; left: -15%; width: 130%; z-index: 4;
+    position: absolute; top: -20%; left: -10%; width: 120%; z-index: 4;
   }
   .blob1{
-    position: absolute; top: -0; left: -20%; width: 120%; z-index: 2;
+    position: absolute; top: -15%; left: -10%; width: 120%; z-index: 3; transform: rotate(-190deg)
   }
   .blob2{
-    position: absolute; top: -10%; left: -20%; width: 150%; z-index: 3;
+    position: absolute; top: -15%; left: -10%; width: 120%; z-index: 2;
   }
   
 

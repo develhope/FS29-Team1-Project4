@@ -18,7 +18,7 @@ export function Search() {
   }
   return (
     <form>
-      <select name="Category" id="Category" onChange={handleChoice}>
+      <select name="Category" id="Category" onClick={handleChoice}>
         <optgroup>
           <option value="category">Tutte le Categorie</option>
           <option value="category">Web Devoloper</option>
@@ -26,8 +26,15 @@ export function Search() {
           <option value="category">3D Design</option>
         </optgroup>
       </select>
-      <input type="text" placeholder="Search Your Professional IT..." value={search} onChange={handleSearch} />
-      <button onClick={handlePlaySearch}>Go</button>
+      <input
+        type="text"
+        placeholder="Search Your Professional IT..."
+        value={search}
+        onClick={handleSearch}
+      />
+      <button onClick={handlePlaySearch}>
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </button>
     </form>
   );
 }

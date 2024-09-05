@@ -1,0 +1,17 @@
+.Arrow{
+    background-color: var(--colore-blu);
+    border: none;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+    svg{
+        color: var(--colore-bianco);
+        width: 40%;
+        height: 40%;
+    }
+}
+
+.Arrow:hover{
+    background-color: var(--colore-bluChiaro);
+    transition: all 1s cubic-bezier(.215, .61, .355, 1);
+}

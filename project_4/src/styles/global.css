@@ -3,17 +3,19 @@
 /* Reset */
 
 :root {
-/* colori principali */
+  /* colori principali */
   --colore-nero: #000000;
-  --colore-blu: #004D99;
+  --colore-blu: #004d99;
   --colore-bianco: #ffffff;
   --colore-grigio: #dadada;
   /* colori secondari */
-  --colore-bluIntermedio: #6AAAEB;
-  --colore-bluChiaro: #94C4F5;
+  --colore-bluIntermedio: #6aaaeb;
+  --colore-bluChiaro: #94c4f5;
 
   --colore-verde: #00b377;
   --colore-verdeChiaro: #6ee7bf;
+  --colore-viola: #881095;
+  --colore-violaChiaro: #d613ec;
 }
 
 * {
@@ -54,12 +56,17 @@ header {
 }
 
 main {
-  /* margin: 1rem;
-  padding: 1rem; */
+  padding-top: 90px;
   border: 1px solid rgb(9, 117, 42);
 }
 
+button {
+  cursor: pointer;
+}
 /* Classe temporanea */
 .dn {
   display: none;
+}
+.db {
+  display: block;
 }

@@ -15,6 +15,8 @@ import { GeneralSetting } from "./pages/GeneralSetting";
 import { PresentationSetting } from "./pages/PresentationSetting";
 import { ProjectSettings } from "./pages/ProjectSetting";
 import { PrivacySetting } from "./pages/PrivacySetting";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export function App() {
   return (
