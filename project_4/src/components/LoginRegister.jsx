@@ -1,21 +1,16 @@
 import { Link } from "react-router-dom";
-import { CircleButton } from "./CircleButton";
 import { RegisterPage } from "../pages/RegisterPage";
-import { useState } from "react";
+import { useShowToggle } from "../hooks/useShowToggle";
 
 export function LoginRegister() {
-  const [show, setShow] = useState(false);
-
-  function handleShowLogin() {
-    show ? setShow(false) : setShow(true);
-  }
+  const { toggle, onToggle } = useShowToggle();
 
   return (
     <div>
-      <button onClick={handleShowLogin}>
+      <button onClick={onToggle}>
         <img src="" alt="Login" />
       </button>
-      {show && (
+      {toggle && (
         <div>
           <form>
             <label>Username:</label>
