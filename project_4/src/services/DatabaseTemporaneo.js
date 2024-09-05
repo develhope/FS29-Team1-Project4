@@ -2,7 +2,7 @@ export const DATA = [
   {
     id: 1,
     name: "Francesco",
-    image: "",
+    image: "../src/assets/francesco.jpg",
     job: "Full-Stack Web Developer",
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Veniam cupiditate nesciunt suscipit, saepe delectus eligendi fuga nulla quasi laboriosam. 
@@ -15,7 +15,7 @@ export const DATA = [
   {
     id: 2,
     name: "Giuseppe",
-    image: "",
+    image: "../src/assets/JasonBiggs.jpg",
     job: "Full-Stack Web Developer",
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Veniam cupiditate nesciunt suscipit, saepe delectus eligendi fuga nulla quasi laboriosam. 
@@ -28,7 +28,7 @@ export const DATA = [
   {
     id: 3,
     name: "Luca",
-    image: "",
+    image: "../src/assets/monella.jpg",
     job: "Full-Stack Web Developer",
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Veniam cupiditate nesciunt suscipit, saepe delectus eligendi fuga nulla quasi laboriosam. 
@@ -41,7 +41,7 @@ export const DATA = [
   {
     id: 4,
     name: "Emanuele",
-    image: "",
+    image: "../src/assets/Steve_Stifler.png",
     job: "Full-Stack Web Developer",
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Veniam cupiditate nesciunt suscipit, saepe delectus eligendi fuga nulla quasi laboriosam. 
@@ -54,7 +54,7 @@ export const DATA = [
   {
     id: 5,
     name: "Fabrizio",
-    image: "",
+    image: "../src/assets/download.jpg",
     job: "Full-Stack Web Developer",
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Veniam cupiditate nesciunt suscipit, saepe delectus eligendi fuga nulla quasi laboriosam. 
@@ -67,7 +67,7 @@ export const DATA = [
   {
     id: 6,
     name: "Lorenzo",
-    image: "",
+    image: "../src/assets/lorenzojpg.jpg",
     job: "Full-Stack Web Developer",
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Veniam cupiditate nesciunt suscipit, saepe delectus eligendi fuga nulla quasi laboriosam. 
