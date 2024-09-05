@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { CircleButton } from "./CircleButton";
+import nav_container from "../styles/Navbar.module.css";
 
 export function Logo() {
   return (
-    <div>
+    <div className={nav_container.logo}>
       <Link to="/">
-        <CircleButton />
+        <img src={"../src/assets/logo-project4.png"} />
       </Link>
     </div>
   );

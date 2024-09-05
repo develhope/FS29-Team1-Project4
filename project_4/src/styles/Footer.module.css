@@ -1,8 +1,15 @@
 .container {
-  margin: 1rem;
-  border: 1px solid black;
-  padding: 1rem;
+  width: 100%;
+  background-color: var(--colore-nero);
+  text-align: center;
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
+  justify-content: space-around;
+  padding: 3rem;
+  align-items: center;
+
+  h1,h2,h3,h4,h5,h6, p, li {
+    color: white;
+  }
+  
 }
+

@@ -12,6 +12,22 @@
   gap: 0.5rem;
   background-color: var(--colore-blu);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.223);
+
+  .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 10%;
+    background-color: var(--colore-violaScuro);
+    border-radius: 0.5rem;
+
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+  }
   
   ul{
     width: 30%;
