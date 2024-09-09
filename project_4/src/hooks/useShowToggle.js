@@ -7,8 +7,5 @@ export function useShowToggle() {
     toggle ? setToggle(false) : setToggle(true);
   }
 
-  return {
-    toggle: toggle,
-    onToggle: handleToggle,
-  };
+  return [toggle, handleToggle];
 }
