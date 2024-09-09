@@ -4,6 +4,7 @@ import { ArrowLeftButton } from "./ArrowLeftButton";
 import { ArrowRightButton } from "./ArrowRightButton";
 import { CardProfessional } from "./CardProfessional";
 import { CircleButton } from "./CircleButton";
+import { ProjectProfessional } from "./ProjectProfessional";
 import { Titleh2 } from "./Titleh2";
 
 export function HomeContent() {
@@ -18,7 +19,9 @@ export function HomeContent() {
       <br />
       <div>
         <h2>Some Examples</h2>
-        <section className={section_card.section}></section>
+        <section className={section_card.section}>
+          <ProjectProfessional />
+        </section>
       </div>
     </div>
   );

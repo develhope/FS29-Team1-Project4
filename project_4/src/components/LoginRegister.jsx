@@ -6,7 +6,7 @@ export function LoginRegister() {
   const { toggle, onToggle } = useShowToggle();
 
   return (
-    <div>
+    <div className="login_container">
       <button onClick={onToggle}>
         <img src="" alt="Login" />
       </button>

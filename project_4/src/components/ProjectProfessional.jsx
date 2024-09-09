@@ -1,10 +1,10 @@
-import { DATA } from "../services/DatabaseTemporaneo";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/SliderArrows.css";
+import { DATA } from "../database";
 
-export function CardProfessional() {
+export function ProjectProfessional() {
   const db = DATA;
   const CustomNextArrow = ({ className, style, onClick }) => (
     <button
@@ -27,11 +27,9 @@ export function CardProfessional() {
   );
 
   const settings = {
-    className: "center",
-    centerMode: true,
     infinite: true,
     centerPadding: "50px",
-    slidesToShow: 4,
+    slidesToShow: 3,
     speed: 300,
     adaptiveHeight: true,
     focusOnSelect: true,
@@ -39,20 +37,22 @@ export function CardProfessional() {
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
-          centerMode: true,
+          centerMode: false,
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 769,
         settings: {
-          centerMode: true,
+          centerMode: false,
           slidesToShow: 1,
           initialSlide: 1,
+          dots: true,
+          arrows: false,
         },
       },
       {
@@ -69,19 +69,16 @@ export function CardProfessional() {
   };
 
   return (
-    <div className="w-full m-auto max-w-7xl">
-      <div className="mt-20 mb-20">
+    <div className="w-full m-auto mt-20 mb-20 ">
+      <div className="max-w-7xl m-auto">
         <Slider {...settings}>
           {db.map((card) => (
             <div key={card.id} className=" text-black rounded-xl shadow-1xl shadow-lg mb-3">
-              <div className="h-36 rounded-t-xl flex justify-center items-center bg-slate-400">
-                <img src={card.image} alt="Image Missing" className="w-32 h-32 rounded-full bg-white text-center object-cover" />
+              <div className="bg-slate-500 text-center">
+                <h2 className="text-2xl font-bold h-10">Nome: {card.name}</h2>
               </div>
-              <div className="h-72 flex flex-col justify-between items-center text-center p-2">
-                <h2 className="text-2xl font-bold">Nome: {card.name}</h2>
-                <p className="h-35 w-full text-ellipsis overflow-hidden m-2">Descrizione: {card.description}</p>
-                <p className="text-left m-2">Linguaggi: {card.job}</p>
-                <button className="bg-slate-500 text-white text-lg p-2 rounded-lg ">Scopri Di Più</button>
+              <div className="h-72">
+                <img src={card.image} alt="Image Missing" className=" bg-white text-center h-full w-full" />
               </div>
             </div>
           ))}

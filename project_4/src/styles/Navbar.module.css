@@ -69,3 +69,20 @@
   }
 
 }
+
+
+@media (max-width: 768px) {
+  .nav{
+
+    form{
+      display: none;
+    }
+    li{
+      display: none;
+    }
+
+
+  }
+
+
+}
