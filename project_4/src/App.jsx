@@ -46,6 +46,8 @@ export function App() {
 
         {/* Admin page */}
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/user_setting" element={<UserPage />} />
+        {/* <Route path="/user_setting/:id" element={<UserPage />} /> */}
       </Routes>
     </Container>
   );
