@@ -4,8 +4,6 @@ import { CategorieProIT } from "./CategorieProIT";
 import { Search } from "./Search";
 import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
-import { Link } from "react-router-dom";
-import { SearchPage } from "../pages/SearchPage";
 
 export function Navbar() {
   return (
