@@ -10,13 +10,28 @@ export function UserPage() {
   // Da usare nel momento in cui avremo un database
   //   const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-  const [inputImage, setInputImage] = useState("");
-  const { toggle, onToggle } = useShowToggle();
 
+  // Controllo stato per i toggle
+  const [toggle, onToggle] = useShowToggle();
+  const [toggleDescription, onToggleDescription] = useShowToggle();
+  const [toggleProgram, onToggleProgram] = useShowToggle();
+  const [toggleProject, onToggleProject] = useShowToggle();
+  const [toggleExperince, onToggleExperince] = useShowToggle();
+  const [toggleComments, onToggleComments] = useShowToggle();
+
+  // Recupero User grazie a ID preso da useParams
   const id = "1";
   const user = users.find((user) => user.id.toString() === id);
+
+  // Costanti per cambiare l'immagine
+  const [inputImage, setInputImage] = useState("");
   const [userImage, setUserImage] = useState(user.image);
 
+  // Costanti per cambiare la descrizione
+  const [inputDescription, setInputDescription] = useState("");
+  const [userDescription, setUserDescription] = useState(user.description);
+
+  // Handle Image
   function handleChangeLinkImage(e) {
     setInputImage(e.target.value);
   }
@@ -25,6 +40,17 @@ export function UserPage() {
     e.preventDefault();
     setUserImage(inputImage);
   }
+
+  // Handle Description
+  function handleChangeInputDescription(e) {
+    setInputDescription(e.target.value);
+  }
+
+  function handleChangeDescription(e) {
+    e.preventDefault();
+    setUserDescription(inputDescription);
+  }
+
   return (
     <div>
       <h1>Welcome back, {user.name}!</h1>
@@ -41,10 +67,15 @@ export function UserPage() {
       <ul>
         <li>
           <img src={userImage} alt="Immagine di profilo" />
-          <button onClick={onToggle}>Change Image</button>
+          <button name="image" onClick={onToggle}>
+            Change Image
+          </button>
+
+          {/* Change image */}
           {toggle && (
             <div>
-              <button>Load File</button>
+              {/* Capire quale event handler usare */}
+              <input type="file"></input>
               <br />
               <form>
                 <input
@@ -60,9 +91,21 @@ export function UserPage() {
           )}
         </li>
         <li>
-          {user.description}
+          <p>{user.description}</p>
           <br />
-          <button onClick={onToggle}>Change Description</button>
+          <button name="description" onClick={onToggleDescription}>
+            Change Description
+          </button>
+          {toggleDescription && (
+            <div>
+              <input
+                type="text"
+                value={userDescription}
+                onChange={handleChangeInputDescription}
+              />
+              <button onClick={handleChangeDescription}>Save</button>
+            </div>
+          )}
         </li>
         <li>
           <ul>
@@ -70,15 +113,27 @@ export function UserPage() {
               <li key={index}>{program}</li>
             ))}
           </ul>
-          <button onClick={onToggle}>Change Program</button>
+          <button onClick={onToggleProgram}>Change Program</button>
+          {toggleProgram && (
+            <div>
+              <p>Program</p>
+            </div>
+          )}
         </li>
         <li>
           <ul>
             {user.project.map((project, index) => (
-              <li key={index}>{project}</li>
+              <li key={index}>
+                {project}
+                {toggleProject && (
+                  <div>
+                    <button>X</button>
+                  </div>
+                )}
+              </li>
             ))}
           </ul>
-          <button onClick={onToggle}>Change Project</button>
+          <button onClick={onToggleProject}>Change Project</button>
         </li>
         <li>
           <ul>
@@ -86,14 +141,22 @@ export function UserPage() {
               <li key={index}>{experience}</li>
             ))}
           </ul>
-          <button onClick={onToggle}>Change Some Experience</button>
+          <button onClick={onToggleExperince}>Change Some Experience</button>
+          {toggleExperince && (
+            <div>
+              <p>Some Experience</p>
+            </div>
+          )}
         </li>
         <li>
           Reviews
           <br />
-          Comment
-          <br />
-          <button onClick={onToggle}>View Comment</button>
+          <button onClick={onToggleComments}>View Comment</button>
+          {toggleComments && (
+            <div>
+              <p>Comments</p>
+            </div>
+          )}
         </li>
       </ul>
     </div>
