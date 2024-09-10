@@ -11,14 +11,12 @@ export function Navbar() {
   return (
     <nav className={nav_container.nav}>
       <Logo />
-      <CategorieProIT category="WEB DEVELOPER" />
-      <CategorieProIT category="WEB DESIGN" />
+      <CategorieProIT category="Services IT" />
+      <CategorieProIT category="Profession IT" />
 
       <Search />
       <ChangeLanguage />
-      <Link to="/register">
-        <LoginRegister />
-      </Link>
+      <LoginRegister />
     </nav>
   );
 }

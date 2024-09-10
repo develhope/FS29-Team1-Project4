@@ -12,31 +12,29 @@ export function Search() {
   function handlePlaySearch() {
     navigate("/search");
   }
+  // cambiare il navigate, e capire come.
+  function handleChoice(e) {
+    navigate(`/${e.target.value}`);
+  }
   return (
     <form>
-      <select name="Category" id="Category">
+      <select name="Category" id="Category" onChange={handleChoice}>
         <optgroup>
-          <option value="category">
-            <Link to="/all_category">Tutte le Categorie</Link>
-          </option>
-          <option value="category">
-            <Link to="/web_developer">Web Devoloper</Link>
-          </option>
-          <option value="category">
-            <Link to="/web_design">Web Design</Link>
-          </option>
-          <option value="category">
-            <Link to="/3D_design">3D Design</Link>
-          </option>
+          <option value="all_category">Tutte le Categorie</option>
+          <option value="web_developer">Web Devoloper</option>
+          <option value="web_design">Web Design</option>
+          <option value="3D_design">3D Design</option>
         </optgroup>
       </select>
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Search Your Professional IT..."
         value={search}
-        onChange={handleSearch}
+        onClick={handleSearch}
       />
-      <button onClick={handlePlaySearch}>Go</button>
+      <button onClick={handlePlaySearch}>
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </button>
     </form>
   );
 }

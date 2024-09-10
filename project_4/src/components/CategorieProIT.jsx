@@ -2,8 +2,8 @@ import { Titleh6 } from "./Titleh6";
 
 export function CategorieProIT({ category }) {
   return (
-    <div>
+    <li>
       <Titleh6 title={category} />
-    </div>
+    </li>
   );
 }

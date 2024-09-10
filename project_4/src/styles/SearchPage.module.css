@@ -1,0 +1,27 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    border: 1px solid red;
+    height: 1000px;
+}
+
+.aside{
+    width: 20%;
+    height: 100%;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-right: 2.5rem;
+    div{
+        margin: 1rem;
+    }
+}
+.filtered{
+    background-color: yellowgreen;
+    height: 100%;
+    width: 80%;
+    text-align: center;
+    margin-left: 2.5rem;
+}

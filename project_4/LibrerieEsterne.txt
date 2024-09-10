@@ -1,0 +1,15 @@
+-SWR per fetch
+Da slide React del corso
+
+-Slick per front-end(carousel)
+https://react-slick.neostack.com/docs/get-started
+ 1-npm install react-slick --save
+ 2-npm install slick-carousel --save
+ 
+
+-Tailwind per css
+https://tailwindcss.com/docs/guides/vite
+
+npm install @tailwindcss/forms
+
+ -Installare estensione VS code Tailwind per snippet 
