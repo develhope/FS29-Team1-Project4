@@ -9,4 +9,7 @@ https://react-slick.neostack.com/docs/get-started
 
 -Tailwind per css
 https://tailwindcss.com/docs/guides/vite
+
+npm install @tailwindcss/forms
+
  -Installare estensione VS code Tailwind per snippet 
