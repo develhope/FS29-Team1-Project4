@@ -1,0 +1,49 @@
+colori neutri che stanno bene su tutto
+1) #262626
+2)#5c6f82
+3)#ffffff
+
+set di colori per blu ( dal più scuro al più chiaro)
+
+colore base: #0066cc
+
+1)#003366
+2)#004080
+3)#004d99
+4)#0066cc
+5)#207ad5
+6)#4392E0
+7)#6aaaeb
+8)#94c4f5
+9)#bfdfff
+10)#f2f7fc
+
+set di colori per arancione (*)
+
+colore base:#cc7a00
+
+1)#663d00
+2)#804d00
+3)#995c00
+4)#b36b00
+5)#cc7a00
+6)#d48d22
+7)#e0a243
+8)#e7b66e
+9)#eecd9a
+10)#f6e4c8
+
+set di colori per verde (*)
+
+colore base: #008055
+
+1)#004d33
+2)#006644
+3)#008055
+4)#00b377
+5)#00cc88
+6)#22d499
+7)#43e0ac
+8)#6ee7bf
+9)#99eed2
+10)#c8f6e7
