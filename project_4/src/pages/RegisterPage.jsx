@@ -22,7 +22,7 @@ export function RegisterPage() {
   }
 
   return (
-    <div>
+    <div className="classes.h3">
       <h1>Register Page</h1>
       <form action="">
         <h3>USERNAME</h3>
