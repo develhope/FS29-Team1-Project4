@@ -26,7 +26,7 @@ export function RegisterPage() {
       <h1>Register Page</h1>
       <form className={style.input} action="">
         <h3>INSERISCI USERNAME</h3>
-        <input type="text" />
+        <input type="text" placeholder="ES.mario.rossi85" />
         <h3> INSERISCI PASSWORD</h3>
         <input type="Password" placeholder="Your Password" />
         <h3>MAIL</h3>
@@ -54,14 +54,99 @@ export function RegisterPage() {
             <h3>CHE RUOLO RICOPRI?</h3>
             <input type="text" />
             <h3>CHE PROGRAMMA USI?</h3>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <div className={style.program}>
+              <div className={style.plan}>
+                <label> HTML</label>
+                <img
+                  src="../src/assets/html5-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> CSS</label>
+                <img
+                  src="../src/assets/css3-alt-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> JS</label>
+
+                <img
+                  src="../src/assets/js-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+
+              <div className={style.plan}>
+                <label> REACT</label>
+
+                <img
+                  src="../src/assets/react-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> TYPESCRIPT</label>
+
+                <img
+                  src="../src/assets/typescript.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> C++</label>
+                <img src="" alt="" />
+              </div>
+              <div className={style.plan}>
+                <label> GITHUB</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+              <div className={style.plan}>
+                <label> C#</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+              <div className={style.plan}>
+                <label> PHYTON</label>
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+              <div className={style.plan}>
+                <label> JAVA</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+
+              <div className={style.plan}>
+                <label> NODE</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+
+              <div className={style.plan}>
+                <label> BLENDER</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+
+              <div className={style.plan}>
+                <label>RHINOCEROS 3D</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+              <div className={style.plan}>
+                <label> UNITY</label>
+
+                <img src="../assets/monella.jpg" alt="" />
+              </div>
+            </div>
+
             <h3>QUANTO COSTA IL TUO SERVIZIO?</h3>
             <input type="text" />
             <h3>IN CHE CITTÀ LAVORI?</h3>
