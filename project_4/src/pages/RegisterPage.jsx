@@ -26,13 +26,25 @@ export function RegisterPage() {
       <h1>Register Page</h1>
       <form className={style.input} action="">
         <h3>INSERISCI USERNAME</h3>
-        <input type="text" placeholder="ES.mario.rossi85" />
-        <h3> INSERISCI PASSWORD</h3>
-        <input type="Password" placeholder="Your Password" />
-        <h3>MAIL</h3>
-        <input type="mail" placeholder="Example@libero.it" />
+        <input
+          type="text"
+          placeholder="ES.mario.rossi85"
+          className={style.input}
+        />
+        <h3>INSERISCI PASSWORD</h3>
+        <input
+          type="Password"
+          placeholder="Your Password"
+          className={style.input}
+        />
+        <h3>INSERISCI MAIL</h3>
+        <input
+          type="mail"
+          placeholder="Example@libero.it"
+          className={style.input}
+        />
         <h3>SEI UN PROFESSIONISTA?</h3>
-        <label>SI</label>
+        <label className={style.label}>SI</label>
         <input
           type="radio"
           name="pro"
@@ -41,7 +53,7 @@ export function RegisterPage() {
           className={style.check}
         />
 
-        <label>NO</label>
+        <label className={style.label}>NO</label>
         <input
           className={style.check}
           type="radio"
@@ -52,7 +64,7 @@ export function RegisterPage() {
         {isPro ? (
           <div>
             <h3>CHE RUOLO RICOPRI?</h3>
-            <input type="text" />
+            <input type="text" className={style.input} />
             <h3>CHE PROGRAMMA USI?</h3>
             <div className={style.program}>
               <div className={style.plan}>
@@ -184,16 +196,21 @@ export function RegisterPage() {
             </div>
 
             <h3>QUANTO COSTA IL TUO SERVIZIO?</h3>
-            <input type="text" />
+            <input type="text" className={style.input} />
             <h3>IN CHE CITTÀ LAVORI?</h3>
-            <input type="text" />
+            <input type="text" className={style.input} />
             <h3>SEI DISPOSTO A SPOSTARTI?</h3>
-            <label>SI</label>
+            <label className={style.label}>SI</label>
             <input type="radio" name="SI" className={style.check} />
-            <label>NO</label>
+            <label className={style.label}>NO</label>
             <input type="radio" name="SI" className={style.check} />
             <h3>COME VUOI ESSERE CONTATTATO DALLE AZIENDE?</h3>
-            <select name="" id="" onChange={handleUserContact}>
+            <select
+              name=""
+              id=""
+              onChange={handleUserContact}
+              className={style.contact}
+            >
               <option value="mail">EMAIL</option>
               <option value="phone">TELEFONO</option>
               <option value="facebook">FACEBOOK</option>
@@ -241,16 +258,16 @@ export function RegisterPage() {
         ) : (
           <div>
             <h3>NOME DELL'AZIENDA</h3>
-            <input type="text" />
+            <input type="text" className={style.input} />
             <h3>CHE TIPO DI PROFESSIONISTA CERCHI</h3>
-            <select name="" id="">
+            <select name="" id="" className={style.contact}>
               <option value="">WEB DEVELOPER</option>
               <option value="">WEB DESIGNER</option>
               <option value="">GAME DESIGNER</option>
               <option value="">3D DESIGNER</option>
             </select>
             <h3>COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?</h3>
-            <select name="" id="" onChange={handleUserContact}>
+            <select className={style.contact} onChange={handleUserContact}>
               <option value="mail">EMAIL</option>
               <option value="phone">TELEFONO</option>
               <option value="facebook">FACEBOOK</option>
