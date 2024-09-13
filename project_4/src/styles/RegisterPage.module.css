@@ -56,16 +56,20 @@ img {
   display: none;
 }
 .program {
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   
   justify-content: center;
   align-items: center;
+  gap: 1.2rem;
+  margin-right: 1.2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .plan {
   width: 4.5rem;
   height: 4.5rem;
-  background-color: brown;
+  /* background-color: brown; */
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;

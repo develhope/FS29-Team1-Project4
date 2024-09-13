@@ -101,49 +101,85 @@ export function RegisterPage() {
               </div>
               <div className={style.plan}>
                 <label> C++</label>
-                <img src="" alt="" />
+                <img
+                  src="../src/assets/c++.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
               <div className={style.plan}>
                 <label> GITHUB</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/github.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
               <div className={style.plan}>
                 <label> C#</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/c-sharp-c-icon-1822x2048-wuf3ijab.png"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
               <div className={style.plan}>
                 <label> PHYTON</label>
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/python-5.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
               <div className={style.plan}>
                 <label> JAVA</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/java-14.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
 
               <div className={style.plan}>
                 <label> NODE</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/nodejs.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
 
               <div className={style.plan}>
                 <label> BLENDER</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/blender-2.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
 
               <div className={style.plan}>
-                <label>RHINOCEROS 3D</label>
+                <label>R.3D</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/icons8-rhinoceros-6.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
               <div className={style.plan}>
                 <label> UNITY</label>
 
-                <img src="../assets/monella.jpg" alt="" />
+                <img
+                  src="../src/assets/unity-69.svg"
+                  alt=""
+                  className={style.icons}
+                />
               </div>
             </div>
 
