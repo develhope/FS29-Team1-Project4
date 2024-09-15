@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterPage } from "../pages/RegisterPage";
 import { useShowToggle } from "../hooks/useShowToggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import NavLogin from "../styles/LoginRegister.module.css";
 
-export function LoginRegister() {
-  const [toggle, onToggle] = useShowToggle();
+export function LoginRegister({ toggle }) {
+  const [login, onLogin] = useShowToggle(toggle);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -22,13 +23,18 @@ export function LoginRegister() {
     navigate("/user_setting");
     // navigate(`/user_setting/${user.id}`)
   }
+
+  function handleClikLink() {
+    onLogin(false);
+  }
+
   return (
-    <div className="login_container">
-      <button onClick={onToggle}>
-        <img src="" alt="Login" />
+    <div className={NavLogin.container}>
+      <button className={NavLogin.button} onClick={onLogin}>
+        <img src="" alt="" />
       </button>
-      {toggle && (
-        <div>
+      {login && (
+        <div className={`${NavLogin.form} ${login ? NavLogin.show : ""}`}>
           <form>
             <label>Username:</label>
             <input type="text" value={username} onChange={handleUsername} />
@@ -36,7 +42,7 @@ export function LoginRegister() {
             <input type="text" value={password} onChange={handlePassword} />
             <button onClick={handleGoSettingPage}>Login</button>
           </form>
-          <Link to="/register" element={<RegisterPage />}>
+          <Link to="/register" element={<RegisterPage />} onClick={handleClikLink}>
             <p>Register</p>
           </Link>
         </div>
