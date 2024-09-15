@@ -4,10 +4,15 @@ import { CategorieProIT } from "./CategorieProIT";
 import { Search } from "./Search";
 import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
-import { Link } from "react-router-dom";
-import { SearchPage } from "../pages/SearchPage";
+import { useShowToggle } from "../hooks/useShowToggle";
 
 export function Navbar() {
+  const [toggle, setToggle] = useShowToggle(false);
+
+  function test() {
+    setToggle(false);
+  }
+
   return (
     <nav className={nav_container.nav}>
       <Logo />
@@ -16,7 +21,7 @@ export function Navbar() {
 
       <Search />
       <ChangeLanguage />
-      <LoginRegister />
+      {!toggle ? <LoginRegister toggle={toggle} /> : <LoginRegister />}
     </nav>
   );
 }
