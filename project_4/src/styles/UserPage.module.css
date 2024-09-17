@@ -3,6 +3,7 @@
   display: flex;
   flex-flow: column;
   gap: 1rem;
+  height: auto;
 
   .container_noTitle {
     /* border: 10px solid #3d3d3d; */
@@ -16,7 +17,7 @@
       border-radius: 0.5rem 0 0 0.5rem;
       padding: 5rem 0.5rem;
       width: 15%;
-      height: 100%;
+      height: auto;
       /* box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro); */
       border: 1px solid red;  
       display: flex;

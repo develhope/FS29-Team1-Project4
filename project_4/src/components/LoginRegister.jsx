@@ -46,16 +46,17 @@ export function LoginRegister({ toggle }) {
             </button>
             <div className={NavLogin.user}>
               <label>Username:</label>
-              <input type="text" value={username} onChange={handleUsername} className="text-black" />
+              <input type="text" value={username} onChange={handleUsername} className="text-black rounded-2xl" />
               <label>Password:</label>
-              <input type="text" value={password} onChange={handlePassword} className="text-black" />
+              <input type="text" value={password} onChange={handlePassword} className="text-black rounded-2xl" />
             </div>
             <div className={NavLogin.links}>
-              <button onClick={handleGoSettingPage} className={NavLogin.login_button}>
+              <button onClick={handleGoSettingPage} className={NavLogin.link_button}>
                 Login
               </button>
+              <span className="text-black">|</span>
               <Link to="/register" element={<RegisterPage />} onClick={handleClikLink}>
-                <p className="text-white border-none">Register</p>
+                <button className={NavLogin.link_button}>Register</button>
               </Link>
             </div>
           </form>
