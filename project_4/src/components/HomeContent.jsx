@@ -7,7 +7,7 @@ import { CircleButton } from "./CircleButton";
 import { ProjectProfessional } from "./ProjectProfessional";
 import { Titleh2 } from "./Titleh2";
 
-export function HomeContent() {
+export function HomeContent({ serviceSectionRef }) {
   return (
     <div className={body_container.container}>
       <div>
@@ -20,7 +20,7 @@ export function HomeContent() {
       <div>
         <h2>Some Examples</h2>
         <section className={section_card.section}>
-          <ProjectProfessional />
+          <ProjectProfessional serviceSectionRef={serviceSectionRef} />
         </section>
       </div>
     </div>

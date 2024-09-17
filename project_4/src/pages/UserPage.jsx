@@ -1,3 +1,5 @@
+import style from "../styles/UserPage.module.css";
+import iconModify from "../assets/icon_modify.svg";
 import { Link, useParams } from "react-router-dom";
 import { DATA } from "../database";
 import { useState } from "react";
@@ -52,113 +54,217 @@ export function UserPage() {
   }
 
   return (
-    <div>
-      <h1>Welcome back, {user.name}!</h1>
-      {/* Aside tutto schermo laterale dx */}
-      <aside>
-        <Link to="/general_setting">General Setting</Link>|{" "}
-        {/* Presentation sono i dati anagrafaci */}
-        <Link to="/presentation_setting">Presentation Setting</Link>|{" "}
-        {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-        <Link to="/project_setting">Project Setting</Link>|{" "}
-        {/* Cosa far vedere e a chi */}
-        <Link to="/privacy_setting">Privacy Setting</Link>
-      </aside>
-      <ul>
-        <li>
-          <img src={userImage} alt="Immagine di profilo" />
-          <button name="image" onClick={onToggle}>
-            Change Image
-          </button>
-
-          {/* Change image */}
-          {toggle && (
-            <div>
-              {/* Capire quale event handler usare */}
-              <input type="file"></input>
-              <br />
-              <form>
-                <input
-                  type="text"
-                  value={inputImage}
-                  onChange={handleChangeLinkImage}
-                />
-                <button type="button" onClick={handleChangeImage}>
-                  Insert Link File
-                </button>
-              </form>
-            </div>
-          )}
-        </li>
-        <li>
-          <p>{user.description}</p>
-          <br />
-          <button name="description" onClick={onToggleDescription}>
-            Change Description
-          </button>
-          {toggleDescription && (
-            <div>
-              <input
-                type="text"
-                value={userDescription}
-                onChange={handleChangeInputDescription}
+    <div className={style.container}>
+      <div className={style.container_noTitle}>
+        {/* Aside tutto schermo laterale dx */}
+        <aside className={style.aside}>
+          <Link to="/general_setting" className={style.link}>
+            General Setting
+          </Link>
+          {/* Presentation sono i dati anagrafaci */}
+          <Link to="/presentation_setting" className={style.link}>
+            Presentation Setting
+          </Link>
+          {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
+          <Link to="/project_setting" className={style.link}>
+            Project Setting
+          </Link>
+          {/* Cosa far vedere e a chi */}
+          <Link to="/privacy_setting" className={style.link}>
+            Privacy Setting
+          </Link>
+        </aside>
+        <ul className={style.content}>
+          <li className={style.li}>
+            <h1 className={style.h1}>Welcome back, {user.name}!</h1>
+          </li>
+          <li className={style.li}>
+            <div className={style.container_accept}>
+              <img
+                src={userImage}
+                alt="Immagine di profilo"
+                className={style.img}
               />
-              <button onClick={handleChangeDescription}>Save</button>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggle}
+              />
             </div>
-          )}
-        </li>
-        <li>
-          <ul>
-            {user.program.map((program, index) => (
-              <li key={index}>{program}</li>
-            ))}
-          </ul>
-          <button onClick={onToggleProgram}>Change Program</button>
-          {toggleProgram && (
-            <div>
-              <p>Program</p>
+
+            {/* Change image */}
+            {toggle && (
+              <div className={style.container_change}>
+                {/* Capire quale event handler usare */}
+                <input type="file" />
+                <br />
+                <form>
+                  <input
+                    type="text"
+                    value={inputImage}
+                    placeholder="Insert Link File"
+                    onChange={handleChangeLinkImage}
+                    className={style.input}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleChangeImage}
+                    className={style.buttonSave}
+                  >
+                    Save
+                  </button>
+                </form>
+              </div>
+            )}
+          </li>
+          <li className={style.li}>
+            <div className={style.container_accept}>
+              <p className={style.description}>{user.description}</p>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleDescription}
+              />
             </div>
-          )}
-        </li>
-        <li>
-          <ul>
-            {user.project.map((project, index) => (
-              <li key={index}>
-                {project}
-                {toggleProject && (
-                  <div>
-                    <button>X</button>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-          <button onClick={onToggleProject}>Change Project</button>
-        </li>
-        <li>
-          <ul>
-            {user.someExperience.map((experience, index) => (
-              <li key={index}>{experience}</li>
-            ))}
-          </ul>
-          <button onClick={onToggleExperince}>Change Some Experience</button>
-          {toggleExperince && (
-            <div>
-              <p>Some Experience</p>
+
+            {/* Change Description */}
+            {toggleDescription && (
+              <div className={style.container_change}>
+                <textarea
+                  onChange={handleChangeInputDescription}
+                  placeholder={userDescription}
+                  className={style.textarea}
+                  rows="7"
+                  cols="100"
+                  maxLength="500"
+                ></textarea>
+                <button
+                  onClick={handleChangeDescription}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
+              </div>
+            )}
+          </li>
+          <li className={style.li}>
+            <div className={style.container_accept}>
+              <ul className={style.ul_program}>
+                {user.program.map((program, index) => (
+                  <li key={index} className={style.li}>
+                    {program.name.toUpperCase()}
+                    <img
+                      src={program.icon}
+                      alt={`Icona ${program.name}`}
+                      className={style.icon_program}
+                    />
+                  </li>
+                ))}
+              </ul>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleProgram}
+              />
             </div>
-          )}
-        </li>
-        <li>
-          Reviews
-          <br />
-          <button onClick={onToggleComments}>View Comment</button>
-          {toggleComments && (
-            <div>
-              <p>Comments</p>
+
+            {/* Change Program */}
+            {toggleProgram && (
+              <div className={style.container_accept}>
+                <ul className={style.ul_program}>
+                  {user.program.map((program, index) => (
+                    <li key={index} className={style.li}>
+                      {program.name.toUpperCase()}
+                      <img
+                        src={program.icon}
+                        alt={`Icona ${program.name}`}
+                        className={style.icon_program}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </li>
+
+          <li className={style.li}>
+            <div className={style.container_accept}>
+              <ul className={style.ul_program}>
+                {/* Map progetti accettati */}
+                {user.project.map((project, index) => (
+                  <li key={index} className={style.li}>
+                    <a href="">{project}</a>
+
+                    {toggleProject && (
+                      <div>
+                        <button>X</button>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleProject}
+              />
             </div>
-          )}
-        </li>
-      </ul>
+            {toggleProject && (
+              // map tutti i progetti
+              <div></div>
+            )}
+          </li>
+          <li className={style.li}>
+            <div className={style.container_accept}>
+              <ul className={style.ul_program}>
+                {user.someExperience.map((experience, index) => (
+                  <li key={index} className={style.li}>
+                    {experience}
+                  </li>
+                ))}
+              </ul>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleExperince}
+              />
+            </div>
+            {toggleExperince && (
+              <div>
+                <p>Some Experience</p>
+              </div>
+            )}
+          </li>
+          <li className={style.li}>
+            <div className={style.container_accept}>
+              <p className={style.reviews}>Reviews</p>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleComments}
+              />
+            </div>
+            {toggleComments && (
+              <div className={style.container_accept}>
+                {/* Lista Commenti delle aziende che hanno lavorato con questo professionista */}
+                <p className={style.reviews}>Comments</p>
+              </div>
+            )}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

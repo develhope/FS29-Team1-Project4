@@ -17,13 +17,28 @@ import { ProjectSettings } from "./pages/ProjectSetting";
 import { PrivacySetting } from "./pages/PrivacySetting";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useRef } from "react";
 
 export function App() {
+  const serviceRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <Container navbar={<Navbar />} footer={<Footer />}>
+    <Container
+      navbar={
+        <Navbar
+          serviceSrollFunction={() => {
+            scrollToSection(serviceRef);
+          }}
+        />
+      }
+      footer={<Footer />}
+    >
       <Routes>
         {/* Home */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home serviceSectionRef={serviceRef} />} />
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
@@ -36,10 +51,7 @@ export function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user" element={<UserPage />}>
           <Route path="general_setting" element={<GeneralSetting />} />
-          <Route
-            path="presentation_setting"
-            element={<PresentationSetting />}
-          />
+          <Route path="presentation_setting" element={<PresentationSetting />} />
           <Route path="project_setting" element={<ProjectSettings />} />
           <Route path="privacy_setting" element={<PrivacySetting />} />
         </Route>

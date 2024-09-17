@@ -5,9 +5,14 @@ import { useEffect, useState } from "react";
 import NavLogin from "../styles/LoginRegister.module.css";
 
 export function LoginRegister({ toggle }) {
-  const [login, onLogin] = useShowToggle(toggle);
+  // const [login, onLogin] = useShowToggle(toggle);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  /* Gestione del click fuori dal form */
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const openForm = () => setIsFormOpen(true);
+  const closeForm = () => setIsFormOpen(false);
+  /* ---------------*/
   const navigate = useNavigate();
 
   function handleUsername(e) {
@@ -30,21 +35,30 @@ export function LoginRegister({ toggle }) {
 
   return (
     <div className={NavLogin.container}>
-      <button className={NavLogin.button} onClick={onLogin}>
-        <img src="" alt="" />
+      <button className={NavLogin.button} onClick={openForm}>
+        <i class="fa-regular fa-user"></i>
       </button>
-      {login && (
-        <div className={`${NavLogin.form} ${login ? NavLogin.show : ""}`}>
-          <form>
-            <label>Username:</label>
-            <input type="text" value={username} onChange={handleUsername} />
-            <label>Password:</label>
-            <input type="text" value={password} onChange={handlePassword} />
-            <button onClick={handleGoSettingPage}>Login</button>
+      {isFormOpen && (
+        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : ""}`}>
+          <form className={NavLogin.form}>
+            <button onClick={closeForm} className={NavLogin.close_button}>
+              X
+            </button>
+            <div className={NavLogin.user}>
+              <label>Username:</label>
+              <input type="text" value={username} onChange={handleUsername} className="text-black" />
+              <label>Password:</label>
+              <input type="text" value={password} onChange={handlePassword} className="text-black" />
+            </div>
+            <div className={NavLogin.links}>
+              <button onClick={handleGoSettingPage} className={NavLogin.login_button}>
+                Login
+              </button>
+              <Link to="/register" element={<RegisterPage />} onClick={handleClikLink}>
+                <p className="text-white border-none">Register</p>
+              </Link>
+            </div>
           </form>
-          <Link to="/register" element={<RegisterPage />} onClick={handleClikLink}>
-            <p>Register</p>
-          </Link>
         </div>
       )}
     </div>

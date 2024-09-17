@@ -1,3 +1,4 @@
+import icon from "./assets/icon_modify.svg";
 export const DATA = [
   {
     id: 1,
@@ -7,7 +8,10 @@ export const DATA = [
       "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
-    program: ["javascript", "Python"],
+    program: [
+      { name: "javascript", icon: icon },
+      { name: "Python", icon: icon },
+    ],
     project: ["Project 1", "Project 2"],
     someExperience: ["Experience 1", "Experience 2"],
   },
