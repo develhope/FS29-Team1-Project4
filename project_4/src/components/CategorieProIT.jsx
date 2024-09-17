@@ -1,8 +1,8 @@
 import { Titleh6 } from "./Titleh6";
 
-export function CategorieProIT({ category }) {
+export function CategorieProIT({ category, onClick }) {
   return (
-    <li>
+    <li onClick={onClick} className="cursor-pointer">
       <Titleh6 title={category} />
     </li>
   );

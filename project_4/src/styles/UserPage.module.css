@@ -10,18 +10,21 @@
     box-shadow: 0 -0.2rem 0.8rem var(--colore-bluChiaro);
     display: flex;
     gap: 0.8rem;
+    height: 100%;
 
     .aside {
       border-radius: 0.5rem 0 0 0.5rem;
       padding: 5rem 0.5rem;
       width: 15%;
       height: 100%;
-      box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro);
+      /* box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro); */
+      border: 1px solid red;  
       display: flex;
       flex-flow: column;
       justify-content: center;
       gap: 1.5rem;
       text-align: center;
+      
 
       .link {
         border-radius: 0.5rem;

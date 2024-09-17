@@ -6,7 +6,7 @@ import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
 import { useShowToggle } from "../hooks/useShowToggle";
 
-export function Navbar() {
+export function Navbar({ serviceSrollFunction }) {
   const [toggle, setToggle] = useShowToggle(false);
 
   function test() {
@@ -16,7 +16,7 @@ export function Navbar() {
   return (
     <nav className={nav_container.nav}>
       <Logo />
-      <CategorieProIT category="Services IT" />
+      <CategorieProIT category="Services IT" onClick={serviceSrollFunction} />
       <CategorieProIT category="Profession IT" />
 
       <Search />

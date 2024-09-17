@@ -1,11 +1,11 @@
 import { Hero } from "../components/Hero";
 import { HomeContent } from "../components/HomeContent";
 
-export function Home() {
+export function Home({ serviceSectionRef }) {
   return (
     <div>
       <Hero />
-      <HomeContent />
+      <HomeContent serviceSectionRef={serviceSectionRef} />
     </div>
   );
 }
