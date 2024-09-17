@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import nav_container from "../styles/Navbar.module.css";
 
 export function Search() {
   const [search, setSearch] = useState("");
@@ -17,7 +18,7 @@ export function Search() {
     navigate(`/${e.target.value}`);
   }
   return (
-    <form>
+    <form className={nav_container.form}>
       <select name="Category" id="Category" onChange={handleChoice}>
         <optgroup>
           <option value="all_category">All Categories</option>
