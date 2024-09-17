@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import {} from "../styles/RegisterPage.module.css";
+import style from "../styles/RegisterPage.module.css";
 
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
@@ -22,26 +22,40 @@ export function RegisterPage() {
   }
 
   return (
-    <div>
+    <div className={style.container}>
       <h1>Register Page</h1>
-      <form action="">
-        <h3>USERNAME</h3>
-        <input type="text" />
-        <h3>PASSWORD</h3>
-        <input type="Password" placeholder="Your Password" />
-        <h3>MAIL</h3>
-        <input type="mail" placeholder="Example@libero.it" />
-        <h3>SEI UN PROFESSIONISTA</h3>
-        <label>SI</label>
+      <form className={style.input} action="">
+        <h3>INSERISCI USERNAME</h3>
+        <input
+          type="text"
+          placeholder="ES.mario.rossi85"
+          className={style.input}
+        />
+        <h3>INSERISCI PASSWORD</h3>
+        <input
+          type="Password"
+          placeholder="Your Password"
+          className={style.input}
+        />
+        <h3>INSERISCI MAIL</h3>
+        <input
+          type="mail"
+          placeholder="Example@libero.it"
+          className={style.input}
+        />
+        <h3>SEI UN PROFESSIONISTA?</h3>
+        <label className={style.label}>SI</label>
         <input
           type="radio"
           name="pro"
           onChange={handleIsProfessionist}
           value="SI"
+          className={style.check}
         />
 
-        <label>NO</label>
+        <label className={style.label}>NO</label>
         <input
+          className={style.check}
           type="radio"
           name="pro"
           onChange={handleIsProfessionist}
@@ -50,27 +64,153 @@ export function RegisterPage() {
         {isPro ? (
           <div>
             <h3>CHE RUOLO RICOPRI?</h3>
-            <input type="text" />
+            <input type="text" className={style.input} />
             <h3>CHE PROGRAMMA USI?</h3>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <h3>QUANTO COSTA IL TUO SERVIZIO</h3>
-            <input type="text" />
-            <h3>IN CHE CITTA'LAVORI</h3>
-            <input type="text" />
-            <h3>SEI DISPOSTO A SPOSTARTI</h3>
-            <label>SI</label>
-            <input type="checkbox" />
-            <label>NO</label>
-            <input type="checkbox" />
-            <h3>COME VUOI ESSERE CONTATTATO DALLE AZIENDE</h3>
-            <select name="" id="" onChange={handleUserContact}>
+            <div className={style.program}>
+              <div className={style.plan}>
+                <label> HTML</label>
+                <img
+                  src="../src/assets/html5-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> CSS</label>
+                <img
+                  src="../src/assets/css3-alt-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> JS</label>
+
+                <img
+                  src="../src/assets/js-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+
+              <div className={style.plan}>
+                <label> REACT</label>
+
+                <img
+                  src="../src/assets/react-brands-solid.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> TYPESCRIPT</label>
+
+                <img
+                  src="../src/assets/typescript.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> C++</label>
+                <img
+                  src="../src/assets/c++.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> GITHUB</label>
+
+                <img
+                  src="../src/assets/github.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> C#</label>
+
+                <img
+                  src="../src/assets/c-sharp-c-icon-1822x2048-wuf3ijab.png"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> PHYTON</label>
+                <img
+                  src="../src/assets/python-5.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> JAVA</label>
+
+                <img
+                  src="../src/assets/java-14.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+
+              <div className={style.plan}>
+                <label> NODE</label>
+
+                <img
+                  src="../src/assets/nodejs.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+
+              <div className={style.plan}>
+                <label> BLENDER</label>
+
+                <img
+                  src="../src/assets/blender-2.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+
+              <div className={style.plan}>
+                <label>R.3D</label>
+
+                <img
+                  src="../src/assets/icons8-rhinoceros-6.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+              <div className={style.plan}>
+                <label> UNITY</label>
+
+                <img
+                  src="../src/assets/unity-69.svg"
+                  alt=""
+                  className={style.icons}
+                />
+              </div>
+            </div>
+
+            <h3>QUANTO COSTA IL TUO SERVIZIO?</h3>
+            <input type="text" className={style.input} />
+            <h3>IN CHE CITTÀ LAVORI?</h3>
+            <input type="text" className={style.input} />
+            <h3>SEI DISPOSTO A SPOSTARTI?</h3>
+            <label className={style.label}>SI</label>
+            <input type="radio" name="SI" className={style.check} />
+            <label className={style.label}>NO</label>
+            <input type="radio" name="SI" className={style.check} />
+            <h3>COME VUOI ESSERE CONTATTATO DALLE AZIENDE?</h3>
+            <select
+              name=""
+              id=""
+              onChange={handleUserContact}
+              className={style.contact}
+            >
               <option value="mail">EMAIL</option>
               <option value="phone">TELEFONO</option>
               <option value="facebook">FACEBOOK</option>
@@ -86,7 +226,7 @@ export function RegisterPage() {
             )}
             {contact === "phone" && (
               <div>
-                <h3>INSERISCI IL TUO CONTATTO TELEFONCIO</h3>
+                <h3>INSERISCI IL TUO CONTATTO TELEFONICO</h3>
                 <input type="text" />
               </div>
             )}
@@ -118,16 +258,16 @@ export function RegisterPage() {
         ) : (
           <div>
             <h3>NOME DELL'AZIENDA</h3>
-            <input type="text" />
+            <input type="text" className={style.input} />
             <h3>CHE TIPO DI PROFESSIONISTA CERCHI</h3>
-            <select name="" id="">
+            <select name="" id="" className={style.contact}>
               <option value="">WEB DEVELOPER</option>
               <option value="">WEB DESIGNER</option>
               <option value="">GAME DESIGNER</option>
               <option value="">3D DESIGNER</option>
             </select>
-            <h3>COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI</h3>
-            <select name="" id="" onChange={handleUserContact}>
+            <h3>COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?</h3>
+            <select className={style.contact} onChange={handleUserContact}>
               <option value="mail">EMAIL</option>
               <option value="phone">TELEFONO</option>
               <option value="facebook">FACEBOOK</option>
