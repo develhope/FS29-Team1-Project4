@@ -15,13 +15,15 @@ export function Navbar({ serviceSrollFunction }) {
 
   return (
     <nav className={nav_container.nav}>
-      <Logo />
-      <CategorieProIT category="Services IT" onClick={serviceSrollFunction} />
-      <CategorieProIT category="Profession IT" />
+      <div className={nav_container.container}>
+        <Logo />
+        <CategorieProIT category="Services IT" onClick={serviceSrollFunction} />
+        <CategorieProIT category="Profession IT" />
 
-      <Search />
-      <ChangeLanguage />
-      {!toggle ? <LoginRegister toggle={toggle} /> : <LoginRegister />}
+        <Search />
+        <ChangeLanguage />
+        {!toggle ? <LoginRegister toggle={toggle} /> : <LoginRegister />}
+      </div>
     </nav>
   );
 }
