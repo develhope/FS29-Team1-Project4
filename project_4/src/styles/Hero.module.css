@@ -114,3 +114,9 @@
 .card[for='5'] {
   background-image: url('../assets/hero-WB.jpg');
 }
+
+@media (max-width: 768px) {
+  .wrapper{
+    display: none;
+  }
+}
