@@ -1,0 +1,124 @@
+.megaWrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.belowWrapper {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+.wrapper {
+  position: absolute;
+  z-index: 2;
+  padding: 1.5rem;
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(19, 52, 143);
+  border-radius: 2%;
+}
+.name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.name h3 {
+  padding: 0.5rem;
+  margin-top: 2.5rem;
+  color: white;
+  border-radius: 0.5rem;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+.x__button {
+  width: 7%;
+  height: 70%;
+  background: url("assets/xmark-solid.svg");
+  background-repeat: no-repeat;
+  border-style: none;
+  margin: 2rem 2rem 0 0;
+}
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+.professionalCard {
+  background-color: white;
+  margin-left: 3rem;
+  width: 20%;
+  height: 50%;
+  border-radius: 50%;
+}
+.professionalRole {
+  margin-right: 3rem;
+  padding: 5rem;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.role {
+  color: white;
+  font-size: 2rem;
+}
+.icons {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  gap: 2rem;
+}
+.icon {
+  padding: 2rem;
+  background-color: rgb(250, 182, 104);
+  border-radius: 50%;
+}
+.linksSection {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 25rem;
+}
+.links {
+  height: 70%;
+
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+.links a {
+  text-decoration: none;
+  color: black;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactLink {
+  display: flex;
+  width: 15%;
+  padding: 0.7rem;
+  /* margin: 3rem; */
+  background-color: rgb(214, 192, 65);
+  justify-content: center;
+  text-decoration: none;
+  align-self: center;
+  color: black;
+  border-radius: 10%;
+}
