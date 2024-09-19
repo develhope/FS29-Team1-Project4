@@ -1,0 +1,7 @@
+1-I pulsanti, input e div con titoli a inizio delle section vanno senza border e con box shadow
+    1a-Togliere i border al focus
+    
+2-I colori che ci saranno nel sito saranno:
+    a-Bianco prevalente
+    b-Nero per scritte, background di alcuni componenti
+    c-Blu e le sue variazioni per box-shadow, background bottoni

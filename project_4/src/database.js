@@ -1,4 +1,7 @@
 import icon from "./assets/icon_modify.svg";
+import jsIcon from "./assets/js-brands-solid.svg";
+import pythonIcon from "./assets/python-5.svg";
+
 export const DATA = [
   {
     id: 1,
@@ -9,8 +12,8 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum! Minus molestiae deleniti reiciendis officiis atque eum ipsum, mollitia expedita. Vel odio possimus magnam, iste atque ipsum aspernatur nobis explicabo velit dolor maxime asperiores nam consequuntur voluptatibus beatae magni, alias eum dolorum ratione. Repellat consectetur minima quaerat harum impedit. Qui.",
     program: [
-      { name: "javascript", icon: icon },
-      { name: "Python", icon: icon },
+      { name: "javascript", icon: jsIcon },
+      { name: "Python", icon: pythonIcon },
     ],
     project: ["Project 1", "Project 2"],
     someExperience: ["Experience 1", "Experience 2"],
