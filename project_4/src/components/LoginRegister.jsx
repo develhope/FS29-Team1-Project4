@@ -37,10 +37,10 @@ export function LoginRegister({ toggle }) {
   return (
     <div className={NavLogin.container}>
       <button className={NavLogin.button} onClick={openForm}>
-        <i class="fa-regular fa-user"></i>
+        <i className="fa-regular fa-user"></i>
       </button>
       {isFormOpen && (
-        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : ""}`}>
+        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
           <form className={NavLogin.form}>
             <button onClick={closeForm} className={NavLogin.close_button}>
               X
@@ -55,7 +55,7 @@ export function LoginRegister({ toggle }) {
               <button onClick={handleGoSettingPage} className={NavLogin.link_button}>
                 Login
               </button>
-              <span className="text-black">|</span>
+              <span>|</span>
               <button className={NavLogin.link_button} onClick={handleClikLink}>
                 Register
               </button>

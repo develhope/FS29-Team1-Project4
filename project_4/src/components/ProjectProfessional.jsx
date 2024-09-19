@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../styles/SliderArrows.css";
 import { DATA } from "../database";
 
-export function ProjectProfessional({ serviceSectionRef }) {
+export function ProjectProfessional() {
   const db = DATA;
   const CustomNextArrow = ({ className, style, onClick }) => (
     <button
@@ -69,7 +69,7 @@ export function ProjectProfessional({ serviceSectionRef }) {
   };
 
   return (
-    <div className="w-full m-auto mt-20 mb-20 " ref={serviceSectionRef}>
+    <div className="w-full m-auto mt-20 mb-20 ">
       <div className="max-w-7xl m-auto">
         <Slider {...settings}>
           {db.map((card) => (

@@ -29,7 +29,7 @@
 
 .background.show {
     position: absolute;
-    top: 161%;
+    top: 153%;
     right: 0; /* Sposta alla posizione desiderata */
     display: flex;
     flex-direction: column;
@@ -39,9 +39,11 @@
     height: 20rem;
     animation: slideIn 1s forwards; /* Attiva l'animazione */
     border-radius: 0 0 1rem 1rem;
-    border: 1px solid red;
-    
+    text-transform: uppercase;
 }
+/* .background.hide{
+  animation:  slideOut 1s backwards;
+} */
 
 @keyframes slideIn {
     from {
@@ -51,7 +53,15 @@
         transform: translateX(0); /* Si ferma nella posizione finale */
     }
 }
-  
+/* @keyframes slideOut {
+  from {
+      transform: translateX(0);
+  }
+  to {
+      transform: translateX(100%);
+  }
+}
+   */
   .form {
     width: 100%;
     display: flex;
@@ -65,29 +75,29 @@
       top: 0;
       right: 0.5rem;
     }
-    border: 1px solid red;
   }  
 
   .link_button{
-    color: var(--colore-nero);
     border: none;
-    }
+    color: var(--colore-blu);
+  }
   .link_button:hover{
-    color: var(--colore-bianco);
+    color: var(--colore-nero);
   }
   .user{
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
   }
   .links{
-    border: 1px solid red;
-    background-color: var(--colore-blu);
     display: flex;
     justify-content: center;
     gap: 2rem;
     text-align: center;
     width: 100%;
+    text-transform: uppercase;
+    span{
+      color: var(--colore-blu)
+    }
   }
 
   .input{

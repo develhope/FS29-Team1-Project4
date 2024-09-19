@@ -99,19 +99,16 @@
   transform: translateY(0) !important;
 }
 
-/* .card[for='1'] {
-  background-image: url('./testimg1.jpeg');
-} */
-.card[for='2'] {
+.card[for='1'] {
   background-image: url('../assets/hero-WD.jpeg');
 }
-.card[for='3'] {
+.card[for='2'] {
   background-image: url('../assets/hero-3D.jpg');
 }
-.card[for='4'] {
+.card[for='3'] {
   background-image: url('../assets/hero-SE.jpg');
 }
-.card[for='5'] {
+.card[for='4'] {
   background-image: url('../assets/hero-WB.jpg');
 }
 

@@ -97,25 +97,55 @@ export function UserPage() {
             {/* Change image */}
             {toggle && (
               <div className={style.container_change}>
-                {/* Capire quale event handler usare */}
+                {/* Capire quale event handler usare 
+                import { useRef } from 'react';
+                import './styles.css';
+                export const FileUploader = ({handleFile}) => {
+                // Create a reference to the hidden file input element
+                const hiddenFileInput = useRef(null);
+                
+                // Programatically click the hidden file input element
+                // when the Button component is clicked
+                const handleClick = event => {
+                  hiddenFileInput.current.click();
+                };
+                // Call a function (passed as a prop from the parent component)
+                // to handle the user-selected file 
+                const handleChange = event => {
+                  const fileUploaded = event.target.files[0];
+                  handleFile(fileUploaded);
+                };
+                return (
+                    <>
+                      <button className="button-upload" onClick={handleClick}>
+                        Upload a file
+                      </button>
+                      <input
+                        type="file"
+                        onChange={handleChange}
+                        ref={hiddenFileInput}
+                        style={{display: 'none'}} // Make the file input element invisible
+                      />
+                    </>
+                  );
+                */}
+                <button className={style.buttonSave}>Load file</button>
                 <input type="file" />
-                <br />
-                <form>
-                  <input
-                    type="text"
-                    value={inputImage}
-                    placeholder="Insert Link File"
-                    onChange={handleChangeLinkImage}
-                    className={style.input}
-                  />
-                  <button
-                    type="button"
-                    onClick={handleChangeImage}
-                    className={style.buttonSave}
-                  >
-                    Save
-                  </button>
-                </form>
+
+                <input
+                  type="text"
+                  value={inputImage}
+                  placeholder="Insert Link File"
+                  onChange={handleChangeLinkImage}
+                  className={style.input}
+                />
+                <button
+                  type="button"
+                  onClick={handleChangeImage}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
               </div>
             )}
           </li>
@@ -176,15 +206,15 @@ export function UserPage() {
 
             {/* Change Program */}
             {toggleProgram && (
-              <div className={style.container_accept}>
-                <ul className={style.ul_program}>
+              <div className={style.container_change}>
+                <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
-                    <li key={index} className={style.li}>
+                    <li key={index} className={style.li_change}>
                       {program.name.toUpperCase()}
                       <img
                         src={program.icon}
                         alt={`Icona ${program.name}`}
-                        className={style.icon_program}
+                        className={style.icon_change}
                       />
                     </li>
                   ))}
