@@ -37,7 +37,6 @@
       border-radius: 0.5rem;
       padding: 1rem 0.5rem 0 0.5rem;
       width: 84%;
-      min-height: 2000px;
       display: flex;
       flex-flow: column;
       gap: 1.5rem;
