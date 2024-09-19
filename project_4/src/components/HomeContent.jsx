@@ -11,14 +11,18 @@ export function HomeContent({ serviceSectionRef }) {
   return (
     <div className={body_container.container}>
       <div>
-        <Titleh2 title={"Our Proffesional IT"} />
+        <div className={body_container.titles}>
+          <Titleh2 title={"Our Proffesional IT"} />
+        </div>
         <section className={section_card.section}>
           <CardProfessional />
         </section>
       </div>
       <br />
       <div>
-        <h2>Some Examples</h2>
+        <div className={body_container.titles}>
+          <Titleh2 title="Some Examples" />
+        </div>
         <section className={section_card.section}>
           <ProjectProfessional serviceSectionRef={serviceSectionRef} />
         </section>
