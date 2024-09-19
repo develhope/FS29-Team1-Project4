@@ -43,7 +43,6 @@ a {
 }
 p {
   color: rgb(0, 0, 0);
-  border: 1px solid blue;
 }
 img {
   width: 100%;
@@ -61,8 +60,7 @@ header {
 }
 
 main {
-  padding-top: 90px;
-  border: 1px solid rgb(9, 117, 42);
+  padding-top: 5rem;
 }
 
 button {
