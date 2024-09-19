@@ -31,12 +31,14 @@ export function RegisterPage() {
           placeholder="ES.mario.rossi85"
           className={style.input}
         />
+
         <h3 className={style.h3}>INSERISCI PASSWORD</h3>
         <input
           type="Password"
           placeholder="Your Password"
           className={style.input}
         />
+
         <h3 className={style.h3}>INSERISCI MAIL</h3>
         <input
           type="text"
@@ -194,7 +196,6 @@ export function RegisterPage() {
                 />
               </div>
             </div>
-
             <h3 className={style.h3}>QUANTO COSTA IL TUO SERVIZIO?</h3>
             <input type="text" className={style.input} />
             <h3 className={style.h3}>IN CHE CITTÀ LAVORI?</h3>
