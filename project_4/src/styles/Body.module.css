@@ -1,14 +1,14 @@
 .container {
-  margin: 0.5rem;
+  margin: 0.5rem auto;
   padding: 1rem;
-  background-color: none;
-  text-align: center;
+  max-width: 1280px;
+}
 
-  h2 {
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    box-shadow: 0 0 0.5rem var(--colore-bluChiaro);
-    font-style: 1.3rem;
-    font-weight: 500;
-  }
+.titles{
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 2rem;
+  color: var(--colore-blu);
+  margin: 0.5rem;
 }

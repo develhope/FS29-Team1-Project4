@@ -7,7 +7,8 @@
   padding: 1rem;
   font-size: 3rem;
   background-color: var(--colore-bianco);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.223);
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.223);
+  border-bottom: 1px solid var(--colore-nero);
 }
 
 .container{

@@ -30,6 +30,7 @@ export function LoginRegister({ toggle }) {
   }
 
   function handleClikLink() {
+    navigate("/register");
     onLogin(false);
   }
 
@@ -39,45 +40,25 @@ export function LoginRegister({ toggle }) {
         <i className="fa-regular fa-user"></i>
       </button>
       {isFormOpen && (
-        <div
-          className={`${NavLogin.background} ${
-            isFormOpen ? NavLogin.show : ""
-          }`}
-        >
+        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
           <form className={NavLogin.form}>
             <button onClick={closeForm} className={NavLogin.close_button}>
               X
             </button>
             <div className={NavLogin.user}>
               <label>Username:</label>
-              <input
-                type="text"
-                value={username}
-                onChange={handleUsername}
-                className="text-black"
-              />
+              <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
               <label>Password:</label>
-              <input
-                type="text"
-                value={password}
-                onChange={handlePassword}
-                className="text-black"
-              />
+              <input type="text" value={password} onChange={handlePassword} className={NavLogin.input} />
             </div>
             <div className={NavLogin.links}>
-              <button
-                onClick={handleGoSettingPage}
-                className={NavLogin.login_button}
-              >
+              <button onClick={handleGoSettingPage} className={NavLogin.link_button}>
                 Login
               </button>
-              <Link
-                to="/register"
-                element={<RegisterPage />}
-                onClick={handleClikLink}
-              >
-                <p className="text-white border-none">Register</p>
-              </Link>
+              <span>|</span>
+              <button className={NavLogin.link_button} onClick={handleClikLink}>
+                Register
+              </button>
             </div>
           </form>
         </div>

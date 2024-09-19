@@ -5,22 +5,24 @@ import { ProfessionIT } from "./ProfessionIT";
 import { ProjectProfessional } from "./ProjectProfessional";
 import { ServicesIT } from "./ServicesIT";
 
-export function HomeContent({ serviceSectionRef }) {
+export function HomeContent({ serviceSectionRef, professionITSectionRef }) {
   return (
     <div className={body_container.container}>
-      <ServicesIT />
-      <ProfessionIT />
+      <div className={body_container.titles}>
+        <ServicesIT serviceSectionRef={serviceSectionRef} />
+      </div>
+      <div className={body_container.titles}>
+        <ProfessionIT professionITSectionRef={professionITSectionRef} />
+      </div>
       <div>
-        <h2>OUR PROFESSIONAL IT</h2>
         <section className={section_card.section}>
           <CardProfessional />
         </section>
       </div>
       <br />
       <div>
-        <h2>SOME EXAMPLES</h2>
         <section className={section_card.section}>
-          <ProjectProfessional serviceSectionRef={serviceSectionRef} />
+          <ProjectProfessional />
         </section>
       </div>
     </div>

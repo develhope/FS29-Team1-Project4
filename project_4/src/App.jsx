@@ -21,6 +21,7 @@ import { useRef } from "react";
 
 export function App() {
   const serviceRef = useRef(null);
+  const professionITSectionRef = useRef(null);
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -32,13 +33,16 @@ export function App() {
           serviceSrollFunction={() => {
             scrollToSection(serviceRef);
           }}
+          professionScrollFunction={() => {
+            scrollToSection(professionITSectionRef);
+          }}
         />
       }
       footer={<Footer />}
     >
       <Routes>
         {/* Home */}
-        <Route path="/" element={<Home serviceSectionRef={serviceRef} />} />
+        <Route path="/" element={<Home serviceSectionRef={serviceRef} professionITSectionRef={professionITSectionRef} />} />
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
