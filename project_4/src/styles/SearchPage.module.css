@@ -1,7 +1,7 @@
 .main{
     display: flex;
     justify-content: space-between;
-    margin: 1rem;
+    margin: 2rem 1rem 2rem 1rem ;
     border: 1px solid red;
     height: 1000px;
 }
