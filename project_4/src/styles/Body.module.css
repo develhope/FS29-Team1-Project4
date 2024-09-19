@@ -1,6 +1,14 @@
 .container {
-  margin: 0.5rem;
-  border: 1px solid rgb(1, 140, 179);
+  margin: 0.5rem auto;
   padding: 1rem;
-  background-color: none;
+  max-width: 1280px;
+}
+
+.titles{
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 2rem;
+  color: var(--colore-blu);
+  margin: 0.5rem;
 }

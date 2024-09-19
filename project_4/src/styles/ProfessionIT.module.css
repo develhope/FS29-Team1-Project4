@@ -1,0 +1,24 @@
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  h2{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  div {
+    margin: 1rem 0 1rem 0;
+    display: flex;
+    gap: 1rem;
+    
+    p {
+      color: var(--colore-nero);
+      font-size: 1.3rem;
+    }
+
+    img {
+      border: 1px solid #000;
+    }
+  }
+}
