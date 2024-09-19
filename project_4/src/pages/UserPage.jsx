@@ -76,7 +76,7 @@ export function UserPage() {
         </aside>
         <ul className={style.content}>
           <li className={style.li}>
-            <h1 className={style.h1}>Welcome back, {user.name}!</h1>
+            <h1 className={style.h1}>Welcome back, {user.username}!</h1>
           </li>
           <li className={style.li}>
             <div className={style.container_accept}>
@@ -229,7 +229,8 @@ export function UserPage() {
                 {/* Map progetti accettati */}
                 {user.project.map((project, index) => (
                   <li key={index} className={style.li}>
-                    <a href="">{project}</a>
+                    <p>{project.name.toUpperCase()}</p>
+                    <img src={project.image} alt="" className={style.icon} />
 
                     {toggleProject && (
                       <div>
@@ -289,7 +290,11 @@ export function UserPage() {
             {toggleComments && (
               <div className={style.container_accept}>
                 {/* Lista Commenti delle aziende che hanno lavorato con questo professionista */}
-                <p className={style.reviews}>Comments</p>
+                <ul className={style.reviews}>
+                  {user.comments.map((comment, index) => (
+                    <li key={index}>{comment}</li>
+                  ))}
+                </ul>
               </div>
             )}
           </li>
