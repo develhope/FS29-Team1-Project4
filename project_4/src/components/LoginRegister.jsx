@@ -36,25 +36,46 @@ export function LoginRegister({ toggle }) {
   return (
     <div className={NavLogin.container}>
       <button className={NavLogin.button} onClick={openForm}>
-        <i class="fa-regular fa-user"></i>
+        <i className="fa-regular fa-user"></i>
       </button>
       {isFormOpen && (
-        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : ""}`}>
+        <div
+          className={`${NavLogin.background} ${
+            isFormOpen ? NavLogin.show : ""
+          }`}
+        >
           <form className={NavLogin.form}>
             <button onClick={closeForm} className={NavLogin.close_button}>
               X
             </button>
             <div className={NavLogin.user}>
               <label>Username:</label>
-              <input type="text" value={username} onChange={handleUsername} className="text-black" />
+              <input
+                type="text"
+                value={username}
+                onChange={handleUsername}
+                className="text-black"
+              />
               <label>Password:</label>
-              <input type="text" value={password} onChange={handlePassword} className="text-black" />
+              <input
+                type="text"
+                value={password}
+                onChange={handlePassword}
+                className="text-black"
+              />
             </div>
             <div className={NavLogin.links}>
-              <button onClick={handleGoSettingPage} className={NavLogin.login_button}>
+              <button
+                onClick={handleGoSettingPage}
+                className={NavLogin.login_button}
+              >
                 Login
               </button>
-              <Link to="/register" element={<RegisterPage />} onClick={handleClikLink}>
+              <Link
+                to="/register"
+                element={<RegisterPage />}
+                onClick={handleClikLink}
+              >
                 <p className="text-white border-none">Register</p>
               </Link>
             </div>
