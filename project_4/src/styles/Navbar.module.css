@@ -6,13 +6,18 @@
   width: 100%;
   padding: 1rem;
   font-size: 3rem;
+  background-color: var(--colore-bianco);
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.223);
+  border-bottom: 1px solid var(--colore-nero);
+}
+
+.container{
   display: flex;
   justify-content: space-around;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--colore-bianco);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.223);
-
+  max-width: 1280px;
+  margin: 0 auto;
   .logo{
     display: flex;
     align-items: center;
@@ -40,64 +45,64 @@
     font-weight: bold;
   }
 
-  form{
+}
+
+.form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50px;
+
+  select{
+    height: 100%;
+    width: 20%;
+    border-radius: 1rem 0 0 1rem;
+    text-align: left;
+    border: 1px solid var(--colore-nero);
+    border-right: none;
+    background-color: var(--colore-blu);
+    color: var(--colore-bianco);
+    font-size: 0.7rem;
+    text-wrap: wrap;
+  }
+  input{
+    height: 100%;
+    width: 70%;
+    box-shadow: 0 5px 20px rgba(0,0,0,.05);
+    border: 1px solid var(--colore-nero);
+    border-left: none;
+    border-right: none;
+  }
+  button{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    height: 50px;
+    border: 1px solid var(--colore-nero);
+    border-left: none;
+    height: 100%;
+    width: 5%;  
+    border-radius: 0 1rem 1rem 0;
+    background-color: var(--colore-blu);
 
-    select{
-      height: 100%;
-      width: 20%;
-      border-radius: 1rem 0 0 1rem;
-      text-align: left;
-      border: 1px solid var(--colore-nero);
-      border-right: none;
-      background-color: var(--colore-blu);
-      color: var(--colore-bianco);
-      font-size: 0.7rem;
-      text-wrap: wrap;
-    }
-    input{
-      height: 100%;
-      width: 70%;
-      box-shadow: 0 5px 20px rgba(0,0,0,.05);
-      border: 1px solid var(--colore-nero);
-      border-left: none;
-      border-right: none;
-    }
-    button{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--colore-nero);
-      border-left: none;
-      height: 100%;
-      width: 5%;  
-      border-radius: 0 1rem 1rem 0;
-      background-color: var(--colore-blu);
-
-    }
-    svg{
-      width: 1rem;
-      height: 1rem;
-    }
+  }
+  svg{
+    width: 1rem;
+    height: 1rem;
   }
 }
 
-
 @media (max-width: 768px) {
-  .nav{
 
-    form{
-      display: none;
-    }
+  .form {
+    display: none;
+    
+  }
+
+  .container{
     li{
       display: none;
     }
-
-
   }
 
 

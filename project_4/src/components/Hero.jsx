@@ -4,34 +4,27 @@ import Style from "../styles/Hero.module.css";
 const herodb = [
   {
     id: 1,
-    name: "Services",
-    icon: "Sv",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
-  },
-  {
-    id: 2,
     name: "Web Developer",
     icon: "WD",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
   },
   {
-    id: 3,
+    id: 2,
     name: "3D Designer",
     icon: "3D",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
   },
   {
-    id: 4,
+    id: 3,
     name: "Software Engineer",
     icon: "SE",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
   },
   {
-    id: 5,
+    id: 4,
     name: "Web designer",
     icon: "WB",
     description:
@@ -40,7 +33,7 @@ const herodb = [
 ];
 
 export function Hero() {
-  const [toggle, setToggle] = useState([true, true, true, true, true]);
+  const [toggle, setToggle] = useState([true, true, true, true]);
 
   // function handleClick(event) {
   //   const index = event.target.value;

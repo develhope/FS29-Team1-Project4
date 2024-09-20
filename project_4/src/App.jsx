@@ -17,13 +17,34 @@ import { ProjectSettings } from "./pages/ProjectSetting";
 import { PrivacySetting } from "./pages/PrivacySetting";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useRef } from "react";
+
+import { ProfessionalSection } from "./components/ProfessionalSection";
 
 export function App() {
+  const serviceRef = useRef(null);
+  const professionITSectionRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <Container navbar={<Navbar />} footer={<Footer />}>
+    <Container
+      navbar={
+        <Navbar
+          serviceSrollFunction={() => {
+            scrollToSection(serviceRef);
+          }}
+          professionScrollFunction={() => {
+            scrollToSection(professionITSectionRef);
+          }}
+        />
+      }
+      footer={<Footer />}
+    >
       <Routes>
         {/* Home */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home serviceSectionRef={serviceRef} professionITSectionRef={professionITSectionRef} />} />
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
@@ -35,7 +56,7 @@ export function App() {
         {/* Pages of user */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user" element={<UserPage />}>
-          <Route path="general_setting" element={<GeneralSetting />} />
+          <Route path="/user/general_setting" element={<GeneralSetting />} />
           <Route
             path="presentation_setting"
             element={<PresentationSetting />}
@@ -48,6 +69,9 @@ export function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/user_setting" element={<UserPage />} />
         {/* <Route path="/user_setting/:id" element={<UserPage />} /> */}
+
+        {/* Pop up Cards */}
+        <Route path="/pop_up" element={<ProfessionalSection />} />
       </Routes>
     </Container>
   );

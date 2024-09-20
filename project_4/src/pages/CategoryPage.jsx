@@ -1,4 +1,5 @@
-import { WebDeveloper } from "./WebDeveloper";
+import { SearchPage } from "./SearchPage";
+
 export function CategoryPage() {
-  return <h1>All Products Page</h1>;
+  return <SearchPage />;
 }
