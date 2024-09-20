@@ -6,8 +6,8 @@ export function ProfSearchPage() {
 
     return (
       <div className={customSearch.filtered}>
-        <ul>{profDb.map((card) => (
-            <li key={card.id}>
+        <ul className={customSearch.ul}>{profDb.map((card) => (
+            <li key={card.id} className={customSearch.li}>
                 <h2>{card.name}</h2>
                 <img src={card.image}/>
                 <p>{card.description}</p>
