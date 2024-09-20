@@ -17,6 +17,9 @@
   font-size: 1.7rem;
   margin: 1rem 1rem 0.5rem 1rem;
 }
+.form {
+  min-width: 80%;
+}
 .label {
   font-size: 1.1rem;
 }
@@ -24,7 +27,8 @@
   margin: 0.8rem 0.5rem 0.8rem 0.5rem;
   width: 1.6rem;
   height: 1.6rem;
-  border: 1px solid rgb(255, 255, 255);
+  border: none;
+  box-shadow: 0 0 0.5rem var(--colore-nero);
 }
 
 .input {
@@ -32,8 +36,10 @@
   height: 100%;
   border: none;
   border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 0.5rem var(--colore-nero);
   color: var(--colore-nero);
-  box-shadow: 0 0 0.5rem var(--colore-bluChiaro);
+  background-color: var(--colore-bianco);;
 }
 
 .contact {
@@ -41,6 +47,8 @@
   height: 2.3rem;
   margin: 1rem 3rem 1rem 3rem;
   border-radius: 1rem;
+  border: none;
+  box-shadow: 0 0 0.5rem var(--colore-nero);
 }
 .radio {
   width: 1rem;
@@ -67,4 +75,21 @@
   width: 2.5rem;
   height: 2.5rem;
   margin: 0 auto;
+}
+
+@media (max-width: 426px) {
+  body {
+    background-color: lightblue;
+  }
+  .program {
+    width: 27rem;
+  }
+
+  .h3 {
+    font-size: 1rem;
+  }
+  .contact {
+    width: 13rem;
+    height: 2.3rem;
+  }
 }

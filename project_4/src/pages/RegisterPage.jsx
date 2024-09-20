@@ -24,7 +24,7 @@ export function RegisterPage() {
   return (
     <div className={style.container}>
       <h1 className={style.h1}>Register Page</h1>
-      <form action="">
+      <form className={style.form}>
         <h3 className={style.h3}>INSERISCI USERNAME</h3>
         <input
           type="text"
@@ -224,7 +224,7 @@ export function RegisterPage() {
             {contact === "mail" && (
               <div>
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
-                <input type="mail" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "phone" && (
@@ -232,31 +232,31 @@ export function RegisterPage() {
                 <h3 className={style.h3}>
                   INSERISCI IL TUO CONTATTO TELEFONICO
                 </h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "facebook" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO FACEBOOK</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "instagram" && (
               <div>
                 <h3 className={style.h3}>INSERISCI CONTATTO INSTAGRAM</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "twitter" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO TWITTER</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "linkedin" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO LINKEDIN</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
           </div>
@@ -285,7 +285,7 @@ export function RegisterPage() {
             {contact === "mail" && (
               <div>
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
-                <input type="mail" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "phone" && (
@@ -293,31 +293,31 @@ export function RegisterPage() {
                 <h3 className={style.h3}>
                   INSERISCI IL TUO CONTATTO TELEFONICO
                 </h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "facebook" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO FACEBOOK</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "instagram" && (
               <div>
                 <h3 className={style.h3}>INSERISCI CONTATTO INSTAGRAM</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "twitter" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO TWITTER</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
             {contact === "linkedin" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO LINKEDIN</h3>
-                <input type="text" />
+                <input type="text" className={style.input} />
               </div>
             )}
           </div>
