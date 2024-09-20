@@ -15,12 +15,7 @@
   /* colori secondari */
   --colore-bluIntermedio: #6aaaeb;
   --colore-bluChiaro: #94c4f5;
-
-  --colore-verde: #00b377;
-  --colore-verdeChiaro: #6ee7bf;
-  --colore-violaScuro: #700C7B;
-  --colore-viola: #881095;
-  --colore-violaChiaro: #d613ec;
+  
 }
 
 * {
@@ -43,7 +38,6 @@ a {
 }
 p {
   color: rgb(0, 0, 0);
-  border: 1px solid blue;
 }
 img {
   width: 100%;
@@ -61,8 +55,7 @@ header {
 }
 
 main {
-  padding-top: 90px;
-  border: 1px solid rgb(9, 117, 42);
+  padding-top: 5rem;
 }
 
 button {
@@ -73,7 +66,6 @@ button {
 .slick-slide > div {
   margin: 0 0.5rem;
 }
-
 
 /* Classe temporanea */
 .dn {
