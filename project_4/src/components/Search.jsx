@@ -7,10 +7,12 @@ export function Search() {
   const navigate = useNavigate();
 
   function handleSearch(e) {
+    e.stopPropagation();
     setSearch(e.target.value);
   }
 
   function handlePlaySearch() {
+    e.stopPropagation();
     navigate("/search");
   }
   // cambiare il navigate, e capire come.
