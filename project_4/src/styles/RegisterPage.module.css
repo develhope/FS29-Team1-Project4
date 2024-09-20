@@ -77,19 +77,62 @@
   margin: 0 auto;
 }
 
-@media (max-width: 426px) {
-  body {
-    background-color: lightblue;
-  }
+@media (max-width: 425px) {
+ .input {
+  width: 15rem;
+ }
   .program {
-    width: 27rem;
+    width: 25rem;
   }
 
   .h3 {
     font-size: 1rem;
   }
   .contact {
-    width: 13rem;
+    width: 15rem;
     height: 2.3rem;
   }
+  .plan {
+     width: 4rem;
+  height: 4rem;
+  }
+  .textIcons {
+  font-size: 0.9rem;
+ }
+  
+ 
+}
+@media (max-width: 375px) {
+  .h3 {
+    font-size: 0.9rem;
+  }
+   .input {
+  width: 15rem;
+ } 
+  
+  .plan {
+     width: 4rem;
+  height: 4rem;
+  margin: 0 0.5rem 0 0.5rem;
+  }
+  .icons{
+      width: 2.5rem;
+  height: 2.5rem;
+  }
+  .contact {
+    width: 15rem;
+    height: 2.3rem;
+  }
+  .textIcons {
+  font-size: 0.9rem;
+ }
+}
+@media (max-width: 320px) {
+ 
+  .h3 {
+    font-size: 0.9rem;
+  }
+ .textIcons {
+  font-size: 0.9rem;
+ }
 }
