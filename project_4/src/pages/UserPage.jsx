@@ -58,7 +58,7 @@ export function UserPage() {
       <div className={style.container_noTitle}>
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <Link to="/general_setting" className={style.link}>
+          <Link to="/user/general_setting" className={style.link}>
             General Setting
           </Link>
           {/* Presentation sono i dati anagrafaci */}

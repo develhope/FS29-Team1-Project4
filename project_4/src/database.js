@@ -72,7 +72,7 @@ export const DATA = [
     ],
     price: { max: 10000, min: 100 },
     luogo: "Roma",
-    transfer: "si",
+    transfert: "si",
     contact: [
       {
         tipo: "email",

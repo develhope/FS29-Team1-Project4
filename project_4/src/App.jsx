@@ -50,8 +50,11 @@ export function App() {
         {/* Pages of user */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user" element={<UserPage />}>
-          <Route path="general_setting" element={<GeneralSetting />} />
-          <Route path="presentation_setting" element={<PresentationSetting />} />
+          <Route path="/user/general_setting" element={<GeneralSetting />} />
+          <Route
+            path="presentation_setting"
+            element={<PresentationSetting />}
+          />
           <Route path="project_setting" element={<ProjectSettings />} />
           <Route path="privacy_setting" element={<PrivacySetting />} />
         </Route>

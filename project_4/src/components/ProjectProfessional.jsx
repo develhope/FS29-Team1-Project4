@@ -3,9 +3,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/SliderArrows.css";
 import { DATA } from "../database";
+import { filterRandomDB } from "../services/filteredRandomDB";
 
 export function ProjectProfessional({ serviceSectionRef }) {
   const db = DATA;
+  const filterUserForExamples = filterRandomDB;
   const CustomNextArrow = ({ className, style, onClick }) => (
     <button
       className={`${className} custom-next`} // Classe personalizzata
@@ -72,7 +74,7 @@ export function ProjectProfessional({ serviceSectionRef }) {
     <div className="w-full m-auto mt-20 mb-20 " ref={serviceSectionRef}>
       <div className="max-w-7xl m-auto">
         <Slider {...settings}>
-          {db.map((card) => (
+          {filterUserForExamples.map((card) => (
             <div
               key={card.id}
               className=" text-black rounded-xl shadow-1xl shadow-lg mb-3"
