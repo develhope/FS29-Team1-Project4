@@ -5,10 +5,10 @@
 }
 
 .titles{
-  padding: 0.5rem;
+  padding: 1rem;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   border-radius: 2rem;
   color: var(--colore-blu);
-  margin: 0.5rem;
+  margin: 3rem 0.5rem;
 }
