@@ -22,7 +22,7 @@ export function UserPage() {
   const [toggleComments, onToggleComments] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const id = "1";
+  const id = "5";
   const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare l'immagine
