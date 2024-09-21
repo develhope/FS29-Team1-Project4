@@ -31,7 +31,7 @@
   margin-bottom: 1rem;
 }
 
-.blue_box a {
+.links li a {
   color: white;
   text-decoration: none;
 }
@@ -46,8 +46,9 @@
 }
 
 /* Pulsante X per chiudere */
-.blue_box img {
-  height: 100%;
+.x__button {
+  /* height: 100%; */
+  width: 3rem;
   padding: 1rem;
   margin-right: 1rem;
   /* border: 1px solid black; */

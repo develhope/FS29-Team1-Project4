@@ -10,8 +10,8 @@ export function ProfessionalCard() {
           {/* Section 1 */}
           <div className={Section.name}>
             <h3>Nome professionista</h3>
-            <button className={Section.x__button}>
-              <img src={iconX} alt="" />
+            <button>
+              <img src={iconX} alt="" className={Section.x__button} />
             </button>
           </div>
 
