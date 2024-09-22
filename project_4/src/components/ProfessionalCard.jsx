@@ -1,28 +1,69 @@
 import Section from "../styles/ProfessionalCard.module.css";
 import iconX from "../assets/xmark-solid.svg";
+import { DATA } from "../database";
+// import { useState } from "react";
 
+// const users = DATA;
 export function ProfessionalCard() {
+  // const[data,setData] = useState([])
+  // function fetchData(){
+  // setData(users)
+  //}
+  // const [user, setUser] = useState(nickname.username)
+  // const [image,setImage] = useState(nickname.image)
+
+  // Recupero User grazie a ID preso da useParams
+  // const id = "5";
+  // const nickname = users.find((user) => user.id.toString() === id);
+
+  // function handleUsername(x) {
+  //   setUser(x.target.value);
+  // }
+  // function hanldeImage(x){
+  //   setImage(x.target.value)
+  //}
   return (
-    <div className={Section.blue_box}>
+    <div className={Section.box}>
       <div className={Section.megaWrapper}>
         <div className={Section.belowWrapper}></div>
         <div className={Section.wrapper}>
           {/* Section 1 */}
           <div className={Section.name}>
-            <h3>Nome professionista</h3>
-            <button className={Section.x__button}>
-              <img src={iconX} alt="" />
+            <h3 /*onChange={handleUsername } value={user}*/>
+              Nome professionista
+            </h3>
+            <button>
+              <img
+                src={iconX}
+                alt=""
+                className={
+                  Section.x__button
+                } /* onChange={handleimage} value={image}*/
+              />
             </button>
           </div>
 
           {/* Card  */}
           <div className={Section.card}>
-            <div className={Section.professionalCard}></div>
+            <div className={Section.professionalCard}>{/*user.image*/}</div>
             <div className={Section.professionalRole}>
               {/* Ruolo professionale */}
               <h3 className={Section.role}>3D DESIGNER</h3>
               {/* Icone */}
               <div className={Section.icons}>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
+                <span className={Section.icon}></span>
                 <span className={Section.icon}></span>
                 <span className={Section.icon}></span>
                 <span className={Section.icon}></span>
@@ -47,7 +88,7 @@ export function ProfessionalCard() {
                   <a href="">Link 4</a>
                 </li>
               </ul>
-              <span>Recensioni</span>
+              <span className={Section.review}>Recensioni</span>
             </div>
 
             {/* Contact link */}
@@ -65,7 +106,8 @@ export function ProfessionalCard() {
                 <span>100$-150$</span>
               </div>
               <div>
-                <h4>Luogo di lavoro - Roma</h4>
+                <h4>Luogo di lavoro</h4>
+                <span>Roma</span>
               </div>
               <div>
                 <h4>Email</h4>
