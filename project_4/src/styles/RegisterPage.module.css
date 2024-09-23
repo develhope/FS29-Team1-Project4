@@ -76,6 +76,18 @@
   height: 2.5rem;
   margin: 0 auto;
 }
+.saveButton {
+  width: 7rem;
+  height: 2.5rem;
+  background-color: var(--colore-blu);
+  color: var(--colore-bianco);
+  border-radius: 1rem;
+   box-shadow: 0 0 0.5rem var(--colore-nero);
+   margin: 3rem 0 0 3rem;
+   margin-right: 2rem;
+
+  
+}
 
 @media (max-width: 425px) {
  .input {
