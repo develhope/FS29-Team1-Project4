@@ -17,6 +17,7 @@ export function RegisterPage() {
   }
   function handleUserContact(event) {
     event.preventDefault();
+   
     const values = event.target.value;
     setcontact(values);
   }
@@ -205,9 +206,7 @@ export function RegisterPage() {
             <input type="radio" name="SI" className={style.check} />
             <label className={style.label}>NO</label>
             <input type="radio" name="SI" className={style.check} />
-            <h3 className={style.h3}>
-              COME VUOI ESSERE CONTATTATO?
-            </h3>
+            <h3 className={style.h3}>COME VUOI ESSERE CONTATTATO?</h3>
             <select
               name=""
               id=""
@@ -274,7 +273,11 @@ export function RegisterPage() {
             <h3 className={style.h3}>
               COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?
             </h3>
-            <select className={style.contact} onChange={handleUserContact}>
+            <select
+              className={style.contact}
+              onChange={handleUserContact}
+              
+            >
               <option value="mail">EMAIL</option>
               <option value="phone">TELEFONO</option>
               <option value="facebook">FACEBOOK</option>
@@ -322,6 +325,7 @@ export function RegisterPage() {
             )}
           </div>
         )}
+        <button className={style.saveButton}>SAVE ME</button>
       </form>
     </div>
   );
