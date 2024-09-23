@@ -116,21 +116,23 @@ export function UserPage() {
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <Link to="/user/general_setting" className={style.link}>
-            General Setting
-          </Link>
-          {/* Presentation sono i dati anagrafaci */}
-          <Link to="/presentation_setting" className={style.link}>
-            Presentation Setting
-          </Link>
-          {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-          <Link to="/project_setting" className={style.link}>
-            Project Setting
-          </Link>
-          {/* Cosa far vedere e a chi */}
-          <Link to="/privacy_setting" className={style.link}>
-            Privacy Setting
-          </Link>
+          <div className={style.aside_sticky}>
+            <Link to="/user/general_setting" className={style.link}>
+              General Setting
+            </Link>
+            {/* Presentation sono i dati anagrafaci */}
+            <Link to="/presentation_setting" className={style.link}>
+              Presentation Setting
+            </Link>
+            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
+            <Link to="/project_setting" className={style.link}>
+              Project Setting
+            </Link>
+            {/* Cosa far vedere e a chi */}
+            <Link to="/privacy_setting" className={style.link}>
+              Privacy Setting
+            </Link>
+          </div>
         </aside>
         <ul className={style.content}>
           <li className={style.li}>
