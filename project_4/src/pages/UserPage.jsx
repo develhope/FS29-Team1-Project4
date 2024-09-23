@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { DATA } from "../database";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
-
+import iconClose from "../assets/xmark-solid.svg";
 // Database fittizio
 const users = DATA;
 
@@ -14,15 +14,20 @@ export function UserPage() {
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
   // Controllo stato per i toggle
+  // Cambio elementi
   const [toggle, onToggle] = useShowToggle();
+  const [toggleUsername, onToggleUsername] = useShowToggle();
   const [toggleDescription, onToggleDescription] = useShowToggle();
   const [toggleProgram, onToggleProgram] = useShowToggle();
   const [toggleProject, onToggleProject] = useShowToggle();
   const [toggleExperince, onToggleExperince] = useShowToggle();
   const [toggleComments, onToggleComments] = useShowToggle();
 
+  // Cambio classi
+  const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
+
   // Recupero User grazie a ID preso da useParams
-  const id = "1";
+  const id = "5";
   const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare l'immagine
@@ -32,6 +37,12 @@ export function UserPage() {
   // Costanti per cambiare la descrizione
   const [inputDescription, setInputDescription] = useState("");
   const [userDescription, setUserDescription] = useState(user.description);
+
+  // Handle Username
+  function handleChangeUsername(e) {
+    e.preventDefault();
+    setUser(inputDescription);
+  }
 
   // Handle Image
   function handleChangeLinkImage(e) {
@@ -56,28 +67,105 @@ export function UserPage() {
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
+        {/* Hamburger menù */}
+        <div
+          className={
+            toggleAsideHamburger ? style.bs_none : style.hamburger_container
+          }
+        >
+          <div
+            onClick={onToggleAsideHamburger}
+            className={toggleAsideHamburger ? style.dn : style.hamburger}
+          >
+            <div className={style.line}></div>
+            <div className={style.line}></div>
+            <div className={style.line}></div>
+          </div>
+          <div
+            className={
+              toggleAsideHamburger ? style.hamburger_content : style.dn
+            }
+          >
+            <div className={style.hamburger_content_top}>
+              <p>SETTINGS</p>
+
+              <img
+                className={style.icon_close}
+                src={iconClose}
+                alt="Close Menù"
+                onClick={onToggleAsideHamburger}
+              />
+            </div>
+            <Link to="/user/general_setting" className={style.link}>
+              GENERAL SETTING
+            </Link>
+            {/* Presentation sono i dati anagrafaci */}
+            <Link to="/presentation_setting" className={style.link}>
+              PRESENTATION SETTING
+            </Link>
+            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
+            <Link to="/project_setting" className={style.link}>
+              PROJECT SETTING
+            </Link>
+            {/* Cosa far vedere e a chi */}
+            <Link to="/privacy_setting" className={style.link}>
+              PRIVACY SETTING
+            </Link>
+          </div>
+        </div>
+
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <Link to="/user/general_setting" className={style.link}>
-            General Setting
-          </Link>
-          {/* Presentation sono i dati anagrafaci */}
-          <Link to="/presentation_setting" className={style.link}>
-            Presentation Setting
-          </Link>
-          {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-          <Link to="/project_setting" className={style.link}>
-            Project Setting
-          </Link>
-          {/* Cosa far vedere e a chi */}
-          <Link to="/privacy_setting" className={style.link}>
-            Privacy Setting
-          </Link>
+          <div className={style.aside_sticky}>
+            <Link to="/user/general_setting" className={style.link}>
+              General Setting
+            </Link>
+            {/* Presentation sono i dati anagrafaci */}
+            <Link to="/presentation_setting" className={style.link}>
+              Presentation Setting
+            </Link>
+            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
+            <Link to="/project_setting" className={style.link}>
+              Project Setting
+            </Link>
+            {/* Cosa far vedere e a chi */}
+            <Link to="/privacy_setting" className={style.link}>
+              Privacy Setting
+            </Link>
+          </div>
         </aside>
         <ul className={style.content}>
           <li className={style.li}>
-            <h1 className={style.h1}>Welcome back, {user.username}!</h1>
+            <div className={style.container_accept}>
+              <h1 className={style.h1}>Welcome back, {user.username}!</h1>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleUsername}
+              />
+            </div>
+            {/* Change username */}
+            {toggleUsername && (
+              <div className={style.container_change}>
+                <input
+                  type="text"
+                  onChange={handleChangeInputDescription}
+                  placeholder={user.username}
+                  className={style.textarea}
+                ></input>
+                <button
+                  onClick={handleChangeUsername}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
+              </div>
+            )}
           </li>
+
+          {/* Immagine Visibili */}
           <li className={style.li}>
             <div className={style.container_accept}>
               <img
@@ -149,6 +237,8 @@ export function UserPage() {
               </div>
             )}
           </li>
+
+          {/* Descrizioni Visibili */}
           <li className={style.li}>
             <div className={style.container_accept}>
               <p className={style.description}>{user.description}</p>
@@ -169,7 +259,6 @@ export function UserPage() {
                   placeholder={userDescription}
                   className={style.textarea}
                   rows="7"
-                  cols="100"
                   maxLength="500"
                 ></textarea>
                 <button
@@ -181,6 +270,8 @@ export function UserPage() {
               </div>
             )}
           </li>
+
+          {/* Programmi Visibili */}
           <li className={style.li}>
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
@@ -214,29 +305,34 @@ export function UserPage() {
                       <img
                         src={program.icon}
                         alt={`Icona ${program.name}`}
-                        className={style.icon_change}
+                        className={style.icon_change_program}
                       />
                     </li>
                   ))}
                 </ul>
+                <button
+                  onClick={handleChangeDescription}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
               </div>
             )}
           </li>
 
+          {/* Progetti Visibili */}
           <li className={style.li}>
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {/* Map progetti accettati */}
                 {user.project.map((project, index) => (
-                  <li key={index} className={style.li}>
+                  <li key={index} className={style.li_change}>
                     <p>{project.name.toUpperCase()}</p>
-                    <img src={project.image} alt="" className={style.icon} />
-
-                    {toggleProject && (
-                      <div>
-                        <button>X</button>
-                      </div>
-                    )}
+                    <img
+                      src={project.image}
+                      alt=""
+                      className={style.icon_project}
+                    />
                   </li>
                 ))}
               </ul>
@@ -248,17 +344,40 @@ export function UserPage() {
                 onClick={onToggleProject}
               />
             </div>
+
+            {/* Change project */}
             {toggleProject && (
               // map tutti i progetti
-              <div></div>
+              <div className={style.container_change}>
+                <ul className={style.ul_change}>
+                  {user.project.map((project, index) => (
+                    <li key={index} className={style.li_change}>
+                      <p>{project.name.toUpperCase()}</p>
+                      <img
+                        src={project.image}
+                        alt=""
+                        className={style.icon_project_change}
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={handleChangeDescription}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
+              </div>
             )}
           </li>
+
+          {/* Esperienze Visibili */}
           <li className={style.li}>
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {user.someExperience.map((experience, index) => (
                   <li key={index} className={style.li}>
-                    {experience}
+                    <p className={style.p_accept}>{experience}</p>
                   </li>
                 ))}
               </ul>
@@ -270,15 +389,25 @@ export function UserPage() {
                 onClick={onToggleExperince}
               />
             </div>
+
+            {/* Change Experience */}
             {toggleExperince && (
-              <div>
-                <p>Some Experience</p>
+              <div className={style.container_change}>
+                <ul className={style.ul_change}>
+                  {user.someExperience.map((experience, index) => (
+                    <li key={index} className={style.li_change}>
+                      <p className={style.p_change}>{experience}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </li>
+
+          {/* Review & comments */}
           <li className={style.li}>
             <div className={style.container_accept}>
-              <p className={style.reviews}>Reviews</p>
+              <p className={style.reviews}>Reviews: {user.reviews} / 5</p>
               <img
                 src={iconModify}
                 alt="Modify Icon"
@@ -287,12 +416,16 @@ export function UserPage() {
                 onClick={onToggleComments}
               />
             </div>
+
+            {/* View comments */}
             {toggleComments && (
-              <div className={style.container_accept}>
+              <div className={style.container_change}>
                 {/* Lista Commenti delle aziende che hanno lavorato con questo professionista */}
-                <ul className={style.reviews}>
+                <ul className={style.ul_change}>
                   {user.comments.map((comment, index) => (
-                    <li key={index}>{comment}</li>
+                    <li key={index} className={style.li_change}>
+                      <p className={style.p_change}>{comment}</p>
+                    </li>
                   ))}
                 </ul>
               </div>
