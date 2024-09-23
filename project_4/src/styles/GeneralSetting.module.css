@@ -88,6 +88,7 @@
 .aside {
   border-radius: 0.5rem;
   padding: 5rem 0.5rem;
+  width: 14rem;
   height: auto;
   box-shadow: 0rem 0 0.5rem var(--colore-nero);
   display: flex;
@@ -108,7 +109,6 @@
 .link {
   border-radius: 0.5rem;
   padding: 1rem 0.5rem;
-
   font-size: 1rem;
   font-weight: 500;
   box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro);
@@ -121,15 +121,11 @@
   width: 100%;
   display: flex;
   flex-flow: column;
+  align-items: center;
   gap: 1.5rem;
   box-shadow: 0rem 0 0.5rem var(--colore-nero);
 }
-.li {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  font-size: 1.3rem;
-}
+
 .h1 {
   padding: 0 2rem 0 0;
   font-size: 3rem;
@@ -145,11 +141,6 @@
   align-items: center;
   width: 90%;
 }
-.description {
-  text-align: center;
-  border: none;
-}
-
 .icon_change {
   position: relative;
   right: 0rem;
@@ -159,28 +150,10 @@
   width: 1.5rem;
   aspect-ratio: 1/1;
 }
-
-.ul_program {
-  margin: 0 0 1rem 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem;
-}
 .p_accept {
   border-radius: 0.5rem;
   padding: 0.5em;
-  font-size: 1.3rem;
-  box-shadow: 0 0 0.5rem var(--colore-nero);
-}
-.icon_program {
-  margin: 0 0 0.5rem 0;
-  width: 3rem;
-}
-.icon_project {
-  margin: 0 0 0.5rem 0;
-  border-radius: 0.5rem;
-  width: 8rem;
+  font-size: 1.5rem;
 }
 
 .container_change {
@@ -195,10 +168,6 @@
   width: 90%;
   position: relative;
 }
-input[type="file"] {
-  display: none;
-}
-
 .input {
   padding: 0.2rem 0.3rem;
   border-radius: 0.5rem;
@@ -207,38 +176,10 @@ input[type="file"] {
   text-align: center;
   width: 20rem;
 }
-
-.textarea {
-  margin: 0 0 1rem 0;
-  border: none;
-  width: 90%;
-  scrollbar-width: none;
-  resize: none;
-}
-.textarea:focus {
-  outline: none;
-}
-
 .buttonSave {
   border-radius: 0.5rem;
   padding: 0.2rem 2rem;
   width: 20rem;
-  box-shadow: 0rem 0 0.5rem var(--colore-nero);
-}
-.ul_change {
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-.li_change {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  font-size: 0.8rem;
   box-shadow: 0rem 0 0.5rem var(--colore-nero);
 }
 .p_change {
@@ -248,28 +189,6 @@ input[type="file"] {
 .icon_change {
   width: 1.5rem;
   margin: 0 0 0.5rem 0;
-}
-.icon_change_program {
-  width: 1.5rem;
-  margin: 0 0 0.5rem 0;
-}
-.icon_project_change {
-  margin: 0 0 0.5rem 0;
-  border-radius: 0.5rem;
-  width: 8rem;
-}
-
-.button {
-  border-radius: 0.5rem;
-  padding: 0.5rem 3rem;
-  font-weight: 500;
-  box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro);
-}
-
-.img {
-  width: 18rem;
-  border-radius: 50%;
-  box-shadow: 0 0 0.5rem var(--colore-nero);
 }
 
 /* Media Query */
