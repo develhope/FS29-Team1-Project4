@@ -96,20 +96,17 @@ export function UserPage() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
+            {/* Presentation sono i dati anagrafaci */}
             <Link to="/user/general_setting" className={style.link}>
               GENERAL SETTING
             </Link>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/presentation_setting" className={style.link}>
-              PRESENTATION SETTING
+            {/* Tutti i programmi e le esperienze che hai */}
+            <Link to="/user/presentation_setting" className={style.link}>
+              Experience SETTING
             </Link>
             {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/project_setting" className={style.link}>
+            <Link to="/user/project_setting" className={style.link}>
               PROJECT SETTING
-            </Link>
-            {/* Cosa far vedere e a chi */}
-            <Link to="/privacy_setting" className={style.link}>
-              PRIVACY SETTING
             </Link>
           </div>
         </div>
@@ -121,19 +118,17 @@ export function UserPage() {
               General Setting
             </Link>
             {/* Presentation sono i dati anagrafaci */}
-            <Link to="/presentation_setting" className={style.link}>
-              Presentation Setting
+            <Link to="/user/presentation_setting" className={style.link}>
+              Experience Setting
             </Link>
             {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/project_setting" className={style.link}>
+            <Link to="/user/project_setting" className={style.link}>
               Project Setting
-            </Link>
-            {/* Cosa far vedere e a chi */}
-            <Link to="/privacy_setting" className={style.link}>
-              Privacy Setting
             </Link>
           </div>
         </aside>
+
+        {/* Section Centrale */}
         <ul className={style.content}>
           <li className={style.li}>
             <div className={style.container_accept}>
@@ -153,7 +148,7 @@ export function UserPage() {
                   type="text"
                   onChange={handleChangeInputDescription}
                   placeholder={user.username}
-                  className={style.textarea}
+                  className={style.input}
                 ></input>
                 <button
                   onClick={handleChangeUsername}
