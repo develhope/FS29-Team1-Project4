@@ -1,15 +1,30 @@
-import { DATA } from "../services/DatabaseTemporaneo";
+import React, { useState } from "react";
+import { DATA } from "../database";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/SliderArrows.css";
-import { Link } from "react-router-dom";
+import { ProfessionalSection } from "./ProfessionalSection";
 
 export function CardProfessional() {
   const db = DATA;
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedProfessional, setSelectedProfessional] = useState(null);
+
+  const handleShowPopup = (card) => {
+    setSelectedProfessional(card);
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    alert("click");
+    setShowPopup(false);
+    setSelectedProfessional(null);
+  };
+
   const CustomNextArrow = ({ className, style, onClick }) => (
     <button
-      className={`${className} custom-next`} // Classe personalizzata
+      className={`${className} custom-next`}
       style={{ ...style }}
       onClick={onClick}
     >
@@ -19,7 +34,7 @@ export function CardProfessional() {
 
   const CustomPrevArrow = ({ className, style, onClick }) => (
     <button
-      className={`${className} custom-prev`} // Classe personalizzata
+      className={`${className} custom-prev`}
       style={{ ...style }}
       onClick={onClick}
     >
@@ -76,7 +91,7 @@ export function CardProfessional() {
           {db.map((card) => (
             <div
               key={card.id}
-              className=" text-black rounded-xl shadow-1xl shadow-lg mb-3"
+              className="text-black rounded-xl shadow-1xl shadow-lg mb-3"
             >
               <div className="h-36 rounded-t-xl flex justify-center items-center bg-slate-400">
                 <img
@@ -86,21 +101,29 @@ export function CardProfessional() {
                 />
               </div>
               <div className="h-72 flex flex-col justify-between items-center text-center p-2">
-                <h2 className="text-2xl font-bold">Nome: {card.name}</h2>
+                <h2 className="text-2xl font-bold">Nome: {card.username}</h2>
                 <p className="h-35 w-full text-ellipsis overflow-hidden m-2">
                   Descrizione: {card.description}
                 </p>
                 <p className="text-left m-2">Linguaggi: {card.job}</p>
-                <Link to="/pop_up">
-                  <button className="bg-slate-500 text-white text-lg p-2 rounded-lg ">
-                    Scopri Di Più
-                  </button>
-                </Link>
+                <button
+                  onClick={() => handleShowPopup(card)}
+                  className="bg-slate-500 text-white text-lg p-2 rounded-lg"
+                >
+                  Scopri Di Più
+                </button>
               </div>
             </div>
           ))}
         </Slider>
       </div>
+
+      {showPopup && selectedProfessional && (
+        <ProfessionalSection
+          professional={selectedProfessional}
+          onClose={handleClosePopup}
+        />
+      )}
     </div>
   );
 }
