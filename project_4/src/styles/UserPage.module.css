@@ -22,7 +22,7 @@
   border-radius: 50%;
   height: 4rem;
   aspect-ratio: 1/1;
-  box-shadow: 0 0 1rem var(--colore-blu);
+  box-shadow: 0 0 0.5rem var(--colore-nero);
   background-color: var(--colore-bianco);
   display: none;
   position: fixed;
@@ -82,7 +82,8 @@
   border-radius: 0.5rem;
   width: 100%;
   height: 10%;
-  box-shadow: 0 0 0.5rem var(--colore-nero);
+  background-color: var(--colore-blu);
+  /* box-shadow: 0 0 0.5rem var(--colore-nero); */
 }
 .aside {
   border-radius: 0.5rem;
@@ -94,6 +95,15 @@
   justify-content: start;
   gap: 1.5rem;
   text-align: center;
+}
+.aside_sticky {
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  gap: 1.5rem;
+  text-align: center;
+  position: sticky;
+  top: 7rem;
 }
 .link {
   border-radius: 0.5rem;
@@ -124,7 +134,7 @@
   font-size: 3rem;
   font-weight: 600;
   text-wrap: none;
-  color: #023669;
+  color: var(--colore-bluScuro);
   text-align: center;
 }
 
