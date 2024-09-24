@@ -4,6 +4,9 @@ import style from "../styles/RegisterPage.module.css";
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
   const [contact, setcontact] = useState("");
+  // const [userName, setUserName] = useState()
+  // const [password, setPassword] = useState()
+  // const [email, setEmail] = useState()
 
   function handleIsProfessionist(event) {
     event.preventDefault();
@@ -17,9 +20,30 @@ export function RegisterPage() {
   }
   function handleUserContact(event) {
     event.preventDefault();
+
     const values = event.target.value;
     setcontact(values);
   }
+  // const handleUserNameChange = (e) => {
+  //   const user = e.target.value;
+  //   setUserName(user)
+  //   console.log(user);
+    
+  // };
+
+  //   const handlePasswordChange = (e) => {
+  //     const pass = e.target.value;
+  //     setPassword(pass);
+  //   };
+
+  //   const handleEmailChange = (e) => {
+  //   const mail = e.target.value;
+  //   setEmail(mail);
+  //   };
+  //   const handleSave = () => {
+  //     console.log(user, pass, mail);
+      
+  //   };
 
   return (
     <div className={style.container}>
@@ -27,6 +51,8 @@ export function RegisterPage() {
       <form className={style.form}>
         <h3 className={style.h3}>INSERISCI USERNAME</h3>
         <input
+          // onChange={handleUserNameChange}
+          // value={userName}
           type="text"
           placeholder="ES.mario.rossi85"
           className={style.input}
@@ -34,6 +60,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI PASSWORD</h3>
         <input
+          // onChange={handlePasswordChange}
+          // value={password}
           type="Password"
           placeholder="Your Password"
           className={style.input}
@@ -41,6 +69,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI MAIL</h3>
         <input
+          // onChange={handleEmailChange}
+          // value={email}
           type="text"
           placeholder="Example@libero.it"
           className={style.input}
@@ -70,7 +100,7 @@ export function RegisterPage() {
             <h3 className={style.h3}>CHE PROGRAMMA USI?</h3>
             <div className={style.program}>
               <div className={style.plan}>
-                <label> HTML</label>
+                <label className={style.textIcons}> HTML</label>
                 <img
                   src="../src/assets/html5-brands-solid.svg"
                   alt=""
@@ -78,7 +108,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> CSS</label>
+                <label className={style.textIcons}> CSS</label>
                 <img
                   src="../src/assets/css3-alt-brands-solid.svg"
                   alt=""
@@ -86,7 +116,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> JS</label>
+                <label className={style.textIcons}> JS</label>
 
                 <img
                   src="../src/assets/js-brands-solid.svg"
@@ -96,7 +126,7 @@ export function RegisterPage() {
               </div>
 
               <div className={style.plan}>
-                <label> REACT</label>
+                <label className={style.textIcons}> REACT</label>
 
                 <img
                   src="../src/assets/react-brands-solid.svg"
@@ -105,7 +135,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> TYPESCRIPT</label>
+                <label className={style.textIcons}> T.SCRIPT</label>
 
                 <img
                   src="../src/assets/typescript.svg"
@@ -114,7 +144,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> C++</label>
+                <label className={style.textIcons}> C++</label>
                 <img
                   src="../src/assets/c++.svg"
                   alt=""
@@ -122,7 +152,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> GITHUB</label>
+                <label className={style.textIcons}> GITHUB</label>
 
                 <img
                   src="../src/assets/github.svg"
@@ -131,7 +161,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> C#</label>
+                <label className={style.textIcons}> C#</label>
 
                 <img
                   src="../src/assets/c-sharp-c-icon-1822x2048-wuf3ijab.png"
@@ -140,7 +170,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> PHYTON</label>
+                <label className={style.textIcons}> PHYTON</label>
                 <img
                   src="../src/assets/python-5.svg"
                   alt=""
@@ -148,7 +178,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> JAVA</label>
+                <label className={style.textIcons}> JAVA</label>
 
                 <img
                   src="../src/assets/java-14.svg"
@@ -158,7 +188,7 @@ export function RegisterPage() {
               </div>
 
               <div className={style.plan}>
-                <label> NODE</label>
+                <label className={style.textIcons}> NODE</label>
 
                 <img
                   src="../src/assets/nodejs.svg"
@@ -168,7 +198,7 @@ export function RegisterPage() {
               </div>
 
               <div className={style.plan}>
-                <label> BLENDER</label>
+                <label className={style.textIcons}> BLENDER</label>
 
                 <img
                   src="../src/assets/blender-2.svg"
@@ -178,7 +208,7 @@ export function RegisterPage() {
               </div>
 
               <div className={style.plan}>
-                <label>R.3D</label>
+                <label className={style.textIcons}>R.3D</label>
 
                 <img
                   src="../src/assets/icons8-rhinoceros-6.svg"
@@ -187,7 +217,7 @@ export function RegisterPage() {
                 />
               </div>
               <div className={style.plan}>
-                <label> UNITY</label>
+                <label className={style.textIcons}> UNITY</label>
 
                 <img
                   src="../src/assets/unity-69.svg"
@@ -205,9 +235,7 @@ export function RegisterPage() {
             <input type="radio" name="SI" className={style.check} />
             <label className={style.label}>NO</label>
             <input type="radio" name="SI" className={style.check} />
-            <h3 className={style.h3}>
-              COME VUOI ESSERE CONTATTATO DALLE AZIENDE?
-            </h3>
+            <h3 className={style.h3}>COME VUOI ESSERE CONTATTATO?</h3>
             <select
               name=""
               id=""
@@ -322,6 +350,15 @@ export function RegisterPage() {
             )}
           </div>
         )}
+        {/* <button onClick={handleSave} className={style.saveButton}> */}
+          {/* SAVE ME
+        </button> */}
+        {/* <div>
+          <h3>Dati inseriti:</h3>
+          <p>Nome: {userName}</p>
+          <p>Email: {email}</p>
+          <p>Età: {password}</p>
+        </div> */}
       </form>
     </div>
   );

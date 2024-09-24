@@ -2,7 +2,8 @@ import { DATA } from "../database";
 import customSearch from "../styles/SearchPage.module.css";
 
 export function ProfSearchPage() {
-    const profDb = DATA;
+  const profDb = DATA;
+
 
     return (
       <div className={customSearch.filtered}>
@@ -20,7 +21,7 @@ export function ProfSearchPage() {
 </div>
             </li>
         ))}
-        </ul>    
-      </div>
-  )
-  }
+      </ul>
+    </div>
+  );
+}
