@@ -2,10 +2,13 @@ import Section from "../styles/ProfessionalCard.module.css";
 import iconX from "../assets/xmark-solid.svg";
 import { DATA } from "../database";
 import { useParams } from "react-router-dom";
-// import { useState } from "react";
+import { useState } from "react";
 
 export function ProfessionalCard({ professional, onClose }) {
   // const users = DATA;
+  // const [userProgram, setUserProgram] = useState([]);
+
+  // setUserProgram(users);
   // Recupero User grazie a ID preso da useParams
   // const { id } = useParams();
   // const id = "5";
@@ -16,6 +19,9 @@ export function ProfessionalCard({ professional, onClose }) {
 
   // console.log(user);
   // console.log(users);
+
+  // const findProgram = users.find((user) => user.program);
+  // console.log(findProgram);
 
   return (
     <div className={Section.box}>
@@ -41,24 +47,13 @@ export function ProfessionalCard({ professional, onClose }) {
             {/* Ruolo professionale */}
             <h3 className={Section.role}>{professional.job}</h3>
             {/* Icone */}
-            <div className={Section.icons}>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-              <span className={Section.icon}></span>
-            </div>
+            <ul className={Section.icons}>
+              {professional.program.map((program, index) => (
+                <li key={index}>
+                  <img src={program.icon} alt="" className={Section.icon} />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -91,7 +86,7 @@ export function ProfessionalCard({ professional, onClose }) {
             </div>
             <div>
               <h4>Costo prestazione</h4>
-              <span>{professional.price.max}</span>
+              <span>{professional.price.max}€</span>
             </div>
             <div>
               <h4>Luogo di lavoro</h4>
