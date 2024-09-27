@@ -1,14 +1,15 @@
+
 .main{
     display: flex;
     justify-content: space-between;
     margin: 2rem 1rem 2rem 1rem ;
     border: 1px solid red;
-    height: 1000px;
+    /*height: 1000px;*/
 }
 
 .aside{
     width: 20%;
-    height: 100%;
+    height: auto;
     background-color: blue;
     display: flex;
     flex-direction: column;
@@ -23,24 +24,54 @@
     height: 100%;
     width: 80%;
     text-align: center;
-    margin-left: 2.5rem;
+    /*margin-left: 1rem;*/
     display: flex;
 }
 
 .ul{
     background-color: grey;
-    height: 50%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem 0.5rem;
+    padding: 0.5rem;
+    overflow: hidden;
 }
 
 .li{
-    background-color: yellow;
-    margin: 10px 0;
-    padding: 7px;
-    border: 1px solid black;
-    border-radius: 5px; 
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colore-bianco);
+    border: 0.1rem solid black;
+    border-radius: 0.5rem; 
+    align-items: center;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.li img{
+    width: 50%;
+    aspect-ratio: 1/1;
+}
+
+.li p{
+    font-size: 0.8rem;
+}
+
+.program{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0;
+}
+.program_content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.program_content img{
+   /* display: grid;*/
+    height: 30px;
+    /*grid-template-columns: repeat(auto-fill, 1fr);*/
 }

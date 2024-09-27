@@ -12,9 +12,9 @@ import { Design3D } from "./pages/Design3D";
 import { UserPage } from "./pages/UserPage";
 import { AdminPage } from "./pages/AdminPage";
 import { GeneralSetting } from "./pages/GeneralSetting";
-import { PresentationSetting } from "./pages/PresentationSetting";
-import { ProjectSettings } from "./pages/ProjectSetting";
-import { PrivacySetting } from "./pages/PrivacySetting";
+import { ExperienceSetting } from "./pages/ExperienceSetting";
+import { ProjectSetting } from "./pages/ProjectSetting";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
@@ -56,12 +56,10 @@ export function App() {
 
         {/* Pages of user */}
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user" element={<UserPage />}>
-          <Route path="/user/general_setting" element={<GeneralSetting />} />
-          <Route path="presentation_setting" element={<PresentationSetting />} />
-          <Route path="project_setting" element={<ProjectSettings />} />
-          <Route path="privacy_setting" element={<PrivacySetting />} />
-        </Route>
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/user/general_setting" element={<GeneralSetting />} />
+        <Route path="/user/presentation_setting" element={<ExperienceSetting />} />
+        <Route path="/user/project_setting" element={<ProjectSetting />} />
 
         {/* Admin page */}
         <Route path="/admin" element={<AdminPage />} />
