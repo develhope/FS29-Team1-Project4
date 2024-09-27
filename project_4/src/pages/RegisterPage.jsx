@@ -1,12 +1,13 @@
 import { useState } from "react";
 import style from "../styles/RegisterPage.module.css";
+import { json } from "react-router-dom";
 
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
   const [contact, setcontact] = useState("");
-  // const [userName, setUserName] = useState()
-  // const [password, setPassword] = useState()
-  // const [email, setEmail] = useState()
+  const [userName, setUserName] = useState()
+  const [password, setPassword] = useState()
+  const [email, setEmail] = useState()
 
   function handleIsProfessionist(event) {
     event.preventDefault();
@@ -24,26 +25,30 @@ export function RegisterPage() {
     const values = event.target.value;
     setcontact(values);
   }
-  // const handleUserNameChange = (e) => {
-  //   const user = e.target.value;
-  //   setUserName(user)
-  //   console.log(user);
+  const handleUserNameChange = (e) => {
+    const user = e.target.value;
+    setUserName(user)
+    console.log(user);
     
-  // };
+  };
 
-  //   const handlePasswordChange = (e) => {
-  //     const pass = e.target.value;
-  //     setPassword(pass);
-  //   };
+    const handlePasswordChange = (e) => {
+      const pass = e.target.value;
+      setPassword(pass);
+    };
 
-  //   const handleEmailChange = (e) => {
-  //   const mail = e.target.value;
-  //   setEmail(mail);
-  //   };
-  //   const handleSave = () => {
-  //     console.log(user, pass, mail);
+    const handleEmailChange = (e) => {
+    const mail = e.target.value;
+    setEmail(mail);
+    };
+    const handleSave = (e) => {
+      e.preventDefault()
+      // console.log(userName, password, email);
+      localStorage.setItem("user", JSON.stringify({userName, password, email, isPro, job}))
       
-  //   };
+
+      
+    };
 
   return (
     <div className={style.container}>
@@ -51,8 +56,8 @@ export function RegisterPage() {
       <form className={style.form}>
         <h3 className={style.h3}>INSERISCI USERNAME</h3>
         <input
-          // onChange={handleUserNameChange}
-          // value={userName}
+          onChange={handleUserNameChange}
+          value={userName}
           type="text"
           placeholder="ES.mario.rossi85"
           className={style.input}
@@ -60,8 +65,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI PASSWORD</h3>
         <input
-          // onChange={handlePasswordChange}
-          // value={password}
+          onChange={handlePasswordChange}
+          value={password}
           type="Password"
           placeholder="Your Password"
           className={style.input}
@@ -69,8 +74,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI MAIL</h3>
         <input
-          // onChange={handleEmailChange}
-          // value={email}
+          onChange={handleEmailChange}
+          value={email}
           type="text"
           placeholder="Example@libero.it"
           className={style.input}
@@ -350,10 +355,10 @@ export function RegisterPage() {
             )}
           </div>
         )}
-        {/* <button onClick={handleSave} className={style.saveButton}> */}
-          {/* SAVE ME
-        </button> */}
-        {/* <div>
+        <button onClick={handleSave} className={style.saveButton}> 
+          SAVE ME
+        </button> 
+       {/* <div>
           <h3>Dati inseriti:</h3>
           <p>Nome: {userName}</p>
           <p>Email: {email}</p>
