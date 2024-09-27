@@ -30,12 +30,7 @@ export function ProfessionalCard({ professional, onClose }) {
         <div className={Section.name}>
           <h3>{professional.username}</h3>
 
-          <img
-            src={iconX}
-            alt=""
-            className={Section.x__button}
-            onClick={onClose}
-          />
+          <img src={iconX} alt="" className={Section.x__button} onClick={onClose} />
         </div>
 
         {/* Card  */}
