@@ -75,21 +75,12 @@ export function ProjectProfessional() {
       <div className="max-w-7xl m-auto">
         <Slider {...settings}>
           {filterUserForExamples.map((card) => (
-            <div
-              key={card.id}
-              className=" text-black rounded-xl shadow-1xl shadow-lg mb-3"
-            >
+            <div key={card.id} className=" text-black rounded-xl shadow-1xl shadow-lg mb-3">
               <div className="bg-slate-500 text-center">
-                <h2 className="text-2xl font-bold h-10">
-                  Nome: {card.username}
-                </h2>
+                <h2 className="text-2xl font-bold h-10">Nome: {card.username}</h2>
               </div>
               <div className="h-72">
-                <img
-                  src={card.image}
-                  alt="Image Missing"
-                  className=" bg-white text-center h-full w-full"
-                />
+                <img src={card.image} alt="Image Missing" className=" bg-white text-center h-full w-full" />
               </div>
             </div>
           ))}

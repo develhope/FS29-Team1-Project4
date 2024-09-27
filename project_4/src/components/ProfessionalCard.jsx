@@ -20,7 +20,7 @@ export function ProfessionalCard() {
             <div className={Section.professionalCard}></div>
             <div className={Section.professionalRole}>
               {/* Ruolo professionale */}
-              <h3 className={Section.role}>3D DESIGNER</h3>
+              <h3>3D DESIGNER</h3>
               {/* Icone */}
               <div className={Section.icons}>
                 <span className={Section.icon}></span>
@@ -54,11 +54,7 @@ export function ProfessionalCard() {
             <div className={Section.right}>
               <div className={Section.description}>
                 <h4>Descrizione</h4>
-                <span>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repellendus, magnam enim perferendis excepturi vero possimus
-                  cupiditate blanditiis nisi sunt!
-                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, magnam enim perferendis excepturi vero possimus cupiditate blanditiis nisi sunt!</span>
               </div>
               <div>
                 <h4>Costo prestazione</h4>

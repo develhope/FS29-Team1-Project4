@@ -20,6 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 
 import { ProfessionalSection } from "./components/ProfessionalSection";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 
 export function App() {
   const serviceRef = useRef(null);
@@ -57,10 +58,7 @@ export function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user" element={<UserPage />}>
           <Route path="/user/general_setting" element={<GeneralSetting />} />
-          <Route
-            path="presentation_setting"
-            element={<PresentationSetting />}
-          />
+          <Route path="presentation_setting" element={<PresentationSetting />} />
           <Route path="project_setting" element={<ProjectSettings />} />
           <Route path="privacy_setting" element={<PrivacySetting />} />
         </Route>
@@ -72,6 +70,9 @@ export function App() {
 
         {/* Pop up Cards */}
         <Route path="/pop_up" element={<ProfessionalSection />} />
+
+        {/* Footer */}
+        <Route path="/privacy_policy" element={<PrivacyPolicy />} />
       </Routes>
     </Container>
   );

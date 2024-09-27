@@ -74,27 +74,16 @@ export function CardProfessional() {
       <div className="mt-20 mb-20">
         <Slider {...settings}>
           {db.map((card) => (
-            <div
-              key={card.id}
-              className=" text-black rounded-xl shadow-1xl shadow-lg mb-3"
-            >
+            <div key={card.id} className=" text-black rounded-xl shadow-1xl shadow-lg mb-3">
               <div className="h-36 rounded-t-xl flex justify-center items-center bg-slate-400">
-                <img
-                  src={card.image}
-                  alt="Image Missing"
-                  className="w-32 h-32 rounded-full bg-white text-center object-cover"
-                />
+                <img src={card.image} alt="Image Missing" className="w-32 h-32 rounded-full bg-white text-center object-cover" />
               </div>
               <div className="h-72 flex flex-col justify-between items-center text-center p-2">
                 <h2 className="text-2xl font-bold">Nome: {card.name}</h2>
-                <p className="h-35 w-full text-ellipsis overflow-hidden m-2">
-                  Descrizione: {card.description}
-                </p>
+                <p className="h-35 w-full text-ellipsis overflow-hidden m-2">Descrizione: {card.description}</p>
                 <p className="text-left m-2">Linguaggi: {card.job}</p>
                 <Link to="/pop_up">
-                  <button className="bg-slate-500 text-white text-lg p-2 rounded-lg ">
-                    Scopri Di Più
-                  </button>
+                  <button className="bg-slate-500 text-white text-lg p-2 rounded-lg ">Scopri Di Più</button>
                 </Link>
               </div>
             </div>
