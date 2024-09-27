@@ -7,7 +7,7 @@ export function ProfessionalSection({ professional, onClose }) {
   return (
     <div>
       {/* <LeftArrow /> */}
-      <ProfessionalCard professional={professional} onCLose={onClose} />
+      <ProfessionalCard professional={professional} onClose={onClose} />
       {/* <RightArrow /> */}
     </div>
   );

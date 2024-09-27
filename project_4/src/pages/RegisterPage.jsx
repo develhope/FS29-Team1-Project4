@@ -4,6 +4,9 @@ import style from "../styles/RegisterPage.module.css";
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
   const [contact, setcontact] = useState("");
+  // const [userName, setUserName] = useState()
+  // const [password, setPassword] = useState()
+  // const [email, setEmail] = useState()
 
   function handleIsProfessionist(event) {
     event.preventDefault();
@@ -17,10 +20,30 @@ export function RegisterPage() {
   }
   function handleUserContact(event) {
     event.preventDefault();
-   
+
     const values = event.target.value;
     setcontact(values);
   }
+  // const handleUserNameChange = (e) => {
+  //   const user = e.target.value;
+  //   setUserName(user)
+  //   console.log(user);
+    
+  // };
+
+  //   const handlePasswordChange = (e) => {
+  //     const pass = e.target.value;
+  //     setPassword(pass);
+  //   };
+
+  //   const handleEmailChange = (e) => {
+  //   const mail = e.target.value;
+  //   setEmail(mail);
+  //   };
+  //   const handleSave = () => {
+  //     console.log(user, pass, mail);
+      
+  //   };
 
   return (
     <div className={style.container}>
@@ -28,6 +51,8 @@ export function RegisterPage() {
       <form className={style.form}>
         <h3 className={style.h3}>INSERISCI USERNAME</h3>
         <input
+          // onChange={handleUserNameChange}
+          // value={userName}
           type="text"
           placeholder="ES.mario.rossi85"
           className={style.input}
@@ -35,6 +60,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI PASSWORD</h3>
         <input
+          // onChange={handlePasswordChange}
+          // value={password}
           type="Password"
           placeholder="Your Password"
           className={style.input}
@@ -42,6 +69,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI MAIL</h3>
         <input
+          // onChange={handleEmailChange}
+          // value={email}
           type="text"
           placeholder="Example@libero.it"
           className={style.input}
@@ -273,11 +302,7 @@ export function RegisterPage() {
             <h3 className={style.h3}>
               COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?
             </h3>
-            <select
-              className={style.contact}
-              onChange={handleUserContact}
-              
-            >
+            <select className={style.contact} onChange={handleUserContact}>
               <option value="mail">EMAIL</option>
               <option value="phone">TELEFONO</option>
               <option value="facebook">FACEBOOK</option>
@@ -325,7 +350,15 @@ export function RegisterPage() {
             )}
           </div>
         )}
-        <button className={style.saveButton}>SAVE ME</button>
+        {/* <button onClick={handleSave} className={style.saveButton}> */}
+          {/* SAVE ME
+        </button> */}
+        {/* <div>
+          <h3>Dati inseriti:</h3>
+          <p>Nome: {userName}</p>
+          <p>Email: {email}</p>
+          <p>Età: {password}</p>
+        </div> */}
       </form>
     </div>
   );

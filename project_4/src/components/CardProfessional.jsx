@@ -17,7 +17,7 @@ export function CardProfessional() {
   };
 
   const handleClosePopup = () => {
-    alert("click");
+    // alert("click");
     setShowPopup(false);
     setSelectedProfessional(null);
   };
