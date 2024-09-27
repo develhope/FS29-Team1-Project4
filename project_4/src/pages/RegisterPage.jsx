@@ -1,12 +1,20 @@
 import { useState } from "react";
 import style from "../styles/RegisterPage.module.css";
+import { json } from "react-router-dom";
 
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
   const [contact, setcontact] = useState("");
-  // const [userName, setUserName] = useState()
-  // const [password, setPassword] = useState()
-  // const [email, setEmail] = useState()
+  const [userName, setUserName] = useState()
+  const [password, setPassword] = useState()
+  const [email, setEmail] = useState()
+  const [job, setJob] = useState()
+  const [price, setPrice] = useState()
+  const [location, setLocation] = useState()
+  const [move, setMove] = useState(true)
+  const [mailSelect, setMailSelect] = useState()
+  const [phoneSelect, setPhoneSelect] = useState()
+
 
   function handleIsProfessionist(event) {
     event.preventDefault();
@@ -24,26 +32,75 @@ export function RegisterPage() {
     const values = event.target.value;
     setcontact(values);
   }
-  // const handleUserNameChange = (e) => {
-  //   const user = e.target.value;
-  //   setUserName(user)
-  //   console.log(user);
+  const handleUserNameChange = (e) => {
+    const user = e.target.value;
+    setUserName(user)
+    console.log(user);
     
-  // };
+  };
 
-  //   const handlePasswordChange = (e) => {
-  //     const pass = e.target.value;
-  //     setPassword(pass);
-  //   };
+    const handlePasswordChange = (e) => {
+      const pass = e.target.value;
+      setPassword(pass);
+    };
 
-  //   const handleEmailChange = (e) => {
-  //   const mail = e.target.value;
-  //   setEmail(mail);
-  //   };
-  //   const handleSave = () => {
-  //     console.log(user, pass, mail);
-      
-  //   };
+    const handleEmailChange = (e) => {
+    const mail = e.target.value;
+    setEmail(mail);
+    };
+
+    const handleChangeJob = (e) => {
+      const job = e.target.value;
+      setJob(job)
+    }
+    const handleChangePrice = (e) => {
+      const price = e.target.value;
+      setPrice(price)
+    }
+    const handleChangeLocation = (e) => {
+      const location = e.target.value;
+      setLocation(location)
+    }
+    const handleChangeMove = (e) => {
+        event.preventDefault();
+        const move = event.target.value;
+
+        if (move === "NO") {
+          setMove(false);
+        } else {
+          setMove(true);
+        }
+
+    }
+    const handleChangeMailSelect = (e) => {
+      const mailSelect = e.target.value;
+      setMailSelect(mailSelect);
+    };
+    const handleChangePhoneSelect = (e) => {
+      const phoneSelect = e.target.value;
+      setPhoneSelect(phoneSelect);
+    };
+
+    const handleSave = (e) => {
+      e.preventDefault()
+      // console.log(userName, password, email);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          userName,
+          password,
+          email,
+          isPro,
+          job,
+          price,
+          location,
+          move,
+          contact,
+          mailSelect,
+          phoneSelect
+        })
+      );
+      };
 
   return (
     <div className={style.container}>
@@ -51,8 +108,8 @@ export function RegisterPage() {
       <form className={style.form}>
         <h3 className={style.h3}>INSERISCI USERNAME</h3>
         <input
-          // onChange={handleUserNameChange}
-          // value={userName}
+          onChange={handleUserNameChange}
+          value={userName}
           type="text"
           placeholder="ES.mario.rossi85"
           className={style.input}
@@ -60,8 +117,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI PASSWORD</h3>
         <input
-          // onChange={handlePasswordChange}
-          // value={password}
+          onChange={handlePasswordChange}
+          value={password}
           type="Password"
           placeholder="Your Password"
           className={style.input}
@@ -69,8 +126,8 @@ export function RegisterPage() {
 
         <h3 className={style.h3}>INSERISCI MAIL</h3>
         <input
-          // onChange={handleEmailChange}
-          // value={email}
+          onChange={handleEmailChange}
+          value={email}
           type="text"
           placeholder="Example@libero.it"
           className={style.input}
@@ -96,7 +153,11 @@ export function RegisterPage() {
         {isPro ? (
           <div>
             <h3 className={style.h3}>CHE RUOLO RICOPRI?</h3>
-            <input type="text" className={style.input} />
+            <input
+              type="text"
+              className={style.input}
+              onChange={handleChangeJob}
+            />
             <h3 className={style.h3}>CHE PROGRAMMA USI?</h3>
             <div className={style.program}>
               <div className={style.plan}>
@@ -227,14 +288,34 @@ export function RegisterPage() {
               </div>
             </div>
             <h3 className={style.h3}>QUANTO COSTA IL TUO SERVIZIO?</h3>
-            <input type="text" className={style.input} />
+            <input
+              type="text"
+              className={style.input}
+              onChange={handleChangePrice}
+            />
             <h3 className={style.h3}>IN CHE CITTÀ LAVORI?</h3>
-            <input type="text" className={style.input} />
+            <input
+              type="text"
+              className={style.input}
+              onChange={handleChangeLocation}
+            />
             <h3 className={style.h3}>SEI DISPOSTO A SPOSTARTI?</h3>
             <label className={style.label}>SI</label>
-            <input type="radio" name="SI" className={style.check} />
+            <input
+              type="radio"
+              name="SI"
+              className={style.check}
+              onChange={handleChangeMove}
+              value={"SI"}
+            />
             <label className={style.label}>NO</label>
-            <input type="radio" name="SI" className={style.check} />
+            <input
+              type="radio"
+              name="SI"
+              className={style.check}
+              onChange={handleChangeMove}
+              value={"NO"}
+            />
             <h3 className={style.h3}>COME VUOI ESSERE CONTATTATO?</h3>
             <select
               name=""
@@ -252,7 +333,11 @@ export function RegisterPage() {
             {contact === "mail" && (
               <div>
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeMailSelect}
+                />
               </div>
             )}
             {contact === "phone" && (
@@ -260,7 +345,11 @@ export function RegisterPage() {
                 <h3 className={style.h3}>
                   INSERISCI IL TUO CONTATTO TELEFONICO
                 </h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangePhoneSelect}
+                />
               </div>
             )}
             {contact === "facebook" && (
@@ -350,9 +439,9 @@ export function RegisterPage() {
             )}
           </div>
         )}
-        {/* <button onClick={handleSave} className={style.saveButton}> */}
-          {/* SAVE ME
-        </button> */}
+        <button onClick={handleSave} className={style.saveButton}>
+          SAVE ME
+        </button>
         {/* <div>
           <h3>Dati inseriti:</h3>
           <p>Nome: {userName}</p>
