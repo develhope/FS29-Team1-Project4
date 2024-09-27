@@ -20,6 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 
 import { ProfessionalSection } from "./components/ProfessionalSection";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { CompanyPage } from "./pages/CompanyPage";
 
 export function App() {
@@ -82,6 +83,9 @@ export function App() {
 
         {/* Pop up Cards */}
         <Route path="/pop_up" element={<ProfessionalSection />} />
+
+        {/* Footer */}
+        <Route path="/privacy_policy" element={<PrivacyPolicy />} />
       </Routes>
     </Container>
   );
