@@ -87,30 +87,24 @@
 }
 .aside {
   border-radius: 0.5rem;
-  padding: 5rem 0.5rem;
-  width: 13.1rem;
-  height: auto;
+  padding: 0.5rem;
+  width: 13rem;
+  height: 38rem;
   box-shadow: 0rem 0 0.5rem var(--colore-nero);
   display: flex;
   flex-flow: column;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
   gap: 1.5rem;
-  text-align: center;
-}
-.aside_sticky {
-  display: flex;
-  flex-flow: column;
-  justify-content: start;
-  gap: 1.5rem;
-  text-align: center;
   position: sticky;
-  top: 7rem;
+  top: 6rem;
 }
 .link {
   border-radius: 0.5rem;
   padding: 1rem 0.5rem;
   font-size: 1rem;
   font-weight: 500;
+  width: 100%;
   box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro);
   text-transform: uppercase;
 }
@@ -122,6 +116,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+
   gap: 1.5rem;
   box-shadow: 0rem 0 0.5rem var(--colore-nero);
 }

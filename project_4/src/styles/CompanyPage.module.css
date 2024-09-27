@@ -87,32 +87,24 @@
 }
 .aside {
   border-radius: 0.5rem;
-  padding: 5rem 0.5rem;
-  height: 52rem;
+  padding: 0.5rem;
+  width: 13rem;
+  height: 38rem;
   box-shadow: 0rem 0 0.5rem var(--colore-nero);
   display: flex;
   flex-flow: column;
-  justify-content: start;
-
-  gap: 1.5rem;
-  text-align: center;
-  position: sticky;
-  top: 6rem;
-}
-.aside_sticky {
-  display: flex;
-  flex-flow: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  text-align: center;
+  position: sticky;
+  top: 6rem;
 }
 .link {
   border-radius: 0.5rem;
   padding: 1rem 0.5rem;
-
   font-size: 1rem;
   font-weight: 500;
+  width: 100%;
   box-shadow: 0rem 0 0.5rem var(--colore-bluChiaro);
   text-transform: uppercase;
 }
@@ -237,11 +229,12 @@ input[type="file"] {
 .li_change {
   border-radius: 0.5rem;
   padding: 0.5rem;
+  width: 20%;
   display: flex;
   flex-flow: column;
   align-items: center;
+  gap: 0.5rem;
   font-size: 0.8rem;
-  box-shadow: 0rem 0 0.5rem var(--colore-nero);
 }
 .p_change {
   padding: 0.5em;
@@ -270,6 +263,7 @@ input[type="file"] {
 
 .img {
   width: 18rem;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   box-shadow: 0 0 0.5rem var(--colore-nero);
 }
