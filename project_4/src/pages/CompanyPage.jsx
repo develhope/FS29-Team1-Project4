@@ -1,4 +1,4 @@
-import style from "../styles/UserPage.module.css";
+import style from "../styles/CompanyPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
