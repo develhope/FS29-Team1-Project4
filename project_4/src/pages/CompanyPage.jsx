@@ -5,10 +5,11 @@ import { DATA } from "../database";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
+
 // Database fittizio
 const users = DATA;
 
-export function UserPage() {
+export function CompanyPage() {
   // Da usare nel momento in cui avremo un database
   //   const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
@@ -26,9 +27,8 @@ export function UserPage() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Recupero User grazie a ID preso da useParams
-  const id = "5";
-  const user = users.find((user) => user.id.toString() === id);
+  // Recupero User grazie alla proprietà isPro
+  const user = users.find((user) => !user.isPro);
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
@@ -97,10 +97,7 @@ export function UserPage() {
               />
             </div>
             {/* Presentation sono i dati anagrafaci */}
-            <Link
-              to={`/user/general_setting/${user.id}`}
-              className={style.link}
-            >
+            <Link to="/user/general_setting" className={style.link}>
               GENERAL SETTING
             </Link>
             {/* Tutti i programmi e le esperienze che hai */}
@@ -117,10 +114,7 @@ export function UserPage() {
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
           <div className={style.aside_sticky}>
-            <Link
-              to={`/user/general_setting/${user.id}`}
-              className={style.link}
-            >
+            <Link to="/user/general_setting" className={style.link}>
               General Setting
             </Link>
             {/* Presentation sono i dati anagrafaci */}
@@ -128,7 +122,7 @@ export function UserPage() {
               Experience Setting
             </Link>
             {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
+            <Link to="/user/project_setting/:id" className={style.link}>
               Project Setting
             </Link>
           </div>

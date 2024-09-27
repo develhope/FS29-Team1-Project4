@@ -20,6 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 
 import { ProfessionalSection } from "./components/ProfessionalSection";
+import { CompanyPage } from "./pages/CompanyPage";
 
 export function App() {
   const serviceRef = useRef(null);
@@ -61,10 +62,11 @@ export function App() {
         <Route path="/web_design" element={<WebDesign />} />
         <Route path="/3D_design" element={<Design3D />} />
 
-        {/* Pages of user */}
+        {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/user/general_setting" element={<GeneralSetting />} />
+        <Route path="/user/general_setting/:id" element={<GeneralSetting />} />
         <Route
           path="/user/presentation_setting"
           element={<ExperienceSetting />}
@@ -74,6 +76,7 @@ export function App() {
         {/* Admin page */}
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/user_setting" element={<UserPage />} />
+        <Route path="/company_setting" element={<CompanyPage />} />
         {/* <Route path="/user_setting/:id" element={<UserPage />} /> */}
 
         {/* Pop up Cards */}

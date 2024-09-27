@@ -10,7 +10,7 @@ import iconClose from "../assets/xmark-solid.svg";
 const db = DATA;
 export function GeneralSetting() {
   // Da usare nel momento in cui avremo un database
-  //   const { id } = useParams();
+  const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
   // Controllo stato per i toggle
@@ -23,7 +23,6 @@ export function GeneralSetting() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const id = "5";
   const user = db.find((user) => user.id.toString() === id);
 
   // Ottengo Solo i general dello user

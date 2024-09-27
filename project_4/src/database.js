@@ -471,11 +471,11 @@ export const DATA = [
   },
   {
     id: 6,
-    username: "Emanuele",
-    password: "L0Ndra",
-    email: "esempio@gmail.com",
-    isPro: 1,
-    job: ["Full-stack", "Front-end", "Back-end"],
+    username: "Azienda 1",
+    password: "azienda_1",
+    email: "recruiting@azienda1.com",
+    isPro: 0,
+    job: ["Graphic 3D", "Web Development", "Customer Support"],
     image:
       "https://www.gazabhindi.com/wp-content/uploads/2018/05/%E0%A4%95%E0%A4%82%E0%A4%AA%E0%A5%8D%E0%A4%AF%E0%A5%82%E0%A4%9F%E0%A4%B0.png",
     description:
@@ -532,7 +532,7 @@ export const DATA = [
       "Experience 6",
       "Experience 7",
     ],
-    price: { max: 25050, min: 250 },
+    price: { max: 2000, min: 1200 },
     luogo: "Roma",
     transfer: "si",
     contact: [
@@ -562,13 +562,12 @@ export const DATA = [
       },
     ],
     general: {
-      firstName: "Kevin",
-      surName: "Bacher",
+      pIVA: 12345678901,
       annoNascita: 1984,
-      luogoNascita: "Londra",
+      sedeLegale: "Londra",
     },
     reviews: 4.5,
-    comments: ["good", "Very good", "Molto premuroso"],
+    comments: ["Good", "Very good", "Ben strutturata"],
   },
   {
     id: 7,
