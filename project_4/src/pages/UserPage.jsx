@@ -20,6 +20,9 @@ export function UserPage() {
   // Costante per navigare
   const navigate = useNavigate();
 
+  // Recupero User grazie a ID preso da useParams
+  const user = users.find((user) => user.id.toString() === id);
+
   // Cambio elementi
   // Controllo stato per i toggle
   const [toggle, onToggle] = useShowToggle();
@@ -30,11 +33,12 @@ export function UserPage() {
   const [toggleExperince, onToggleExperince] = useShowToggle();
   const [toggleComments, onToggleComments] = useShowToggle();
 
+  // Toggle per selezione programmi
+  const [toggleClickProgram, setToggleClickProgram] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState(null);
+
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
-
-  // Recupero User grazie a ID preso da useParams
-  const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
@@ -43,6 +47,12 @@ export function UserPage() {
   // Costanti per cambiare la descrizione
   const [inputDescription, setInputDescription] = useState("");
   const [userDescription, setUserDescription] = useState(user.description);
+
+  // Handle Open CLick Programma scelto
+  const handleShowPopup = (item) => {
+    setSelectedProgram(item);
+    setToggleClickProgram((p) => !p);
+  };
 
   // Handle Username
   function handleChangeUsername(e) {
@@ -71,10 +81,16 @@ export function UserPage() {
   }
 
   // Navigazione con passaggio di ID
-  function handleNavigate() {
-    console.log(user.id);
-
-    // navigate(`/user/general_setting/${user.id}`);
+  function handleNavigateGeneral() {
+    navigate(`/user/general_setting/${user.id}`);
+  }
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+  // Experience setting
+  function handleNavigateExperience() {
+    navigate(`/user/presentation_setting/${user.id}`);
   }
   return (
     <div className={style.container}>
@@ -108,39 +124,34 @@ export function UserPage() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link
-              to={`/user/general_setting/${user.id}`}
-              className={style.link}
-            >
+
+            <button onClick={handleNavigateGeneral} className={style.link}>
               GENERAL SETTING
-            </Link>
-            {/* Tutti i programmi e le esperienze che hai */}
-            <Link to="/user/presentation_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateExperience} className={style.link}>
               Experience SETTING
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateProject} className={style.link}>
               PROJECT SETTING
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <div className={style.aside_sticky}>
-            <button onClick={handleNavigate} className={style.link}>
-              General Setting
-            </button>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/presentation_setting" className={style.link}>
-              Experience Setting
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
-              Project Setting
-            </Link>
-          </div>
+          <button onClick={handleNavigateGeneral} className={style.link}>
+            GENERAL SETTING
+          </button>
+
+          <button onClick={handleNavigateExperience} className={style.link}>
+            Experience SETTING
+          </button>
+
+          <button onClick={handleNavigateProject} className={style.link}>
+            PROJECT SETTING
+          </button>
         </aside>
 
         {/* Section Centrale */}
@@ -310,7 +321,15 @@ export function UserPage() {
               <div className={style.container_change}>
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
-                    <li key={index} className={style.li_change}>
+                    <li
+                      key={index}
+                      onClick={() => handleShowPopup(program)}
+                      className={
+                        toggleClickProgram
+                          ? style.li_change_click
+                          : style.li_change
+                      }
+                    >
                       {program.name.toUpperCase()}
                       <img
                         src={program.icon}

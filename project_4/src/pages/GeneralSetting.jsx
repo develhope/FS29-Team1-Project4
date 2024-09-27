@@ -61,12 +61,20 @@ export function GeneralSetting() {
   // }
 
   // Navigazione con passagio id
-  function handleNavigate() {
-    user.isPro === 1
+  // User setting
+  function handleNavigateUser() {
+    user.isPro
       ? navigate(`/user_setting/${user.id}`)
       : navigate(`/company_setting/${user.id}`);
   }
-
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+  // Experience setting
+  function handleNavigateExperience() {
+    navigate(`/user/presentation_setting/${user.id}`);
+  }
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -99,35 +107,34 @@ export function GeneralSetting() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
-            <button onClick={handleNavigate} className={style.link}>
+
+            <button onClick={handleNavigateUser} className={style.link}>
               USER SETTING
             </button>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/presentation_setting" className={style.link}>
+
+            <button onClick={handleNavigateExperience} className={style.link}>
               Experience SETTING
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateProject} className={style.link}>
               PROJECT SETTING
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <div className={style.aside_sticky}>
-            <button onClick={handleNavigate} className={style.link}>
-              User Setting
-            </button>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/presentation_setting" className={style.link}>
-              Experience Setting
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
-              Project Setting
-            </Link>
-          </div>
+          <button onClick={handleNavigateUser} className={style.link}>
+            USER SETTING
+          </button>
+
+          <button onClick={handleNavigateExperience} className={style.link}>
+            Experience SETTING
+          </button>
+
+          <button onClick={handleNavigateProject} className={style.link}>
+            PROJECT SETTING
+          </button>
         </aside>
 
         {/* Sezione Centrale */}

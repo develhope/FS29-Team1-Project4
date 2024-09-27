@@ -66,20 +66,17 @@ export function App() {
 
         {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="/user/general_setting" element={<GeneralSetting />} /> */}
-        <Route path="/user/general_setting?/:id" element={<GeneralSetting />} />
-
+        <Route path="/user/general_setting/:id" element={<GeneralSetting />} />
         <Route
-          path="/user/presentation_setting"
+          path="/user/presentation_setting/:id"
           element={<ExperienceSetting />}
         />
-        <Route path="/user/project_setting" element={<ProjectSetting />} />
+        <Route path="/user/project_setting/:id" element={<ProjectSetting />} />
 
-        {/* Admin page */}
-        <Route path="/admin" element={<AdminPage />} />
+        {/* Admin/User/Company Page setting*/}
+        <Route path="/admin/:id" element={<AdminPage />} />
         <Route path="/user_setting/:id" element={<UserPage />} />
         <Route path="/company_setting/:id" element={<CompanyPage />} />
-        {/* <Route path="/user_setting/:id" element={<UserPage />} /> */}
 
         {/* Pop up Cards */}
         <Route path="/pop_up" element={<ProfessionalSection />} />

@@ -36,9 +36,7 @@ export function LoginRegister({ toggle }) {
         user.password === password
     );
 
-    // setUser(u);
-
-    user.isPro === 1
+    user.isPro
       ? navigate(`/user_setting/${user.id}`)
       : navigate(`/company_setting/${user.id}`);
   }
