@@ -1,10 +1,6 @@
 import { Logo } from "./Logo";
 import style from "../styles/Footer.module.css";
-import { Privacy } from "./Privacy";
-import { Copyright } from "./Copyright";
-import { FollowUs } from "./FollowUs";
 import { Help } from "./Help";
-import { PrivacyPolicy } from "../pages/PrivacyPolicy";
 import { Link } from "react-router-dom";
 
 export function Footer() {
