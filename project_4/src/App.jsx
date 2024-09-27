@@ -12,14 +12,16 @@ import { Design3D } from "./pages/Design3D";
 import { UserPage } from "./pages/UserPage";
 import { AdminPage } from "./pages/AdminPage";
 import { GeneralSetting } from "./pages/GeneralSetting";
-import { PresentationSetting } from "./pages/PresentationSetting";
-import { ProjectSettings } from "./pages/ProjectSetting";
-import { PrivacySetting } from "./pages/PrivacySetting";
+import { ExperienceSetting } from "./pages/ExperienceSetting";
+import { ProjectSetting } from "./pages/ProjectSetting";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 
 import { ProfessionalSection } from "./components/ProfessionalSection";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { CompanyPage } from "./pages/CompanyPage";
 
 export function App() {
   const serviceRef = useRef(null);
@@ -28,6 +30,7 @@ export function App() {
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <Container
       navbar={
@@ -44,7 +47,15 @@ export function App() {
     >
       <Routes>
         {/* Home */}
-        <Route path="/" element={<Home serviceSectionRef={serviceRef} professionITSectionRef={professionITSectionRef} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              serviceSectionRef={serviceRef}
+              professionITSectionRef={professionITSectionRef}
+            />
+          }
+        />
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
@@ -53,25 +64,28 @@ export function App() {
         <Route path="/web_design" element={<WebDesign />} />
         <Route path="/3D_design" element={<Design3D />} />
 
-        {/* Pages of user */}
+        {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user" element={<UserPage />}>
-          <Route path="/user/general_setting" element={<GeneralSetting />} />
-          <Route
-            path="presentation_setting"
-            element={<PresentationSetting />}
-          />
-          <Route path="project_setting" element={<ProjectSettings />} />
-          <Route path="privacy_setting" element={<PrivacySetting />} />
-        </Route>
+        {/* <Route path="/user/general_setting" element={<GeneralSetting />} /> */}
+        <Route path="/user/general_setting?/:id" element={<GeneralSetting />} />
+
+        <Route
+          path="/user/presentation_setting"
+          element={<ExperienceSetting />}
+        />
+        <Route path="/user/project_setting" element={<ProjectSetting />} />
 
         {/* Admin page */}
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/user_setting" element={<UserPage />} />
+        <Route path="/user_setting/:id" element={<UserPage />} />
+        <Route path="/company_setting/:id" element={<CompanyPage />} />
         {/* <Route path="/user_setting/:id" element={<UserPage />} /> */}
 
         {/* Pop up Cards */}
         <Route path="/pop_up" element={<ProfessionalSection />} />
+
+        {/* Footer */}
+        <Route path="/privacy_policy" element={<PrivacyPolicy />} />
       </Routes>
     </Container>
   );

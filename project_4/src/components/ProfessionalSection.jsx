@@ -3,11 +3,11 @@
 // import { RightArrow } from "./RightArrow";
 import { ProfessionalCard } from "./ProfessionalCard";
 
-export function ProfessionalSection() {
+export function ProfessionalSection({ professional, onClose }) {
   return (
     <div>
       {/* <LeftArrow /> */}
-      <ProfessionalCard />
+      <ProfessionalCard professional={professional} onClose={onClose} />
       {/* <RightArrow /> */}
     </div>
   );

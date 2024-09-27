@@ -15,11 +15,12 @@ import unityIcon from "./assets/unity-69.svg";
 
 export const DATA = [
   {
-    id: 1,
+    id: true,
     username: "Giuseppe",
     password: "L0Ndra",
     email: "esempio@gmail.com",
     isPro: 1,
+    isAdmin: 1,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
@@ -91,7 +92,7 @@ export const DATA = [
       firstName: "Kevin",
       surName: "Bacher",
       annoNasctita: 1999,
-      luogoNascita: "Londra",
+      sedeLegale: "Londra",
     },
     reviews: 4.5,
     comments: ["good", "Very good", "Molto premuroso"],
@@ -101,7 +102,8 @@ export const DATA = [
     username: "Paolo",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Back-end"],
     image:
       "https://th.bing.com/th/id/OIP.UEmMR4OfczDvWIUratzGkQHaFD?pid=ImgDet&rs=1",
@@ -163,7 +165,7 @@ export const DATA = [
       firstName: "Kevin",
       surName: "Bacher",
       annoNasctita: 2000,
-      luogoNascita: "Londra",
+      sedeLegale: "Londra",
     },
     reviews: 4.5,
     comments: ["good", "Very good", "Molto premuroso"],
@@ -173,7 +175,8 @@ export const DATA = [
     username: "Luca",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.b1dca103a08fb09ab6093c1843206e62?rik=poC1LUfrAnasRg&riu=http%3a%2f%2fthesaturnherald.com%2fwp-content%2fuploads%2f2019%2f08%2fThe-Beatles.png&ehk=fRCOKcIZLuTKJTDe5UT%2fU0FlIEhc5Cv3L6jFWg5Rwmk%3d&risl=&pid=ImgRaw&r=0",
@@ -272,7 +275,8 @@ export const DATA = [
     username: "Francesco",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/OIP.o2UpCnJR1l2GyvdN3wBcqwHaJL?pid=ImgDet&rs=1",
@@ -363,7 +367,7 @@ export const DATA = [
       firstName: "Kevin",
       surName: "Bacher",
       annoNascita: 1984,
-      luogoNascita: "Londra",
+      sedeLegale: "Londra",
     },
     reviews: 4.5,
     comments: ["good", "Very good", "Molto premuroso"],
@@ -373,7 +377,8 @@ export const DATA = [
     username: "Fabrizio",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.ddf77b58ca5a464ab8beb0576111a2a1?rik=pQSCB0LH8fslzA&pid=ImgRaw&r=0",
@@ -471,11 +476,12 @@ export const DATA = [
   },
   {
     id: 6,
-    username: "Emanuele",
-    password: "L0Ndra",
-    email: "esempio@gmail.com",
-    isPro: 1,
-    job: ["Full-stack", "Front-end", "Back-end"],
+    username: "Azienda 1",
+    password: "azienda_1",
+    email: "recruiting@azienda1.com",
+    isPro: false,
+    isAdmin: 0,
+    job: ["Graphic 3D", "Web Development", "Customer Support"],
     image:
       "https://www.gazabhindi.com/wp-content/uploads/2018/05/%E0%A4%95%E0%A4%82%E0%A4%AA%E0%A5%8D%E0%A4%AF%E0%A5%82%E0%A4%9F%E0%A4%B0.png",
     description:
@@ -532,7 +538,7 @@ export const DATA = [
       "Experience 6",
       "Experience 7",
     ],
-    price: { max: 25050, min: 250 },
+    price: { max: 2000, min: 1200 },
     luogo: "Roma",
     transfer: "si",
     contact: [
@@ -562,20 +568,20 @@ export const DATA = [
       },
     ],
     general: {
-      firstName: "Kevin",
-      surName: "Bacher",
+      pIVA: 12345678901,
       annoNascita: 1984,
-      luogoNascita: "Londra",
+      sedeLegale: "Londra",
     },
     reviews: 4.5,
-    comments: ["good", "Very good", "Molto premuroso"],
+    comments: ["Good", "Very good", "Ben strutturata"],
   },
   {
     id: 7,
     username: "Simone",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.a5723d93d4ac34f1a415fabd37b0ea61?rik=VtrekwI2noLTUA&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f1%2fDas-Keyboard-Professional-PNG.png&ehk=E7qV2x5dcZ%2f%2baJbMCCQkADCLW1MBNMRqDWwqjJSISDY%3d&risl=&pid=ImgRaw&r=0",
@@ -676,7 +682,8 @@ export const DATA = [
     username: "Domenico",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
@@ -777,7 +784,8 @@ export const DATA = [
     username: "Pierdavide",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/OIP.UEmMR4OfczDvWIUratzGkQHaFD?pid=ImgDet&rs=1",
@@ -878,7 +886,8 @@ export const DATA = [
     username: "Lucia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: false,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.b1dca103a08fb09ab6093c1843206e62?rik=poC1LUfrAnasRg&riu=http%3a%2f%2fthesaturnherald.com%2fwp-content%2fuploads%2f2019%2f08%2fThe-Beatles.png&ehk=fRCOKcIZLuTKJTDe5UT%2fU0FlIEhc5Cv3L6jFWg5Rwmk%3d&risl=&pid=ImgRaw&r=0",
@@ -979,7 +988,8 @@ export const DATA = [
     username: "Elena",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/OIP.o2UpCnJR1l2GyvdN3wBcqwHaJL?pid=ImgDet&rs=1",
@@ -1080,7 +1090,8 @@ export const DATA = [
     username: "Giorgia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.ddf77b58ca5a464ab8beb0576111a2a1?rik=pQSCB0LH8fslzA&pid=ImgRaw&r=0",
@@ -1181,7 +1192,8 @@ export const DATA = [
     username: "Sara",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://www.gazabhindi.com/wp-content/uploads/2018/05/%E0%A4%95%E0%A4%82%E0%A4%AA%E0%A5%8D%E0%A4%AF%E0%A5%82%E0%A4%9F%E0%A4%B0.png",
@@ -1282,7 +1294,8 @@ export const DATA = [
     username: "Lorenzo",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.a5723d93d4ac34f1a415fabd37b0ea61?rik=VtrekwI2noLTUA&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f1%2fDas-Keyboard-Professional-PNG.png&ehk=E7qV2x5dcZ%2f%2baJbMCCQkADCLW1MBNMRqDWwqjJSISDY%3d&risl=&pid=ImgRaw&r=0",
@@ -1383,7 +1396,8 @@ export const DATA = [
     username: "Giulia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
@@ -1484,7 +1498,8 @@ export const DATA = [
     username: "Bernard",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/OIP.UEmMR4OfczDvWIUratzGkQHaFD?pid=ImgDet&rs=1",
@@ -1585,7 +1600,8 @@ export const DATA = [
     username: "Alessia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.b1dca103a08fb09ab6093c1843206e62?rik=poC1LUfrAnasRg&riu=http%3a%2f%2fthesaturnherald.com%2fwp-content%2fuploads%2f2019%2f08%2fThe-Beatles.png&ehk=fRCOKcIZLuTKJTDe5UT%2fU0FlIEhc5Cv3L6jFWg5Rwmk%3d&risl=&pid=ImgRaw&r=0",
@@ -1686,7 +1702,8 @@ export const DATA = [
     username: "Mauro",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/OIP.o2UpCnJR1l2GyvdN3wBcqwHaJL?pid=ImgDet&rs=1",
@@ -1787,7 +1804,8 @@ export const DATA = [
     username: "Giuliano",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.ddf77b58ca5a464ab8beb0576111a2a1?rik=pQSCB0LH8fslzA&pid=ImgRaw&r=0",
@@ -1888,7 +1906,8 @@ export const DATA = [
     username: "Miriam",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
+    isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://www.gazabhindi.com/wp-content/uploads/2018/05/%E0%A4%95%E0%A4%82%E0%A4%AA%E0%A5%8D%E0%A4%AF%E0%A5%82%E0%A4%9F%E0%A4%B0.png",
