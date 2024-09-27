@@ -15,7 +15,7 @@ import unityIcon from "./assets/unity-69.svg";
 
 export const DATA = [
   {
-    id: 1,
+    id: true,
     username: "Giuseppe",
     password: "L0Ndra",
     email: "esempio@gmail.com",
@@ -102,7 +102,7 @@ export const DATA = [
     username: "Paolo",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Back-end"],
     image:
@@ -175,7 +175,7 @@ export const DATA = [
     username: "Luca",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -275,7 +275,7 @@ export const DATA = [
     username: "Francesco",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -377,7 +377,7 @@ export const DATA = [
     username: "Fabrizio",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -479,7 +479,7 @@ export const DATA = [
     username: "Azienda 1",
     password: "azienda_1",
     email: "recruiting@azienda1.com",
-    isPro: 0,
+    isPro: false,
     isAdmin: 0,
     job: ["Graphic 3D", "Web Development", "Customer Support"],
     image:
@@ -580,7 +580,7 @@ export const DATA = [
     username: "Simone",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -682,7 +682,7 @@ export const DATA = [
     username: "Domenico",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -784,7 +784,7 @@ export const DATA = [
     username: "Pierdavide",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -886,8 +886,8 @@ export const DATA = [
     username: "Lucia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
-    isAdmin: 0,
+    isPro: true,
+    isAdmin: false,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
       "https://th.bing.com/th/id/R.b1dca103a08fb09ab6093c1843206e62?rik=poC1LUfrAnasRg&riu=http%3a%2f%2fthesaturnherald.com%2fwp-content%2fuploads%2f2019%2f08%2fThe-Beatles.png&ehk=fRCOKcIZLuTKJTDe5UT%2fU0FlIEhc5Cv3L6jFWg5Rwmk%3d&risl=&pid=ImgRaw&r=0",
@@ -988,7 +988,7 @@ export const DATA = [
     username: "Elena",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1090,7 +1090,7 @@ export const DATA = [
     username: "Giorgia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1192,7 +1192,7 @@ export const DATA = [
     username: "Sara",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1294,7 +1294,7 @@ export const DATA = [
     username: "Lorenzo",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1396,7 +1396,7 @@ export const DATA = [
     username: "Giulia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1498,7 +1498,7 @@ export const DATA = [
     username: "Bernard",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1600,7 +1600,7 @@ export const DATA = [
     username: "Alessia",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1702,7 +1702,7 @@ export const DATA = [
     username: "Mauro",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1804,7 +1804,7 @@ export const DATA = [
     username: "Giuliano",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
@@ -1906,7 +1906,7 @@ export const DATA = [
     username: "Miriam",
     password: "L0Ndra",
     email: "esempio@gmail.com",
-    isPro: 1,
+    isPro: true,
     isAdmin: 0,
     job: ["Full-stack", "Front-end", "Back-end"],
     image:
