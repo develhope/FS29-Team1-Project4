@@ -1,6 +1,6 @@
 import style from "../styles/UserPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
@@ -11,8 +11,11 @@ const users = DATA;
 
 export function CompanyPage() {
   // Da usare nel momento in cui avremo un database
-  //   const { id } = useParams();
+  const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
+
+  // Costante per navigare
+  const navigate = useNavigate();
 
   // Controllo stato per i toggle
   // Cambio elementi
@@ -64,6 +67,11 @@ export function CompanyPage() {
     setUserDescription(inputDescription);
   }
 
+  // Navigazione con passaggio di ID
+  function handleNavigate() {
+    console.log(user.id);
+    navigate(`/user/general_setting/${user.id}`);
+  }
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -114,9 +122,9 @@ export function CompanyPage() {
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
           <div className={style.aside_sticky}>
-            <Link to="/user/general_setting" className={style.link}>
+            <button onClick={handleNavigate} className={style.link}>
               General Setting
-            </Link>
+            </button>
             {/* Presentation sono i dati anagrafaci */}
             <Link to="/user/presentation_setting" className={style.link}>
               Experience Setting

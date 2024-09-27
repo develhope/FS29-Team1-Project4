@@ -1,20 +1,27 @@
 import style from "../styles/UserPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
+
 // Database fittizio
 const users = DATA;
 
 export function UserPage() {
   // Da usare nel momento in cui avremo un database
-  //   const { id } = useParams();
+  const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
-  // Controllo stato per i toggle
+  // Recupero lo user usando il context
+  // const user = useContext(UserContext);
+
+  // Costante per navigare
+  const navigate = useNavigate();
+
   // Cambio elementi
+  // Controllo stato per i toggle
   const [toggle, onToggle] = useShowToggle();
   const [toggleUsername, onToggleUsername] = useShowToggle();
   const [toggleDescription, onToggleDescription] = useShowToggle();
@@ -27,7 +34,6 @@ export function UserPage() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const id = "5";
   const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare l'immagine
@@ -64,6 +70,12 @@ export function UserPage() {
     setUserDescription(inputDescription);
   }
 
+  // Navigazione con passaggio di ID
+  function handleNavigate() {
+    console.log(user.id);
+
+    // navigate(`/user/general_setting/${user.id}`);
+  }
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -117,12 +129,9 @@ export function UserPage() {
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
           <div className={style.aside_sticky}>
-            <Link
-              to={`/user/general_setting/${user.id}`}
-              className={style.link}
-            >
+            <button onClick={handleNavigate} className={style.link}>
               General Setting
-            </Link>
+            </button>
             {/* Presentation sono i dati anagrafaci */}
             <Link to="/user/presentation_setting" className={style.link}>
               Experience Setting

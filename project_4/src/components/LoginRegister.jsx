@@ -1,13 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterPage } from "../pages/RegisterPage";
 import { useShowToggle } from "../hooks/useShowToggle";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import NavLogin from "../styles/LoginRegister.module.css";
+import { DATA } from "../database";
+
+const users = DATA;
+// const UserContext = createContext(null);
 
 export function LoginRegister({ toggle }) {
   // const [login, onLogin] = useShowToggle(toggle);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [user, setUser] = useState({});
+
   /* Gestione del click fuori dal form */
   const [isFormOpen, setIsFormOpen] = useState(false);
   const openForm = () => setIsFormOpen(true);
@@ -24,9 +30,17 @@ export function LoginRegister({ toggle }) {
   }
 
   function handleGoSettingPage() {
-    /*user= users.find((user)=> user.username && user.password)*/
-    navigate("/company_setting");
-    // navigate(`/user_setting/${user.id}`)
+    const user = users.find(
+      (user) =>
+        user.username.toUpperCase() === username.toUpperCase() &&
+        user.password === password
+    );
+
+    // setUser(u);
+
+    user.isPro === 1
+      ? navigate(`/user_setting/${user.id}`)
+      : navigate(`/company_setting/${user.id}`);
   }
 
   function handleClikLink() {
@@ -66,12 +80,15 @@ export function LoginRegister({ toggle }) {
               />
             </div>
             <div className={NavLogin.links}>
+              {/* <UserContext.Provider value={user}> */}
               <button
+                type="button"
                 onClick={handleGoSettingPage}
                 className={NavLogin.link_button}
               >
                 Login
               </button>
+              {/* </UserContext.Provider> */}
               <span>|</span>
               <button className={NavLogin.link_button} onClick={handleClikLink}>
                 Register

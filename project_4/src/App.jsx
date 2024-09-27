@@ -29,6 +29,7 @@ export function App() {
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <Container
       navbar={
@@ -64,9 +65,9 @@ export function App() {
 
         {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/user/general_setting" element={<GeneralSetting />} />
-        <Route path="/user/general_setting/:id" element={<GeneralSetting />} />
+        {/* <Route path="/user/general_setting" element={<GeneralSetting />} /> */}
+        <Route path="/user/general_setting?/:id" element={<GeneralSetting />} />
+
         <Route
           path="/user/presentation_setting"
           element={<ExperienceSetting />}
@@ -75,8 +76,8 @@ export function App() {
 
         {/* Admin page */}
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/user_setting" element={<UserPage />} />
-        <Route path="/company_setting" element={<CompanyPage />} />
+        <Route path="/user_setting/:id" element={<UserPage />} />
+        <Route path="/company_setting/:id" element={<CompanyPage />} />
         {/* <Route path="/user_setting/:id" element={<UserPage />} /> */}
 
         {/* Pop up Cards */}
