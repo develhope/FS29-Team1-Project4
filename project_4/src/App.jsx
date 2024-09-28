@@ -5,24 +5,19 @@ import { Container } from "./Container";
 import { Home } from "./pages/Home";
 import { SearchPage } from "./pages/SearchPage";
 import { RegisterPage } from "./pages/RegisterPage";
-import { CategoryPage } from "./pages/CategoryPage";
-import { WebDeveloper } from "./pages/WebDeveloper";
-import { WebDesign } from "./pages/WebDesign";
-import { Design3D } from "./pages/Design3D";
 import { UserPage } from "./pages/UserPage";
 import { AdminPage } from "./pages/AdminPage";
 import { GeneralSetting } from "./pages/GeneralSetting";
 import { ExperienceSetting } from "./pages/ExperienceSetting";
 import { ProjectSetting } from "./pages/ProjectSetting";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useRef } from "react";
-
 import { ProfessionalSection } from "./components/ProfessionalSection";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { CompanyPage } from "./pages/CompanyPage";
 import { PermissionUser } from "./pages/PermissionPage";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useRef } from "react";
 
 export function App() {
   const serviceRef = useRef(null);
@@ -60,10 +55,6 @@ export function App() {
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/all_category" element={<CategoryPage />} />
-        <Route path="/web_developer" element={<WebDeveloper />} />
-        <Route path="/web_design" element={<WebDesign />} />
-        <Route path="/3D_design" element={<Design3D />} />
 
         {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
