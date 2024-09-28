@@ -6,13 +6,7 @@ export function Search() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  function handleSearch(e) {
-    e.stopPropagation();
-    setSearch(e.target.value);
-  }
-
-  function handlePlaySearch() {
-    e.stopPropagation();
+  function handlePlaySearch(e) {
     navigate("/search");
   }
   // cambiare il navigate, e capire come.
@@ -33,9 +27,9 @@ export function Search() {
         type="text"
         placeholder="Search Your Professional IT..."
         value={search}
-        onClick={handleSearch}
+        onChange={(e) => setSearch(e.target.value)}
       />
-      <button onClick={handlePlaySearch}>
+      <button type="button" onClick={handlePlaySearch}>
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
     </form>
