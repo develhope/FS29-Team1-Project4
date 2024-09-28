@@ -22,6 +22,7 @@ import { useRef } from "react";
 import { ProfessionalSection } from "./components/ProfessionalSection";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { CompanyPage } from "./pages/CompanyPage";
+import { PermissionUser } from "./pages/PermissionPage";
 
 export function App() {
   const serviceRef = useRef(null);
@@ -72,6 +73,7 @@ export function App() {
           element={<ExperienceSetting />}
         />
         <Route path="/user/project_setting/:id" element={<ProjectSetting />} />
+        <Route path="/user/permission_user/:id" element={<PermissionUser />} />
 
         {/* Admin/User/Company Page setting*/}
         <Route path="/admin/:id" element={<AdminPage />} />
