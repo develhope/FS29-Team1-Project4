@@ -1,0 +1,14 @@
+.mimmo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: var(--colore-nero);
+    box-shadow: var(--box-bluOpaco);
+    color: var(--colore-bluChiaro);
+    border: 1px solid var(--colore-bluChiaro);
+    img{
+        width: 70%;
+    }
+}

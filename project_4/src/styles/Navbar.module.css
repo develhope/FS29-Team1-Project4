@@ -6,12 +6,12 @@
   width: 100%;
   padding: 1rem;
   font-size: 3rem;
-  background-color: var(--colore-bianco);
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.223);
+  background-color: var(--colore-nero);
+  box-shadow: var(--box-blu);
   border-bottom: 1px solid var(--colore-nero);
 }
 
-.container{
+.container {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -27,72 +27,88 @@
     display: flex;
     justify-content: space-evenly;
   }
-  
-  h6{
+
+  h6 {
     font-size: 1.5rem;
-    color: var(--colore-blu);
+    color: var(--colore-bluChiaro);
     font-weight: bold;
   }
-
 }
 
-.form{
+.form {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 50%;
   height: 50px;
-
-  select{
-    height: 100%;
-    width: 20%;
-    border-radius: 1rem 0 0 1rem;
-    text-align: left;
-    border: 1px solid var(--colore-nero);
-    border-right: none;
-    background-color: var(--colore-blu);
-    color: var(--colore-bianco);
-    font-size: 0.7rem;
-    text-wrap: wrap;
-  }
-  input{
+  input {
     height: 100%;
     width: 70%;
-    box-shadow: 0 5px 20px rgba(0,0,0,.05);
-    border: 1px solid var(--colore-nero);
-    border-left: none;
-    border-right: none;
+    max-width: 450px;
+    box-shadow: var(--box-bluOpaco);
+    border: 1px solid var(--colore-bluChiaro);
+    background-color: var(--colore-nero);
+    color: var(--colore-bluChiaro);
+    border-radius: 0.5rem;
   }
-  button{
+  /* Classi Fatte da Giuseppe per mostrare la ricerca filtrata */
+  /* Se vuoi modificale come preferisci */
+  .drop_search {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    max-height: 7rem;
+    line-height: 2;
+    box-shadow: 0 0 0.5rem var(--colore-nero);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    font-size: 1rem;
+    background-color: var(--colore-bianco);
+    position: absolute;
+    top: 85%;
+    left: 46.5%;
+    z-index: 90;
+  }
+  .drop_search_li {
+    /* width: 100%; */
+    padding: 0 0 0 0.5rem;
+    cursor: pointer;
+  }
+  .drop_search_li:hover {
+    border-radius: 0.3rem;
+    background-color: var(--colore-bluChiaro);
+  }
+  /*----------------------------*/
+  button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--colore-nero);
-    border-left: none;
-    height: 100%;
-    width: 5%;  
-    border-radius: 0 1rem 1rem 0;
-    background-color: var(--colore-blu);
-
+    width: 8%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: var(--colore-nero);
+    box-shadow: var(--box-bluOpaco);
+    color: var(--colore-bluChiaro);
+    border: 1px solid var(--colore-bluChiaro);
   }
-  svg{
+  svg {
     width: 1rem;
     height: 1rem;
   }
 }
 
 @media (max-width: 768px) {
-
   .form {
     display: none;
-    
   }
 
-  .container{
-    li{
+  .container {
+    li {
       display: none;
     }
   }
-
-
 }

@@ -58,7 +58,7 @@ export function Hero() {
     <div className={Style.wrapper}>
       {herodb.map((card, index) => (
         <div className={Style.Container} key={index}>
-          <input type="radio" name="slide" id={card.id} className={Style.input} />
+          <input type="radio" name="slide" id={card.id} className={Style.input} defaultChecked={index === 0} />
           <label htmlFor={card.id} className={Style.card}>
             <div className={Style.row}>
               {toggle[index] && <div className={Style.icon} /*onClick={handleClick} value={index}*/>{card.name}</div>}

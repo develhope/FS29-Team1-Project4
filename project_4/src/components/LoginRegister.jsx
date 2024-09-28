@@ -35,10 +35,18 @@ export function LoginRegister({ toggle }) {
         user.username.toUpperCase() === username.toUpperCase() &&
         user.password === password
     );
-
-    user.isPro
-      ? navigate(`/user_setting/${user.id}`)
-      : navigate(`/company_setting/${user.id}`);
+    if (user.isAdmin) {
+      navigate(`/admin/${user.id}`);
+    } else if (user.isPro) {
+      navigate(`/user_setting/${user.id}`);
+    } else {
+      navigate(`/company_setting/${user.id}`);
+    }
+    /*
+    user.isPro || user.isAdmin
+    ? navigate(`/user_setting/${user.id}`)
+    : navigate(`/company_setting/${user.id}`);
+    */
   }
 
   function handleClikLink() {
