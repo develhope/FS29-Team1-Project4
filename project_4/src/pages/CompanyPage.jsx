@@ -1,30 +1,24 @@
-import style from "../styles/UserPage.module.css";
+import style from "../styles/CompanyPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
 // Database fittizio
 const users = DATA;
 
-export function UserPage() {
-  // Da usare nel momento in cui avremo un database
+export function CompanyPage() {
   const { id } = useParams();
+  // Da usare nel momento in cui avremo un database
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
-  // Recupero lo user usando il context
-  // const user = useContext(UserContext);
 
   // Costante per navigare
   const navigate = useNavigate();
 
-  // Recupero User grazie a ID preso da useParams
-  const user = users.find((user) => user.id.toString() === id);
-
-  // Cambio elementi
   // Controllo stato per i toggle
+  // Cambio elementi
   const [toggle, onToggle] = useShowToggle();
   const [toggleUsername, onToggleUsername] = useShowToggle();
   const [toggleDescription, onToggleDescription] = useShowToggle();
@@ -33,12 +27,11 @@ export function UserPage() {
   const [toggleExperince, onToggleExperince] = useShowToggle();
   const [toggleComments, onToggleComments] = useShowToggle();
 
-  // Toggle per selezione programmi
-  const [toggleClickProgram, setToggleClickProgram] = useState(false);
-  const [selectedProgram, setSelectedProgram] = useState(null);
-
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
+
+  // Recupero User grazie alla proprietà isPro
+  const user = users.find((user) => !user.isPro);
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
@@ -47,12 +40,6 @@ export function UserPage() {
   // Costanti per cambiare la descrizione
   const [inputDescription, setInputDescription] = useState("");
   const [userDescription, setUserDescription] = useState(user.description);
-
-  // Handle Open CLick Programma scelto
-  const handleShowPopup = (item) => {
-    setSelectedProgram(item);
-    setToggleClickProgram((p) => !p);
-  };
 
   // Handle Username
   function handleChangeUsername(e) {
@@ -321,15 +308,7 @@ export function UserPage() {
               <div className={style.container_change}>
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleShowPopup(program)}
-                      className={
-                        toggleClickProgram
-                          ? style.li_change_click
-                          : style.li_change
-                      }
-                    >
+                    <li key={index} className={style.li_change}>
                       {program.name.toUpperCase()}
                       <img
                         src={program.icon}

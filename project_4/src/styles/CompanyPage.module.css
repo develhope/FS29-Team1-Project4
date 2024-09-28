@@ -99,7 +99,6 @@
   position: sticky;
   top: 6rem;
 }
-
 .link {
   border-radius: 0.5rem;
   padding: 1rem 0.5rem;
@@ -236,19 +235,6 @@ input[type="file"] {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
-  cursor: pointer;
-}
-.li_change_click {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 20%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  box-shadow: 0 0 0.5rem var(--colore-nero);
-  cursor: pointer;
 }
 .p_change {
   padding: 0.5em;
