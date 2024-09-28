@@ -67,9 +67,10 @@
   input {
     height: 100%;
     width: 70%;
+    max-width: 450px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--colore-nero);
-    border-left: none;
+    border-radius: 0.5rem;
     border-right: none;
   }
   /* Classi Fatte da Giuseppe per mostrare la ricerca filtrata */
@@ -77,8 +78,11 @@
   .drop_search {
     border-radius: 0.5rem;
     padding: 0.5rem;
-    width: 29.5%;
-    height: 7rem;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    max-height: 7rem;
+    line-height: 2;
     box-shadow: 0 0 0.5rem var(--colore-nero);
     display: flex;
     flex-direction: column;
@@ -87,10 +91,12 @@
     font-size: 1rem;
     background-color: var(--colore-bianco);
     position: absolute;
-    top: 4.3rem;
-    left: 49.3vw;
+    top: 85%;
+    left: 46.5%;
+    z-index: 90;
   }
   .drop_search_li {
+    /* width: 100%; */
     padding: 0 0 0 0.5rem;
     cursor: pointer;
   }

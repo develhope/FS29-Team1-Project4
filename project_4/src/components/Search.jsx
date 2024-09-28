@@ -25,15 +25,9 @@ export function Search() {
   }
   return (
     <form className={nav_container.form}>
-      <select name="Category" id="Category" onChange={handleChoice}>
-        <option value="all_category">All Categories</option>
-        <option value="web_developer">Web Devoloper</option>
-        <option value="web_design">Web Design</option>
-        <option value="3D_design">3D Design</option>
-      </select>
       <input
         type="text"
-        placeholder="Search Your Professional IT..."
+        placeholder="Search Your Professionist By Username..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
