@@ -17,7 +17,7 @@ export const DATA = [
   {
     id: 1,
     username: "Giuseppe",
-    password: "L0Ndra",
+    password: "peppe",
     email: "esempio@gmail.com",
     isPro: true,
     isAdmin: true,
@@ -91,8 +91,8 @@ export const DATA = [
     general: {
       firstName: "Kevin",
       surName: "Bacher",
-      annoNasctita: 1999,
-      sedeLegale: "Londra",
+      annoNascita: 1999,
+      luogoNascita: "Londra",
     },
     reviews: 4.5,
     comments: ["good", "Very good", "Molto premuroso"],
@@ -164,7 +164,7 @@ export const DATA = [
     general: {
       firstName: "Kevin",
       surName: "Bacher",
-      annoNasctita: 2000,
+      annoNascita: 2000,
       sedeLegale: "Londra",
     },
     reviews: 4.5,
@@ -264,7 +264,7 @@ export const DATA = [
     general: {
       firstName: "Kevin",
       surName: "Bacher",
-      annoNasctita: 2000,
+      annoNascita: 2000,
       luogoNascita: "Londra",
     },
     reviews: 4.5,

@@ -92,7 +92,7 @@ export function ExperienceSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
