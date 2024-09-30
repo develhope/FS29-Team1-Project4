@@ -5,7 +5,7 @@ export function Logo() {
   return (
     <div className={nav_container.logo}>
       <Link to="/">
-        <img src={"../src/assets/logo-project4.png"} />
+        <img src={"../src/assets/testLogo.svg"} />
       </Link>
     </div>
   );

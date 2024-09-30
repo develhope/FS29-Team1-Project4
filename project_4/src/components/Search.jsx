@@ -10,9 +10,7 @@ export function Search() {
   const navigate = useNavigate();
 
   // Filter users
-  const usersFiltered = users.filter((user) =>
-    user.username.toUpperCase().includes(search.toUpperCase())
-  );
+  const usersFiltered = users.filter((user) => user.username.toUpperCase().includes(search.toUpperCase()));
 
   // Navigate whit name
   function handlePlaySearch(e) {
@@ -25,12 +23,7 @@ export function Search() {
   }
   return (
     <form className={nav_container.form}>
-      <input
-        type="text"
-        placeholder="Search Your Professionist By Username..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <input type="text" placeholder="Search Your Professionist By Username..." value={search} onChange={(e) => setSearch(e.target.value)} />
       <button type="button" onClick={handlePlaySearch}>
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>

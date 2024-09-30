@@ -14,6 +14,8 @@ import { ProfessionalSection } from "./components/ProfessionalSection";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { CompanyPage } from "./pages/CompanyPage";
 import { PermissionUser } from "./pages/PermissionPage";
+import sfondo from "./assets/Sfondo.jpeg";
+import "./styles/global.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,17 +43,13 @@ export function App() {
       }
       footer={<Footer />}
     >
+      <div className="body">
+        <img src={sfondo} />
+      </div>
+
       <Routes>
         {/* Home */}
-        <Route
-          path="/"
-          element={
-            <Home
-              serviceSectionRef={serviceRef}
-              professionITSectionRef={professionITSectionRef}
-            />
-          }
-        />
+        <Route path="/" element={<Home serviceSectionRef={serviceRef} professionITSectionRef={professionITSectionRef} />} />
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
@@ -59,10 +57,7 @@ export function App() {
         {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user/general_setting/:id" element={<GeneralSetting />} />
-        <Route
-          path="/user/presentation_setting/:id"
-          element={<ExperienceSetting />}
-        />
+        <Route path="/user/presentation_setting/:id" element={<ExperienceSetting />} />
         <Route path="/user/project_setting/:id" element={<ProjectSetting />} />
         <Route path="/user/permission_user/:id" element={<PermissionUser />} />
 

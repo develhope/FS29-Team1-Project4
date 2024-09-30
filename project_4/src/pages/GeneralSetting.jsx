@@ -63,9 +63,13 @@ export function GeneralSetting() {
   // Navigazione con passagio id
   // User setting
   function handleNavigateUser() {
-    user.isPro
-      ? navigate(`/user_setting/${user.id}`)
-      : navigate(`/company_setting/${user.id}`);
+    if (user.isAdmin) {
+      navigate(`/admin/${user.id}`);
+    } else if (user.isPro) {
+      navigate(`/user_setting/${user.id}`);
+    } else {
+      navigate(`/company_setting/${user.id}`);
+    }
   }
   // Project setting
   function handleNavigateProject() {
@@ -98,7 +102,7 @@ export function GeneralSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -143,7 +147,12 @@ export function GeneralSetting() {
 
           {/* Nome scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>Partita IVA: {general.pIVA}</p>
+            {user.isPro ? (
+              <p className={style.p_accept}>Firstname: {general.firstName}</p>
+            ) : (
+              <p className={style.p_accept}>Partita IVA: {general.pIVA}</p>
+            )}
+
             <img
               src={iconModify}
               alt="Modify Icon"
@@ -157,9 +166,9 @@ export function GeneralSetting() {
                 <input
                   type="text"
                   // onChange={handleChangeInputDescription}
-                  placeholder={general.pIVA}
+                  placeholder={user.isPro ? general.firstName : general.pIVA}
                   className={style.input}
-                ></input>
+                />
                 <button
                   // onClick={handleChangeUsername}
                   className={style.buttonSave}
@@ -231,7 +240,10 @@ export function GeneralSetting() {
           </div>
           {/* Luogo di Nascita Scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>You are from {general.sedeLegale}</p>
+            <p className={style.p_accept}>
+              You are from{" "}
+              {user.isPro ? general.luogoNascita : general.sedeLegale}
+            </p>
             <img
               src={iconModify}
               alt="Modify Icon"

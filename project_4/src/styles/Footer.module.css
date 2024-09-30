@@ -1,6 +1,6 @@
 .footer{
   width: 100%;
-  box-shadow: 0 5px 20px rgba(0,0,0,.8);
+  box-shadow: var(--box-blu);
   background-color: var(--colore-nero);
 }
 
@@ -10,28 +10,28 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 .links{
+  margin-top: 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   a{
-    color: var(--colore-bianco);
+    color: var(--colore-bluChiaro);
   }
   img{
     height: auto;
-    width: 4rem;
+    width: 5rem;
   };
 }
 
 .copy{
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
   p{
-    color: var(--colore-bianco);
+    color: var(--colore-bluChiaro);
   }
 }

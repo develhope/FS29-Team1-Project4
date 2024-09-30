@@ -4,7 +4,6 @@ import { CategorieProIT } from "./CategorieProIT";
 import { Search } from "./Search";
 import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
-import { useShowToggle } from "../hooks/useShowToggle";
 
 export function Navbar({ serviceSrollFunction, professionScrollFunction }) {
   return (
@@ -12,10 +11,7 @@ export function Navbar({ serviceSrollFunction, professionScrollFunction }) {
       <div className={nav_container.container}>
         <Logo />
         <CategorieProIT category="Services IT" onClick={serviceSrollFunction} />
-        <CategorieProIT
-          category="Profession IT"
-          onClick={professionScrollFunction}
-        />
+        <CategorieProIT category="Profession IT" onClick={professionScrollFunction} />
 
         <Search />
         <ChangeLanguage />

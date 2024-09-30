@@ -57,9 +57,13 @@ export function ExperienceSetting() {
   // Navigazione con passagio id
   // User setting
   function handleNavigateUser() {
-    user.isPro
-      ? navigate(`/user_setting/${user.id}`)
-      : navigate(`/company_setting/${user.id}`);
+    if (user.isAdmin) {
+      navigate(`/admin/${user.id}`);
+    } else if (user.isPro) {
+      navigate(`/user_setting/${user.id}`);
+    } else {
+      navigate(`/company_setting/${user.id}`);
+    }
   }
   // Project setting
   function handleNavigateProject() {
@@ -92,7 +96,7 @@ export function ExperienceSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}

@@ -2,7 +2,7 @@ import style from "../styles/AdminPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
@@ -54,6 +54,14 @@ export function AdminPage() {
     setToggleClickProgram((p) => !p);
   };
 
+  // load file
+  const fileInputRef = useRef(null);
+
+  const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
   // Handle Username
   function handleChangeUsername(e) {
     e.preventDefault();
@@ -94,7 +102,7 @@ export function AdminPage() {
   }
   // Permission user
   function handleNavigatePermission() {
-    navigate(`/user/presentation_setting/${user.id}`);
+    navigate(`/user/permission_user/${user.id}`);
   }
 
   return (
@@ -120,7 +128,7 @@ export function AdminPage() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -251,8 +259,17 @@ export function AdminPage() {
                     </>
                   );
                 */}
-                <button className={style.buttonSave}>Load file</button>
-                <input type="file" />
+                {/* <button className={style.buttonSave}>Load file</button>
+                <input type="file" /> */}
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={handleClick}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow"
+                  >
+                    Load file
+                  </button>
+                  <input type="file" ref={fileInputRef} className="hidden" />
+                </div>
 
                 <input
                   type="text"
@@ -311,7 +328,9 @@ export function AdminPage() {
               <ul className={style.ul_program}>
                 {user.program.map((program, index) => (
                   <li key={index} className={style.li}>
-                    {program.name.toUpperCase()}
+                    <p className={style.p_change}>
+                      {program.name.toUpperCase()}
+                    </p>
                     <img
                       src={program.icon}
                       alt={`Icona ${program.name}`}
@@ -343,7 +362,9 @@ export function AdminPage() {
                           : style.li_change
                       }
                     >
-                      {program.name.toUpperCase()}
+                      <p className={style.p_change}>
+                        {program.name.toUpperCase()}
+                      </p>
                       <img
                         src={program.icon}
                         alt={`Icona ${program.name}`}
@@ -369,7 +390,9 @@ export function AdminPage() {
                 {/* Map progetti accettati */}
                 {user.project.map((project, index) => (
                   <li key={index} className={style.li_change}>
-                    <p>{project.name.toUpperCase()}</p>
+                    <p className={style.p_change}>
+                      {project.name.toUpperCase()}
+                    </p>
                     <img
                       src={project.image}
                       alt=""
@@ -394,7 +417,9 @@ export function AdminPage() {
                 <ul className={style.ul_change}>
                   {user.project.map((project, index) => (
                     <li key={index} className={style.li_change}>
-                      <p>{project.name.toUpperCase()}</p>
+                      <p className={style.p_change}>
+                        {project.name.toUpperCase()}
+                      </p>
                       <img
                         src={project.image}
                         alt=""
@@ -438,7 +463,7 @@ export function AdminPage() {
                 <ul className={style.ul_change}>
                   {user.someExperience.map((experience, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_change}>{experience}</p>
+                      <p className={style.p_accept}>{experience}</p>
                     </li>
                   ))}
                 </ul>
@@ -466,7 +491,7 @@ export function AdminPage() {
                 <ul className={style.ul_change}>
                   {user.comments.map((comment, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_change}>{comment}</p>
+                      <p className={style.p_accept}>{comment}</p>
                     </li>
                   ))}
                 </ul>
