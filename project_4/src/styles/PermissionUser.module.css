@@ -12,7 +12,7 @@
 .container_noTitle {
   width: 100%;
   height: auto;
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: 0.5rem;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
@@ -101,7 +101,6 @@
   position: sticky;
   top: 6.5rem;
 }
-
 .link {
   border-radius: 0.5rem;
   padding: 1rem 0.5rem;
@@ -139,7 +138,40 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 90%;
+  width: 100%;
+}
+.table {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.p_table {
+  border-radius: 0.5rem;
+  padding: 0.5em;
+  width: 30%;
+  height: 5rem;
+  text-align: center;
+  font-size: 100%;
+  color: var(--colore-bluChiaro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--colore-nero); */
+  box-shadow: var(--box-bluOpaco);
+  text-transform: uppercase;
+}
+.circle_green {
+  border-radius: 50%;
+  width: 10%;
+  aspect-ratio: 1/1;
+  background-color: green;
+}
+
+.circle_red {
+  border-radius: 50%;
+  width: 10%;
+  aspect-ratio: 1/1;
+  background-color: red;
 }
 .icon_change {
   position: relative;
@@ -161,7 +193,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--colore-nero); */
+  background-color: var(--colore-nero);
 }
 
 .container_change {
@@ -176,16 +208,6 @@
   gap: 1rem;
   width: 90%;
   position: relative;
-}
-.input {
-  padding: 0.2rem 0.3rem;
-  border-radius: 0.5rem;
-  border: none;
-  color: var(--colore-bluChiaro);
-  box-shadow: var(--box-bluOpaco);
-  background-color: var(--colore-nero);
-  text-align: center;
-  width: 20rem;
 }
 .buttonSave {
   border-radius: 0.5rem;
@@ -203,6 +225,25 @@
 .icon_change {
   width: 1.5rem;
   margin: 0 0 0.5rem 0;
+}
+.img {
+  width: 18rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0.5rem var(--colore-nero);
+}
+input[type="file"] {
+  display: none;
+}
+
+.input {
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: var(--colore-bluChiaro);
+  box-shadow: var(--box-bluOpaco);
+  background-color: var(--colore-nero);
+  text-align: center;
+  width: 20rem;
 }
 
 /* Media Query */
@@ -231,6 +272,9 @@
 @media screen and (max-width: 426px) {
   .hamburger_content {
     width: 93vw;
+  }
+  .p_table {
+    font-size: 60%;
   }
 }
 @media screen and (max-width: 376px) {

@@ -31,6 +31,10 @@ export function LoginRegister({ toggle }) {
 
   function handleGoSettingPage() {
     const user = users.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
+
+    // Salvo lo User trovato nel localstorage
+    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+
     if (user.isAdmin) {
       navigate(`/admin/${user.id}`);
     } else if (user.isPro) {

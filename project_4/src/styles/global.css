@@ -21,8 +21,6 @@
   --box-card: 0 0.3rem 0.3rem rgba(0, 200, 255, 0.812);
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -79,12 +77,12 @@ button {
 .db {
   display: block;
 }
-.box_shadow{
+.box_shadow {
   box-shadow: var(--box-blu);
 }
 
 /* sfondo BG */
-.body{
+.body {
   position: fixed;
   top: 0;
   left: 0;
@@ -92,8 +90,8 @@ button {
   width: 100%;
   height: 100%;
 }
-.body:before{
-  content: '';
+.body:before {
+  content: "";
   position: absolute;
   background: var(--colore-nero);
   opacity: 0.8;

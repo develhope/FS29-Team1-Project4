@@ -102,7 +102,7 @@ export function CompanyPage() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -285,7 +285,9 @@ export function CompanyPage() {
               <ul className={style.ul_program}>
                 {user.program.map((program, index) => (
                   <li key={index} className={style.li}>
-                    {program.name.toUpperCase()}
+                    <p className={style.p_change}>
+                      {program.name.toUpperCase()}
+                    </p>
                     <img
                       src={program.icon}
                       alt={`Icona ${program.name}`}
@@ -309,7 +311,9 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
                     <li key={index} className={style.li_change}>
-                      {program.name.toUpperCase()}
+                      <p className={style.p_change}>
+                        {program.name.toUpperCase()}
+                      </p>
                       <img
                         src={program.icon}
                         alt={`Icona ${program.name}`}
@@ -335,7 +339,9 @@ export function CompanyPage() {
                 {/* Map progetti accettati */}
                 {user.project.map((project, index) => (
                   <li key={index} className={style.li_change}>
-                    <p>{project.name.toUpperCase()}</p>
+                    <p className={style.p_change}>
+                      {project.name.toUpperCase()}
+                    </p>
                     <img
                       src={project.image}
                       alt=""
@@ -360,7 +366,9 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.project.map((project, index) => (
                     <li key={index} className={style.li_change}>
-                      <p>{project.name.toUpperCase()}</p>
+                      <p className={style.p_change}>
+                        {project.name.toUpperCase()}
+                      </p>
                       <img
                         src={project.image}
                         alt=""
@@ -404,7 +412,7 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.someExperience.map((experience, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_change}>{experience}</p>
+                      <p className={style.p_accept}>{experience}</p>
                     </li>
                   ))}
                 </ul>
@@ -432,7 +440,7 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.comments.map((comment, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_change}>{comment}</p>
+                      <p className={style.p_accept}>{comment}</p>
                     </li>
                   ))}
                 </ul>
