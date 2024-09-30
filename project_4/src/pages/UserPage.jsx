@@ -2,7 +2,7 @@ import style from "../styles/UserPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
@@ -64,12 +64,22 @@ export function UserPage() {
     e.preventDefault();
     user.username = inputUsername;
     localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)))
   }
 
   // Refresho la pagina ogni volta che aggiorno il localStorage
   // useEffect(localStorage.setItem(`user ID ${id}`, JSON.stringify(user)), [
   //   user,
   // ]);
+
+  // load file
+  const fileInputRef = (useRef < HTMLInputElement) | (null > null);
+
+  const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   // Handle Image
   function handleChangeLinkImage(e) {
@@ -222,40 +232,20 @@ export function UserPage() {
             {/* Change image */}
             {toggle && (
               <div className={style.container_change}>
-                {/* Capire quale event handler usare
-                import { useRef } from 'react';
-                import './styles.css';
-                export const FileUploader = ({handleFile}) => {
-                // Create a reference to the hidden file input element
-                const hiddenFileInput = useRef(null);
 
-                // Programatically click the hidden file input element
-                // when the Button component is clicked
-                const handleClick = event => {
-                  hiddenFileInput.current.click();
-                };
-                // Call a function (passed as a prop from the parent component)
-                // to handle the user-selected file
-                const handleChange = event => {
-                  const fileUploaded = event.target.files[0];
-                  handleFile(fileUploaded);
-                };
-                return (
-                    <>
-                      <button className="button-upload" onClick={handleClick}>
-                        Upload a file
-                      </button>
-                      <input
-                        type="file"
-                        onChange={handleChange}
-                        ref={hiddenFileInput}
-                        style={{display: 'none'}} // Make the file input element invisible
-                      />
-                    </>
-                  );
-                */}
-                <button className={style.buttonSave}>Load file</button>
-                <input type="file" />
+                {/* <div>
+                  <button className={style.buttonSave}>Load file</button>
+                  <input type="file" />
+                </div> */}
+                <div className="flex items-center space-x-4">
+                  <button
+                    onClick={handleClick}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow"
+                  >
+                    Load file
+                  </button>
+                  <input type="file" ref={fileInputRef} className="hidden" />
+                </div>
 
                 <input
                   type="text"
