@@ -91,7 +91,7 @@
   padding: 0.5rem;
   width: 13rem;
   height: 40.5rem;
-  background-color: var(--colore-nero);
+  /* background-color: var(--colore-nero); */
   box-shadow: var(--box-bluOpaco);
   display: flex;
   flex-flow: column;
@@ -122,7 +122,7 @@
   flex-flow: column;
   align-items: center;
   gap: 1.5rem;
-  background-color: var(--colore-nero);
+  /* background-color: var(--colore-nero); */
   box-shadow: var(--box-bluOpaco);
 }
 
@@ -161,7 +161,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--colore-nero);
+  /* background-color: var(--colore-nero); */
 }
 
 .container_change {
@@ -181,6 +181,7 @@
   padding: 0.2rem 0.3rem;
   border-radius: 0.5rem;
   border: none;
+  color: var(--colore-bluChiaro);
   box-shadow: var(--box-bluOpaco);
   background-color: var(--colore-nero);
   text-align: center;

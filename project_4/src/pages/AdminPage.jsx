@@ -94,7 +94,7 @@ export function AdminPage() {
   }
   // Permission user
   function handleNavigatePermission() {
-    navigate(`/user/presentation_setting/${user.id}`);
+    navigate(`/user/permission_user/${user.id}`);
   }
 
   return (

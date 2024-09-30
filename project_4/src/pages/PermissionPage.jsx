@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
-const db = DATA;
+const users = DATA;
 export function PermissionUser() {
   // Da usare nel momento in cui avremo un database
   const { id } = useParams();
@@ -22,8 +22,7 @@ export function PermissionUser() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const user = db.find((user) => user.id.toString() === id);
-  const project = user.project;
+  const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare la descrizione
   // const [inputDescription, setInputDescription] = useState("");
@@ -58,9 +57,13 @@ export function PermissionUser() {
   // Navigazione con passagio id
   // User setting
   function handleNavigateUser() {
-    user.isPro
-      ? navigate(`/user_setting/${user.id}`)
-      : navigate(`/company_setting/${user.id}`);
+    if (user.isAdmin) {
+      navigate(`/admin/${user.id}`);
+    } else if (user.isPro) {
+      navigate(`/user_setting/${user.id}`);
+    } else {
+      navigate(`/company_setting/${user.id}`);
+    }
   }
   // Experience setting
   function handleNavigateExperience() {
@@ -147,14 +150,34 @@ export function PermissionUser() {
 
         {/* Sezione Centrale */}
         <div className={style.content}>
-          <h1 className={style.h1}>Project Setting of {user.username}!</h1>
+          <h1 className={style.h1}>Permission User of {user.username}!</h1>
 
-          {/* Progetti scelti */}
+          {/* Tutti gli utenti con i loro permessi e cosa sono */}
           <div className={style.container_accept}>
-            {project.map((project, index) => (
-              <div key={index} className={style.container_accept}>
-                <p className={style.p_accept}>{project.name}</p>
-                <img src={project.image} alt="" className={style.img} />
+            <div className={style.table}>
+              <p className={style.p_table}>ID</p>
+              <p className={style.p_table}>User</p>
+              <p className={style.p_table}>Pro</p>
+              <p className={style.p_table}>Admin</p>
+            </div>
+            {users.map((user, index) => (
+              <div key={index} className={style.table}>
+                <p className={style.p_table}>{user.id}</p>
+                <p className={style.p_table}>{user.username}</p>
+                <div className={style.p_table}>
+                  {user.isPro ? (
+                    <div className={style.circle_green}></div>
+                  ) : (
+                    <div className={style.circle_red}></div>
+                  )}
+                </div>
+                <div className={style.p_table}>
+                  {user.isAdmin ? (
+                    <div className={style.circle_green}></div>
+                  ) : (
+                    <div className={style.circle_red}></div>
+                  )}
+                </div>
               </div>
             ))}
             <img

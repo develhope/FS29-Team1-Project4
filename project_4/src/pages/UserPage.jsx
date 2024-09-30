@@ -2,7 +2,7 @@ import style from "../styles/UserPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
@@ -17,11 +17,13 @@ export function UserPage() {
   // Recupero lo user usando il context
   // const user = useContext(UserContext);
 
+  // Recupero user da localstorage e lo salvo nello State
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
+  );
+
   // Costante per navigare
   const navigate = useNavigate();
-
-  // Recupero User grazie a ID preso da useParams
-  const user = users.find((user) => user.id.toString() === id);
 
   // Cambio elementi
   // Controllo stato per i toggle
@@ -40,6 +42,9 @@ export function UserPage() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
+  // Cosstanti per cambiare username
+  const [inputUsername, setInputUsername] = useState("");
+
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
   const [userImage, setUserImage] = useState(user.image);
@@ -57,17 +62,18 @@ export function UserPage() {
   // Handle Username
   function handleChangeUsername(e) {
     e.preventDefault();
-    setUser(inputDescription);
+    user.username = inputUsername;
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
   }
+
+  // Refresho la pagina ogni volta che aggiorno il localStorage
+  // useEffect(localStorage.setItem(`user ID ${id}`, JSON.stringify(user)), [
+  //   user,
+  // ]);
 
   // Handle Image
   function handleChangeLinkImage(e) {
     setInputImage(e.target.value);
-  }
-
-  function handleChangeImage(e) {
-    e.preventDefault();
-    setUserImage(inputImage);
   }
 
   // Handle Description
@@ -158,6 +164,13 @@ export function UserPage() {
         <ul className={style.content}>
           <li className={style.li}>
             <div className={style.container_accept}>
+              <button
+                className={style.buttonSave}
+                onClick={() => localStorage.clear()}
+              >
+                Clear LocalStorage
+              </button>
+
               <h1 className={style.h1}>Welcome back, {user.username}!</h1>
               <img
                 src={iconModify}
@@ -172,7 +185,7 @@ export function UserPage() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  onChange={handleChangeInputDescription}
+                  onChange={(e) => setInputUsername(e.target.value)}
                   placeholder={user.username}
                   className={style.input}
                 ></input>

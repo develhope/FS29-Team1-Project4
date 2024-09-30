@@ -91,7 +91,7 @@
   padding: 0.5rem;
   width: 13rem;
   height: 38rem;
-  background-color: var(--colore-nero);
+  /* background-color: var(--colore-nero); */
   box-shadow: var(--box-bluOpaco);
   display: flex;
   flex-flow: column;
@@ -121,7 +121,7 @@
   display: flex;
   flex-flow: column;
   gap: 1.5rem;
-  background-color: var(--colore-nero);
+  /* background-color: var(--colore-nero); */
   box-shadow: var(--box-bluOpaco);
 }
 .li {
@@ -215,6 +215,7 @@ input[type="file"] {
   border: none;
   box-shadow: var(--box-bluOpaco);
   background-color: var(--colore-nero);
+  color: var(--colore-bluChiaro);
   text-align: center;
   width: 20rem;
 }
