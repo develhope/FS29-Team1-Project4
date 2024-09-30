@@ -166,7 +166,10 @@ export function UserPage() {
             <div className={style.container_accept}>
               <button
                 className={style.buttonSave}
-                onClick={() => localStorage.clear()}
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/");
+                }}
               >
                 Clear LocalStorage
               </button>
