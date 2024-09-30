@@ -18,6 +18,7 @@
   --colore-bluChiaro: #94c4f5;
   --box-blu: 0 0 20px rgba(0, 200, 255, 0.812);
   --box-bluOpaco: 0 0 1rem rgba(0, 200, 255, 0.812);
+  --box-card: 0 0.3rem 0.3rem rgba(0, 200, 255, 0.812);
 }
 
 * {
@@ -36,10 +37,10 @@ li {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--colore-bluChiaro);
 }
 p {
-  color: rgb(0, 0, 0);
+  color: var(--colore-bianco);
 }
 img {
   width: 100%;
@@ -79,6 +80,7 @@ button {
 .box_shadow {
   box-shadow: var(--box-blu);
 }
+
 /* sfondo BG */
 .body {
   position: fixed;

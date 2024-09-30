@@ -30,11 +30,7 @@ export function LoginRegister({ toggle }) {
   }
 
   function handleGoSettingPage() {
-    const user = users.find(
-      (user) =>
-        user.username.toUpperCase() === username.toUpperCase() &&
-        user.password === password
-    );
+    const user = users.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
 
     // Salvo lo User trovato nel localstorage
     localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
@@ -64,38 +60,20 @@ export function LoginRegister({ toggle }) {
         <i className="fa-regular fa-user"></i>
       </button>
       {isFormOpen && (
-        <div
-          className={`${NavLogin.background} ${
-            isFormOpen ? NavLogin.show : NavLogin.hide
-          }`}
-        >
+        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
           <form className={NavLogin.form}>
             <button onClick={closeForm} className={NavLogin.close_button}>
               X
             </button>
             <div className={NavLogin.user}>
               <label>Username:</label>
-              <input
-                type="text"
-                value={username}
-                onChange={handleUsername}
-                className={NavLogin.input}
-              />
+              <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
               <label>Password:</label>
-              <input
-                type="text"
-                value={password}
-                onChange={handlePassword}
-                className={NavLogin.input}
-              />
+              <input type="text" value={password} onChange={handlePassword} className={NavLogin.input} />
             </div>
             <div className={NavLogin.links}>
               {/* <UserContext.Provider value={user}> */}
-              <button
-                type="button"
-                onClick={handleGoSettingPage}
-                className={NavLogin.link_button}
-              >
+              <button type="button" onClick={handleGoSettingPage} className={NavLogin.link_button}>
                 Login
               </button>
               {/* </UserContext.Provider> */}
