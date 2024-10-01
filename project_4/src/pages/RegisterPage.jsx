@@ -14,6 +14,13 @@ export function RegisterPage() {
   const [move, setMove] = useState(true)
   const [mailSelect, setMailSelect] = useState()
   const [phoneSelect, setPhoneSelect] = useState()
+  const [facebookSelect, setFacebookSelect] = useState()
+  const [instagramSelect, setInstagramSelect] = useState()
+  const [twitterSelect, setTwitterSelect] = useState()
+  const [linkedinSelect, setLinkedinSelect] = useState()
+  const [nameCompany, setNameCompany] = useState();
+  const [professionist, setProfessionist] = useState()
+  
 
 
   function handleIsProfessionist(event) {
@@ -80,6 +87,32 @@ export function RegisterPage() {
       const phoneSelect = e.target.value;
       setPhoneSelect(phoneSelect);
     };
+    const handleChangeFacebookSelect = (e) => {
+      const facebookSelect= e.target.value;
+      setFacebookSelect(facebookSelect)
+    }
+    const handleChangeInstagramSelect = (e) => {
+      const instagramSelect = e.target.value;
+      setInstagramSelect(instagramSelect);
+    };
+    const handleChangeTwitterSelect = (e) => {
+      const twitterSelect = e.target.value;
+      setTwitterSelect(twitterSelect);
+    };
+    const handleChangeLinkedinSelect = (e) => {
+      const linkedinSelect = e.target.value;
+      setLinkedinSelect(linkedinSelect);
+    };
+    const handleChangeNameCompany = (e) => {
+      const nameCompany = e.target.value;
+      setNameCompany(nameCompany);
+    };
+    const handleChangeProfessionist = (event) => {
+    event.preventDefault();
+      const professionist = event.target.value;
+      setProfessionist(professionist)
+  }
+   
 
     const handleSave = (e) => {
       e.preventDefault()
@@ -97,7 +130,13 @@ export function RegisterPage() {
           move,
           contact,
           mailSelect,
-          phoneSelect
+          phoneSelect,
+          facebookSelect,
+          instagramSelect,
+          twitterSelect,
+          linkedinSelect,
+          nameCompany,
+          professionist,
         })
       );
       };
@@ -355,38 +394,63 @@ export function RegisterPage() {
             {contact === "facebook" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO FACEBOOK</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeFacebookSelect}
+                />
               </div>
             )}
             {contact === "instagram" && (
               <div>
                 <h3 className={style.h3}>INSERISCI CONTATTO INSTAGRAM</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeInstagramSelect}
+                />
               </div>
             )}
             {contact === "twitter" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO TWITTER</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeTwitterSelect}
+                />
               </div>
             )}
             {contact === "linkedin" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO LINKEDIN</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeLinkedinSelect}
+                />
               </div>
             )}
           </div>
         ) : (
           <div>
             <h3 className={style.h3}>NOME DELL'AZIENDA</h3>
-            <input type="text" className={style.input} />
+            <input
+              type="text"
+              className={style.input}
+              onChange={handleChangeNameCompany}
+            />
             <h3 className={style.h3}>CHE TIPO DI PROFESSIONISTA CERCHI</h3>
-            <select name="" id="" className={style.contact}>
-              <option value="">WEB DEVELOPER</option>
-              <option value="">WEB DESIGNER</option>
-              <option value="">GAME DESIGNER</option>
-              <option value="">3D DESIGNER</option>
+            <select
+              name=""
+              id=""
+              className={style.contact}
+              onChange={handleChangeProfessionist}
+            >
+              <option value="WEB DEVELOPER">WEB DEVELOPER</option>
+              <option value="WEB DESIGNER">WEB DESIGNER</option>
+              <option value="GAME DESIGNER">GAME DESIGNER</option>
+              <option value="3D DESIGNER">3D DESIGNER</option>
             </select>
             <h3 className={style.h3}>
               COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?
@@ -402,7 +466,11 @@ export function RegisterPage() {
             {contact === "mail" && (
               <div>
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeMailSelect}
+                />
               </div>
             )}
             {contact === "phone" && (
@@ -410,31 +478,51 @@ export function RegisterPage() {
                 <h3 className={style.h3}>
                   INSERISCI IL TUO CONTATTO TELEFONICO
                 </h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangePhoneSelect}
+                />
               </div>
             )}
             {contact === "facebook" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO FACEBOOK</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeFacebookSelect}
+                />
               </div>
             )}
             {contact === "instagram" && (
               <div>
                 <h3 className={style.h3}>INSERISCI CONTATTO INSTAGRAM</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeInstagramSelect}
+                />
               </div>
             )}
             {contact === "twitter" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO TWITTER</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeTwitterSelect}
+                />
               </div>
             )}
             {contact === "linkedin" && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO LINKEDIN</h3>
-                <input type="text" className={style.input} />
+                <input
+                  type="text"
+                  className={style.input}
+                  onChange={handleChangeLinkedinSelect}
+                />
               </div>
             )}
           </div>
