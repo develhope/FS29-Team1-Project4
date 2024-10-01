@@ -69,9 +69,8 @@
     box-shadow: var(--box-blu);
   }
   .drop_search_li {
-    border-bottom: 1px solid var(--colore-bluChiaro);
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .drop_search_li:hover {
