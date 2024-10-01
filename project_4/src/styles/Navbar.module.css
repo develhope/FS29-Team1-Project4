@@ -18,11 +18,13 @@
   gap: 0.5rem;
   max-width: 1280px;
   margin: 0 auto;
-  .logo{
+
+  .logo {
     height: auto;
     width: 5%;
   }
-  ul{
+
+  ul {
     width: 30%;
     display: flex;
     justify-content: space-evenly;
@@ -38,9 +40,11 @@
 .form {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  position: relative; 
   width: 50%;
   height: 50px;
+
   input {
     height: 100%;
     width: 70%;
@@ -51,38 +55,31 @@
     color: var(--colore-bluChiaro);
     border-radius: 0.5rem;
   }
-  /* Classi Fatte da Giuseppe per mostrare la ricerca filtrata */
-  /* Se vuoi modificale come preferisci */
   .drop_search {
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    max-height: 7rem;
-    line-height: 2;
-    box-shadow: 0 0 0.5rem var(--colore-nero);
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    font-size: 1rem;
-    background-color: var(--colore-bianco);
     position: absolute;
-    top: 85%;
-    left: 46.5%;
-    z-index: 90;
+    top: 100%;
+    left: 0; 
+    width: 95%; 
+    margin-top: 0.2rem;
+    max-width: 450px;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    background-color: var(--colore-nero);
+    z-index: 1000;
+    box-shadow: var(--box-blu);
   }
   .drop_search_li {
-    /* width: 100%; */
-    padding: 0 0 0 0.5rem;
+    border-bottom: 1px solid var(--colore-bluChiaro);
     cursor: pointer;
+    font-size: 2rem;
   }
+
   .drop_search_li:hover {
     border-radius: 0.3rem;
     background-color: var(--colore-bluChiaro);
+    color: var(--colore-nero);
   }
-  /*----------------------------*/
+
   button {
     display: flex;
     align-items: center;
@@ -95,6 +92,7 @@
     color: var(--colore-bluChiaro);
     border: 1px solid var(--colore-bluChiaro);
   }
+
   svg {
     width: 1rem;
     height: 1rem;
