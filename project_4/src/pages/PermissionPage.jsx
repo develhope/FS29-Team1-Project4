@@ -1,34 +1,28 @@
 import { DATA } from "../database";
-import style from "../styles/GeneralSetting.module.css";
+import style from "../styles/PermissionUser.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
-const db = DATA;
-export function GeneralSetting() {
+const users = DATA;
+export function PermissionUser() {
   // Da usare nel momento in cui avremo un database
-  const { id = "5" } = useParams();
+  const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
-  // useNavigate
+  // Costante per navigare
   const navigate = useNavigate();
 
   // Controllo stato per i toggle
-  const [toggleSurname, onToggleSurname] = useShowToggle();
-  const [toggleFirstname, onToggleFirstname] = useShowToggle();
-  const [toggleAnnoNascita, onToggleAnnoNascita] = useShowToggle();
-  const [toggleLuogoNascita, onToggleLuogoNascita] = useShowToggle();
+  const [toggleProject, onToggleProject] = useShowToggle();
 
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const user = db.find((u) => u.id.toString() === id);
-
-  // Ottengo Solo i general dello user
-  const general = user.general;
+  const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare la descrizione
   // const [inputDescription, setInputDescription] = useState("");
@@ -71,14 +65,19 @@ export function GeneralSetting() {
       navigate(`/company_setting/${user.id}`);
     }
   }
-  // Project setting
-  function handleNavigateProject() {
-    navigate(`/user/project_setting/${user.id}`);
-  }
   // Experience setting
   function handleNavigateExperience() {
     navigate(`/user/presentation_setting/${user.id}`);
   }
+  // General setting
+  function handleNavigateGeneral() {
+    navigate(`/user/general_setting/${user.id}`);
+  }
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -102,7 +101,7 @@ export function GeneralSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p className={style.p_change}>SETTINGS</p>
+              <p>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -114,6 +113,10 @@ export function GeneralSetting() {
 
             <button onClick={handleNavigateUser} className={style.link}>
               USER SETTING
+            </button>
+
+            <button onClick={handleNavigateGeneral} className={style.link}>
+              GENERAL SETTING
             </button>
 
             <button onClick={handleNavigateExperience} className={style.link}>
@@ -132,6 +135,10 @@ export function GeneralSetting() {
             USER SETTING
           </button>
 
+          <button onClick={handleNavigateGeneral} className={style.link}>
+            GENERAL SETTING
+          </button>
+
           <button onClick={handleNavigateExperience} className={style.link}>
             Experience SETTING
           </button>
@@ -143,123 +150,62 @@ export function GeneralSetting() {
 
         {/* Sezione Centrale */}
         <div className={style.content}>
-          <h1 className={style.h1}>General Setting of {user.username}!</h1>
+          <h1 className={style.h1}>Permission User of {user.username}!</h1>
 
-          {/* Nome scelto */}
+          {/* Tutti gli utenti con i loro permessi e cosa sono */}
           <div className={style.container_accept}>
-            {user.isPro ? (
-              <p className={style.p_accept}>Firstname: {general.firstName}</p>
-            ) : (
-              <p className={style.p_accept}>Partita IVA: {general.pIVA}</p>
-            )}
-
+            <div className={style.table}>
+              <p className={style.p_table}>ID</p>
+              <p className={style.p_table}>User</p>
+              <p className={style.p_table}>Pro</p>
+              <p className={style.p_table}>Admin</p>
+            </div>
+            {users.map((user, index) => (
+              <div key={index} className={style.table}>
+                <p className={style.p_table}>{user.id}</p>
+                <p className={style.p_table}>{user.username}</p>
+                <div className={style.p_table}>
+                  {user.isPro ? (
+                    <div className={style.circle_green}></div>
+                  ) : (
+                    <div className={style.circle_red}></div>
+                  )}
+                </div>
+                <div className={style.p_table}>
+                  {user.isAdmin ? (
+                    <div className={style.circle_green}></div>
+                  ) : (
+                    <div className={style.circle_red}></div>
+                  )}
+                </div>
+              </div>
+            ))}
             <img
               src={iconModify}
               alt="Modify Icon"
               className={style.icon_change}
               name="image"
-              onClick={onToggleFirstname}
+              onClick={onToggleProject}
             />
-            {/* Change Firstname */}
-            {toggleFirstname && (
+            {/* Change Esperienze */}
+            {toggleProject && (
               <div className={style.container_change}>
                 <input
                   type="text"
                   // onChange={handleChangeInputDescription}
-                  placeholder={user.isPro ? general.firstName : general.pIVA}
+                  placeholder="Aggiungi Nome Progetto"
                   className={style.input}
                 />
-                <button
-                  // onClick={handleChangeUsername}
-                  className={style.buttonSave}
-                >
-                  Save
-                </button>
-              </div>
-            )}
-          </div>
-          {/* Cognome Scelto */}
-          {!!user.isPro && (
-            <div className={style.container_accept}>
-              <p className={style.p_accept}>Surname: {general.surName}</p>
-              <img
-                src={iconModify}
-                alt="Modify Icon"
-                className={style.icon_change}
-                name="image"
-                onClick={onToggleSurname}
-              />
+                <button className={style.buttonSave}>Load file</button>
+                <input type="file" />
 
-              {/* Change Surname */}
-              {toggleSurname && (
-                <div className={style.container_change}>
-                  <input
-                    type="text"
-                    // onChange={handleChangeInputDescription}
-                    placeholder={general.surName}
-                    className={style.input}
-                  ></input>
-                  <button
-                    // onClick={handleChangeUsername}
-                    className={style.buttonSave}
-                  >
-                    Save
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Anno di Nascita Scelto */}
-          <div className={style.container_accept}>
-            <p className={style.p_accept}>You both in {general.annoNascita}</p>
-            <img
-              src={iconModify}
-              alt="Modify Icon"
-              className={style.icon_change}
-              name="image"
-              onClick={onToggleAnnoNascita}
-            />
-            {/* Change Anno di Nascita */}
-            {toggleAnnoNascita && (
-              <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.annoNascita}
+                  // value={inputImage}
+                  placeholder="Insert Link File"
+                  // onChange={handleChangeLinkImage}
                   className={style.input}
-                ></input>
-                <button
-                  // onClick={handleChangeUsername}
-                  className={style.buttonSave}
-                >
-                  Save
-                </button>
-              </div>
-            )}
-          </div>
-          {/* Luogo di Nascita Scelto */}
-          <div className={style.container_accept}>
-            <p className={style.p_accept}>
-              You are from{" "}
-              {user.isPro ? general.luogoNascita : general.sedeLegale}
-            </p>
-            <img
-              src={iconModify}
-              alt="Modify Icon"
-              className={style.icon_change}
-              name="image"
-              onClick={onToggleLuogoNascita}
-            />
-            {/* Change Luogo di nascita */}
-            {toggleLuogoNascita && (
-              <div className={style.container_change}>
-                <input
-                  type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.sedeLegale}
-                  className={style.input}
-                ></input>
+                />
                 <button
                   // onClick={handleChangeUsername}
                   className={style.buttonSave}

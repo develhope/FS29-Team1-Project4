@@ -10,8 +10,8 @@ import iconClose from "../assets/xmark-solid.svg";
 const users = DATA;
 
 export function CompanyPage() {
-  // Da usare nel momento in cui avremo un database
   const { id } = useParams();
+  // Da usare nel momento in cui avremo un database
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
   // Costante per navigare
@@ -68,9 +68,16 @@ export function CompanyPage() {
   }
 
   // Navigazione con passaggio di ID
-  function handleNavigate() {
-    console.log(user.id);
+  function handleNavigateGeneral() {
     navigate(`/user/general_setting/${user.id}`);
+  }
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+  // Experience setting
+  function handleNavigateExperience() {
+    navigate(`/user/presentation_setting/${user.id}`);
   }
   return (
     <div className={style.container}>
@@ -95,7 +102,7 @@ export function CompanyPage() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -104,36 +111,34 @@ export function CompanyPage() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/general_setting" className={style.link}>
+
+            <button onClick={handleNavigateGeneral} className={style.link}>
               GENERAL SETTING
-            </Link>
-            {/* Tutti i programmi e le esperienze che hai */}
-            <Link to="/user/presentation_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateExperience} className={style.link}>
               Experience SETTING
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateProject} className={style.link}>
               PROJECT SETTING
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <div className={style.aside_sticky}>
-            <button onClick={handleNavigate} className={style.link}>
-              General Setting
-            </button>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/presentation_setting" className={style.link}>
-              Experience Setting
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting/:id" className={style.link}>
-              Project Setting
-            </Link>
-          </div>
+          <button onClick={handleNavigateGeneral} className={style.link}>
+            GENERAL SETTING
+          </button>
+
+          <button onClick={handleNavigateExperience} className={style.link}>
+            Experience SETTING
+          </button>
+
+          <button onClick={handleNavigateProject} className={style.link}>
+            PROJECT SETTING
+          </button>
         </aside>
 
         {/* Section Centrale */}
@@ -280,7 +285,9 @@ export function CompanyPage() {
               <ul className={style.ul_program}>
                 {user.program.map((program, index) => (
                   <li key={index} className={style.li}>
-                    {program.name.toUpperCase()}
+                    <p className={style.p_change}>
+                      {program.name.toUpperCase()}
+                    </p>
                     <img
                       src={program.icon}
                       alt={`Icona ${program.name}`}
@@ -304,7 +311,9 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
                     <li key={index} className={style.li_change}>
-                      {program.name.toUpperCase()}
+                      <p className={style.p_change}>
+                        {program.name.toUpperCase()}
+                      </p>
                       <img
                         src={program.icon}
                         alt={`Icona ${program.name}`}
@@ -330,7 +339,9 @@ export function CompanyPage() {
                 {/* Map progetti accettati */}
                 {user.project.map((project, index) => (
                   <li key={index} className={style.li_change}>
-                    <p>{project.name.toUpperCase()}</p>
+                    <p className={style.p_change}>
+                      {project.name.toUpperCase()}
+                    </p>
                     <img
                       src={project.image}
                       alt=""
@@ -355,7 +366,9 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.project.map((project, index) => (
                     <li key={index} className={style.li_change}>
-                      <p>{project.name.toUpperCase()}</p>
+                      <p className={style.p_change}>
+                        {project.name.toUpperCase()}
+                      </p>
                       <img
                         src={project.image}
                         alt=""
@@ -399,7 +412,7 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.someExperience.map((experience, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_change}>{experience}</p>
+                      <p className={style.p_accept}>{experience}</p>
                     </li>
                   ))}
                 </ul>
@@ -427,7 +440,7 @@ export function CompanyPage() {
                 <ul className={style.ul_change}>
                   {user.comments.map((comment, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_change}>{comment}</p>
+                      <p className={style.p_accept}>{comment}</p>
                     </li>
                   ))}
                 </ul>

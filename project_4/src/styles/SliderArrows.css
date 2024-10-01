@@ -1,24 +1,33 @@
 .center{
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
-/* Stili base per i dots */
-
-
-/* Nascondi tutti i dots per default */
 .slick-prev:before,
 .slick-next:before {
-  @apply text-slate-400 text-4xl !important; /* Usa classi Tailwind per cambiare colore e dimensioni */
-  content: "→"; /* Sovrascrivi il contenuto del testo */
+  @apply text-[#94c4f5] text-4xl  !important;
+  border-radius: 3rem;
+  box-shadow: var(--box-card);
+  content: "→"; 
 }
 
 .slick-prev:before {
   position: relative;
-  left: -80%;
+  left: -100%;
   content: "←"; /* Freccia sinistra */
 }
 
 .slick-next:before {
   content: "→"; /* Freccia destra */
+  margin-left: 0.5rem;
+}
+
+.custom-class{
+  height: 100%;
+  width: 100%;
+  padding: 4rem;
+}
+
+.my-shadow{
+    box-shadow: var(--box-card);
 }

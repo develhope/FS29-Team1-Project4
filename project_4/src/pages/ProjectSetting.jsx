@@ -1,7 +1,7 @@
 import { DATA } from "../database";
 import style from "../styles/ProjectSetting.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
@@ -9,8 +9,11 @@ import iconClose from "../assets/xmark-solid.svg";
 const db = DATA;
 export function ProjectSetting() {
   // Da usare nel momento in cui avremo un database
-  //   const { id } = useParams();
+  const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
+
+  // Costante per navigare
+  const navigate = useNavigate();
 
   // Controllo stato per i toggle
   const [toggleProject, onToggleProject] = useShowToggle();
@@ -19,9 +22,9 @@ export function ProjectSetting() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const id = "5";
   const user = db.find((user) => user.id.toString() === id);
   const project = user.project;
+
   // Costanti per cambiare la descrizione
   // const [inputDescription, setInputDescription] = useState("");
   // const [userDescription, setUserDescription] = useState(user.description);
@@ -51,6 +54,26 @@ export function ProjectSetting() {
   //   e.preventDefault();
   //   setUserDescription(inputDescription);
   // }
+
+  // Navigazione con passagio id
+  // User setting
+  function handleNavigateUser() {
+    if (user.isAdmin) {
+      navigate(`/admin/${user.id}`);
+    } else if (user.isPro) {
+      navigate(`/user_setting/${user.id}`);
+    } else {
+      navigate(`/company_setting/${user.id}`);
+    }
+  }
+  // Experience setting
+  function handleNavigateExperience() {
+    navigate(`/user/presentation_setting/${user.id}`);
+  }
+  // General setting
+  function handleNavigateGeneral() {
+    navigate(`/user/general_setting/${user.id}`);
+  }
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -74,7 +97,7 @@ export function ProjectSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -83,35 +106,34 @@ export function ProjectSetting() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
-            <Link to="/user" className={style.link}>
+
+            <button onClick={handleNavigateUser} className={style.link}>
               USER SETTING
-            </Link>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/general_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateGeneral} className={style.link}>
               GENERAL SETTING
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/presentation_setting" className={style.link}>
-              EXPERIENCE SETTING
-            </Link>
+            </button>
+
+            <button onClick={handleNavigateExperience} className={style.link}>
+              Experience SETTING
+            </button>
           </div>
         </div>
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <div className={style.aside_sticky}>
-            <Link to="/user" className={style.link}>
-              USER SETTING
-            </Link>
+          <button onClick={handleNavigateUser} className={style.link}>
+            USER SETTING
+          </button>
 
-            <Link to="/user/general_setting" className={style.link}>
-              GENERAL SETTING
-            </Link>
+          <button onClick={handleNavigateGeneral} className={style.link}>
+            GENERAL SETTING
+          </button>
 
-            <Link to="/user/presentation_setting" className={style.link}>
-              EXPERIENCE Setting
-            </Link>
-          </div>
+          <button onClick={handleNavigateExperience} className={style.link}>
+            Experience SETTING
+          </button>
         </aside>
 
         {/* Sezione Centrale */}
@@ -121,10 +143,8 @@ export function ProjectSetting() {
           {/* Progetti scelti */}
           <div className={style.container_accept}>
             {project.map((project, index) => (
-              <div className={style.container_accept}>
-                <p key={index} className={style.p_accept}>
-                  {project.name}
-                </p>
+              <div key={index} className={style.container_accept}>
+                <p className={style.p_accept}>{project.name}</p>
                 <img src={project.image} alt="" className={style.img} />
               </div>
             ))}

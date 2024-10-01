@@ -13,8 +13,12 @@
   --colore-bianco: #ffffff;
   --colore-grigio: #dadada;
   /* colori secondari */
+  --colore-bluScuro: #023669;
   --colore-bluIntermedio: #6aaaeb;
   --colore-bluChiaro: #94c4f5;
+  --box-blu: 0 0 20px rgba(0, 200, 255, 0.812);
+  --box-bluOpaco: 0 0 1rem rgba(0, 200, 255, 0.812);
+  --box-card: 0 0.3rem 0.3rem rgba(0, 200, 255, 0.812);
 }
 
 * {
@@ -33,10 +37,10 @@ li {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--colore-bluChiaro);
 }
 p {
-  color: rgb(0, 0, 0);
+  color: var(--colore-bianco);
 }
 img {
   width: 100%;
@@ -72,4 +76,25 @@ button {
 }
 .db {
   display: block;
+}
+.box_shadow {
+  box-shadow: var(--box-blu);
+}
+
+/* sfondo BG */
+.body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+}
+.body:before {
+  content: "";
+  position: absolute;
+  background: var(--colore-nero);
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
 }
