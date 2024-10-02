@@ -66,10 +66,12 @@
   display: flex;
   color: white;
   text-align: center;
+  align-items: center;
+  line-height: 2rem;
   position: relative;
   z-index: 5;
   display: flex;
-  margin: 1rem;
+  margin: 2rem;
   flex-direction: column;
   overflow: hidden;
   height: 100%;

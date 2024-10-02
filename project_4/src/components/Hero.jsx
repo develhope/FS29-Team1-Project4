@@ -6,29 +6,25 @@ const herodb = [
     id: 1,
     name: "Web Developer",
     icon: "WD",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
+    description: `Un Web Developer si occupa della creazione e manutenzione di siti web e applicazioni web. Lavora principalmente con linguaggi di programmazione come HTML, CSS, JavaScript e framework come React o Angular. Il suo obiettivo è assicurare che i siti siano funzionali, efficienti e accessibili su vari dispositivi.`,
   },
   {
     id: 2,
     name: "3D Designer",
     icon: "3D",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
+    description: `Il 3D Designer è specializzato nella creazione di modelli, animazioni e render 3D. Utilizza software come Blender, 3ds Max o Maya per sviluppare contenuti visivi che possono essere utilizzati in videogiochi, film, realtà virtuale, architettura o simulazioni. La sua competenza sta nella capacità di dare vita a progetti realistici o stilizzati in tre dimensioni.`,
   },
   {
     id: 3,
     name: "Software Engineer",
     icon: "SE",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
+    description: `Il Software Engineer progetta e sviluppa soluzioni software complesse. Questo professionista combina capacità di programmazione avanzate (con linguaggi come Java, Python, C++) con metodologie ingegneristiche per risolvere problemi e creare sistemi software su larga scala. Si occupa dell’intero ciclo di vita del software, dalla progettazione all’implementazione e alla manutenzione.`,
   },
   {
     id: 4,
     name: "Web designer",
     icon: "WB",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet optio inventore quis facere nihil ex delectus esse sunt quisquam architecto, mollitia, vero enim voluptatibus dolore maiores corporis modi? Ipsa, expedita.",
+    description: `Il Web Designer si concentra sull’aspetto visivo e sull’usabilità di un sito web. Utilizza strumenti di design come Adobe XD, Figma o Sketch per creare layout accattivanti e intuitivi. Oltre all’estetica, il Web Designer lavora per migliorare l'esperienza utente (UX), assicurandosi che il sito sia facile da navigare e accessibile per tutti.`,
   },
 ];
 
