@@ -405,36 +405,55 @@ export const DATA = [
         name: "Project 1",
         image:
           "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: true,
       },
       {
         name: "Project 2",
         image:
           "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: true,
       },
       {
         name: "Project 3",
         image:
           "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: true,
       },
       {
         name: "Project 4",
         image:
           "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: true,
       },
       {
         name: "Project 5",
         image:
           "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: true,
+      },
+      {
+        name: "Project 6",
+        image:
+          "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: false,
+      },
+      {
+        name: "Project 7",
+        image:
+          "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
+        isVisible: false,
       },
     ],
     someExperience: [
-      "Experience 1",
-      "Experience 2",
-      "Experience 3",
-      "Experience 4",
-      "Experience 5",
-      "Experience 6",
-      "Experience 7",
+      { name: "Experience 1", isVisible: true },
+      { name: "Experience 2", isVisible: true },
+      { name: "Experience 3", isVisible: true },
+      { name: "Experience 4", isVisible: true },
+      { name: "Experience 5", isVisible: true },
+      { name: "Experience 6", isVisible: true },
+      { name: "Experience 7", isVisible: true },
+      { name: "Experience 8", isVisible: false },
+      { name: "Experience 9", isVisible: false },
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
