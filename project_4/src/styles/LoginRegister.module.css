@@ -105,8 +105,8 @@
   }
 
   .input{
-    border: none;
-    margin: 0.5rem 0;
+    background: var(--colore-nero);
+    border-radius: 1rem;
   }
 
   @media (max-width: 768px) {
