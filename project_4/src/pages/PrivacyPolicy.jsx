@@ -7,6 +7,7 @@ export function PrivacyPolicy() {
       fontFamily: "Arial, sans-serif",
       lineHeight: "2",
       textAlign: "center",
+      color: "var(--colore-bluChiaro)",
     },
   };
   return (
