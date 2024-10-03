@@ -30,7 +30,6 @@ export function ExperienceSetting() {
   const [experience, setExperience] = useState("");
 
   function handleAddExperience() {
-    // user.someExperience = [...{ name: experience, isVisible: false }];
     user.someExperience.push({ name: experience, isVisible: false });
     localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
     setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
