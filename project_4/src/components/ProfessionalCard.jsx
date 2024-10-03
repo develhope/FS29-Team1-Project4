@@ -45,7 +45,9 @@ export function ProfessionalCard({ professional, onClose }) {
           </div>
           <div className={Section.professionalRole}>
             {/* Ruolo professionale */}
-            <h3 className={Section.role}>{professional.job}</h3>
+            <h3 className={Section.role}>
+              {professional.job.map((job) => job + " ")}
+            </h3>
             {/* Icone */}
             <ul className={Section.icons}>
               {professional.program.map((program, index) => (
@@ -75,7 +77,9 @@ export function ProfessionalCard({ professional, onClose }) {
               </li>
             </ul>
             <span className={Section.review}>{professional.reviews}</span>
-            <span>{professional.comments}</span>
+            <span className={Section.comment}>
+              {professional.comments + " "}
+            </span>
           </div>
 
           {/* Contact link */}

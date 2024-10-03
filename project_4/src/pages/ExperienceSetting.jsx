@@ -1,5 +1,5 @@
 import { DATA } from "../database";
-import style from "../styles/ProjectSetting.module.css";
+import style from "../styles/ExperienceSetting.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
@@ -7,13 +7,13 @@ import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
 const db = DATA;
-export function ProjectSetting() {
+export function ExperienceSetting() {
   // Da usare nel momento in cui avremo un database
   //   const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
   // Controllo stato per i toggle
-  const [toggleProject, onToggleProject] = useShowToggle();
+  const [toggleExperience, onToggleExperience] = useShowToggle();
 
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
@@ -21,7 +21,7 @@ export function ProjectSetting() {
   // Recupero User grazie a ID preso da useParams
   const id = "5";
   const user = db.find((user) => user.id.toString() === id);
-  const project = user.project;
+
   // Costanti per cambiare la descrizione
   // const [inputDescription, setInputDescription] = useState("");
   // const [userDescription, setUserDescription] = useState(user.description);
@@ -91,8 +91,8 @@ export function ProjectSetting() {
               GENERAL SETTING
             </Link>
             {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/presentation_setting" className={style.link}>
-              EXPERIENCE SETTING
+            <Link to="/user/project_setting" className={style.link}>
+              PROJECT SETTING
             </Link>
           </div>
         </div>
@@ -108,52 +108,39 @@ export function ProjectSetting() {
               GENERAL SETTING
             </Link>
 
-            <Link to="/user/presentation_setting" className={style.link}>
-              EXPERIENCE Setting
+            <Link to="/user/project_setting" className={style.link}>
+              Project Setting
             </Link>
           </div>
         </aside>
 
         {/* Sezione Centrale */}
         <div className={style.content}>
-          <h1 className={style.h1}>Project Setting of {user.username}!</h1>
+          <h1 className={style.h1}>Experience Setting of {user.username}!</h1>
 
-          {/* Progetti scelti */}
+          {/* Esperienze scelte */}
           <div className={style.container_accept}>
-            {project.map((project, index) => (
-              <div className={style.container_accept}>
-                <p key={index} className={style.p_accept}>
-                  {project.name}
-                </p>
-                <img src={project.image} alt="" className={style.img} />
-              </div>
+            {user.someExperience.map((exp, index) => (
+              <p key={index} className={style.p_accept}>
+                {exp}
+              </p>
             ))}
             <img
               src={iconModify}
               alt="Modify Icon"
               className={style.icon_change}
               name="image"
-              onClick={onToggleProject}
+              onClick={onToggleExperience}
             />
             {/* Change Esperienze */}
-            {toggleProject && (
+            {toggleExperience && (
               <div className={style.container_change}>
                 <input
                   type="text"
                   // onChange={handleChangeInputDescription}
-                  placeholder="Aggiungi Nome Progetto"
+                  placeholder="Aggiungi esperienza"
                   className={style.input}
-                />
-                <button className={style.buttonSave}>Load file</button>
-                <input type="file" />
-
-                <input
-                  type="text"
-                  // value={inputImage}
-                  placeholder="Insert Link File"
-                  // onChange={handleChangeLinkImage}
-                  className={style.input}
-                />
+                ></input>
                 <button
                   // onClick={handleChangeUsername}
                   className={style.buttonSave}
