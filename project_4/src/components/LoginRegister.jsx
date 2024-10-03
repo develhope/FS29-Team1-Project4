@@ -1,13 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterPage } from "../pages/RegisterPage";
 import { useShowToggle } from "../hooks/useShowToggle";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import NavLogin from "../styles/LoginRegister.module.css";
+import { DATA } from "../database";
+
+const users = DATA;
+// const UserContext = createContext(null);
 
 export function LoginRegister({ toggle }) {
   // const [login, onLogin] = useShowToggle(toggle);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [user, setUser] = useState({});
+
   /* Gestione del click fuori dal form */
   const [isFormOpen, setIsFormOpen] = useState(false);
   const openForm = () => setIsFormOpen(true);
@@ -24,9 +30,25 @@ export function LoginRegister({ toggle }) {
   }
 
   function handleGoSettingPage() {
-    /*user= users.find((user)=> user.username && user.password)*/
-    navigate("/user_setting");
-    // navigate(`/user_setting/${user.id}`)
+    const user = users.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
+
+    // Salvo lo User trovato nel localstorage
+    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+
+    switch (true) {
+      case user.isAdmin:{
+        navigate(`/admin/${user.id}`);
+        break;}
+      case user.isPro:{
+        navigate(`/user_setting/${user.id}`);
+        break;}
+      case !user.isPro:{
+        navigate(`/company_setting/${user.id}`);
+        break;}
+
+      default:
+        break;
+    }
   }
 
   function handleClikLink() {
@@ -52,9 +74,11 @@ export function LoginRegister({ toggle }) {
               <input type="text" value={password} onChange={handlePassword} className={NavLogin.input} />
             </div>
             <div className={NavLogin.links}>
-              <button onClick={handleGoSettingPage} className={NavLogin.link_button}>
+              {/* <UserContext.Provider value={user}> */}
+              <button type="button" onClick={handleGoSettingPage} className={NavLogin.link_button}>
                 Login
               </button>
+              {/* </UserContext.Provider> */}
               <span>|</span>
               <button className={NavLogin.link_button} onClick={handleClikLink}>
                 Register

@@ -1,13 +1,13 @@
 import { DATA } from "../database";
-import style from "../styles/ProjectSetting.module.css";
+import style from "../styles/PermissionUser.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
-const db = DATA;
-export function ProjectSetting() {
+const users = DATA;
+export function PermissionUser() {
   // Da usare nel momento in cui avremo un database
   const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
@@ -22,8 +22,7 @@ export function ProjectSetting() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const user = db.find((user) => user.id.toString() === id);
-  const project = user.project;
+  const user = users.find((user) => user.id.toString() === id);
 
   // Costanti per cambiare la descrizione
   // const [inputDescription, setInputDescription] = useState("");
@@ -74,6 +73,11 @@ export function ProjectSetting() {
   function handleNavigateGeneral() {
     navigate(`/user/general_setting/${user.id}`);
   }
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -97,7 +101,7 @@ export function ProjectSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p className={style.p_change}>SETTINGS</p>
+              <p>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -118,6 +122,10 @@ export function ProjectSetting() {
             <button onClick={handleNavigateExperience} className={style.link}>
               Experience SETTING
             </button>
+
+            <button onClick={handleNavigateProject} className={style.link}>
+              PROJECT SETTING
+            </button>
           </div>
         </div>
 
@@ -134,18 +142,42 @@ export function ProjectSetting() {
           <button onClick={handleNavigateExperience} className={style.link}>
             Experience SETTING
           </button>
+
+          <button onClick={handleNavigateProject} className={style.link}>
+            PROJECT SETTING
+          </button>
         </aside>
 
         {/* Sezione Centrale */}
         <div className={style.content}>
-          <h1 className={style.h1}>Project Setting of {user.username}!</h1>
+          <h1 className={style.h1}>Permission User of {user.username}!</h1>
 
-          {/* Progetti scelti */}
+          {/* Tutti gli utenti con i loro permessi e cosa sono */}
           <div className={style.container_accept}>
-            {project.map((project, index) => (
-              <div key={index} className={style.container_accept}>
-                <p className={style.p_accept}>{project.name}</p>
-                <img src={project.image} alt="" className={style.img} />
+            <div className={style.table}>
+              <p className={style.p_table}>ID</p>
+              <p className={style.p_table}>User</p>
+              <p className={style.p_table}>Pro</p>
+              <p className={style.p_table}>Admin</p>
+            </div>
+            {users.map((user, index) => (
+              <div key={index} className={style.table}>
+                <p className={style.p_table}>{user.id}</p>
+                <p className={style.p_table}>{user.username}</p>
+                <div className={style.p_table}>
+                  {user.isPro ? (
+                    <div className={style.circle_green}></div>
+                  ) : (
+                    <div className={style.circle_red}></div>
+                  )}
+                </div>
+                <div className={style.p_table}>
+                  {user.isAdmin ? (
+                    <div className={style.circle_green}></div>
+                  ) : (
+                    <div className={style.circle_red}></div>
+                  )}
+                </div>
               </div>
             ))}
             <img

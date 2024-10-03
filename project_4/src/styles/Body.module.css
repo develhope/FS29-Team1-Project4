@@ -7,7 +7,8 @@
 .titles{
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  background-color: var(--colore-nero);
+  box-shadow: var(--box-bluOpaco);
   border-radius: 2rem;
   color: var(--colore-blu);
   margin: 3rem 0.5rem;

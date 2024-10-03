@@ -1,8 +1,7 @@
 import { DATA } from "../database";
 import style from "../styles/GeneralSetting.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, useParams } from "react-router-dom";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
@@ -10,54 +9,95 @@ import iconClose from "../assets/xmark-solid.svg";
 const db = DATA;
 export function GeneralSetting() {
   // Da usare nel momento in cui avremo un database
-  //   const { id } = useParams();
+  const { id = "5" } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
+
+  // useNavigate
+  const navigate = useNavigate();
+
+  // Recupero user da localstorage e lo salvo nello State
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
+  );
 
   // Controllo stato per i toggle
   const [toggleSurname, onToggleSurname] = useShowToggle();
   const [toggleFirstname, onToggleFirstname] = useShowToggle();
-  const [toggleAnnoNascita, onToggleAnnoNascita] = useShowToggle();
+  const [togglePrice, onTogglePrice] = useShowToggle();
   const [toggleLuogoNascita, onToggleLuogoNascita] = useShowToggle();
+
+  // State per variabili change
+  const [firstname, setFirstname] = useState("");
+  const [surname, setSurname] = useState("");
+  const [luogo, setLuogo] = useState("");
+  const [priceMax, setPriceMax] = useState(0);
+  const [priceMin, setPriceMin] = useState(0);
 
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const id = "5";
-  const user = db.find((user) => user.id.toString() === id);
+  // const user = db.find((u) => u.id.toString() === id);
 
   // Ottengo Solo i general dello user
   const general = user.general;
 
-  // Costanti per cambiare la descrizione
-  // const [inputDescription, setInputDescription] = useState("");
-  // const [userDescription, setUserDescription] = useState(user.description);
+  // Handle Firstname
+  function handleChangeFirstname(e) {
+    e.preventDefault();
+    user.general.firstName = firstname;
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
+  // Handle Surname
+  function handleChangeSurname(e) {
+    e.preventDefault();
+    user.general.surName = surname;
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
+  // Handle Luogo(Residenza/Sede legale)
+  function handleChangeLuogo(e) {
+    e.preventDefault();
+    user.isPro
+      ? (user.general.luogoNascita = luogo)
+      : (user.general.sedeLegale = luogo);
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
+  // Handle Price
+  function handleChangePrice() {
+    !!priceMax && (user.price.max = priceMax);
+    !!priceMin && (user.price.min = priceMin);
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
 
-  // Handle Username
-  // function handleChangeUsername(e) {
-  //   e.preventDefault();
-  //   setUser(inputDescription);
-  // }
+  //  Navigazione User setting
+  function handleNavigateUser() {
+    switch (true) {
+      case user.isAdmin:
+        navigate(`/admin/${user.id}`);
+        break;
+      case user.isPro:
+        navigate(`/user_setting/${user.id}`);
+        break;
+      case !user.isPro:
+        navigate(`/company_setting/${user.id}`);
+        break;
 
-  // Handle Image
-  // function handleChangeLinkImage(e) {
-  //   setInputImage(e.target.value);
-  // }
-
-  // function handleChangeImage(e) {
-  //   e.preventDefault();
-  //   setUserImage(inputImage);
-  // }
-
-  // // Handle Description
-  // function handleChangeInputDescription(e) {
-  //   setInputDescription(e.target.value);
-  // }
-
-  // function handleChangeDescription(e) {
-  //   e.preventDefault();
-  //   setUserDescription(inputDescription);
-  // }
+      default:
+        break;
+    }
+  }
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+  // Experience setting
+  function handleNavigateExperience() {
+    navigate(`/user/presentation_setting/${user.id}`);
+  }
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -81,7 +121,7 @@ export function GeneralSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -90,35 +130,34 @@ export function GeneralSetting() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
-            <Link to="/user" className={style.link}>
+
+            <button onClick={handleNavigateUser} className={style.link}>
               USER SETTING
-            </Link>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/presentation_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateExperience} className={style.link}>
               Experience SETTING
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateProject} className={style.link}>
               PROJECT SETTING
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <div className={style.aside_sticky}>
-            <Link to="/user" className={style.link}>
-              User Setting
-            </Link>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/presentation_setting" className={style.link}>
-              Experience Setting
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
-              Project Setting
-            </Link>
-          </div>
+          <button onClick={handleNavigateUser} className={style.link}>
+            USER SETTING
+          </button>
+
+          <button onClick={handleNavigateExperience} className={style.link}>
+            Experience SETTING
+          </button>
+
+          <button onClick={handleNavigateProject} className={style.link}>
+            PROJECT SETTING
+          </button>
         </aside>
 
         {/* Sezione Centrale */}
@@ -127,7 +166,12 @@ export function GeneralSetting() {
 
           {/* Nome scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>First Name: {general.firstName}</p>
+            {user.isPro ? (
+              <p className={style.p_accept}>Firstname: {general.firstName}</p>
+            ) : (
+              <p className={style.p_accept}>Partita IVA: {general.pIVA}</p>
+            )}
+
             <img
               src={iconModify}
               alt="Modify Icon"
@@ -140,12 +184,12 @@ export function GeneralSetting() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.firstName}
+                  onChange={(e) => setFirstname(e.target.value)}
+                  placeholder={user.isPro ? general.firstName : general.pIVA}
                   className={style.input}
-                ></input>
+                />
                 <button
-                  // onClick={handleChangeUsername}
+                  onClick={handleChangeFirstname}
                   className={style.buttonSave}
                 >
                   Save
@@ -154,67 +198,59 @@ export function GeneralSetting() {
             )}
           </div>
           {/* Cognome Scelto */}
-          <div className={style.container_accept}>
-            <p className={style.p_accept}>Surname: {general.surName}</p>
-            <img
-              src={iconModify}
-              alt="Modify Icon"
-              className={style.icon_change}
-              name="image"
-              onClick={onToggleSurname}
-            />
+          {!!user.isPro && (
+            <div className={style.container_accept}>
+              <p className={style.p_accept}>Surname: {general.surName}</p>
+              <img
+                src={iconModify}
+                alt="Modify Icon"
+                className={style.icon_change}
+                name="image"
+                onClick={onToggleSurname}
+              />
 
-            {/* Change Surname */}
-            {toggleSurname && (
-              <div className={style.container_change}>
-                <input
-                  type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.surName}
-                  className={style.input}
-                ></input>
-                <button
-                  // onClick={handleChangeUsername}
-                  className={style.buttonSave}
-                >
-                  Save
-                </button>
-              </div>
-            )}
-          </div>
+              {/* Change Surname */}
+              {toggleSurname && (
+                <div className={style.container_change}>
+                  <input
+                    type="text"
+                    onChange={(e) => setSurname(e.target.value)}
+                    placeholder={general.surName}
+                    className={style.input}
+                  ></input>
+                  <button
+                    onClick={handleChangeSurname}
+                    className={style.buttonSave}
+                  >
+                    Save
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Anno di Nascita Scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>You both in {general.annoNascita}</p>
-            <img
-              src={iconModify}
-              alt="Modify Icon"
-              className={style.icon_change}
-              name="image"
-              onClick={onToggleAnnoNascita}
-            />
-            {/* Change Anno di Nascita */}
-            {toggleAnnoNascita && (
-              <div className={style.container_change}>
-                <input
-                  type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.annoNascita}
-                  className={style.input}
-                ></input>
-                <button
-                  // onClick={handleChangeUsername}
-                  className={style.buttonSave}
-                >
-                  Save
-                </button>
-              </div>
+            {user.isPro ? (
+              <p className={style.p_accept}>
+                You both in {general.annoNascita}
+              </p>
+            ) : (
+              <p className={style.p_accept}>Founded in {general.annoNascita}</p>
             )}
           </div>
           {/* Luogo di Nascita Scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>
-              You are from {general.luogoNascita}
-            </p>
+            {user.isPro ? (
+              <p className={style.p_accept}>
+                You are from {general.luogoNascita}
+              </p>
+            ) : (
+              <p className={style.p_accept}>
+                The registered office is located in {general.sedeLegale}
+              </p>
+            )}
+
             <img
               src={iconModify}
               alt="Modify Icon"
@@ -227,12 +263,61 @@ export function GeneralSetting() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.luogoNascita}
+                  onChange={(e) => setLuogo(e.target.value)}
+                  placeholder={
+                    user.isPro ? general.luogoNascita : general.sedeLegale
+                  }
                   className={style.input}
                 ></input>
                 <button
-                  // onClick={handleChangeUsername}
+                  onClick={handleChangeLuogo}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
+              </div>
+            )}
+          </div>
+          {/* Prezzi */}
+          <div className={style.container_accept}>
+            {user.isPro ? (
+              <div>
+                <p className={style.p_accept}>Price Max: {user.price.max}</p>
+                <p className={style.p_accept}>Price Min: {user.price.min}</p>
+              </div>
+            ) : (
+              <p className={style.p_accept}>
+                <div>
+                  <p className={style.p_accept}>Price Max: {user.price.max}</p>
+                  <p className={style.p_accept}>Price Min: {user.price.min}</p>
+                </div>
+              </p>
+            )}
+
+            <img
+              src={iconModify}
+              alt="Modify Icon"
+              className={style.icon_change}
+              name="image"
+              onClick={onTogglePrice}
+            />
+            {/* Change Prezzi */}
+            {togglePrice && (
+              <div className={style.container_change}>
+                <input
+                  type="text"
+                  onChange={(e) => setPriceMax(e.target.value)}
+                  placeholder={`Il prezzo massimo è ${user.price.max}`}
+                  className={style.input}
+                />
+                <input
+                  type="text"
+                  onChange={(e) => setPriceMin(e.target.value)}
+                  placeholder={`Il prezzo minimo è ${user.price.min}`}
+                  className={style.input}
+                />
+                <button
+                  onClick={handleChangePrice}
                   className={style.buttonSave}
                 >
                   Save

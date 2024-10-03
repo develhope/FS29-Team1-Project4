@@ -4,15 +4,8 @@ import { CategorieProIT } from "./CategorieProIT";
 import { Search } from "./Search";
 import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
-import { useShowToggle } from "../hooks/useShowToggle";
 
 export function Navbar({ serviceSrollFunction, professionScrollFunction }) {
-  const [toggle, setToggle] = useShowToggle(false);
-
-  function test() {
-    setToggle(false);
-  }
-
   return (
     <nav className={nav_container.nav}>
       <div className={nav_container.container}>
@@ -22,7 +15,7 @@ export function Navbar({ serviceSrollFunction, professionScrollFunction }) {
 
         <Search />
         <ChangeLanguage />
-        {!toggle ? <LoginRegister toggle={toggle} /> : <LoginRegister />}
+        <LoginRegister />
       </div>
     </nav>
   );

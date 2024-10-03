@@ -14,6 +14,7 @@ export function AsideSearchPage() {
             <label htmlFor="Company"> Company </label>
           </div>
           <hr />
+          <br/>
           <h3> Specialization : </h3>
           <div>
             <input type="checkbox" />

@@ -71,25 +71,16 @@ export function ProjectProfessional() {
   };
 
   return (
-    <div className="w-full m-auto mt-20 mb-20 ">
+    <div className="w-full m-auto ">
       <div className="max-w-7xl m-auto">
         <Slider {...settings}>
           {filterUserForExamples.map((card) => (
-            <div
-              key={card.id}
-              className=" text-black rounded-xl shadow-1xl shadow-lg mb-3"
-            >
-              <div className="bg-slate-500 text-center">
-                <h2 className="text-2xl font-bold h-10">
-                  Nome: {card.username}
-                </h2>
+            <div key={card.id} className=" bg-[#94c4f5] my-shadow mb-20 mt-20">
+              <div className="text-black text-center h-10">
+                <h2 className="text-2xl font-bold">Nome: {card.username}</h2>
               </div>
               <div className="h-72">
-                <img
-                  src={card.image}
-                  alt="Image Missing"
-                  className=" bg-white text-center h-full w-full"
-                />
+                <img src={card.image} alt="Image Missing" className=" bg-white text-center h-full w-full" />
               </div>
             </div>
           ))}

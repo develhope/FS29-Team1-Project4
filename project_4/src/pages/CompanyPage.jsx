@@ -1,30 +1,24 @@
-import style from "../styles/AdminPage.module.css";
+import style from "../styles/CompanyPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useRef, useState } from "react";
+import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
 // Database fittizio
 const users = DATA;
 
-export function AdminPage() {
-  // Da usare nel momento in cui avremo un database
+export function CompanyPage() {
   const { id } = useParams();
+  // Da usare nel momento in cui avremo un database
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
-  // Recupero lo user usando il context
-  // const user = useContext(UserContext);
 
   // Costante per navigare
   const navigate = useNavigate();
 
-  // Recupero User grazie a ID preso da useParams
-  const user = users.find((user) => user.id.toString() === id);
-
-  // Cambio elementi
   // Controllo stato per i toggle
+  // Cambio elementi
   const [toggle, onToggle] = useShowToggle();
   const [toggleUsername, onToggleUsername] = useShowToggle();
   const [toggleDescription, onToggleDescription] = useShowToggle();
@@ -33,12 +27,11 @@ export function AdminPage() {
   const [toggleExperince, onToggleExperince] = useShowToggle();
   const [toggleComments, onToggleComments] = useShowToggle();
 
-  // Toggle per selezione programmi
-  const [toggleClickProgram, setToggleClickProgram] = useState(false);
-  const [selectedProgram, setSelectedProgram] = useState(null);
-
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
+
+  // Recupero User grazie alla proprietà isPro
+  const user = users.find((user) => !user.isPro);
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
@@ -48,20 +41,6 @@ export function AdminPage() {
   const [inputDescription, setInputDescription] = useState("");
   const [userDescription, setUserDescription] = useState(user.description);
 
-  // Handle Open CLick Programma scelto
-  const handleShowPopup = (item) => {
-    setSelectedProgram(item);
-    setToggleClickProgram((p) => !p);
-  };
-
-  // load file
-  const fileInputRef = useRef(null);
-
-  const handleClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
   // Handle Username
   function handleChangeUsername(e) {
     e.preventDefault();
@@ -100,11 +79,6 @@ export function AdminPage() {
   function handleNavigateExperience() {
     navigate(`/user/presentation_setting/${user.id}`);
   }
-  // Permission user
-  function handleNavigatePermission() {
-    navigate(`/user/permission_user/${user.id}`);
-  }
-
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -149,10 +123,6 @@ export function AdminPage() {
             <button onClick={handleNavigateProject} className={style.link}>
               PROJECT SETTING
             </button>
-
-            <button onClick={handleNavigatePermission} className={style.link}>
-              permissions User
-            </button>
           </div>
         </div>
 
@@ -168,10 +138,6 @@ export function AdminPage() {
 
           <button onClick={handleNavigateProject} className={style.link}>
             PROJECT SETTING
-          </button>
-
-          <button onClick={handleNavigatePermission} className={style.link}>
-            permissions User
           </button>
         </aside>
 
@@ -259,17 +225,8 @@ export function AdminPage() {
                     </>
                   );
                 */}
-                {/* <button className={style.buttonSave}>Load file</button>
-                <input type="file" /> */}
-                <div className="flex items-center space-x-4">
-                  <button
-                    onClick={handleClick}
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow"
-                  >
-                    Load file
-                  </button>
-                  <input type="file" ref={fileInputRef} className="hidden" />
-                </div>
+                <button className={style.buttonSave}>Load file</button>
+                <input type="file" />
 
                 <input
                   type="text"
@@ -353,15 +310,7 @@ export function AdminPage() {
               <div className={style.container_change}>
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleShowPopup(program)}
-                      className={
-                        toggleClickProgram
-                          ? style.li_change_click
-                          : style.li_change
-                      }
-                    >
+                    <li key={index} className={style.li_change}>
                       <p className={style.p_change}>
                         {program.name.toUpperCase()}
                       </p>

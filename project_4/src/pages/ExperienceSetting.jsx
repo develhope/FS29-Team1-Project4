@@ -1,7 +1,7 @@
 import { DATA } from "../database";
 import style from "../styles/ExperienceSetting.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
@@ -9,8 +9,16 @@ import iconClose from "../assets/xmark-solid.svg";
 const db = DATA;
 export function ExperienceSetting() {
   // Da usare nel momento in cui avremo un database
-  //   const { id } = useParams();
+  const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
+
+  // Recupero user da localstorage e lo salvo nello State
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
+  );
+
+  // Costante per navigare
+  const navigate = useNavigate();
 
   // Controllo stato per i toggle
   const [toggleExperience, onToggleExperience] = useShowToggle();
@@ -18,39 +26,42 @@ export function ExperienceSetting() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Recupero User grazie a ID preso da useParams
-  const id = "5";
-  const user = db.find((user) => user.id.toString() === id);
+  // State add experience
+  const [experience, setExperience] = useState("");
 
-  // Costanti per cambiare la descrizione
-  // const [inputDescription, setInputDescription] = useState("");
-  // const [userDescription, setUserDescription] = useState(user.description);
+  function handleAddExperience() {
+    // user.someExperience = [...{ name: experience, isVisible: false }];
+    user.someExperience.push({ name: experience, isVisible: false });
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
 
-  // Handle Username
-  // function handleChangeUsername(e) {
-  //   e.preventDefault();
-  //   setUser(inputDescription);
-  // }
+  // Navigazione con passagio id
+  // User setting
+  function handleNavigateUser() {
+    switch (true) {
+      case user.isAdmin:
+        navigate(`/admin/${user.id}`);
+        break;
+      case user.isPro:
+        navigate(`/user_setting/${user.id}`);
+        break;
+      case !user.isPro:
+        navigate(`/company_setting/${user.id}`);
+        break;
 
-  // Handle Image
-  // function handleChangeLinkImage(e) {
-  //   setInputImage(e.target.value);
-  // }
-
-  // function handleChangeImage(e) {
-  //   e.preventDefault();
-  //   setUserImage(inputImage);
-  // }
-
-  // // Handle Description
-  // function handleChangeInputDescription(e) {
-  //   setInputDescription(e.target.value);
-  // }
-
-  // function handleChangeDescription(e) {
-  //   e.preventDefault();
-  //   setUserDescription(inputDescription);
-  // }
+      default:
+        break;
+    }
+  }
+  // Project setting
+  function handleNavigateProject() {
+    navigate(`/user/project_setting/${user.id}`);
+  }
+  // General setting
+  function handleNavigateGeneral() {
+    navigate(`/user/general_setting/${user.id}`);
+  }
   return (
     <div className={style.container}>
       <div className={style.container_noTitle}>
@@ -74,7 +85,7 @@ export function ExperienceSetting() {
             }
           >
             <div className={style.hamburger_content_top}>
-              <p>SETTINGS</p>
+              <p className={style.p_change}>SETTINGS</p>
 
               <img
                 className={style.icon_close}
@@ -83,35 +94,34 @@ export function ExperienceSetting() {
                 onClick={onToggleAsideHamburger}
               />
             </div>
-            <Link to="/user" className={style.link}>
+
+            <button onClick={handleNavigateUser} className={style.link}>
               USER SETTING
-            </Link>
-            {/* Presentation sono i dati anagrafaci */}
-            <Link to="/user/general_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateGeneral} className={style.link}>
               GENERAL SETTING
-            </Link>
-            {/* Tutti i progetti caricati e cioè un array dei progetti inseriti, da qui può toglierli e inserirli */}
-            <Link to="/user/project_setting" className={style.link}>
+            </button>
+
+            <button onClick={handleNavigateProject} className={style.link}>
               PROJECT SETTING
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Aside tutto schermo laterale dx */}
         <aside className={style.aside}>
-          <div className={style.aside_sticky}>
-            <Link to="/user" className={style.link}>
-              USER SETTING
-            </Link>
+          <button onClick={handleNavigateUser} className={style.link}>
+            USER SETTING
+          </button>
 
-            <Link to="/user/general_setting" className={style.link}>
-              GENERAL SETTING
-            </Link>
+          <button onClick={handleNavigateGeneral} className={style.link}>
+            GENERAL SETTING
+          </button>
 
-            <Link to="/user/project_setting" className={style.link}>
-              Project Setting
-            </Link>
-          </div>
+          <button onClick={handleNavigateProject} className={style.link}>
+            PROJECT SETTING
+          </button>
         </aside>
 
         {/* Sezione Centrale */}
@@ -122,7 +132,7 @@ export function ExperienceSetting() {
           <div className={style.container_accept}>
             {user.someExperience.map((exp, index) => (
               <p key={index} className={style.p_accept}>
-                {exp}
+                {exp.name}
               </p>
             ))}
             <img
@@ -137,12 +147,12 @@ export function ExperienceSetting() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
+                  onChange={(e) => setExperience(e.target.value)}
                   placeholder="Aggiungi esperienza"
                   className={style.input}
                 ></input>
                 <button
-                  // onClick={handleChangeUsername}
+                  onClick={handleAddExperience}
                   className={style.buttonSave}
                 >
                   Save

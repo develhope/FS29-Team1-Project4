@@ -37,72 +37,84 @@ export function ProfessionalCard({ professional, onClose }) {
             onClick={onClose}
           />
         </div>
-
-        {/* Card  */}
-        <div className={Section.card}>
-          <div className={Section.professionalCard}>
-            <img src={professional.image} alt="" />
+        <div className={Section.content}>
+          <div className={Section.left}>
+            {/* Card  */}
+            <div className={Section.card}>
+              <div className={Section.professionalCard}>
+                <img
+                  src={professional.image}
+                  alt=""
+                  className={Section.image}
+                />
+              </div>
+              <div className={Section.bottomLinks}>
+                <span>PROJECTS</span>
+                <ul className={Section.links}>
+                  {professional.project.map((project, index) => (
+                    <li key={index}>{project.name}</li>
+                  ))}
+                </ul>
+                <div className={Section.review}>
+                  <span>REVIEWS</span>
+                  <span>{professional.reviews}</span>
+                </div>
+                <div className={Section.comment}>
+                  <span>COMMENTS</span>
+                  <ul>
+                    {professional.comments.map((comments, index) => (
+                      <li key={index}>{comments}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className={Section.professionalRole}>
-            {/* Ruolo professionale */}
-            <h3 className={Section.role}>
-              {professional.job.map((job) => job + " ")}
-            </h3>
-            {/* Icone */}
-            <ul className={Section.icons}>
-              {professional.program.map((program, index) => (
-                <li key={index}>
-                  <img src={program.icon} alt="" className={Section.icon} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className={Section.linksSection}>
-          {/* Link di esempi */}
-          <div className={Section.bottomLinks}>
-            <ul className={Section.links}>
-              <li>
-                <a href="">Link 1</a>
-              </li>
-              <li>
-                <a href="">Link 2</a>
-              </li>
-              <li>
-                <a href="">Link 3</a>
-              </li>
-              <li>
-                <a href="">Link 4</a>
-              </li>
-            </ul>
-            <span className={Section.review}>{professional.reviews}</span>
-            <span className={Section.comment}>
-              {professional.comments + " "}
-            </span>
-          </div>
-
-          {/* Contact link */}
           <div className={Section.right}>
-            <div className={Section.description}>
-              <h4>Descrizione</h4>
-              <span>{professional.description}</span>
-            </div>
-            <div>
-              <h4>Costo prestazione</h4>
-              <span>{professional.price.max}€</span>
-            </div>
-            <div>
-              <h4>Luogo di lavoro</h4>
-              <span>{professional.luogo}</span>
-            </div>
-            <div>
-              <h4>Email</h4>
-              <span>{professional.email}</span>
-            </div>
-            <div>
-              <h4>Numero telefonico</h4>
-              <span>{/*professional.number*/}43534564564</span>
+            <div className={Section.right_content}>
+              <div className={Section.professionalRole}>
+                {/* Ruolo professionale */}
+                <h3 className={Section.role}>
+                  {professional.job.map((job) => job + " ")}
+                </h3>
+                {/* Icone */}
+                <ul className={Section.icons}>
+                  {professional.program.map((program, index) => (
+                    <li key={index}>
+                      <img src={program.icon} alt="" className={Section.icon} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={Section.linksSection}></div>
+              {/* Link di esempi */}
+
+              {/* Contact link */}
+
+              <div className={Section.description}>
+                <h4>DESCRIZIONE</h4>
+                <span>{professional.description}</span>
+              </div>
+              <div>
+                <h4>COSTO PRESTAZIONE</h4>
+                <span>
+                  {professional.price.min}€-{professional.price.max}€
+                </span>
+              </div>
+              <div>
+                <h4>LUOGO DI LAVORO</h4>
+                <span>{professional.luogo.toUpperCase()}</span>
+              </div>
+              <h4>CONTACT</h4>
+              <ul className={Section.contacts}>
+                {professional.contact.map((contact, index) => (
+                  <li key={index}>
+                    {contact.tipo.toUpperCase()}
+                    <br />
+                    {contact.name}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

@@ -1,17 +1,31 @@
 import style from "../styles/ServicesIT.module.css";
+import img from "../assets/ServicesIT.jpg";
 export function ServicesIT({ serviceSectionRef }) {
   return (
     <div className={style.container} ref={serviceSectionRef}>
       <div className={style.column}>
-        <h2>SERVICES IT</h2>
+        <h2 className={style.title}>SERVICES IT</h2>
+        <h3 className={style.subtitle}>My Professional IT</h3>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, ipsum debitis in perferendis aperiam labore reiciendis accusamus eos mollitia nostrum unde ut aspernatur quia? Cumque
-          praesentium corrupti laboriosam id molestias.
+          è la tua piattaforma di riferimento per trovare facilmente professionisti nel settore IT. Che tu abbia bisogno di assistenza tecnica, consulenza o sviluppo di software, siamo qui per
+          aiutarti a connetterti con esperti qualificati.
         </p>
+        <h3 className={style.subtitle}>Come funziona?</h3>
+        <ul>
+          <li>
+            <p>Cerca – Trova il professionista IT giusto per te esplorando le nostre categorie di servizi.</p>
+          </li>
+          <li>
+            <p>Connettiti – Contatta direttamente il professionista per discutere delle tue necessità.</p>
+          </li>
+          <li>
+            <p> Collabora – Lavora insieme al professionista per ottenere soluzioni su misura per il tuo progetto.</p>
+          </li>
+        </ul>
       </div>
       <div className={style.column}>
         <div className={style.cover}>
-          <img src="" alt="Immagine o video del sito" />
+          <img src={img} alt="Immagine o video del sito" />
         </div>
       </div>
     </div>

@@ -2,34 +2,38 @@
     position: relative;
     z-index: 10;
     display: inline-block;
-    
+
 }
 .button {
+  border: 1px solid var(--colore-bluChiaro);
+  border-radius: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
+  align-items: center;
+  padding: 0.8rem;
+  box-shadow: var(--box-bluOpaco);
+  aspect-ratio: 1/1;
   svg{
-      font-size: 2.5rem;
-      color: var(--colore-blu);
-    }
+    color: var(--colore-bluChiaro);
+    font-size: 1.5rem;
   }
-  
+}
+
   .background {
     max-width: 1280px;
-    position: relative;
-    right: -100vw; 
-    background-color: var(--colore-bianco);
-    color: var(--colore-blu);
-    box-shadow: 5px 10px 16px 0px rgba(0,0,0,0.2); 
-    border: 1px solid var(--colore-nero);
+    background-color: var(--colore-nero);
+    color: var(--colore-bluChiaro);
+    box-shadow: var(--box-bluOpaco);
     border-top: none;
     transition: transform 0.5s ease-in-out;
-    
+    border-radius: 1rem;
+
 }
 
 .background.show {
     position: absolute;
-    top: 153%;
+    top: 150%;
     right: 0; /* Sposta alla posizione desiderata */
     display: flex;
     flex-direction: column;
@@ -38,9 +42,9 @@
     width: 20rem;
     height: 20rem;
     animation: slideIn 1s forwards; /* Attiva l'animazione */
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 1rem;
     text-transform: uppercase;
-}
+  }
 /* .background.hide{
   animation:  slideOut 1s backwards;
 } */
@@ -75,14 +79,14 @@
       top: 0;
       right: 0.5rem;
     }
-  }  
+  }
 
   .link_button{
     border: none;
-    color: var(--colore-blu);
+    color: var(--colore-bluChiaro);
   }
   .link_button:hover{
-    color: var(--colore-nero);
+    color: var(--colore-blu);
   }
   .user{
     display: flex;
@@ -91,24 +95,30 @@
   .links{
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     text-align: center;
     width: 100%;
     text-transform: uppercase;
     span{
-      color: var(--colore-blu)
+      color: var(--colore-bluChiaro)
     }
   }
 
   .input{
     border: none;
-    box-shadow: 0 0 10px rgba(0, 77, 153, 0.4);
-    border-radius: 1rem;
     margin: 0.5rem 0;
+    background-color: var(--colore-nero);
   }
 
   @media (max-width: 768px) {
     .background.show{
-      width: 100vw;
+      width: 90vw;
+      right: -150%;
+    }
+  }
+  @media (max-width: 426px) {
+    .background.show{
+      right: -90%;
+      width: 90vw;
     }
   }
