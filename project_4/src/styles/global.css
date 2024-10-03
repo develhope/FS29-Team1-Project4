@@ -34,7 +34,6 @@
 ul,
 li {
   list-style: none;
-
 }
 
 a {
@@ -83,13 +82,13 @@ button {
   box-shadow: var(--box-blu);
 }
 
-input[type='text']{
+input[type="text"] {
   border-radius: 0.5rem;
   background-color: var(--colore-nero);
   box-shadow: var(--box-bluOpaco);
   color: var(--colore-bianco);
 }
-input[type='password']{
+input[type="password"] {
   border-radius: 0.5rem;
   background-color: var(--colore-nero);
   box-shadow: var(--box-bluOpaco);

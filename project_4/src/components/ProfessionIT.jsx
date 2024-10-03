@@ -14,19 +14,19 @@ export function ProfessionIT({ professionITSectionRef }) {
         <h3 className={style.subtitle}>My Professional IT</h3>
         <ul>
           <li>
-            <h4>Web Developer</h4>
+            <strong>Web Developer</strong>
             <p>Un Web Developer si occupa della creazione e manutenzione di siti web e applicazioni web.</p>
           </li>
           <li>
-            <h4>3D Designer</h4>
+            <strong>3D Designer</strong>
             <p>Il 3D Designer è specializzato nella creazione di modelli, animazioni e render 3D.</p>
           </li>
           <li>
-            <h4>Software Engineer</h4>
+            <strong>Software Engineer</strong>
             <p>Il Software Engineer progetta e sviluppa soluzioni software complesse. </p>
           </li>
           <li>
-            <h4>Web Designer</h4>
+            <strong>Web Designer</strong>
             <p>Il Web Designer si concentra sull’aspetto visivo e sull’usabilità di un sito web.</p>
           </li>
         </ul>

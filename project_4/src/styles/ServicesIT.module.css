@@ -29,16 +29,14 @@
 }
 
 .cover{
+  position: relative;
   min-height:600px;
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
   display:flex; 
   flex-direction:column;
   justify-content:center; 
-  background-image:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
-  background-position: center center; 
-  background-size:cover;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 @media (max-width: 768px) {
