@@ -1,24 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { RegisterPage } from "../pages/RegisterPage";
 import { useShowToggle } from "../hooks/useShowToggle";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import NavLogin from "../styles/LoginRegister.module.css";
 import { DATA } from "../database";
 
 const users = DATA;
-// const UserContext = createContext(null);
 
 export function LoginRegister({ toggle }) {
-  // const [login, onLogin] = useShowToggle(toggle);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [user, setUser] = useState({});
-
-  /* Gestione del click fuori dal form */
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const formRef = useRef(null); // Riferimento al form
+
   const openForm = () => setIsFormOpen(true);
   const closeForm = () => setIsFormOpen(false);
-  /* ---------------*/
   const navigate = useNavigate();
 
   function handleUsername(e) {
@@ -32,27 +29,55 @@ export function LoginRegister({ toggle }) {
   function handleGoSettingPage() {
     const user = users.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
 
-    // Salvo lo User trovato nel localstorage
-    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+    if (user) {
+      // Salvo lo User trovato nel localstorage
+      localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
 
-    if (user.isAdmin) {
-      navigate(`/admin/${user.id}`);
-    } else if (user.isPro) {
-      navigate(`/user_setting/${user.id}`);
-    } else {
-      navigate(`/company_setting/${user.id}`);
+      // Chiude il form dopo il login
+      closeForm();
+
+      // Pulisce gli input
+      setUsername("");
+      setPassword("");
+
+      // Naviga alla pagina giusta in base ai permessi
+      if (user.isAdmin) {
+        navigate(`/admin/${user.id}`);
+      } else if (user.isPro) {
+        navigate(`/user_setting/${user.id}`);
+      } else {
+        navigate(`/company_setting/${user.id}`);
+      }
     }
-    /*
-    user.isPro || user.isAdmin
-    ? navigate(`/user_setting/${user.id}`)
-    : navigate(`/company_setting/${user.id}`);
-    */
   }
 
   function handleClikLink() {
+    // Chiude il form prima di navigare alla pagina di registrazione
+    closeForm();
     navigate("/register");
+    setUsername("");
+    setPassword("");
     onLogin(false);
   }
+
+  // useEffect per chiudere il form quando si clicca fuori
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        closeForm();
+      }
+    }
+
+    if (isFormOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isFormOpen]);
 
   return (
     <div className={NavLogin.container}>
@@ -60,29 +85,38 @@ export function LoginRegister({ toggle }) {
         <i className="fa-regular fa-user"></i>
       </button>
       {isFormOpen && (
-        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
-          <form className={NavLogin.form}>
-            <button onClick={closeForm} className={NavLogin.close_button}>
-              X
-            </button>
-            <div className={NavLogin.user}>
-              <label>Username:</label>
-              <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
-              <label>Password:</label>
-              <input type="text" value={password} onChange={handlePassword} className={NavLogin.input} />
-            </div>
-            <div className={NavLogin.links}>
-              {/* <UserContext.Provider value={user}> */}
-              <button type="button" onClick={handleGoSettingPage} className={NavLogin.link_button}>
-                Login
+        <div ref={formRef} className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
+          {!loggedIn ? (
+            <form className={NavLogin.form}>
+              <button onClick={closeForm} className={NavLogin.close_button}>
+                X
               </button>
-              {/* </UserContext.Provider> */}
-              <span>|</span>
-              <button className={NavLogin.link_button} onClick={handleClikLink}>
-                Register
+              <div className={NavLogin.user}>
+                <label>Username:</label>
+                <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
+                <label>Password:</label>
+                <input type="password" value={password} onChange={handlePassword} className={NavLogin.input} />
+              </div>
+              <div className={NavLogin.links}>
+                <button type="button" onClick={handleGoSettingPage} className={NavLogin.link_button}>
+                  Login
+                </button>
+                <span>|</span>
+                <button className={NavLogin.link_button} onClick={handleClikLink}>
+                  Register
+                </button>
+              </div>
+            </form>
+          ) : (
+            <div className={NavLogin.form}>
+              <button onClick={closeForm} className={NavLogin.close_button}>
+                X
               </button>
+              <div className={NavLogin.user}>
+                <h2>{}</h2>
+              </div>
             </div>
-          </form>
+          )}
         </div>
       )}
     </div>

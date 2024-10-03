@@ -2,7 +2,7 @@
     position: relative;
     z-index: 10;
     display: inline-block;
-    
+
 }
 .button {
   border: 1px solid var(--colore-bluChiaro);
@@ -19,7 +19,7 @@
     font-size: 1.5rem;
   }
 }
-  
+
   .background {
     max-width: 1280px;
     background-color: var(--colore-nero);
@@ -28,7 +28,7 @@
     border-top: none;
     transition: transform 0.5s ease-in-out;
     border-radius: 1rem;
-    
+
 }
 
 .background.show {
@@ -79,14 +79,14 @@
       top: 0;
       right: 0.5rem;
     }
-  }  
+  }
 
   .link_button{
     border: none;
     color: var(--colore-bluChiaro);
   }
   .link_button:hover{
-    color: var(--colore-blu);
+    color: var(--colore-bianco);
   }
   .user{
     display: flex;
@@ -105,8 +105,9 @@
   }
 
   .input{
-    background: var(--colore-nero);
-    border-radius: 1rem;
+    border: none;
+    margin: 0.5rem 0;
+    background-color: var(--colore-nero);
   }
 
   @media (max-width: 768px) {
