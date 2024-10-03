@@ -13,13 +13,19 @@ export function ServicesIT({ serviceSectionRef }) {
         <h3 className={style.subtitle}>Come funziona?</h3>
         <ul>
           <li>
-            <p>Cerca – Trova il professionista IT giusto per te esplorando le nostre categorie di servizi.</p>
+            <p>
+              <strong className="text-[#94c4f5]">Cerca </strong>– Trova il professionista IT giusto per te esplorando le nostre categorie di servizi.
+            </p>
           </li>
           <li>
-            <p>Connettiti – Contatta direttamente il professionista per discutere delle tue necessità.</p>
+            <p>
+              <strong className="text-[#94c4f5]">Connettiti</strong> – Contatta direttamente il professionista per discutere delle tue necessità.
+            </p>
           </li>
           <li>
-            <p> Collabora – Lavora insieme al professionista per ottenere soluzioni su misura per il tuo progetto.</p>
+            <p>
+              <strong className="text-[#94c4f5]">Collabora</strong> – Lavora insieme al professionista per ottenere soluzioni su misura per il tuo progetto.
+            </p>
           </li>
         </ul>
       </div>

@@ -1,25 +1,25 @@
 import { Link, useNavigate } from "react-router-dom";
-import { RegisterPage } from "../pages/RegisterPage";
-import { useShowToggle } from "../hooks/useShowToggle";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavLogin from "../styles/LoginRegister.module.css";
 import { DATA } from "../database";
+import eyeIconOpen from "../assets/eyeOpen.svg";
+import eyeIconClose from "../assets/eyeClose.svg";
+import userIcon from "../assets/userIcon.svg";
 
-const users = DATA;
-// const UserContext = createContext(null);
-
-export function LoginRegister({ toggle }) {
-  // const [login, onLogin] = useShowToggle(toggle);
+export function LoginRegister() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [user, setUser] = useState({});
-
-  /* Gestione del click fuori dal form */
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const openForm = () => setIsFormOpen(true);
-  const closeForm = () => setIsFormOpen(false);
-  /* ---------------*/
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const [passVis, setPassVis] = useState(false);
+  const formRef = useRef(null); // Riferimento al form
   const navigate = useNavigate();
+
+  const openForm = () => setIsFormOpen(true);
+  const closeForm = () => {
+    setIsFormOpen(false);
+  };
 
   function handleUsername(e) {
     setUsername(e.target.value);
@@ -30,61 +30,123 @@ export function LoginRegister({ toggle }) {
   }
 
   function handleGoSettingPage() {
-    const user = users.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
+    // Trova l'utente nel database
+    const user = DATA.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
 
-    // Salvo lo User trovato nel localstorage
-    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
-
-    switch (true) {
-      case user.isAdmin:{
-        navigate(`/admin/${user.id}`);
-        break;}
-      case user.isPro:{
-        navigate(`/user_setting/${user.id}`);
-        break;}
-      case !user.isPro:{
-        navigate(`/company_setting/${user.id}`);
-        break;}
-
-      default:
-        break;
+    if (user) {
+      setUser(user);
+      setLoggedIn(true);
+      localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+    } else {
+      const errorMsg = "Username o password errati";
+      alert(errorMsg); // Mostra solo un alert con l'errore
     }
   }
 
   function handleClikLink() {
+    closeForm();
     navigate("/register");
-    onLogin(false);
+    setUsername("");
+    setPassword("");
   }
+
+  // useEffect per chiudere il form quando si clicca fuori
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        closeForm();
+      }
+    }
+
+    if (isFormOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isFormOpen]);
 
   return (
     <div className={NavLogin.container}>
       <button className={NavLogin.button} onClick={openForm}>
-        <i className="fa-regular fa-user"></i>
+        <img src={userIcon} alt="User Icon" />
       </button>
       {isFormOpen && (
-        <div className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
-          <form className={NavLogin.form}>
-            <button onClick={closeForm} className={NavLogin.close_button}>
-              X
-            </button>
-            <div className={NavLogin.user}>
-              <label>Username:</label>
-              <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
-              <label>Password:</label>
-              <input type="text" value={password} onChange={handlePassword} className={NavLogin.input} />
-            </div>
-            <div className={NavLogin.links}>
-              {/* <UserContext.Provider value={user}> */}
-              <button type="button" onClick={handleGoSettingPage} className={NavLogin.link_button}>
-                Login
+        <div ref={formRef} className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
+          {!loggedIn ? (
+            <form className={NavLogin.form}>
+              <button onClick={closeForm} className={NavLogin.close_button}>
+                X
               </button>
-              {/* </UserContext.Provider> */}
-              <span>|</span>
-              <button className={NavLogin.link_button} onClick={handleClikLink}>
-                Register
+              <div className={NavLogin.user}>
+                <label>Username:</label>
+                <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
+                <div className={NavLogin.label}>
+                  Password:
+                  <input type={passVis ? "text" : "password"} value={password} onChange={handlePassword} className={NavLogin.input_password} aria-label="Password" />
+                  <button
+                    className={NavLogin.input_button}
+                    type="button"
+                    onClick={() => {
+                      setPassVis((prev) => !prev); // Toggle visibilità password
+                    }}
+                    aria-label={passVis ? "Nascondi password" : "Mostra password"}
+                  >
+                    {passVis ? <img src={eyeIconOpen} alt="Show Password" /> : <img src={eyeIconClose} alt="Hide Password" />}
+                  </button>
+                </div>
+              </div>
+              <div className={NavLogin.links}>
+                <button type="button" onClick={() => (username && password ? handleGoSettingPage() : alert("Inserisci l'utente e password"))} className={NavLogin.link_button}>
+                  Login
+                </button>
+                <span>|</span>
+                <button className={NavLogin.link_button} onClick={handleClikLink}>
+                  Register
+                </button>
+              </div>
+            </form>
+          ) : (
+            <div className={NavLogin.form}>
+              <button onClick={closeForm} className={NavLogin.close_button}>
+                X
               </button>
+              <div className={NavLogin.user}>
+                <h2>Welcome {user.username}</h2>
+                <button
+                  onClick={() => {
+                    switch (true) {
+                      case user.isAdmin:
+                        navigate(`/admin/${user.id}`);
+                        break;
+                      case user.isPro:
+                        navigate(`/user_setting/${user.id}`);
+                        break;
+                      default:
+                        navigate(`/company_setting/${user.id}`);
+                        break;
+                    }
+                  }}
+                >
+                  Settings
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.clear();
+                    setLoggedIn(false);
+                    navigate("/");
+                    setUsername("");
+                    setPassword("");
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
-          </form>
+          )}
         </div>
       )}
     </div>
