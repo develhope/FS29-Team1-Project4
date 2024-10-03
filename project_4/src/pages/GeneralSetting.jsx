@@ -15,60 +15,79 @@ export function GeneralSetting() {
   // useNavigate
   const navigate = useNavigate();
 
+  // Recupero user da localstorage e lo salvo nello State
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
+  );
+
   // Controllo stato per i toggle
   const [toggleSurname, onToggleSurname] = useShowToggle();
   const [toggleFirstname, onToggleFirstname] = useShowToggle();
-  const [toggleAnnoNascita, onToggleAnnoNascita] = useShowToggle();
+  const [togglePrice, onTogglePrice] = useShowToggle();
   const [toggleLuogoNascita, onToggleLuogoNascita] = useShowToggle();
+
+  // State per variabili change
+  const [firstname, setFirstname] = useState("");
+  const [surname, setSurname] = useState("");
+  const [luogo, setLuogo] = useState("");
+  const [priceMax, setPriceMax] = useState(0);
+  const [priceMin, setPriceMin] = useState(0);
 
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie a ID preso da useParams
-  const user = db.find((u) => u.id.toString() === id);
+  // const user = db.find((u) => u.id.toString() === id);
 
   // Ottengo Solo i general dello user
   const general = user.general;
 
-  // Costanti per cambiare la descrizione
-  // const [inputDescription, setInputDescription] = useState("");
-  // const [userDescription, setUserDescription] = useState(user.description);
+  // Handle Firstname
+  function handleChangeFirstname(e) {
+    e.preventDefault();
+    user.general.firstName = firstname;
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
+  // Handle Surname
+  function handleChangeSurname(e) {
+    e.preventDefault();
+    user.general.surName = surname;
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
+  // Handle Luogo(Residenza/Sede legale)
+  function handleChangeLuogo(e) {
+    e.preventDefault();
+    user.isPro
+      ? (user.general.luogoNascita = luogo)
+      : (user.general.sedeLegale = luogo);
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
+  // Handle Price
+  function handleChangePrice() {
+    !!priceMax && (user.price.max = priceMax);
+    !!priceMin && (user.price.min = priceMin);
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
 
-  // Handle Username
-  // function handleChangeUsername(e) {
-  //   e.preventDefault();
-  //   setUser(inputDescription);
-  // }
-
-  // Handle Image
-  // function handleChangeLinkImage(e) {
-  //   setInputImage(e.target.value);
-  // }
-
-  // function handleChangeImage(e) {
-  //   e.preventDefault();
-  //   setUserImage(inputImage);
-  // }
-
-  // // Handle Description
-  // function handleChangeInputDescription(e) {
-  //   setInputDescription(e.target.value);
-  // }
-
-  // function handleChangeDescription(e) {
-  //   e.preventDefault();
-  //   setUserDescription(inputDescription);
-  // }
-
-  // Navigazione con passagio id
-  // User setting
+  //  Navigazione User setting
   function handleNavigateUser() {
-    if (user.isAdmin) {
-      navigate(`/admin/${user.id}`);
-    } else if (user.isPro) {
-      navigate(`/user_setting/${user.id}`);
-    } else {
-      navigate(`/company_setting/${user.id}`);
+    switch (true) {
+      case user.isAdmin:
+        navigate(`/admin/${user.id}`);
+        break;
+      case user.isPro:
+        navigate(`/user_setting/${user.id}`);
+        break;
+      case !user.isPro:
+        navigate(`/company_setting/${user.id}`);
+        break;
+
+      default:
+        break;
     }
   }
   // Project setting
@@ -165,12 +184,12 @@ export function GeneralSetting() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
+                  onChange={(e) => setFirstname(e.target.value)}
                   placeholder={user.isPro ? general.firstName : general.pIVA}
                   className={style.input}
                 />
                 <button
-                  // onClick={handleChangeUsername}
+                  onClick={handleChangeFirstname}
                   className={style.buttonSave}
                 >
                   Save
@@ -195,12 +214,12 @@ export function GeneralSetting() {
                 <div className={style.container_change}>
                   <input
                     type="text"
-                    // onChange={handleChangeInputDescription}
+                    onChange={(e) => setSurname(e.target.value)}
                     placeholder={general.surName}
                     className={style.input}
                   ></input>
                   <button
-                    // onClick={handleChangeUsername}
+                    onClick={handleChangeSurname}
                     className={style.buttonSave}
                   >
                     Save
@@ -212,38 +231,26 @@ export function GeneralSetting() {
 
           {/* Anno di Nascita Scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>You both in {general.annoNascita}</p>
-            <img
-              src={iconModify}
-              alt="Modify Icon"
-              className={style.icon_change}
-              name="image"
-              onClick={onToggleAnnoNascita}
-            />
-            {/* Change Anno di Nascita */}
-            {toggleAnnoNascita && (
-              <div className={style.container_change}>
-                <input
-                  type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.annoNascita}
-                  className={style.input}
-                ></input>
-                <button
-                  // onClick={handleChangeUsername}
-                  className={style.buttonSave}
-                >
-                  Save
-                </button>
-              </div>
+            {user.isPro ? (
+              <p className={style.p_accept}>
+                You both in {general.annoNascita}
+              </p>
+            ) : (
+              <p className={style.p_accept}>Founded in {general.annoNascita}</p>
             )}
           </div>
           {/* Luogo di Nascita Scelto */}
           <div className={style.container_accept}>
-            <p className={style.p_accept}>
-              You are from{" "}
-              {user.isPro ? general.luogoNascita : general.sedeLegale}
-            </p>
+            {user.isPro ? (
+              <p className={style.p_accept}>
+                You are from {general.luogoNascita}
+              </p>
+            ) : (
+              <p className={style.p_accept}>
+                The registered office is located in {general.sedeLegale}
+              </p>
+            )}
+
             <img
               src={iconModify}
               alt="Modify Icon"
@@ -256,12 +263,61 @@ export function GeneralSetting() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder={general.sedeLegale}
+                  onChange={(e) => setLuogo(e.target.value)}
+                  placeholder={
+                    user.isPro ? general.luogoNascita : general.sedeLegale
+                  }
                   className={style.input}
                 ></input>
                 <button
-                  // onClick={handleChangeUsername}
+                  onClick={handleChangeLuogo}
+                  className={style.buttonSave}
+                >
+                  Save
+                </button>
+              </div>
+            )}
+          </div>
+          {/* Prezzi */}
+          <div className={style.container_accept}>
+            {user.isPro ? (
+              <div>
+                <p className={style.p_accept}>Price Max: {user.price.max}</p>
+                <p className={style.p_accept}>Price Min: {user.price.min}</p>
+              </div>
+            ) : (
+              <p className={style.p_accept}>
+                <div>
+                  <p className={style.p_accept}>Price Max: {user.price.max}</p>
+                  <p className={style.p_accept}>Price Min: {user.price.min}</p>
+                </div>
+              </p>
+            )}
+
+            <img
+              src={iconModify}
+              alt="Modify Icon"
+              className={style.icon_change}
+              name="image"
+              onClick={onTogglePrice}
+            />
+            {/* Change Prezzi */}
+            {togglePrice && (
+              <div className={style.container_change}>
+                <input
+                  type="text"
+                  onChange={(e) => setPriceMax(e.target.value)}
+                  placeholder={`Il prezzo massimo è ${user.price.max}`}
+                  className={style.input}
+                />
+                <input
+                  type="text"
+                  onChange={(e) => setPriceMin(e.target.value)}
+                  placeholder={`Il prezzo minimo è ${user.price.min}`}
+                  className={style.input}
+                />
+                <button
+                  onClick={handleChangePrice}
                   className={style.buttonSave}
                 >
                   Save
