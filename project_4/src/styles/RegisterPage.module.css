@@ -46,7 +46,17 @@
   color: var(--colore-nero);
   background-color: var(--colore-bianco);
 }
-
+.contact {
+ width: 25rem;
+  height: auto;
+  
+  
+  border-radius: 1rem;
+  border: none;
+  box-shadow: var(--box-bluOpaco);
+  background-color: var(--colore-nero);
+  color: var(--colore-bianco); 
+}
 .contact[multiple] {
   width: 25rem;
   height: auto;
@@ -80,6 +90,7 @@
   justify-content: center;
   align-items: center;
   gap: 7%;
+ 
 }
 .plan {
   width: 4.5rem;
@@ -93,6 +104,7 @@
   width: 2.5rem;
   height: 2.5rem;
   margin: 0 auto;
+  
  
 }
 .saveButton {
@@ -130,11 +142,15 @@
   }
   .h3 {
     font-size: 1rem;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
+  }
+  .contact {
+    width: 20rem;
   }
   .contact[multiple] {
     width: 20rem;
-    height: auto
+    height: auto;
+    margin: 0 auto
   }
   .plan {
      width: 4rem;
@@ -152,6 +168,7 @@
   }
   .h3 {
     font-size: 0.9rem;
+    margin: 0.8rem 3rem;
   }
    .input {
   width: 15rem;
@@ -176,13 +193,17 @@
 }
 @media (max-width: 320px) {
   .container {
-    width: 24rem;
+    width: 20rem;
     margin: 0 auto;
   }
  
   .h3 {
     font-size: 0.9rem;
+    margin: 1rem 3rem;
   }
+ .contact[multiple] {
+  width: 18rem;
+ }
  .textIcons {
   font-size: 0.9rem;
  }

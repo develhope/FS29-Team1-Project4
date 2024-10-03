@@ -228,6 +228,7 @@ input[type="file"] {
   resize: none;
   box-shadow: var(--box-bluOpaco);
   background-color: var(--colore-nero);
+  color: var(--colore-bianco);
 }
 
 .buttonSave {

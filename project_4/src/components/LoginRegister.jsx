@@ -35,18 +35,20 @@ export function LoginRegister({ toggle }) {
     // Salvo lo User trovato nel localstorage
     localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
 
-    if (user.isAdmin) {
-      navigate(`/admin/${user.id}`);
-    } else if (user.isPro) {
-      navigate(`/user_setting/${user.id}`);
-    } else {
-      navigate(`/company_setting/${user.id}`);
+    switch (true) {
+      case user.isAdmin:{
+        navigate(`/admin/${user.id}`);
+        break;}
+      case user.isPro:{
+        navigate(`/user_setting/${user.id}`);
+        break;}
+      case !user.isPro:{
+        navigate(`/company_setting/${user.id}`);
+        break;}
+
+      default:
+        break;
     }
-    /*
-    user.isPro || user.isAdmin
-    ? navigate(`/user_setting/${user.id}`)
-    : navigate(`/company_setting/${user.id}`);
-    */
   }
 
   function handleClikLink() {

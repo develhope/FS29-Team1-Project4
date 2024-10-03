@@ -12,6 +12,11 @@ export function ExperienceSetting() {
   const { id } = useParams();
   //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
 
+  // Recupero user da localstorage e lo salvo nello State
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
+  );
+
   // Costante per navigare
   const navigate = useNavigate();
 
@@ -21,48 +26,32 @@ export function ExperienceSetting() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Recupero User grazie a ID preso da useParams
-  const user = db.find((user) => user.id.toString() === id);
+  // State add experience
+  const [experience, setExperience] = useState("");
 
-  // Costanti per cambiare la descrizione
-  // const [inputDescription, setInputDescription] = useState("");
-  // const [userDescription, setUserDescription] = useState(user.description);
-
-  // Handle Username
-  // function handleChangeUsername(e) {
-  //   e.preventDefault();
-  //   setUser(inputDescription);
-  // }
-
-  // Handle Image
-  // function handleChangeLinkImage(e) {
-  //   setInputImage(e.target.value);
-  // }
-
-  // function handleChangeImage(e) {
-  //   e.preventDefault();
-  //   setUserImage(inputImage);
-  // }
-
-  // // Handle Description
-  // function handleChangeInputDescription(e) {
-  //   setInputDescription(e.target.value);
-  // }
-
-  // function handleChangeDescription(e) {
-  //   e.preventDefault();
-  //   setUserDescription(inputDescription);
-  // }
+  function handleAddExperience() {
+    // user.someExperience = [...{ name: experience, isVisible: false }];
+    user.someExperience.push({ name: experience, isVisible: false });
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  }
 
   // Navigazione con passagio id
   // User setting
   function handleNavigateUser() {
-    if (user.isAdmin) {
-      navigate(`/admin/${user.id}`);
-    } else if (user.isPro) {
-      navigate(`/user_setting/${user.id}`);
-    } else {
-      navigate(`/company_setting/${user.id}`);
+    switch (true) {
+      case user.isAdmin:
+        navigate(`/admin/${user.id}`);
+        break;
+      case user.isPro:
+        navigate(`/user_setting/${user.id}`);
+        break;
+      case !user.isPro:
+        navigate(`/company_setting/${user.id}`);
+        break;
+
+      default:
+        break;
     }
   }
   // Project setting
@@ -143,7 +132,7 @@ export function ExperienceSetting() {
           <div className={style.container_accept}>
             {user.someExperience.map((exp, index) => (
               <p key={index} className={style.p_accept}>
-                {exp}
+                {exp.name}
               </p>
             ))}
             <img
@@ -158,12 +147,12 @@ export function ExperienceSetting() {
               <div className={style.container_change}>
                 <input
                   type="text"
-                  // onChange={handleChangeInputDescription}
+                  onChange={(e) => setExperience(e.target.value)}
                   placeholder="Aggiungi esperienza"
                   className={style.input}
                 ></input>
                 <button
-                  // onClick={handleChangeUsername}
+                  onClick={handleAddExperience}
                   className={style.buttonSave}
                 >
                   Save

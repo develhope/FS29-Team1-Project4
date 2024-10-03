@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "../styles/RegisterPage.module.css";
-import { json } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
@@ -20,6 +20,7 @@ export function RegisterPage() {
   const [linkedinSelect, setLinkedinSelect] = useState()
   const [nameCompany, setNameCompany] = useState();
   const [professionist, setProfessionist] = useState()
+  const navigate = useNavigate()
   
 
 
@@ -116,6 +117,8 @@ export function RegisterPage() {
 
     const handleSave = (e) => {
       e.preventDefault()
+      navigate("/")
+
       // console.log(userName, password, email);
       localStorage.setItem(
         "user",
@@ -453,27 +456,19 @@ export function RegisterPage() {
             <h3 className={style.h3}>
               COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?
             </h3>
-            <select className={style.contact}>
-              <option value="mail" onClick={handleUserContact}>
-                EMAIL
-              </option>
-              <option value="phone" onClick={handleUserContact}>
-                TELEFONO
-              </option>
-              <option value="facebook" onClick={handleUserContact}>
-                FACEBOOK
-              </option>
-              <option value="instagram" onClick={handleUserContact}>
-                INSTAGRAM
-              </option>
-              <option value="twitter" onClick={handleUserContact}>
-                TWITTER
-              </option>
-              <option value="linkedin" onClick={handleUserContact}>
-                LINKEDIN
-              </option>
+            <select
+              className={style.contact}
+              multiple
+              onChange={handleUserContact}
+            >
+              <option value="mail">EMAIL</option>
+              <option value="phone">TELEFONO</option>
+              <option value="facebook">FACEBOOK</option>
+              <option value="instagram">INSTAGRAM</option>
+              <option value="twitter">TWITTER</option>
+              <option value="linkedin">LINKEDIN</option>
             </select>
-            {contact === "mail" && (
+            {contact.includes("mail") && (
               <div>
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
                 <input
@@ -483,7 +478,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "phone" && (
+            {contact.includes("phone") && (
               <div>
                 <h3 className={style.h3}>
                   INSERISCI IL TUO CONTATTO TELEFONICO
@@ -495,7 +490,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "facebook" && (
+            {contact.includes("facebook") && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO FACEBOOK</h3>
                 <input
@@ -505,7 +500,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "instagram" && (
+            {contact.includes("instagram") && (
               <div>
                 <h3 className={style.h3}>INSERISCI CONTATTO INSTAGRAM</h3>
                 <input
@@ -515,7 +510,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "twitter" && (
+            {contact.includes("twitter") && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO TWITTER</h3>
                 <input
@@ -525,7 +520,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "linkedin" && (
+            {contact.includes("linkedin") && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO LINKEDIN</h3>
                 <input

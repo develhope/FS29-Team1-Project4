@@ -47,6 +47,7 @@ export function UserPage() {
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
+  const [fileImage, setFileImage] = useState();
   const [userImage, setUserImage] = useState(user.image);
 
   // Costanti per cambiare la descrizione
@@ -64,16 +65,11 @@ export function UserPage() {
     e.preventDefault();
     user.username = inputUsername;
     localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)))
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
   }
 
-  // Refresho la pagina ogni volta che aggiorno il localStorage
-  // useEffect(localStorage.setItem(`user ID ${id}`, JSON.stringify(user)), [
-  //   user,
-  // ]);
-
   // load file
-  const fileInputRef = (useRef < HTMLInputElement) | (null > null);
+  const fileInputRef = useRef(null);
 
   const handleClick = () => {
     if (fileInputRef.current) {
@@ -81,20 +77,40 @@ export function UserPage() {
     }
   };
 
-  // Handle Image
-  function handleChangeLinkImage(e) {
-    setInputImage(e.target.value);
+  // Handle Change Image
+  function handleChangeImage(e) {
+    e.preventDefault();
+
+    if (fileImage) {
+      user.image = URL.createObjectURL(fileImage);
+    } else {
+      user.image = inputImage;
+    }
+    // console.log(user.image);
+
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
   }
 
   // Handle Description
-  function handleChangeInputDescription(e) {
-    setInputDescription(e.target.value);
-  }
-
   function handleChangeDescription(e) {
     e.preventDefault();
-    setUserDescription(inputDescription);
+    user.description = inputDescription;
+    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
+    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
   }
+
+  // Filtraggio project tra visibili e non
+  const projectVisible = user.project.filter((project) => project.isVisible);
+  const projectNoVisible = user.project.filter((project) => !project.isVisible);
+
+  // Filtraggio experience tra visibili e non
+  const experienceVisible = user.someExperience.filter(
+    (experience) => experience.isVisible
+  );
+  const experienceNoVisible = user.someExperience.filter(
+    (experience) => !experience.isVisible
+  );
 
   // Navigazione con passaggio di ID
   function handleNavigateGeneral() {
@@ -232,26 +248,26 @@ export function UserPage() {
             {/* Change image */}
             {toggle && (
               <div className={style.container_change}>
-
-                {/* <div>
-                  <button className={style.buttonSave}>Load file</button>
-                  <input type="file" />
-                </div> */}
-                <div className="flex items-center space-x-4">
-                  <button
-                    onClick={handleClick}
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow"
-                  >
+                <div>
+                  <button onClick={handleClick} className={style.buttonSave}>
                     Load file
                   </button>
-                  <input type="file" ref={fileInputRef} className="hidden" />
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      setFileImage(file);
+                    }}
+                    className="hidden"
+                  />
                 </div>
 
                 <input
                   type="text"
                   value={inputImage}
                   placeholder="Insert Link File"
-                  onChange={handleChangeLinkImage}
+                  onChange={(e) => setInputImage(e.target.value)}
                   className={style.input}
                 />
                 <button
@@ -282,7 +298,7 @@ export function UserPage() {
             {toggleDescription && (
               <div className={style.container_change}>
                 <textarea
-                  onChange={handleChangeInputDescription}
+                  onChange={(e) => setInputDescription(e.target.value)}
                   placeholder={userDescription}
                   className={style.textarea}
                   rows="7"
@@ -364,7 +380,7 @@ export function UserPage() {
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {/* Map progetti accettati */}
-                {user.project.map((project, index) => (
+                {projectVisible.map((project, index) => (
                   <li key={index} className={style.li_change}>
                     <p className={style.p_change}>
                       {project.name.toUpperCase()}
@@ -388,10 +404,11 @@ export function UserPage() {
 
             {/* Change project */}
             {toggleProject && (
-              // map tutti i progetti
+              // map progetti non scelti
               <div className={style.container_change}>
+                <p>Project not visible</p>
                 <ul className={style.ul_change}>
-                  {user.project.map((project, index) => (
+                  {projectNoVisible.map((project, index) => (
                     <li key={index} className={style.li_change}>
                       <p className={style.p_change}>
                         {project.name.toUpperCase()}
@@ -418,9 +435,9 @@ export function UserPage() {
           <li className={style.li}>
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
-                {user.someExperience.map((experience, index) => (
+                {experienceVisible.map((experience, index) => (
                   <li key={index} className={style.li}>
-                    <p className={style.p_accept}>{experience}</p>
+                    <p className={style.p_accept}>{experience.name}</p>
                   </li>
                 ))}
               </ul>
@@ -436,10 +453,11 @@ export function UserPage() {
             {/* Change Experience */}
             {toggleExperince && (
               <div className={style.container_change}>
+                <p>Experiences not visible</p>
                 <ul className={style.ul_change}>
-                  {user.someExperience.map((experience, index) => (
+                  {experienceNoVisible.map((experience, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_accept}>{experience}</p>
+                      <p className={style.p_accept}>{experience.name}</p>
                     </li>
                   ))}
                 </ul>
@@ -463,7 +481,11 @@ export function UserPage() {
             {/* View comments */}
             {toggleComments && (
               <div className={style.container_change}>
-                {/* Lista Commenti delle aziende che hanno lavorato con questo professionista */}
+                <p>Comments by Company</p>
+                {/*
+                  Lista Commenti delle aziende che hanno lavorato
+                  con questo professionista
+                */}
                 <ul className={style.ul_change}>
                   {user.comments.map((comment, index) => (
                     <li key={index} className={style.li_change}>

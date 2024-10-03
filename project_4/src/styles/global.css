@@ -25,14 +25,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "JetBrains Mono", monospace;
   font-optical-sizing: auto;
+  font-weight: 200;
   font-style: normal;
 }
 
 ul,
 li {
   list-style: none;
+
 }
 
 a {
@@ -79,6 +81,19 @@ button {
 }
 .box_shadow {
   box-shadow: var(--box-blu);
+}
+
+input[type='text']{
+  border-radius: 0.5rem;
+  background-color: var(--colore-nero);
+  box-shadow: var(--box-bluOpaco);
+  color: var(--colore-bianco);
+}
+input[type='password']{
+  border-radius: 0.5rem;
+  background-color: var(--colore-nero);
+  box-shadow: var(--box-bluOpaco);
+  color: var(--colore-bianco);
 }
 
 /* sfondo BG */
