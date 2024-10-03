@@ -44,7 +44,7 @@
   border: none;
   box-shadow: 0 0 0.5rem var(--colore-nero);
   color: var(--colore-nero);
-  background-color: var(--colore-bianco);;
+  background-color: var(--colore-bianco);
 }
 
 .contact[multiple] {
@@ -62,6 +62,7 @@
 .contact[multiple] option {
   padding-left: 0.9rem;
   box-shadow: var(--box-bluOpaco);
+  /* border-bottom: 1px solid var(--colore-bluChiaro); */
   background-color: var(--colore-nero);
   color: var(--colore-bianco);
 }
@@ -123,9 +124,13 @@
     width: 25rem;
     margin: 0 auto;
   }
-
+  .h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
   .h3 {
     font-size: 1rem;
+    margin: 0.5rem 0;
   }
   .contact[multiple] {
     width: 20rem;

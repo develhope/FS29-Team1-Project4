@@ -150,7 +150,6 @@ export function RegisterPage() {
           onChange={handleUserNameChange}
           value={userName}
           type="text"
-          placeholder="ES.mario.rossi85"
           className={style.input}
         />
 
@@ -159,7 +158,6 @@ export function RegisterPage() {
           onChange={handlePasswordChange}
           value={password}
           type="Password"
-          placeholder="Your Password"
           className={style.input}
         />
 
@@ -168,7 +166,6 @@ export function RegisterPage() {
           onChange={handleEmailChange}
           value={email}
           type="text"
-          placeholder="Example@libero.it"
           className={style.input}
         />
         <h3 className={style.h3}>SEI UN PROFESSIONISTA?</h3>
