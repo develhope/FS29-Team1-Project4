@@ -71,9 +71,9 @@ export function LoginRegister() {
 
   return (
     <div className={NavLogin.container}>
-      <button className={NavLogin.button} onClick={openForm}>
+      <div className={NavLogin.button} onClick={openForm}>
         <img src={userIcon} alt="User Icon" />
-      </button>
+      </div>
       {isFormOpen && (
         <div ref={formRef} className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
           {!loggedIn ? (
