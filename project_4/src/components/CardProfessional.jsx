@@ -46,7 +46,7 @@ export function CardProfessional() {
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           centerMode: true,
           slidesToShow: 2,
@@ -55,21 +55,23 @@ export function CardProfessional() {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
-          dots: true,
           centerMode: true,
           slidesToShow: 1,
           initialSlide: 1,
+          dots: false,
+          arrows: false,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          centerMode: false,
+          centerMode: true,
+          centerPadding: "20px",
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: true,
+          dots: false,
           arrows: false,
         },
       },

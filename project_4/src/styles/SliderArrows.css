@@ -31,3 +31,10 @@
 .my-shadow{
     box-shadow: var(--box-card);
 }
+
+@media (max-width: 769px) {
+  .custom-class{
+    padding: 0;
+  }
+  
+}

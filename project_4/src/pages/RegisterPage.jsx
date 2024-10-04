@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "../styles/RegisterPage.module.css";
-import { json } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
@@ -20,6 +20,8 @@ export function RegisterPage() {
   const [linkedinSelect, setLinkedinSelect] = useState()
   const [nameCompany, setNameCompany] = useState();
   const [professionist, setProfessionist] = useState()
+  const navigate = useNavigate()
+  const [selectedProgram, setSelectedProgram] = useState([]);
   
 
 
@@ -111,12 +113,21 @@ export function RegisterPage() {
     event.preventDefault();
       const professionist = event.target.value;
       setProfessionist(professionist)
-  }
-   
+  };
+
+    const handleIconClick = (program) => {
+    setSelectedProgram((prevPrograms) => {
+      if (prevPrograms.includes(program)) {
+        return prevPrograms.filter((p) => p !== program);
+      }
+      return [...prevPrograms, program];
+    });
+  };
 
     const handleSave = (e) => {
       e.preventDefault()
-      // console.log(userName, password, email);
+      navigate("/")
+
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -137,6 +148,7 @@ export function RegisterPage() {
           linkedinSelect,
           nameCompany,
           professionist,
+          programs: selectedProgram,
         })
       );
       };
@@ -150,7 +162,6 @@ export function RegisterPage() {
           onChange={handleUserNameChange}
           value={userName}
           type="text"
-          placeholder="ES.mario.rossi85"
           className={style.input}
         />
 
@@ -159,7 +170,6 @@ export function RegisterPage() {
           onChange={handlePasswordChange}
           value={password}
           type="Password"
-          placeholder="Your Password"
           className={style.input}
         />
 
@@ -168,7 +178,6 @@ export function RegisterPage() {
           onChange={handleEmailChange}
           value={email}
           type="text"
-          placeholder="Example@libero.it"
           className={style.input}
         />
         <h3 className={style.h3}>SEI UN PROFESSIONISTA?</h3>
@@ -199,130 +208,216 @@ export function RegisterPage() {
             />
             <h3 className={style.h3}>CHE PROGRAMMA USI?</h3>
             <div className={style.program}>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("HTML") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> HTML</label>
                 <img
                   src="../src/assets/html5-brands-solid.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("HTML")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("CSS") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> CSS</label>
                 <img
                   src="../src/assets/css3-alt-brands-solid.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("CSS")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("JAVASCRIPT")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> JS</label>
 
                 <img
                   src="../src/assets/js-brands-solid.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("JAVASCRIPT")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("REACT")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> REACT</label>
 
                 <img
                   src="../src/assets/react.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("REACT")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("TYPESCRIPT")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> T.SCRIPT</label>
 
                 <img
                   src="../src/assets/typescript.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("TYPESCRIPT")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("C++") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> C++</label>
                 <img
                   src="../src/assets/c++.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("C++")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("GITHUB")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> GITHUB</label>
 
                 <img
                   src="../src/assets/github.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("GITHUB")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("C#") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> C#</label>
 
                 <img
                   src="../src/assets/c-sharp-c-icon-1822x2048-wuf3ijab.png"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("C#")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("PHYTON")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> PHYTON</label>
                 <img
                   src="../src/assets/python-5.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("PHYTON")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("JAVA") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> JAVA</label>
 
                 <img
                   src="../src/assets/java-14.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("JAVA")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("NODE") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> NODE</label>
 
                 <img
                   src="../src/assets/nodejs.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("NODE")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("BLENDER")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> BLENDER</label>
 
                 <img
                   src="../src/assets/blender-2.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("BLENDER")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("RHINOCEROS")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}>R.3D</label>
 
                 <img
                   src="../src/assets/icons8-rhinoceros-6.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("RHINOCEROS")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("UNITY")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> UNITY</label>
 
                 <img
                   src="../src/assets/unity-69.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("UNITY")}
                 />
               </div>
             </div>
@@ -456,27 +551,19 @@ export function RegisterPage() {
             <h3 className={style.h3}>
               COME VUOI ESSERE CONTATTATO DAI PROFESSIONISTI?
             </h3>
-            <select className={style.contact}>
-              <option value="mail" onClick={handleUserContact}>
-                EMAIL
-              </option>
-              <option value="phone" onClick={handleUserContact}>
-                TELEFONO
-              </option>
-              <option value="facebook" onClick={handleUserContact}>
-                FACEBOOK
-              </option>
-              <option value="instagram" onClick={handleUserContact}>
-                INSTAGRAM
-              </option>
-              <option value="twitter" onClick={handleUserContact}>
-                TWITTER
-              </option>
-              <option value="linkedin" onClick={handleUserContact}>
-                LINKEDIN
-              </option>
+            <select
+              className={style.contact}
+              multiple
+              onChange={handleUserContact}
+            >
+              <option value="mail">EMAIL</option>
+              <option value="phone">TELEFONO</option>
+              <option value="facebook">FACEBOOK</option>
+              <option value="instagram">INSTAGRAM</option>
+              <option value="twitter">TWITTER</option>
+              <option value="linkedin">LINKEDIN</option>
             </select>
-            {contact === "mail" && (
+            {contact.includes("mail") && (
               <div>
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
                 <input
@@ -486,7 +573,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "phone" && (
+            {contact.includes("phone") && (
               <div>
                 <h3 className={style.h3}>
                   INSERISCI IL TUO CONTATTO TELEFONICO
@@ -498,7 +585,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "facebook" && (
+            {contact.includes("facebook") && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO FACEBOOK</h3>
                 <input
@@ -508,7 +595,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "instagram" && (
+            {contact.includes("instagram") && (
               <div>
                 <h3 className={style.h3}>INSERISCI CONTATTO INSTAGRAM</h3>
                 <input
@@ -518,7 +605,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "twitter" && (
+            {contact.includes("twitter") && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO TWITTER</h3>
                 <input
@@ -528,7 +615,7 @@ export function RegisterPage() {
                 />
               </div>
             )}
-            {contact === "linkedin" && (
+            {contact.includes("linkedin") && (
               <div>
                 <h3 className={style.h3}>INSERISCI IL TUO CONTATTO LINKEDIN</h3>
                 <input
@@ -543,13 +630,8 @@ export function RegisterPage() {
         <button onClick={handleSave} className={style.saveButton}>
           SAVE ME
         </button>
-        {/* <div>
-          <h3>Dati inseriti:</h3>
-          <p>Nome: {userName}</p>
-          <p>Email: {email}</p>
-          <p>Età: {password}</p>
-        </div> */}
       </form>
     </div>
   );
 }
+
