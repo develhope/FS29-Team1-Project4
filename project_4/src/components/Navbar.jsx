@@ -14,7 +14,7 @@ export function Navbar({ serviceSrollFunction, professionScrollFunction }) {
         <CategorieProIT category="Profession IT" onClick={professionScrollFunction} />
 
         <Search />
-        <ChangeLanguage />
+        {/* <ChangeLanguage /> */}
         <LoginRegister />
       </div>
     </nav>

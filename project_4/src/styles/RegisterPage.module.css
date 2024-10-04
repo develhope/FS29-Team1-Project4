@@ -112,8 +112,9 @@
 }
 
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   .container {
+    width: 100%;
     margin: 0 auto;
   }
  .input {
@@ -123,9 +124,14 @@
     width: 25rem;
     margin: 0 auto;
   }
+  .h1{
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
 
   .h3 {
     font-size: 1rem;
+    margin: 0.5rem 0;
   }
   .contact[multiple] {
     width: 20rem;
