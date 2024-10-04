@@ -5,11 +5,17 @@ Da slide React del corso
 https://react-slick.neostack.com/docs/get-started
  1-npm install react-slick --save
  2-npm install slick-carousel --save
- 
+
 
 -Tailwind per css
 https://tailwindcss.com/docs/guides/vite
 
 npm install @tailwindcss/forms
 
- -Installare estensione VS code Tailwind per snippet 
+ -Installare estensione VS code Tailwind per snippet
+
+-Express
+npm install Express
+
+-Axios
+npm install axios

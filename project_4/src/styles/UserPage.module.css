@@ -168,6 +168,14 @@
   flex-wrap: wrap;
   gap: 3rem;
 }
+.li_program {
+  width: 15%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
 .p_accept {
   border-radius: 0.5rem;
   padding: 0.5em;
@@ -277,7 +285,7 @@ input[type="file"] {
 }
 .icon_change {
   width: 2rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0.5rem 0 0 0;
 }
 .icon_change_program {
   width: 1.5rem;
@@ -334,6 +342,18 @@ input[type="file"] {
 @media screen and (max-width: 426px) {
   .hamburger_content {
     width: 93vw;
+  }
+  .icon_change {
+    width: 1.3rem;
+  }
+  .li_change {
+    width: 40%;
+  }
+  .p_change {
+    font-size: 1rem;
+  }
+  .reviews {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 376px) {

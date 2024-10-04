@@ -2,25 +2,12 @@ import style from "../styles/UserPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 
-// Database fittizio
-const users = DATA;
-
 export function UserPage() {
   // Da usare nel momento in cui avremo un database
-  const { id } = useParams();
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
-  // Recupero lo user usando il context
-  // const user = useContext(UserContext);
-
-  // Recupero user da localstorage e lo salvo nello State
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
-  );
 
   // Costante per navigare
   const navigate = useNavigate();
@@ -64,8 +51,8 @@ export function UserPage() {
   function handleChangeUsername(e) {
     e.preventDefault();
     user.username = inputUsername;
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+    toggleUser(user.id);
   }
 
   // load file
@@ -86,18 +73,17 @@ export function UserPage() {
     } else {
       user.image = inputImage;
     }
-    // console.log(user.image);
 
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+    toggleUser(user.id);
   }
 
   // Handle Description
   function handleChangeDescription(e) {
     e.preventDefault();
     user.description = inputDescription;
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+    localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
+    toggleUser(user.id);
   }
 
   // Filtraggio project tra visibili e non
@@ -190,16 +176,6 @@ export function UserPage() {
         <ul className={style.content}>
           <li className={style.li}>
             <div className={style.container_accept}>
-              <button
-                className={style.buttonSave}
-                onClick={() => {
-                  localStorage.clear();
-                  navigate("/");
-                }}
-              >
-                Clear LocalStorage
-              </button>
-
               <h1 className={style.h1}>Welcome back, {user.username}!</h1>
               <img
                 src={iconModify}
@@ -319,7 +295,7 @@ export function UserPage() {
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {user.program.map((program, index) => (
-                  <li key={index} className={style.li}>
+                  <li key={index} className={style.li_program}>
                     <p className={style.p_change}>
                       {program.name.toUpperCase()}
                     </p>

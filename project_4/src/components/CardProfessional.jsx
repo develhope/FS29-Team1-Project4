@@ -5,11 +5,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/SliderArrows.css";
 import { ProfessionalSection } from "./ProfessionalSection";
+import { useGetDataDB } from "../hooks/useGetDataDB";
+import useSWR from "swr";
 
 export function CardProfessional() {
-  const db = DATA;
+  const { users } = useGetDataDB();
+  // const { data, error, mutate } = useSWR(`http://localhost:3001/api/users`);
+  // const db = data;
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProfessional, setSelectedProfessional] = useState(null);
+
+  // console.log(db);
 
   const handleShowPopup = (card) => {
     setSelectedProfessional(card);
@@ -23,13 +29,21 @@ export function CardProfessional() {
   };
 
   const CustomNextArrow = ({ className, style, onClick }) => (
-    <button className={`${className} custom-next`} style={{ ...style }} onClick={onClick}>
+    <button
+      className={`${className} custom-next`}
+      style={{ ...style }}
+      onClick={onClick}
+    >
       →
     </button>
   );
 
   const CustomPrevArrow = ({ className, style, onClick }) => (
-    <button className={`${className} custom-prev`} style={{ ...style }} onClick={onClick}>
+    <button
+      className={`${className} custom-prev`}
+      style={{ ...style }}
+      onClick={onClick}
+    >
       ←
     </button>
   );
@@ -81,23 +95,34 @@ export function CardProfessional() {
   return (
     <div className="custom-class">
       <Slider {...settings}>
-        {db.map((card) => (
-          <div key={card.id} className=" h-full text-[94c4f5] rounded-xl  m-2 my-shadow">
+        {users.map((card) => (
+          <div
+            key={card.id}
+            className=" h-full text-[94c4f5] rounded-xl  m-2 my-shadow"
+          >
             <div className="h-36 rounded-t-xl flex justify-center items-center bg-[#94c4f5]">
-              <img src={card.image} alt="Image Missing" className="w-32 h-32 rounded-full bg-white text-center object-cover" />
+              <img
+                src={card.image}
+                alt="Image Missing"
+                className="w-32 h-32 rounded-full bg-white text-center object-cover"
+              />
             </div>
             <div className="h-72 flex flex-col justify-between items-center text-center p-2 bg-[#000000]">
               <h2 className="text-2xl font-bold text-[#94c4f5]">
                 <span className="text-white">Nome:</span> {card.username}
               </h2>
               <p className="h-35 w-full text-ellipsis overflow-hidden m-2 text-[#94c4f5]">
-                <span className="text-white">Descrizione: </span> {card.description}
+                <span className="text-white">Descrizione: </span>{" "}
+                {card.description}
               </p>
               <p className="text-left m-2 text-[#94c4f5]">
                 <span className="text-white">Linguaggi: </span>
                 {card.job}
               </p>
-              <button onClick={() => handleShowPopup(card)} className="bg-[#94c4f5] text-black text-lg p-2 rounded-lg">
+              <button
+                onClick={() => handleShowPopup(card)}
+                className="bg-[#94c4f5] text-black text-lg p-2 rounded-lg"
+              >
                 Scopri Di Più
               </button>
             </div>
@@ -105,7 +130,12 @@ export function CardProfessional() {
         ))}
       </Slider>
 
-      {showPopup && selectedProfessional && <ProfessionalSection professional={selectedProfessional} onClose={handleClosePopup} />}
+      {showPopup && selectedProfessional && (
+        <ProfessionalSection
+          professional={selectedProfessional}
+          onClose={handleClosePopup}
+        />
+      )}
     </div>
   );
 }
