@@ -21,6 +21,7 @@ export function RegisterPage() {
   const [nameCompany, setNameCompany] = useState();
   const [professionist, setProfessionist] = useState()
   const navigate = useNavigate()
+  const [selectedProgram, setSelectedProgram] = useState([]);
   
 
 
@@ -112,14 +113,21 @@ export function RegisterPage() {
     event.preventDefault();
       const professionist = event.target.value;
       setProfessionist(professionist)
-  }
-   
+  };
+
+    const handleIconClick = (program) => {
+    setSelectedProgram((prevPrograms) => {
+      if (prevPrograms.includes(program)) {
+        return prevPrograms.filter((p) => p !== program);
+      }
+      return [...prevPrograms, program];
+    });
+  };
 
     const handleSave = (e) => {
       e.preventDefault()
       navigate("/")
 
-      // console.log(userName, password, email);
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -140,6 +148,7 @@ export function RegisterPage() {
           linkedinSelect,
           nameCompany,
           professionist,
+          programs: selectedProgram,
         })
       );
       };
@@ -199,130 +208,216 @@ export function RegisterPage() {
             />
             <h3 className={style.h3}>CHE PROGRAMMA USI?</h3>
             <div className={style.program}>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("HTML") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> HTML</label>
                 <img
                   src="../src/assets/html5-brands-solid.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("HTML")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("CSS") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> CSS</label>
                 <img
                   src="../src/assets/css3-alt-brands-solid.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("CSS")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("JAVASCRIPT")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> JS</label>
 
                 <img
                   src="../src/assets/js-brands-solid.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("JAVASCRIPT")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("REACT")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> REACT</label>
 
                 <img
                   src="../src/assets/react.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("REACT")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("TYPESCRIPT")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> T.SCRIPT</label>
 
                 <img
                   src="../src/assets/typescript.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("TYPESCRIPT")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("C++") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> C++</label>
                 <img
                   src="../src/assets/c++.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("C++")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("GITHUB")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> GITHUB</label>
 
                 <img
                   src="../src/assets/github.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("GITHUB")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("C#") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> C#</label>
 
                 <img
                   src="../src/assets/c-sharp-c-icon-1822x2048-wuf3ijab.png"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("C#")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("PHYTON")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> PHYTON</label>
                 <img
                   src="../src/assets/python-5.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("PHYTON")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("JAVA") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> JAVA</label>
 
                 <img
                   src="../src/assets/java-14.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("JAVA")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("NODE") ? style["plan-selected"] : ""
+                }`}
+              >
                 <label className={style.textIcons}> NODE</label>
 
                 <img
                   src="../src/assets/nodejs.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("NODE")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("BLENDER")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> BLENDER</label>
 
                 <img
                   src="../src/assets/blender-2.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("BLENDER")}
                 />
               </div>
 
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("RHINOCEROS")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}>R.3D</label>
 
                 <img
                   src="../src/assets/icons8-rhinoceros-6.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("RHINOCEROS")}
                 />
               </div>
-              <div className={style.plan}>
+              <div
+                className={`${style.plan} ${
+                  selectedProgram.includes("UNITY")
+                    ? style["plan-selected"]
+                    : ""
+                }`}
+              >
                 <label className={style.textIcons}> UNITY</label>
 
                 <img
                   src="../src/assets/unity-69.svg"
                   alt=""
                   className={style.icons}
+                  onClick={() => handleIconClick("UNITY")}
                 />
               </div>
             </div>
@@ -535,13 +630,8 @@ export function RegisterPage() {
         <button onClick={handleSave} className={style.saveButton}>
           SAVE ME
         </button>
-        {/* <div>
-          <h3>Dati inseriti:</h3>
-          <p>Nome: {userName}</p>
-          <p>Email: {email}</p>
-          <p>Età: {password}</p>
-        </div> */}
       </form>
     </div>
   );
 }
+
