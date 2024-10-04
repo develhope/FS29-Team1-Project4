@@ -87,7 +87,6 @@ export function ProfessionalCard({ professional, onClose }) {
                 </ul>
               </div>
               <div className={Section.linksSection}></div>
-              {/* Link di esempi */}
 
               {/* Contact link */}
 
