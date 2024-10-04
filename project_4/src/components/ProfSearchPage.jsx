@@ -14,8 +14,8 @@ export function ProfSearchPage() {
                 <p>{card.description}</p> 
                 <div className={customSearch.program}>{card.program.map((programs) => (
                     <div key={programs.id} className={customSearch.program_content}>
-                        <img src={programs.icon} />
                         <p>{programs.name}</p>
+                        <img src={programs.icon} />
                     </div>
 ))}
 </div>
