@@ -2,7 +2,8 @@ import style from "../styles/ServicesIT.module.css";
 import img from "../assets/ProfessionalIT.jpg";
 export function ProfessionIT({ professionITSectionRef }) {
   return (
-    <div className={`${style.container} ${style.professionITContainer}`} ref={professionITSectionRef}>
+    <div className={`${style.container} ${style.professionITContainer}`}>
+      <span className={style.separator} ref={professionITSectionRef}></span>
       <div className={style.column}>
         <div className={style.cover}>
           <img src={img} alt="Immagine o video del sito" className={style.cover} />
