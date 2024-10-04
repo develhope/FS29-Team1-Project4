@@ -46,10 +46,10 @@ export function CardProfessional() {
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           centerMode: true,
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
         },
@@ -57,7 +57,7 @@ export function CardProfessional() {
       {
         breakpoint: 768,
         settings: {
-          centerMode: false,
+          centerMode: true,
           slidesToShow: 1,
           initialSlide: 1,
           dots: false,

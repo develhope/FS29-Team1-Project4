@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import nav_container from "../styles/Navbar.module.css";
 import { DATA } from "../database";
+import SearchIcon from "../assets/SearchIcon.svg";
 
 const users = DATA;
 
@@ -24,9 +25,6 @@ export function Search() {
   return (
     <form className={nav_container.form}>
       <input type="text" placeholder="Search Your Professionist By Username..." value={search} onChange={(e) => setSearch(e.target.value)} />
-      <button type="button" onClick={handlePlaySearch}>
-        <i className="fa-solid fa-magnifying-glass"></i>
-      </button>
       {search !== "" && (
         <div className={nav_container.drop_search}>
           {usersFiltered.map((user) => (
@@ -36,6 +34,9 @@ export function Search() {
           ))}
         </div>
       )}
+      <div className={nav_container.button} type="button" onClick={handlePlaySearch}>
+        <img src={SearchIcon} alt="" />
+      </div>
     </form>
   );
 }
