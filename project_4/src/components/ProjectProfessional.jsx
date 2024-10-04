@@ -41,7 +41,7 @@ export function ProjectProfessional() {
       {
         breakpoint: 1025,
         settings: {
-          centerMode: false,
+          centerMode: true,
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
@@ -50,7 +50,7 @@ export function ProjectProfessional() {
       {
         breakpoint: 769,
         settings: {
-          centerMode: false,
+          centerMode: true,
           slidesToShow: 1,
           initialSlide: 1,
           dots: true,
@@ -76,11 +76,11 @@ export function ProjectProfessional() {
         <Slider {...settings}>
           {filterUserForExamples.map((card) => (
             <div key={card.id} className=" bg-[#94c4f5] my-shadow mb-20 mt-20">
-              <div className="text-black text-center h-10">
+              <div className="text-black flex justify-center items-center text-center h-10">
                 <h2 className="text-2xl font-bold">Nome: {card.username}</h2>
               </div>
-              <div className="h-72">
-                <img src={card.image} alt="Image Missing" className=" bg-white text-center h-full w-full" />
+              <div className="h-72 bg-black">
+                <img src={card.image} alt="Image Missing" className="text-center h-full w-full" />
               </div>
             </div>
           ))}
