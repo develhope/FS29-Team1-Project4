@@ -190,7 +190,7 @@ export function UserPage() {
         <ul className={style.content}>
           <li className={style.li}>
             <div className={style.container_accept}>
-              <button
+              {/* <button
                 className={style.buttonSave}
                 onClick={() => {
                   localStorage.clear();
@@ -198,7 +198,7 @@ export function UserPage() {
                 }}
               >
                 Clear LocalStorage
-              </button>
+              </button> */}
 
               <h1 className={style.h1}>Welcome back, {user.username}!</h1>
               <img
