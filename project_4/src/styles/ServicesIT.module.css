@@ -5,7 +5,13 @@
   flex-wrap: wrap; 
   color: var(--colore-bluChiaro);
 }
-
+.separator{
+  width: 100%;
+  left: 0;
+  right: 0;
+  position: relative;
+  bottom: 6rem;
+}
 .column {
   position: relative;
   flex: 1 0 50%; 
