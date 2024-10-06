@@ -1,6 +1,6 @@
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { Container } from "./Container";
 import { Home } from "./pages/Home";
 import { SearchPage } from "./pages/SearchPage";
@@ -24,8 +24,10 @@ import { useRef } from "react";
 export function App() {
   const serviceRef = useRef(null);
   const professionITSectionRef = useRef(null);
+  const navigate = useNavigate();
 
   const scrollToSection = (ref) => {
+    navigate("/");
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
