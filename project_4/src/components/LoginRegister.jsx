@@ -110,29 +110,32 @@ export function LoginRegister() {
               </div>
             </form>
           ) : (
-            <div className={NavLogin.form}>
-              <button onClick={closeForm} className={NavLogin.close_button}>
+            <div className={NavLogin.formLogged}>
+              <button onClick={closeForm} className={NavLogin.close_button1}>
                 X
               </button>
               <div className={NavLogin.user}>
                 <h2>Welcome {user.username}</h2>
-                <button
-                  onClick={() => {
-                    switch (true) {
-                      case user.isAdmin:
-                        navigate(`/admin/${user.id}`);
-                        break;
-                      case user.isPro:
-                        navigate(`/user_setting/${user.id}`);
-                        break;
-                      default:
-                        navigate(`/company_setting/${user.id}`);
-                        break;
-                    }
-                  }}
-                >
-                  Settings
-                </button>
+                <div className={NavLogin.loggedin}>
+                  <button
+                    onClick={() => {
+                      switch (true) {
+                        case user.isAdmin:
+                          navigate(`/admin/${user.id}`);
+                          break;
+                        case user.isPro:
+                          navigate(`/user_setting/${user.id}`);
+                          break;
+                        default:
+                          navigate(`/company_setting/${user.id}`);
+                          break;
+                      }
+                    }}
+                    className={NavLogin.log_btn}
+                  >
+                    Settings
+                  </button>
+                </div>
                 <button
                   onClick={() => {
                     localStorage.clear();
@@ -141,6 +144,7 @@ export function LoginRegister() {
                     setUsername("");
                     setPassword("");
                   }}
+                  className={NavLogin.log_btn}
                 >
                   Logout
                 </button>
