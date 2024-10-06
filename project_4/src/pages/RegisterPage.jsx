@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "../styles/RegisterPage.module.css";
 import { json, useNavigate } from "react-router-dom";
+import { usePostDataDB } from "../hooks/usePostDataDB";
 
 export function RegisterPage() {
   const [isPro, setIsPro] = useState(true);
@@ -114,7 +115,15 @@ export function RegisterPage() {
     e.preventDefault();
 
     // console.log(userName, password, email);
-
+    usePostDataDB(userName);
+    usePostDataDB(password);
+    usePostDataDB(email);
+    usePostDataDB(isPro);
+    usePostDataDB(job);
+    usePostDataDB(price);
+    usePostDataDB(location);
+    usePostDataDB(move);
+    usePostDataDB(contact);
     // localStorage.setItem(
     //   "user",
     //   JSON.stringify({
