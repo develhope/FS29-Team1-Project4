@@ -7,17 +7,42 @@
       "email": "esempio1@gmail.com",
       "isPro": true,
       "isAdmin": true,
-      "job": ["Full-stack", "Front-end", "Back-end"],
+      "job": [
+        "Full-stack",
+        "Front-end",
+        "Back-end"
+      ],
       "image": "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
       "program": [
-        { "name": "javascript", "icon": "./assets/js-brands-solid.svg" },
-        { "name": "HTML", "icon": "./assets/html5-brands-solid.svg" },
-        { "name": "CSS", "icon": "./assets/css3-alt-brands-solid.svg" },
-        { "name": "REACT", "icon": "./assets/react.svg" },
-        { "name": "TYPESCRIPT", "icon": "./assets/typescript.svg" },
-        { "name": "GITHUB", "icon": "./assets/github.svg" },
-        { "name": "NODE", "icon": "./assets/nodejs.svg" }
+        {
+          "name": "javascript",
+          "icon": "./assets/js-brands-solid.svg"
+        },
+        {
+          "name": "HTML",
+          "icon": "./assets/html5-brands-solid.svg"
+        },
+        {
+          "name": "CSS",
+          "icon": "./assets/css3-alt-brands-solid.svg"
+        },
+        {
+          "name": "REACT",
+          "icon": "./assets/react.svg"
+        },
+        {
+          "name": "TYPESCRIPT",
+          "icon": "./assets/typescript.svg"
+        },
+        {
+          "name": "GITHUB",
+          "icon": "./assets/github.svg"
+        },
+        {
+          "name": "NODE",
+          "icon": "./assets/nodejs.svg"
+        }
       ],
       "project": [
         {
@@ -29,13 +54,26 @@
           "image": "https://wallpaperheart.com/wp-content/uploads/2018/08/bike-wallpaper-12.jpg"
         }
       ],
-      "someExperience": ["Experience 1", "Experience 2", "Experience 3"],
-      "price": { "max": 10000, "min": 100 },
+      "someExperience": [
+        "Experience 1",
+        "Experience 2",
+        "Experience 3"
+      ],
+      "price": {
+        "max": 10000,
+        "min": 100
+      },
       "luogo": "Roma",
       "transfert": true,
       "contact": [
-        { "tipo": "email", "name": "example1@gmail.com" },
-        { "tipo": "twitter", "name": "tizio twitter" }
+        {
+          "tipo": "email",
+          "name": "example1@gmail.com"
+        },
+        {
+          "tipo": "twitter",
+          "name": "tizio twitter"
+        }
       ],
       "general": {
         "firstName": "Giuseppe",
@@ -44,7 +82,10 @@
         "luogoNascita": "Roma"
       },
       "reviews": 5,
-      "comments": ["Great work!", "Very professional."]
+      "comments": [
+        "Great work!",
+        "Very professional."
+      ]
     },
     {
       "id": 2,
@@ -53,12 +94,20 @@
       "email": "esempio2@gmail.com",
       "isPro": false,
       "isAdmin": false,
-      "job": ["Designer"],
+      "job": [
+        "Designer"
+      ],
       "image": "https://example.com/image2.jpg",
       "description": "Creative designer with a passion for art.",
       "program": [
-        { "name": "Photoshop", "icon": "psIcon" },
-        { "name": "Illustrator", "icon": "aiIcon" }
+        {
+          "name": "Photoshop",
+          "icon": "psIcon"
+        },
+        {
+          "name": "Illustrator",
+          "icon": "aiIcon"
+        }
       ],
       "project": [
         {
@@ -66,11 +115,22 @@
           "image": "https://example.com/project1.jpg"
         }
       ],
-      "someExperience": ["Experience A", "Experience B"],
-      "price": { "max": 5000, "min": 200 },
+      "someExperience": [
+        "Experience A",
+        "Experience B"
+      ],
+      "price": {
+        "max": 5000,
+        "min": 200
+      },
       "luogo": "Milano",
       "transfert": false,
-      "contact": [{ "tipo": "email", "name": "example2@gmail.com" }],
+      "contact": [
+        {
+          "tipo": "email",
+          "name": "example2@gmail.com"
+        }
+      ],
       "general": {
         "firstName": "Maria",
         "surName": "Bianchi",
@@ -78,7 +138,10 @@
         "luogoNascita": "Milano"
       },
       "reviews": 4,
-      "comments": ["Excellent design!", "Very creative."]
+      "comments": [
+        "Excellent design!",
+        "Very creative."
+      ]
     },
     {
       "id": 3,
@@ -87,12 +150,20 @@
       "email": "esempio3@gmail.com",
       "isPro": true,
       "isAdmin": false,
-      "job": ["Back-end Developer"],
+      "job": [
+        "Back-end Developer"
+      ],
       "image": "https://example.com/image3.jpg",
       "description": "Experienced back-end developer.",
       "program": [
-        { "name": "Node.js", "icon": "nodeIcon" },
-        { "name": "Python", "icon": "pythonIcon" }
+        {
+          "name": "Node.js",
+          "icon": "nodeIcon"
+        },
+        {
+          "name": "Python",
+          "icon": "pythonIcon"
+        }
       ],
       "project": [
         {
@@ -100,11 +171,22 @@
           "image": "https://example.com/project2.jpg"
         }
       ],
-      "someExperience": ["Experience X", "Experience Y"],
-      "price": { "max": 8000, "min": 300 },
+      "someExperience": [
+        "Experience X",
+        "Experience Y"
+      ],
+      "price": {
+        "max": 8000,
+        "min": 300
+      },
       "luogo": "Napoli",
       "transfert": true,
-      "contact": [{ "tipo": "email", "name": "example3@gmail.com" }],
+      "contact": [
+        {
+          "tipo": "email",
+          "name": "example3@gmail.com"
+        }
+      ],
       "general": {
         "firstName": "Luca",
         "surName": "Verdi",
@@ -112,7 +194,10 @@
         "luogoNascita": "Napoli"
       },
       "reviews": 5,
-      "comments": ["Great developer!", "Very reliable."]
+      "comments": [
+        "Great developer!",
+        "Very reliable."
+      ]
     },
     {
       "id": 4,
@@ -121,12 +206,20 @@
       "email": "esempio4@gmail.com",
       "isPro": true,
       "isAdmin": false,
-      "job": ["Project Manager"],
+      "job": [
+        "Project Manager"
+      ],
       "image": "https://example.com/image4.jpg",
       "description": "Skilled project manager with 10 years of experience.",
       "program": [
-        { "name": "MS Project", "icon": "msProjectIcon" },
-        { "name": "JIRA", "icon": "jiraIcon" }
+        {
+          "name": "MS Project",
+          "icon": "msProjectIcon"
+        },
+        {
+          "name": "JIRA",
+          "icon": "jiraIcon"
+        }
       ],
       "project": [
         {
@@ -134,11 +227,22 @@
           "image": "https://example.com/project3.jpg"
         }
       ],
-      "someExperience": ["Experience 1", "Experience 2"],
-      "price": { "max": 12000, "min": 500 },
+      "someExperience": [
+        "Experience 1",
+        "Experience 2"
+      ],
+      "price": {
+        "max": 12000,
+        "min": 500
+      },
       "luogo": "Torino",
       "transfert": false,
-      "contact": [{ "tipo": "email", "name": "example4@gmail.com" }],
+      "contact": [
+        {
+          "tipo": "email",
+          "name": "example4@gmail.com"
+        }
+      ],
       "general": {
         "firstName": "Francesca",
         "surName": "Neri",
@@ -146,7 +250,10 @@
         "luogoNascita": "Torino"
       },
       "reviews": 4,
-      "comments": ["Excellent manager!", "Very organized."]
+      "comments": [
+        "Excellent manager!",
+        "Very organized."
+      ]
     },
     {
       "id": 5,
@@ -155,21 +262,43 @@
       "email": "esempio5@gmail.com",
       "isPro": false,
       "isAdmin": false,
-      "job": ["Data Scientist"],
+      "job": [
+        "Data Scientist"
+      ],
       "image": "https://example.com/image5.jpg",
       "description": "Data scientist with a knack for machine learning.",
       "program": [
-        { "name": "Python", "icon": "pythonIcon" },
-        { "name": "R", "icon": "rIcon" }
+        {
+          "name": "Python",
+          "icon": "pythonIcon"
+        },
+        {
+          "name": "R",
+          "icon": "rIcon"
+        }
       ],
       "project": [
-        { "name": "Data Analysis", "image": "https://example.com/project4.jpg" }
+        {
+          "name": "Data Analysis",
+          "image": "https://example.com/project4.jpg"
+        }
       ],
-      "someExperience": ["Experience A", "Experience B"],
-      "price": { "max": 15000, "min": 700 },
+      "someExperience": [
+        "Experience A",
+        "Experience B"
+      ],
+      "price": {
+        "max": 15000,
+        "min": 700
+      },
       "luogo": "Firenze",
       "transfert": true,
-      "contact": [{ "tipo": "email", "name": "example5@gmail.com" }],
+      "contact": [
+        {
+          "tipo": "email",
+          "name": "example5@gmail.com"
+        }
+      ],
       "general": {
         "firstName": "Marco",
         "surName": "Rossi",
@@ -177,7 +306,10 @@
         "luogoNascita": "Firenze"
       },
       "reviews": 5,
-      "comments": ["Great insights!", "Very knowledgeable."]
+      "comments": [
+        "Great insights!",
+        "Very knowledgeable."
+      ]
     },
     {
       "id": 6,
@@ -186,21 +318,43 @@
       "email": "esempio6@gmail.com",
       "isPro": true,
       "isAdmin": false,
-      "job": ["UX Designer"],
+      "job": [
+        "UX Designer"
+      ],
       "image": "https://example.com/image6.jpg",
       "description": "Passionate UX designer focused on user experience.",
       "program": [
-        { "name": "Sketch", "icon": "sketchIcon" },
-        { "name": "Figma", "icon": "figmaIcon" }
+        {
+          "name": "Sketch",
+          "icon": "sketchIcon"
+        },
+        {
+          "name": "Figma",
+          "icon": "figmaIcon"
+        }
       ],
       "project": [
-        { "name": "UX Design", "image": "https://example.com/project5.jpg" }
+        {
+          "name": "UX Design",
+          "image": "https://example.com/project5.jpg"
+        }
       ],
-      "someExperience": ["Experience 1", "Experience 2"],
-      "price": { "max": 9000, "min": 400 },
+      "someExperience": [
+        "Experience 1",
+        "Experience 2"
+      ],
+      "price": {
+        "max": 9000,
+        "min": 400
+      },
       "luogo": "Bologna",
       "transfert": false,
-      "contact": [{ "tipo": "email", "name": "example6@gmail.com" }],
+      "contact": [
+        {
+          "tipo": "email",
+          "name": "example6@gmail.com"
+        }
+      ],
       "general": {
         "firstName": "Elena",
         "surName": "Ferrari",
@@ -208,7 +362,10 @@
         "luogoNascita": "Bologna"
       },
       "reviews": 4,
-      "comments": ["Great designs!", "Very user-friendly."]
+      "comments": [
+        "Great designs!",
+        "Very user-friendly."
+      ]
     },
     {
       "id": 7,
@@ -217,17 +374,41 @@
       "email": "info@techcorp.com",
       "isPro": true,
       "isAdmin": false,
-      "job": ["Software Development", "Consulting"],
+      "job": [
+        "Software Development",
+        "Consulting"
+      ],
       "image": "https://example.com/company-logo.jpg",
       "description": "Leading company in tech solutions.",
       "program": [
-        { "name": "javascript", "icon": "jsIcon" },
-        { "name": "HTML", "icon": "htmlIcon" },
-        { "name": "CSS", "icon": "cssIcon" },
-        { "name": "REACT", "icon": "reactIcon" },
-        { "name": "TYPESCRIPT", "icon": "typescriptIcon" },
-        { "name": "GITHUB", "icon": "githubIcon" },
-        { "name": "NODE", "icon": "nodeIcon" }
+        {
+          "name": "javascript",
+          "icon": "jsIcon"
+        },
+        {
+          "name": "HTML",
+          "icon": "htmlIcon"
+        },
+        {
+          "name": "CSS",
+          "icon": "cssIcon"
+        },
+        {
+          "name": "REACT",
+          "icon": "reactIcon"
+        },
+        {
+          "name": "TYPESCRIPT",
+          "icon": "typescriptIcon"
+        },
+        {
+          "name": "GITHUB",
+          "icon": "githubIcon"
+        },
+        {
+          "name": "NODE",
+          "icon": "nodeIcon"
+        }
       ],
       "project": [
         {
@@ -239,13 +420,26 @@
           "image": "https://example.com/project-beta.jpg"
         }
       ],
-      "someExperience": ["Experience A", "Experience B", "Experience C"],
-      "price": { "max": 50000, "min": 500 },
+      "someExperience": [
+        "Experience A",
+        "Experience B",
+        "Experience C"
+      ],
+      "price": {
+        "max": 50000,
+        "min": 500
+      },
       "luogo": "Milano",
       "transfert": false,
       "contact": [
-        { "tipo": "email", "name": "contact@techcorp.com" },
-        { "tipo": "phone", "name": "+39 02 1234567" }
+        {
+          "tipo": "email",
+          "name": "contact@techcorp.com"
+        },
+        {
+          "tipo": "phone",
+          "name": "+39 02 1234567"
+        }
       ],
       "general": {
         "pIVA": 12345678901,
@@ -253,7 +447,10 @@
         "sedeLegale": "Via Roma, 1, Milano"
       },
       "reviews": 10,
-      "comments": ["Excellent service!", "Highly recommend."]
+      "comments": [
+        "Excellent service!",
+        "Highly recommend."
+      ]
     },
     {
       "id": 8,
@@ -262,12 +459,20 @@
       "email": "esempio2@gmail.com",
       "isPro": true,
       "isAdmin": false,
-      "job": ["Designer"],
+      "job": [
+        "Designer"
+      ],
       "image": "https://example.com/image2.jpg",
       "description": "Creative designer with a passion for art.",
       "program": [
-        { "name": "Photoshop", "icon": "psIcon" },
-        { "name": "Illustrator", "icon": "aiIcon" }
+        {
+          "name": "Photoshop",
+          "icon": "psIcon"
+        },
+        {
+          "name": "Illustrator",
+          "icon": "aiIcon"
+        }
       ],
       "project": [
         {
@@ -275,11 +480,22 @@
           "image": "https://example.com/project1.jpg"
         }
       ],
-      "someExperience": ["Experience A", "Experience B"],
-      "price": { "max": 5000, "min": 200 },
+      "someExperience": [
+        "Experience A",
+        "Experience B"
+      ],
+      "price": {
+        "max": 5000,
+        "min": 200
+      },
       "luogo": "Milano",
       "transfert": false,
-      "contact": [{ "tipo": "email", "name": "example2@gmail.com" }],
+      "contact": [
+        {
+          "tipo": "email",
+          "name": "example2@gmail.com"
+        }
+      ],
       "general": {
         "firstName": "Maria",
         "surName": "Bianchi",
@@ -287,7 +503,85 @@
         "luogoNascita": "Milano"
       },
       "reviews": 4,
-      "comments": ["Excellent design!", "Very creative."]
+      "comments": [
+        "Excellent design!",
+        "Very creative."
+      ]
+    },
+    {
+      "id": 9,
+      "username": "paolo",
+      "password": "paolo",
+      "email": "paolo@gmail.com",
+      "isPro": true,
+      "isAdmin": false,
+      "job": [],
+      "image": "",
+      "description": "",
+      "program": [],
+      "project": [],
+      "someExperience": [],
+      "price": [],
+      "luogo": "",
+      "transfert": null,
+      "contact": [],
+      "general": null,
+      "reviews": "",
+      "comments": []
+    },
+    {
+      "id": 10,
+      "username": "",
+      "password": "",
+      "email": "",
+      "isPro": true,
+      "isAdmin": false,
+      "job": [],
+      "image": "",
+      "description": "",
+      "program": [],
+      "project": [],
+      "someExperience": [],
+      "price": [],
+      "luogo": "",
+      "transfert": null,
+      "general": null,
+      "reviews": "",
+      "comments": []
+    },
+    {
+      "id": 11,
+      "username": "",
+      "password": "",
+      "email": "",
+      "isPro": true,
+      "isAdmin": false,
+      "job": [],
+      "image": "",
+      "description": "",
+      "program": [],
+      "project": [],
+      "someExperience": [],
+      "price": [],
+      "luogo": "",
+      "transfert": null,
+      "contact": [
+        "mail",
+        "phone",
+        "facebook",
+        "instagram",
+        "twitter",
+        "linkedin",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h"
+      ],
+      "general": null,
+      "reviews": "",
+      "comments": []
     }
   ]
 }
