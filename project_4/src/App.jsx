@@ -1,6 +1,6 @@
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Container } from "./Container";
 import { Home } from "./pages/Home";
 import { SearchPage } from "./pages/SearchPage";
@@ -19,28 +19,34 @@ import "./styles/global.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export function App() {
   const serviceRef = useRef(null);
   const professionITSectionRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (ref) => {
-    navigate("/");
-    ref.current.scrollIntoView({ behavior: "smooth" });
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
+  useEffect(() => {
+    if (location.hash === "#services") {
+      scrollToSection(serviceRef);
+    } else if (location.hash === "#profession") {
+      scrollToSection(professionITSectionRef);
+    }
+  }, [location]);
 
   return (
     <Container
       navbar={
         <Navbar
-          serviceSrollFunction={() => {
-            scrollToSection(serviceRef);
-          }}
-          professionScrollFunction={() => {
-            scrollToSection(professionITSectionRef);
-          }}
+          serviceScrollFunction={() => navigate("/#services")}
+          professionScrollFunction={() => navigate("/#profession")}
         />
       }
       footer={<Footer />}
@@ -51,7 +57,15 @@ export function App() {
 
       <Routes>
         {/* Home */}
-        <Route path="/" element={<Home serviceSectionRef={serviceRef} professionITSectionRef={professionITSectionRef} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              serviceSectionRef={serviceRef}
+              professionITSectionRef={professionITSectionRef}
+            />
+          }
+        />
 
         {/* Pages of searching */}
         <Route path="/search" element={<SearchPage />} />
@@ -59,7 +73,10 @@ export function App() {
         {/* Pages of setting */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user/general_setting/:id" element={<GeneralSetting />} />
-        <Route path="/user/presentation_setting/:id" element={<ExperienceSetting />} />
+        <Route
+          path="/user/presentation_setting/:id"
+          element={<ExperienceSetting />}
+        />
         <Route path="/user/project_setting/:id" element={<ProjectSetting />} />
         <Route path="/user/permission_user/:id" element={<PermissionUser />} />
 
