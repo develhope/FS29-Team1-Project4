@@ -68,6 +68,7 @@ hr {
 
 .li p {
   font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 .li:hover {

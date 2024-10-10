@@ -2,21 +2,17 @@ import { DATA } from "../database";
 import style from "../styles/ExperienceSetting.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
+import { UserContext } from "../contexts/UserContext";
+import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
 
 const db = DATA;
 export function ExperienceSetting() {
-  // Da usare nel momento in cui avremo un database
-  const { id } = useParams();
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
   // Recupero user da localstorage e lo salvo nello State
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
-  );
-
+  const { user, setUser } = useContext(UserContext);
+  const { onUpdate } = useUpdateUserDB(user);
   // Costante per navigare
   const navigate = useNavigate();
 
@@ -27,14 +23,16 @@ export function ExperienceSetting() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // State add experience
-  const [experience, setExperience] = useState("");
+  const [someExperience, setSomeExperience] = useState(user.someExperience);
 
-  function handleAddExperience() {
-    // user.someExperience = [...{ name: experience, isVisible: false }];
-    user.someExperience.push({ name: experience, isVisible: false });
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
-  }
+  const handleChange = (e) => {
+    e.preventDefault();
+    const value = e.target[0].value;
+    const name = e.target[0].name;
+
+    setUser({ ...user, someExperience });
+    onUpdate();
+  };
 
   // Navigazione con passagio id
   // User setting
@@ -132,7 +130,7 @@ export function ExperienceSetting() {
           <div className={style.container_accept}>
             {user.someExperience.map((exp, index) => (
               <p key={index} className={style.p_accept}>
-                {exp.name}
+                {exp}
               </p>
             ))}
             <img
@@ -144,20 +142,20 @@ export function ExperienceSetting() {
             />
             {/* Change Esperienze */}
             {toggleExperience && (
-              <div className={style.container_change}>
+              <form onSubmit={handleChange} className={style.container_change}>
                 <input
                   type="text"
-                  onChange={(e) => setExperience(e.target.value)}
+                  name="someExperience"
+                  onChange={(e) =>
+                    setSomeExperience((prev) => [...prev, e.target.value])
+                  }
                   placeholder="Aggiungi esperienza"
                   className={style.input}
-                ></input>
-                <button
-                  onClick={handleAddExperience}
-                  className={style.buttonSave}
-                >
+                />
+                <button type="submit" className={style.buttonSave}>
                   Save
                 </button>
-              </div>
+              </form>
             )}
           </div>
         </div>

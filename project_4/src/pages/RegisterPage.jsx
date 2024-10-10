@@ -1,121 +1,143 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "../styles/RegisterPage.module.css";
 import { json, useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
-  const [isPro, setIsPro] = useState(true);
-  const [contact, setcontact] = useState([]);
-  const [userName, setUserName] = useState()
-  const [password, setPassword] = useState()
-  const [email, setEmail] = useState()
-  const [job, setJob] = useState()
-  const [price, setPrice] = useState()
-  const [location, setLocation] = useState()
-  const [move, setMove] = useState(true)
-  const [mailSelect, setMailSelect] = useState()
-  const [phoneSelect, setPhoneSelect] = useState()
-  const [facebookSelect, setFacebookSelect] = useState()
-  const [instagramSelect, setInstagramSelect] = useState()
-  const [twitterSelect, setTwitterSelect] = useState()
-  const [linkedinSelect, setLinkedinSelect] = useState()
-  const [nameCompany, setNameCompany] = useState();
-  const [professionist, setProfessionist] = useState()
-  const navigate = useNavigate()
+  const [company, setCompany] = useState(true);
+  const [contact, setContact] = useState([]);
   const [selectedProgram, setSelectedProgram] = useState([]);
-  
+  // const [job, setJob] = useState();
+  // const [price, setPrice] = useState();
+  // const [location, setLocation] = useState();
+  // const [move, setMove] = useState(true);
+  // const [mailSelect, setMailSelect] = useState();
+  // const [phoneSelect, setPhoneSelect] = useState();
+  // const [facebookSelect, setFacebookSelect] = useState();
+  // const [instagramSelect, setInstagramSelect] = useState();
+  // const [twitterSelect, setTwitterSelect] = useState();
+  // const [linkedinSelect, setLinkedinSelect] = useState();
+  // const [nameCompany, setNameCompany] = useState();
+  // const [professionist, setProfessionist] = useState();
+  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: "",
+    isPro: true,
+    isAdmin: false,
+    job: [],
+    image: "",
+    description: "",
+    program: [],
+    project: [],
+    someExperience: [],
+    price: [],
+    luogo: "",
+    transfert: null,
+    general: null,
+    reviews: "",
+    comments: [],
+  });
+  const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    const name = e.target.name;
+    setFormData({
+      ...formData,
+      [name]: e.target.value,
+    });
+  };
 
-  function handleIsProfessionist(event) {
-    event.preventDefault();
-    const value = event.target.value;
-
-    if (value === "NO") {
-      setIsPro(false);
-    } else {
-      setIsPro(true);
-    }
-  }
   function handleUserContact(event) {
     event.preventDefault();
 
     const values = event.target.value;
-    setcontact((prev) => [...prev, values]);
+    setContact((prev) => [...prev, values]);
   }
-  const handleUserNameChange = (e) => {
-    const user = e.target.value;
-    setUserName(user)
-    console.log(user);
-    
+
+  // const handleChangeJob = (e) => {
+  //   const job = e.target.value;
+  //   setJob(job);
+  // };
+  // const handleChangePrice = (e) => {
+  //   const price = e.target.value;
+  //   setPrice(price);
+  // };
+  // const handleChangeLocation = (e) => {
+  //   const location = e.target.value;
+  //   setLocation(location);
+  // };
+  // const handleChangeMove = (e) => {
+  //   event.preventDefault();
+  //   const move = event.target.value;
+
+  //   if (move === "NO") {
+  //     setMove(false);
+  //   } else {
+  //     setMove(true);
+  //   }
+  // };
+  // const handleChangeMailSelect = (e) => {
+  //   const mailSelect = e.target.value;
+  //   setMailSelect(mailSelect);
+  // };
+  // const handleChangePhoneSelect = (e) => {
+  //   const phoneSelect = e.target.value;
+  //   setPhoneSelect(phoneSelect);
+  // };
+  // const handleChangeFacebookSelect = (e) => {
+  //   const facebookSelect = e.target.value;
+  //   setFacebookSelect(facebookSelect);
+  // };
+  // const handleChangeInstagramSelect = (e) => {
+  //   const instagramSelect = e.target.value;
+  //   setInstagramSelect(instagramSelect);
+  // };
+  // const handleChangeTwitterSelect = (e) => {
+  //   const twitterSelect = e.target.value;
+  //   setTwitterSelect(twitterSelect);
+  // };
+  // const handleChangeLinkedinSelect = (e) => {
+  //   const linkedinSelect = e.target.value;
+  //   setLinkedinSelect(linkedinSelect);
+  // };
+  // const handleChangeNameCompany = (e) => {
+  //   const nameCompany = e.target.value;
+  //   setNameCompany(nameCompany);
+  // };
+  // const handleChangeProfessionist = (event) => {
+  //   event.preventDefault();
+  //   const professionist = event.target.value;
+  //   setProfessionist(professionist);
+  // };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      ...formData,
+      contact,
+    };
+    try {
+      const response = await fetch(`http://localhost:3001/api/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      console.log(data);
+
+      if (response.ok) {
+        setMessage("User created successfully");
+        navigate("/");
+      }
+    } catch (error) {
+      setMessage("Failed to create user:", error);
+    }
   };
-    
-    const handlePasswordChange = (e) => {
-      const pass = e.target.value;
-      setPassword(pass);
-    };
 
-    const handleEmailChange = (e) => {
-    const mail = e.target.value;
-    setEmail(mail);
-    };
-
-    const handleChangeJob = (e) => {
-      const job = e.target.value;
-      setJob(job)
-    }
-    const handleChangePrice = (e) => {
-      const price = e.target.value;
-      setPrice(price)
-    }
-    const handleChangeLocation = (e) => {
-      const location = e.target.value;
-      setLocation(location)
-    }
-    const handleChangeMove = (e) => {
-        event.preventDefault();
-        const move = event.target.value;
-
-        if (move === "NO") {
-          setMove(false);
-        } else {
-          setMove(true);
-        }
-
-    }
-    const handleChangeMailSelect = (e) => {
-      const mailSelect = e.target.value;
-      setMailSelect(mailSelect);
-    };
-    const handleChangePhoneSelect = (e) => {
-      const phoneSelect = e.target.value;
-      setPhoneSelect(phoneSelect);
-    };
-    const handleChangeFacebookSelect = (e) => {
-      const facebookSelect= e.target.value;
-      setFacebookSelect(facebookSelect)
-    }
-    const handleChangeInstagramSelect = (e) => {
-      const instagramSelect = e.target.value;
-      setInstagramSelect(instagramSelect);
-    };
-    const handleChangeTwitterSelect = (e) => {
-      const twitterSelect = e.target.value;
-      setTwitterSelect(twitterSelect);
-    };
-    const handleChangeLinkedinSelect = (e) => {
-      const linkedinSelect = e.target.value;
-      setLinkedinSelect(linkedinSelect);
-    };
-    const handleChangeNameCompany = (e) => {
-      const nameCompany = e.target.value;
-      setNameCompany(nameCompany);
-    };
-    const handleChangeProfessionist = (event) => {
-    event.preventDefault();
-      const professionist = event.target.value;
-      setProfessionist(professionist)
-  };
-
-    const handleIconClick = (program) => {
+  const handleIconClick = (program) => {
     setSelectedProgram((prevPrograms) => {
       if (prevPrograms.includes(program)) {
         return prevPrograms.filter((p) => p !== program);
@@ -124,59 +146,33 @@ export function RegisterPage() {
     });
   };
 
-    const handleSave = (e) => {
-      e.preventDefault()
-      navigate("/")
-
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          userName,
-          password,
-          email,
-          isPro,
-          job,
-          price,
-          location,
-          move,
-          contact,
-          mailSelect,
-          phoneSelect,
-          facebookSelect,
-          instagramSelect,
-          twitterSelect,
-          linkedinSelect,
-          nameCompany,
-          professionist,
-          programs: selectedProgram,
-        })
-      );
-      };
-
   return (
     <div className={style.container}>
       <h1 className={style.h1}>Register Page</h1>
       <form className={style.form}>
         <h3 className={style.h3}>INSERISCI USERNAME</h3>
         <input
-          onChange={handleUserNameChange}
-          value={userName}
+          onChange={handleChange}
+          name="username"
+          value={formData.username}
           type="text"
           className={style.input}
         />
 
         <h3 className={style.h3}>INSERISCI PASSWORD</h3>
         <input
-          onChange={handlePasswordChange}
-          value={password}
-          type="Password"
+          onChange={handleChange}
+          value={formData.password}
+          name="password"
+          type="password"
           className={style.input}
         />
 
         <h3 className={style.h3}>INSERISCI MAIL</h3>
         <input
-          onChange={handleEmailChange}
-          value={email}
+          onChange={handleChange}
+          value={formData.email}
+          name="email"
           type="text"
           className={style.input}
         />
@@ -184,9 +180,13 @@ export function RegisterPage() {
         <label className={style.label}>SI</label>
         <input
           type="radio"
-          name="pro"
-          onChange={handleIsProfessionist}
-          value="SI"
+          name="isPro"
+          onClick={(e) => {
+            setCompany(true);
+            handleChange(e);
+            console.log(company, formData.isPro);
+          }}
+          value={true}
           className={style.check}
         />
 
@@ -194,17 +194,22 @@ export function RegisterPage() {
         <input
           className={style.check}
           type="radio"
-          name="pro"
-          onChange={handleIsProfessionist}
-          value="NO"
+          name="isPro"
+          onClick={(e) => {
+            setCompany(false);
+            handleChange(e);
+            console.log(company, formData.isPro);
+          }}
+          value={false}
         />
-        {isPro ? (
+        <p>{company}</p>
+        {company ? (
           <div>
             <h3 className={style.h3}>CHE RUOLO RICOPRI?</h3>
             <input
               type="text"
               className={style.input}
-              onChange={handleChangeJob}
+              onChange={handleChange}
             />
             <h3 className={style.h3}>CHE PROGRAMMA USI?</h3>
             <div className={style.program}>
@@ -221,6 +226,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("HTML")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("CSS") ? style["plan-selected"] : ""
@@ -234,6 +240,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("CSS")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("JAVASCRIPT")
@@ -267,6 +274,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("REACT")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("TYPESCRIPT")
@@ -283,6 +291,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("TYPESCRIPT")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("C++") ? style["plan-selected"] : ""
@@ -296,6 +305,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("C++")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("GITHUB")
@@ -312,6 +322,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("GITHUB")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("C#") ? style["plan-selected"] : ""
@@ -326,6 +337,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("C#")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("PHYTON")
@@ -341,6 +353,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("PHYTON")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("JAVA") ? style["plan-selected"] : ""
@@ -404,6 +417,7 @@ export function RegisterPage() {
                   onClick={() => handleIconClick("RHINOCEROS")}
                 />
               </div>
+
               <div
                 className={`${style.plan} ${
                   selectedProgram.includes("UNITY")
@@ -425,13 +439,13 @@ export function RegisterPage() {
             <input
               type="text"
               className={style.input}
-              onChange={handleChangePrice}
+              onChange={handleChange}
             />
             <h3 className={style.h3}>IN CHE CITTÀ LAVORI?</h3>
             <input
               type="text"
               className={style.input}
-              onChange={handleChangeLocation}
+              onChange={handleChange}
             />
             <h3 className={style.h3}>SEI DISPOSTO A SPOSTARTI?</h3>
             <label className={style.label}>SI</label>
@@ -439,7 +453,7 @@ export function RegisterPage() {
               type="radio"
               name="SI"
               className={style.check}
-              onChange={handleChangeMove}
+              onChange={handleChange}
               value={"SI"}
             />
             <label className={style.label}>NO</label>
@@ -447,12 +461,11 @@ export function RegisterPage() {
               type="radio"
               name="SI"
               className={style.check}
-              onChange={handleChangeMove}
+              onChange={handleChange}
               value={"NO"}
             />
             <h3 className={style.h3}>COME VUOI ESSERE CONTATTATO?</h3>
             <select
-              name=""
               id=""
               multiple
               onChange={handleUserContact}
@@ -470,8 +483,10 @@ export function RegisterPage() {
                 <h3 className={style.h3}>INSERISCI MAIL</h3>
                 <input
                   type="text"
+                  name="contact"
+                  value={formData.contact}
                   className={style.input}
-                  onChange={handleChangeMailSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -483,7 +498,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangePhoneSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -493,7 +508,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeFacebookSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -503,7 +518,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeInstagramSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -513,7 +528,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeTwitterSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -523,7 +538,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeLinkedinSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -534,14 +549,14 @@ export function RegisterPage() {
             <input
               type="text"
               className={style.input}
-              onChange={handleChangeNameCompany}
+              onChange={handleUserContact}
             />
             <h3 className={style.h3}>CHE TIPO DI PROFESSIONISTA CERCHI</h3>
             <select
               name=""
               id=""
               className={style.contact}
-              onChange={handleChangeProfessionist}
+              onChange={handleUserContact}
             >
               <option value="WEB DEVELOPER">WEB DEVELOPER</option>
               <option value="WEB DESIGNER">WEB DESIGNER</option>
@@ -569,7 +584,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeMailSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -581,7 +596,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangePhoneSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -591,7 +606,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeFacebookSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -601,7 +616,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeInstagramSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -611,7 +626,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeTwitterSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -621,7 +636,7 @@ export function RegisterPage() {
                 <input
                   type="text"
                   className={style.input}
-                  onChange={handleChangeLinkedinSelect}
+                  onChange={handleUserContact}
                 />
               </div>
             )}
@@ -634,4 +649,3 @@ export function RegisterPage() {
     </div>
   );
 }
-
