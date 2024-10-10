@@ -176,6 +176,16 @@ export function UserPage() {
         <ul className={style.content}>
           <li className={style.li}>
             <div className={style.container_accept}>
+              <button
+                className={style.buttonSave}
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/");
+                }}
+              >
+                Clear LocalStorage
+              </button>
+
               <h1 className={style.h1}>Welcome back, {user.username}!</h1>
               <img
                 src={iconModify}

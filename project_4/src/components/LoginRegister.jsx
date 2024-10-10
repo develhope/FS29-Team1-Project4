@@ -19,6 +19,7 @@ export function LoginRegister() {
 
   // Setto user a livello globale
   const { user, setUser } = useContext(UserContext);
+  const { users } = useContext(UsersContext);
 
   // Estraggo lo user usando password e username
   const { userFind, setUserFind } = useFindUserID(username, password);
@@ -39,10 +40,12 @@ export function LoginRegister() {
     setPassword(e.target.value);
   }
 
-  function handleGoSettingPage() {
-    // Setto lo user a livello globale
+  // Effect per aggiornare user ogni volta che viene trovato
+  useEffect(() => {
     setUser(userFind);
+  }, [userFind]);
 
+  function handleGoSettingPage() {
     if (user) {
       setLoggedIn(true);
     } else {
@@ -151,29 +154,32 @@ export function LoginRegister() {
               </div>
             </form>
           ) : (
-            <div className={NavLogin.form}>
-              <button onClick={closeForm} className={NavLogin.close_button}>
+            <div className={NavLogin.formLogged}>
+              <button onClick={closeForm} className={NavLogin.close_button1}>
                 X
               </button>
               <div className={NavLogin.user}>
                 <h2>Welcome {user.username}</h2>
-                <button
-                  onClick={() => {
-                    switch (true) {
-                      case user.isAdmin:
-                        navigate(`/admin/${user.id}`);
-                        break;
-                      case user.isPro:
-                        navigate(`/user_setting/${user.id}`);
-                        break;
-                      default:
-                        navigate(`/company_setting/${user.id}`);
-                        break;
-                    }
-                  }}
-                >
-                  Settings
-                </button>
+                <div className={NavLogin.loggedin}>
+                  <button
+                    onClick={() => {
+                      switch (true) {
+                        case user.isAdmin:
+                          navigate(`/admin/${user.id}`);
+                          break;
+                        case user.isPro:
+                          navigate(`/user_setting/${user.id}`);
+                          break;
+                        default:
+                          navigate(`/company_setting/${user.id}`);
+                          break;
+                      }
+                    }}
+                    className={NavLogin.log_btn}
+                  >
+                    Settings
+                  </button>
+                </div>
                 <button
                   onClick={() => {
                     localStorage.clear();
@@ -182,6 +188,7 @@ export function LoginRegister() {
                     setUsername("");
                     setPassword("");
                   }}
+                  className={NavLogin.log_btn}
                 >
                   Logout
                 </button>

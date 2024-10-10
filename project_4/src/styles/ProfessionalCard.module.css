@@ -12,6 +12,8 @@
 }
 
 .wrapper {
+  overflow-y: scroll;
+  scrollbar-width: none;
   background-color: black;
   color: var(--colore-bianco);
   padding: 1rem;
@@ -29,10 +31,10 @@
 .right {
   height: 60%;
   width: 100%;
-  overflow: scroll;
 }
 
 .name {
+  margin-left: 6rem;
   display: flex;
   justify-content: space-between;
   font-size: 2rem;
@@ -45,25 +47,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 .professionalCard {
-  box-shadow: var(--box-bluOpaco);
+  /* box-shadow: var(--box-bluOpaco); */
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1/1;
-  /* height: 10rem; */
-  width: 10rem;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* aspect-ratio: 1/1; */
+  /* height: 12rem;
+  width: 10rem; */
+  width: 50%;
+  height: 50%;
 }
 .image {
+  max-height: 10rem;
   width: 100%;
   height: 100%;
 }
-.professionalRole {
-  margin-top: 2rem;
-}
+/* .professionalRole { */
+/* margin-top: 2rem; */
+/* } */
 .role {
   font-size: 2rem;
 }
@@ -72,11 +77,11 @@
   flex-wrap: wrap;
   gap: 2rem;
   margin-left: 1rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 .icon {
-  width: 3rem;
-  height: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
   padding: 0.1rem;
   box-shadow: var(--box-bluOpaco);
@@ -111,7 +116,7 @@
 }
 .contacts {
   display: flex;
-  gap: 3rem;
+  gap: 1rem 3rem;
   flex-wrap: wrap;
 }
 .comment {
@@ -126,66 +131,65 @@
     flex-wrap: wrap;
   }
   .wrapper {
-    padding: 1rem;
+    overflow: scroll;
+    scrollbar-width: none;
   }
   .role {
-    font-size: medium;
+    font-size: small;
   }
   .icon {
-    padding: 0.2rem;
+    padding: 0.5rem;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   .box {
     padding: 1.5rem;
   }
   .wrapper {
     width: 100%;
     height: 100%;
-    padding: 0.7rem;
     display: flex;
-    flex-direction: column;
-    /* margin: 0rem; */
-    text-align: center;
+    flex-wrap: wrap;
     overflow: scroll;
     scrollbar-width: none;
   }
-
-  .card {
-    flex-direction: column;
-    align-items: center;
-    /* border: 1px solid red; */
-  }
-  .role {
-    /* font-size: medium; */
+  .name {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
-  .professionalRole {
-    width: 90%;
-  }
-
-  .icon {
-    padding: 0.2rem;
-  }
-  .linksSection {
-    gap: 0.5rem;
+  .content {
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    margin-top: 1.5rem;
   }
-  .review {
-    margin-top: 1rem;
+  .left {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: large;
   }
   .right {
+    width: 100%;
     display: flex;
-    text-align: center;
-    font-size: small;
+    justify-content: center;
+  }
+  .bottomLinks {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .image {
+    width: 6rem;
+    margin-bottom: 5rem;
+  }
+  .role {
+    font-size: medium;
+    margin-bottom: 1rem;
   }
 }
 @media (max-width: 320px) {
   .linksSection {
     margin: 1rem;
-  }
-  .right {
-    margin-right: 1rem;
   }
 }

@@ -8,10 +8,11 @@ import { ProfessionalSection } from "./ProfessionalSection";
 import { useGetDataDB } from "../hooks/useGetDataDB";
 import useSWR from "swr";
 
+const data = DATA;
 export function CardProfessional() {
-  const { users } = useGetDataDB();
+  // const { users } = useGetDataDB();
   // const { data, error, mutate } = useSWR(`http://localhost:3001/api/users`);
-  // const db = data;
+  const users = data;
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProfessional, setSelectedProfessional] = useState(null);
 

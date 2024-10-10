@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "../styles/RegisterPage.module.css";
 import { json, useNavigate } from "react-router-dom";
 import { usePostDataDB } from "../hooks/usePostDataDB";
@@ -48,16 +48,6 @@ export function RegisterPage() {
     });
   };
 
-  // function handleIsProfessionist(event) {
-  //   event.preventDefault();
-  //   const value = event.target.value;
-
-  //   if (value === "NO") {
-  //     setIsPro(false);
-  //   } else {
-  //     setIsPro(true);
-  //   }
-  // }
   function handleUserContact(event) {
     event.preventDefault();
 
@@ -181,9 +171,9 @@ export function RegisterPage() {
         <label className={style.label}>SI</label>
         <input
           type="radio"
-          name="pro"
-          onChange={handleChange}
-          value="SI"
+          name="isPro"
+          onClick={handleChange}
+          value={true}
           className={style.check}
         />
 
@@ -191,9 +181,9 @@ export function RegisterPage() {
         <input
           className={style.check}
           type="radio"
-          name="pro"
-          onChange={handleChange}
-          value="NO"
+          name="isPro"
+          onClick={handleChange}
+          value={false}
         />
         {formData.isPro ? (
           <div>
