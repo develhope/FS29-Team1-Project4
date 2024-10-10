@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import useSWR from "swr";
 
 export function useGetDataDB() {
   const [data, setUsers] = useState([]);

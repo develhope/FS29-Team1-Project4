@@ -2,18 +2,12 @@ import style from "../styles/CompanyPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
-
-// Database fittizio
-const users = DATA;
+import { UserContext } from "../contexts/UserContext";
 
 export function CompanyPage() {
-  const { id } = useParams();
-  // Da usare nel momento in cui avremo un database
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
   // Costante per navigare
   const navigate = useNavigate();
 
@@ -31,7 +25,7 @@ export function CompanyPage() {
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
   // Recupero User grazie alla proprietà isPro
-  const user = users.find((user) => !user.isPro);
+  const { user, setUser } = useContext(UserContext);
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");

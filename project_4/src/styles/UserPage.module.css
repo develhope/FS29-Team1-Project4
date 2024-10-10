@@ -138,7 +138,10 @@
   color: var(--colore-bluChiaro);
   text-align: center;
 }
-
+.h3 {
+  color: var(--colore-bianco);
+  margin-bottom: 1.5rem;
+}
 .container_accept {
   display: flex;
   flex-flow: column;
@@ -166,7 +169,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 8rem;
 }
 .li_program {
   width: 15%;
@@ -281,6 +284,11 @@ input[type="file"] {
 .p_change {
   padding: 0.5em;
   font-size: 1.3rem;
+  color: var(--colore-bluChiaro);
+}
+.p_program {
+  padding: 0.5em;
+  font-size: 100%;
   color: var(--colore-bluChiaro);
 }
 .icon_change {

@@ -84,28 +84,32 @@
       "isPro": true,
       "isAdmin": false,
       "job": ["Designer"],
-      "image": "https://example.com/image2.jpg",
-      "description": "Creative designer with a passion for art.",
+      "image": "https://assets-prd.ignimgs.com/2021/12/20/ffix-art-1640032353038.jpg",
+      "description": "Hola",
       "program": [
         {
           "name": "Photoshop",
-          "icon": "psIcon"
+          "icon": "./assets/xmark-solid.svg"
         },
         {
           "name": "Illustrator",
-          "icon": "aiIcon"
+          "icon": "./assets/xmark-solid.svg"
         }
       ],
       "project": [
         {
           "name": "Design Project 1",
-          "image": "https://example.com/project1.jpg"
+          "image": "https://www.architettiamo.it/wordpress/wp-content/uploads/2017/11/intyerni-di-design-2-1.jpg"
+        },
+        {
+          "name": "pro 2",
+          "image": "https://assets-prd.ignimgs.com/2021/12/20/ffix-art-1640032353038.jpg"
         }
       ],
-      "someExperience": ["Experience A", "Experience B"],
+      "someExperience": ["exp 3", "exp 4"],
       "price": {
-        "max": 5000,
-        "min": 200
+        "max": "2000",
+        "min": "100"
       },
       "luogo": "Milano",
       "transfert": false,
@@ -118,7 +122,7 @@
       "general": {
         "firstName": "Maria",
         "surName": "Bianchi",
-        "annoNascita": 1990,
+        "annoNascita": 1980,
         "luogoNascita": "Milano"
       },
       "reviews": 4,
@@ -228,7 +232,7 @@
       "isPro": false,
       "isAdmin": false,
       "job": ["Data Scientist"],
-      "image": "https://example.com/image5.jpg",
+      "image": "./assets/userIcon.svg",
       "description": "Data scientist with a knack for machine learning.",
       "program": [
         {
@@ -441,10 +445,10 @@
     },
     {
       "id": 9,
-      "username": "paolo",
-      "password": "paolo",
-      "email": "paolo@gmail.com",
-      "isPro": true,
+      "username": "Fabri98",
+      "password": "password",
+      "email": "fabri98@gmail.com",
+      "isPro": "true",
       "isAdmin": false,
       "job": [],
       "image": "",
@@ -455,61 +459,7 @@
       "price": [],
       "luogo": "",
       "transfert": null,
-      "contact": [],
-      "general": null,
-      "reviews": "",
-      "comments": []
-    },
-    {
-      "id": 10,
-      "username": "",
-      "password": "",
-      "email": "",
-      "isPro": true,
-      "isAdmin": false,
-      "job": [],
-      "image": "",
-      "description": "",
-      "program": [],
-      "project": [],
-      "someExperience": [],
-      "price": [],
-      "luogo": "",
-      "transfert": null,
-      "general": null,
-      "reviews": "",
-      "comments": []
-    },
-    {
-      "id": 11,
-      "username": "",
-      "password": "",
-      "email": "",
-      "isPro": true,
-      "isAdmin": false,
-      "job": [],
-      "image": "",
-      "description": "",
-      "program": [],
-      "project": [],
-      "someExperience": [],
-      "price": [],
-      "luogo": "",
-      "transfert": null,
-      "contact": [
-        "mail",
-        "phone",
-        "facebook",
-        "instagram",
-        "twitter",
-        "linkedin",
-        "a",
-        "s",
-        "d",
-        "f",
-        "g",
-        "h"
-      ],
+      "contact": ["phone", "2", "23", "232", "2323", "23232", "232323"],
       "general": null,
       "reviews": "",
       "comments": []

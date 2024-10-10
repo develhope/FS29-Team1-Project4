@@ -2,23 +2,20 @@ import { DATA } from "../database";
 import style from "../styles/GeneralSetting.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
+import { UserContext } from "../contexts/UserContext";
+import { UsersContext } from "../contexts/UsersContext";
+import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
 
-const db = DATA;
 export function GeneralSetting() {
-  // Da usare nel momento in cui avremo un database
-  const { id = "5" } = useParams();
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
   // useNavigate
   const navigate = useNavigate();
 
   // Recupero user da localstorage e lo salvo nello State
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
-  );
+  const { user, setUser } = useContext(UserContext);
+  const { onUpdate } = useUpdateUserDB(user);
 
   // Controllo stato per i toggle
   const [toggleSurname, onToggleSurname] = useShowToggle();
@@ -32,45 +29,39 @@ export function GeneralSetting() {
   const [luogo, setLuogo] = useState("");
   const [priceMax, setPriceMax] = useState(0);
   const [priceMin, setPriceMin] = useState(0);
+  const [price, setPrice] = useState(user.price);
 
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Recupero User grazie a ID preso da useParams
-  // const user = db.find((u) => u.id.toString() === id);
-
   // Ottengo Solo i general dello user
-  const general = user.general;
+  const [general, setGeneral] = useState({
+    firstName: user.general.firstName,
+    surName: user.general.surName,
+    annoNascita: user.general.annoNascita,
+    luogoNascita: user.general.luogoNascita,
+  });
 
-  // Handle Firstname
-  function handleChangeFirstname(e) {
+  // Handle generico delle info Generali
+  const handleChange = (e) => {
     e.preventDefault();
-    user.general.firstName = firstname;
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
-  }
-  // Handle Surname
-  function handleChangeSurname(e) {
-    e.preventDefault();
-    user.general.surName = surname;
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
-  }
-  // Handle Luogo(Residenza/Sede legale)
-  function handleChangeLuogo(e) {
-    e.preventDefault();
-    user.isPro
-      ? (user.general.luogoNascita = luogo)
-      : (user.general.sedeLegale = luogo);
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
-  }
+    const name = e.target[0].name;
+    setGeneral({
+      ...general,
+      [name]: e.target[0].value,
+    });
+    setUser({ ...user, general });
+    onUpdate();
+  };
+
   // Handle Price
-  function handleChangePrice() {
-    !!priceMax && (user.price.max = priceMax);
-    !!priceMin && (user.price.min = priceMin);
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+  function handleChangePrice(e) {
+    e.preventDefault();
+    const max = e.target[0].name;
+    const min = e.target[1].name;
+    setPrice({ [max]: e.target[0].value, [min]: e.target[1].value });
+    setUser({ ...user, price });
+    onUpdate();
   }
 
   //  Navigazione User setting
@@ -167,9 +158,11 @@ export function GeneralSetting() {
           {/* Nome scelto */}
           <div className={style.container_accept}>
             {user.isPro ? (
-              <p className={style.p_accept}>Firstname: {general.firstName}</p>
+              <p className={style.p_accept}>
+                Firstname: {user.general.firstName}
+              </p>
             ) : (
-              <p className={style.p_accept}>Partita IVA: {general.pIVA}</p>
+              <p className={style.p_accept}>Partita IVA: {user.general.pIVA}</p>
             )}
 
             <img
@@ -181,26 +174,26 @@ export function GeneralSetting() {
             />
             {/* Change Firstname */}
             {toggleFirstname && (
-              <div className={style.container_change}>
+              <form onSubmit={handleChange} className={style.container_change}>
                 <input
                   type="text"
+                  name="firstName"
                   onChange={(e) => setFirstname(e.target.value)}
-                  placeholder={user.isPro ? general.firstName : general.pIVA}
+                  placeholder={
+                    user.isPro ? user.general.firstName : user.general.pIVA
+                  }
                   className={style.input}
                 />
-                <button
-                  onClick={handleChangeFirstname}
-                  className={style.buttonSave}
-                >
+                <button type="submit" className={style.buttonSave}>
                   Save
                 </button>
-              </div>
+              </form>
             )}
           </div>
           {/* Cognome Scelto */}
-          {!!user.isPro && (
+          {user.isPro && (
             <div className={style.container_accept}>
-              <p className={style.p_accept}>Surname: {general.surName}</p>
+              <p className={style.p_accept}>Surname: {user.general.surName}</p>
               <img
                 src={iconModify}
                 alt="Modify Icon"
@@ -211,20 +204,21 @@ export function GeneralSetting() {
 
               {/* Change Surname */}
               {toggleSurname && (
-                <div className={style.container_change}>
+                <form
+                  onSubmit={handleChange}
+                  className={style.container_change}
+                >
                   <input
                     type="text"
+                    name="surName"
                     onChange={(e) => setSurname(e.target.value)}
-                    placeholder={general.surName}
+                    placeholder={user.general.surName}
                     className={style.input}
                   ></input>
-                  <button
-                    onClick={handleChangeSurname}
-                    className={style.buttonSave}
-                  >
+                  <button type="submit" className={style.buttonSave}>
                     Save
                   </button>
-                </div>
+                </form>
               )}
             </div>
           )}
@@ -233,21 +227,24 @@ export function GeneralSetting() {
           <div className={style.container_accept}>
             {user.isPro ? (
               <p className={style.p_accept}>
-                You both in {general.annoNascita}
+                You both in {user.general.annoNascita}
               </p>
             ) : (
-              <p className={style.p_accept}>Founded in {general.annoNascita}</p>
+              <p className={style.p_accept}>
+                Founded in {user.general.annoNascita}
+              </p>
             )}
           </div>
-          {/* Luogo di Nascita Scelto */}
+
+          {/* Luogo di Residenza Scelto */}
           <div className={style.container_accept}>
             {user.isPro ? (
               <p className={style.p_accept}>
-                You are from {general.luogoNascita}
+                You are from {user.general.luogoNascita}
               </p>
             ) : (
               <p className={style.p_accept}>
-                The registered office is located in {general.sedeLegale}
+                The registered office is located in {user.general.sedeLegale}
               </p>
             )}
 
@@ -260,22 +257,22 @@ export function GeneralSetting() {
             />
             {/* Change Luogo di nascita */}
             {toggleLuogoNascita && (
-              <div className={style.container_change}>
+              <form onSubmit={handleChange} className={style.container_change}>
                 <input
                   type="text"
+                  name={user.isPro ? "luogoNascita" : "sedeLegale"}
                   onChange={(e) => setLuogo(e.target.value)}
                   placeholder={
-                    user.isPro ? general.luogoNascita : general.sedeLegale
+                    user.isPro
+                      ? user.general.luogoNascita
+                      : user.general.sedeLegale
                   }
                   className={style.input}
-                ></input>
-                <button
-                  onClick={handleChangeLuogo}
-                  className={style.buttonSave}
-                >
+                />
+                <button type="submit" className={style.buttonSave}>
                   Save
                 </button>
-              </div>
+              </form>
             )}
           </div>
           {/* Prezzi */}
@@ -303,26 +300,28 @@ export function GeneralSetting() {
             />
             {/* Change Prezzi */}
             {togglePrice && (
-              <div className={style.container_change}>
+              <form
+                onSubmit={handleChangePrice}
+                className={style.container_change}
+              >
                 <input
                   type="text"
+                  name="max"
                   onChange={(e) => setPriceMax(e.target.value)}
                   placeholder={`Il prezzo massimo è ${user.price.max}`}
                   className={style.input}
                 />
                 <input
                   type="text"
+                  name="min"
                   onChange={(e) => setPriceMin(e.target.value)}
                   placeholder={`Il prezzo minimo è ${user.price.min}`}
                   className={style.input}
                 />
-                <button
-                  onClick={handleChangePrice}
-                  className={style.buttonSave}
-                >
+                <button type="submit" className={style.buttonSave}>
                   Save
                 </button>
-              </div>
+              </form>
             )}
           </div>
         </div>

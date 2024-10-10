@@ -78,6 +78,51 @@ app.post("/api/users", (req, res) => {
   }
 });
 
+// Endpoint per aggiornare un utente
+app.put("/api/users/:id", (req, res) => {
+  const data = JSON.parse(fs.readFileSync("database.json", "utf8"));
+
+  const userId = parseInt(req.params.id, 10);
+  const {
+    username,
+    email,
+    job,
+    image,
+    description,
+    program,
+    project,
+    someExperience,
+    price,
+    luogo,
+    transfert,
+    contact,
+    general,
+  } = req.body;
+
+  const user = data.users.find((u) => u.id === userId);
+  if (user) {
+    user.username = username || user.username;
+    user.email = email || user.email;
+    user.job = job || user.job;
+    user.image = image || user.image;
+    user.description = description || user.description;
+    user.program = program || user.program;
+    user.project = project || user.project;
+    user.someExperience = someExperience || user.someExperience;
+    user.price = price || user.price;
+    user.luogo = luogo || user.luogo;
+    user.transfert = transfert || user.transfert;
+    user.contact = contact || user.contact;
+    user.general = general || user.general;
+
+    fs.writeFileSync("database.json", JSON.stringify(data, null, 2));
+    res.json({ message: "User updated", user });
+    console.log("user update");
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server in ascolto su http://localhost:${port}`);
 });
