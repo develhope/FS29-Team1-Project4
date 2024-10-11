@@ -35,7 +35,7 @@ export function UserPage() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Cosstanti per cambiare username
+  // Costanti per cambiare username
   const [inputUsername, setInputUsername] = useState("");
 
   // Costanti per cambiare l'immagine
