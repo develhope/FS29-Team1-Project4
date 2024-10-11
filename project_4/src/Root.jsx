@@ -1,15 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
-import { SWRConfig } from "swr";
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
+import { UsersProvider } from "./contexts/UsersContext.jsx";
+import { UserProvider } from "./contexts/UserContext.jsx";
 
 export function Root() {
   return (
-    <SWRConfig value={{ fetcher }}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </SWRConfig>
+    <BrowserRouter>
+      <UsersProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </UsersProvider>
+    </BrowserRouter>
   );
 }
