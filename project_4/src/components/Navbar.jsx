@@ -6,9 +6,9 @@ import { ChangeLanguage } from "./ChangeLanguage";
 import { LoginRegister } from "./LoginRegister";
 import { useNavigate } from "react-router-dom";
 
-export function Navbar({ serviceSrollFunction, professionScrollFunction }) {
+export function Navbar({ serviceScrollFunction, professionScrollFunction }) {
   const handleServicesIt = () => {
-    serviceSrollFunction();
+    serviceScrollFunction();
   };
   const handleProfessionIt = () => {
     professionScrollFunction();
