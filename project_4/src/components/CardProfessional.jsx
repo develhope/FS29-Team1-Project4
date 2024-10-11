@@ -5,11 +5,18 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/SliderArrows.css";
 import { ProfessionalSection } from "./ProfessionalSection";
+import { useGetDataDB } from "../hooks/useGetDataDB";
+import useSWR from "swr";
 
+const data = DATA;
 export function CardProfessional() {
-  const db = DATA;
+  // const { users } = useGetDataDB();
+  // const { data, error, mutate } = useSWR(`http://localhost:3001/api/users`);
+  const users = data;
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProfessional, setSelectedProfessional] = useState(null);
+
+  // console.log(db);
 
   const handleShowPopup = (card) => {
     setSelectedProfessional(card);
@@ -89,7 +96,7 @@ export function CardProfessional() {
   return (
     <div className="custom-class">
       <Slider {...settings}>
-        {db.map((card) => (
+        {users.map((card) => (
           <div
             key={card.id}
             className=" h-full text-[94c4f5] rounded-xl  m-2 my-shadow"

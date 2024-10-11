@@ -2,7 +2,8 @@ import style from "../styles/ServicesIT.module.css";
 import img from "../assets/ServicesIT.jpg";
 export function ServicesIT({ serviceSectionRef }) {
   return (
-    <div className={style.container} ref={serviceSectionRef}>
+    <div className={style.container}>
+      <span className={style.separator} ref={serviceSectionRef}></span>
       <div className={style.column}>
         <h2 className={style.title}>SERVICES IT</h2>
         <h3 className={style.subtitle}>My Professional IT</h3>
