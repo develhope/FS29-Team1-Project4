@@ -18,11 +18,11 @@ export function LoginRegister() {
   const formRef = useRef(null); // Riferimento al form
 
   // Setto user a livello globale
-  const { user, setUser } = useContext(UserContext);
   const { users } = useContext(UsersContext);
+  const { user, setUser } = useContext(UserContext);
 
   // Estraggo lo user usando password e username
-  const { userFind, setUserFind } = useFindUserID(username, password);
+  const { userFind } = useFindUserID(username, password);
 
   // Navigazione
   const navigate = useNavigate();

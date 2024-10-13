@@ -10,8 +10,8 @@ app.use(express.json());
 // Endpoint per ottenere i dati
 app.get("/api/users", (req, res) => {
   const data = fs.readFileSync("database.json", "utf8");
-  res.json(JSON.parse(data).users);
-  // console.log("Dati recuperati");
+  res.json(JSON.parse(data));
+  console.log("get users");
 });
 
 // Endpoint per aggiungere un nuovo utente
@@ -45,10 +45,10 @@ app.post("/api/users", (req, res) => {
     const data = fs.readFileSync("database.json", "utf8");
     const db = JSON.parse(data);
 
-    console.log(db.users);
+    console.log(db.users, db);
 
     const newUser = {
-      id: db.users.length + 1,
+      id: db.length + 1,
       username,
       password,
       email,
@@ -69,7 +69,7 @@ app.post("/api/users", (req, res) => {
       comments,
     };
 
-    db.users.push(newUser);
+    db.push(newUser);
 
     fs.writeFileSync("database.json", JSON.stringify(db, null, 2));
     res.status(201).json(newUser);
@@ -86,6 +86,7 @@ app.put("/api/users/:id", (req, res) => {
   const {
     username,
     email,
+    isAdmin,
     job,
     image,
     description,
@@ -99,10 +100,11 @@ app.put("/api/users/:id", (req, res) => {
     general,
   } = req.body;
 
-  const user = data.users.find((u) => u.id === userId);
+  const user = data.find((u) => u.id === userId);
   if (user) {
     user.username = username || user.username;
     user.email = email || user.email;
+    user.isAdmin = isAdmin;
     user.job = job || user.job;
     user.image = image || user.image;
     user.description = description || user.description;
@@ -120,6 +122,33 @@ app.put("/api/users/:id", (req, res) => {
     console.log("user update");
   } else {
     res.status(404).json({ message: "User not found" });
+  }
+});
+
+// Endpoint per rimuovere un utente
+app.delete("/api/users/:id", async (req, res) => {
+  try {
+    const userId = parseInt(req.params.id, 10);
+
+    // Read and parse the database file
+    const data = await fs.readFileSync("database.json", "utf8");
+    const users = JSON.parse(data);
+
+    // Efficiently remove the user using splice (if applicable)
+    const usersUpdate = users.filter((user) => user.id !== userId);
+    console.log(usersUpdate);
+
+    // Write the updated data to the database file
+    await fs.writeFileSync(
+      "database.json",
+      JSON.stringify(usersUpdate, null, 2)
+    );
+
+    res.json({ msg: "User removed successfully" });
+    console.log("User removed successfully");
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ msg: "Error deleting user" });
   }
 });
 
