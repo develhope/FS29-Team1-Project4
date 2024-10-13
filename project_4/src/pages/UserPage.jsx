@@ -16,7 +16,7 @@ export function UserPage() {
   const navigate = useNavigate();
 
   // Hook per aggiornare l'utente nel DB
-  const { onUpdate } = useUpdateUserDB(user);
+  const { onUpdate } = useUpdateUserDB();
 
   // Cambio elementi
   // Controllo stato per i toggle
@@ -57,7 +57,7 @@ export function UserPage() {
   function handleChangeUsername(e) {
     e.preventDefault();
     setUser({ ...user, username: inputUsername });
-    onUpdate();
+    onUpdate(user);
   }
 
   // load file
@@ -75,10 +75,10 @@ export function UserPage() {
 
     if (!inputImage) {
       setUser({ ...user, image: fileImage });
-      onUpdate();
+      onUpdate(user);
     } else {
       setUser({ ...user, image: inputImage });
-      onUpdate();
+      onUpdate(user);
     }
   }
 
@@ -86,7 +86,7 @@ export function UserPage() {
   function handleChangeDescription(e) {
     e.preventDefault();
     setUser({ ...user, description: inputDescription });
-    onUpdate();
+    onUpdate(user);
   }
 
   // Filtraggio project tra visibili e non

@@ -1,10 +1,9 @@
 import style from "../styles/AdminPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { DATA } from "../database";
+import iconClose from "../assets/xmark-solid.svg";
+import { useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
-import iconClose from "../assets/xmark-solid.svg";
 import { UserContext } from "../contexts/UserContext";
 import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
 
@@ -16,7 +15,7 @@ export function AdminPage() {
   const navigate = useNavigate();
 
   // Hook per aggiornare l'utente nel DB
-  const { onUpdate } = useUpdateUserDB(user);
+  const { onUpdate } = useUpdateUserDB();
 
   // Cambio elementi
   // Controllo stato per i toggle
@@ -57,7 +56,7 @@ export function AdminPage() {
   function handleChangeUsername(e) {
     e.preventDefault();
     setUser({ ...user, username: inputUsername });
-    onUpdate();
+    onUpdate(user);
   }
 
   // load file
@@ -67,6 +66,7 @@ export function AdminPage() {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
+    console.log(fileInputRef);
   };
 
   // Handle Change Image
@@ -74,11 +74,11 @@ export function AdminPage() {
     e.preventDefault();
 
     if (!inputImage) {
-      setUser({ ...user, image: fileImage });
-      onUpdate();
+      setUser({ ...user, image: fileInputRef.current.value });
+      onUpdate(user);
     } else {
       setUser({ ...user, image: inputImage });
-      onUpdate();
+      onUpdate(user);
     }
   }
 
@@ -86,7 +86,7 @@ export function AdminPage() {
   function handleChangeDescription(e) {
     e.preventDefault();
     setUser({ ...user, description: inputDescription });
-    onUpdate();
+    onUpdate(user);
   }
   // Filtraggio project tra visibili e non
   // const projectVisible = user.project.filter((project) => project.isVisible);
@@ -224,7 +224,7 @@ export function AdminPage() {
           <li className={style.li}>
             <div className={style.container_accept}>
               <img
-                src={userImage}
+                src={user.image}
                 alt="Immagine di profilo"
                 className={style.img}
               />
@@ -405,7 +405,7 @@ export function AdminPage() {
               <div className={style.container_change}>
                 <p className={style.h3}>Project not visible</p>
                 <ul className={style.ul_change}>
-                  {projectNoVisible.map((project, index) => (
+                  {user.project.map((project, index) => (
                     <li key={index} className={style.li_change}>
                       <p className={style.p_change}>
                         {project.name.toUpperCase()}
@@ -452,9 +452,9 @@ export function AdminPage() {
               <div className={style.container_change}>
                 <p>Experiences not visible</p>
                 <ul className={style.ul_change}>
-                  {experienceNoVisible.map((experience, index) => (
+                  {user.someExperience.map((experience, index) => (
                     <li key={index} className={style.li_change}>
-                      <p className={style.p_accept}>{experience.name}</p>
+                      <p className={style.p_accept}>{experience}</p>
                     </li>
                   ))}
                 </ul>

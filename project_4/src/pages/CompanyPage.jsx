@@ -2,14 +2,21 @@ import style from "../styles/CompanyPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
 import { UserContext } from "../contexts/UserContext";
+import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
 
 export function CompanyPage() {
   // Costante per navigare
   const navigate = useNavigate();
+
+  // Recupero User grazie alla proprietà isPro
+  const { user, setUser } = useContext(UserContext);
+
+  // Hook per aggiornare l'utente nel DB
+  const { onUpdate } = useUpdateUserDB();
 
   // Controllo stato per i toggle
   // Cambio elementi
@@ -21,14 +28,19 @@ export function CompanyPage() {
   const [toggleExperince, onToggleExperince] = useShowToggle();
   const [toggleComments, onToggleComments] = useShowToggle();
 
+  // Toggle per selezione programmi
+  const [toggleClickProgram, setToggleClickProgram] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState(null);
+
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Recupero User grazie alla proprietà isPro
-  const { user, setUser } = useContext(UserContext);
+  // Costanti per cambiare username
+  const [inputUsername, setInputUsername] = useState("");
 
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
+  const [fileImage, setFileImage] = useState();
   const [userImage, setUserImage] = useState(user.image);
 
   // Costanti per cambiare la descrizione
@@ -38,27 +50,38 @@ export function CompanyPage() {
   // Handle Username
   function handleChangeUsername(e) {
     e.preventDefault();
-    setUser(inputDescription);
+    setUser({ ...user, username: inputUsername });
+    onUpdate(user);
   }
+
+  // load file
+  const fileInputRef = useRef(null);
+
+  const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+    console.log(fileInputRef);
+  };
 
   // Handle Image
-  function handleChangeLinkImage(e) {
-    setInputImage(e.target.value);
-  }
-
   function handleChangeImage(e) {
     e.preventDefault();
-    setUserImage(inputImage);
+
+    if (!inputImage) {
+      setUser({ ...user, image: fileInputRef.current.value });
+      onUpdate(user);
+    } else {
+      setUser({ ...user, image: inputImage });
+      onUpdate(user);
+    }
   }
 
   // Handle Description
-  function handleChangeInputDescription(e) {
-    setInputDescription(e.target.value);
-  }
-
   function handleChangeDescription(e) {
     e.preventDefault();
-    setUserDescription(inputDescription);
+    setUser({ ...user, description: inputDescription });
+    onUpdate(user);
   }
 
   // Navigazione con passaggio di ID
@@ -151,9 +174,10 @@ export function CompanyPage() {
             {/* Change username */}
             {toggleUsername && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Username</h3>
                 <input
                   type="text"
-                  onChange={handleChangeInputDescription}
+                  onChange={(e) => setInputUsername(e.target.value)}
                   placeholder={user.username}
                   className={style.input}
                 ></input>
@@ -187,46 +211,29 @@ export function CompanyPage() {
             {/* Change image */}
             {toggle && (
               <div className={style.container_change}>
-                {/* Capire quale event handler usare
-                import { useRef } from 'react';
-                import './styles.css';
-                export const FileUploader = ({handleFile}) => {
-                // Create a reference to the hidden file input element
-                const hiddenFileInput = useRef(null);
+                <h3 className={style.h3}>Change Image</h3>
+                <div>
+                  <button onClick={handleClick} className={style.buttonSave}>
+                    Load file
+                  </button>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={(e) => {
+                      const file = e.target.files[0];
 
-                // Programatically click the hidden file input element
-                // when the Button component is clicked
-                const handleClick = event => {
-                  hiddenFileInput.current.click();
-                };
-                // Call a function (passed as a prop from the parent component)
-                // to handle the user-selected file
-                const handleChange = event => {
-                  const fileUploaded = event.target.files[0];
-                  handleFile(fileUploaded);
-                };
-                return (
-                    <>
-                      <button className="button-upload" onClick={handleClick}>
-                        Upload a file
-                      </button>
-                      <input
-                        type="file"
-                        onChange={handleChange}
-                        ref={hiddenFileInput}
-                        style={{display: 'none'}} // Make the file input element invisible
-                      />
-                    </>
-                  );
-                */}
-                <button className={style.buttonSave}>Load file</button>
-                <input type="file" />
+                      setFileImage(file);
+                      console.log(fileImage);
+                    }}
+                    className="hidden"
+                  />
+                </div>
 
                 <input
                   type="text"
                   value={inputImage}
                   placeholder="Insert Link File"
-                  onChange={handleChangeLinkImage}
+                  onChange={(e) => setInputImage(e.target.value)}
                   className={style.input}
                 />
                 <button
@@ -256,9 +263,10 @@ export function CompanyPage() {
             {/* Change Description */}
             {toggleDescription && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Description</h3>
                 <textarea
-                  onChange={handleChangeInputDescription}
-                  placeholder={userDescription}
+                  onChange={(e) => setInputDescription(e.target.value)}
+                  placeholder={"Insert Description"}
                   className={style.textarea}
                   rows="7"
                   maxLength="500"
@@ -302,9 +310,18 @@ export function CompanyPage() {
             {/* Change Program */}
             {toggleProgram && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Program</h3>
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
-                    <li key={index} className={style.li_change}>
+                    <li
+                      key={index}
+                      onClick={() => handleShowPopup(program)}
+                      className={
+                        toggleClickProgram
+                          ? style.li_change_click
+                          : style.li_change
+                      }
+                    >
                       <p className={style.p_change}>
                         {program.name.toUpperCase()}
                       </p>
@@ -357,6 +374,7 @@ export function CompanyPage() {
             {toggleProject && (
               // map tutti i progetti
               <div className={style.container_change}>
+                <p className={style.h3}>Project not visible</p>
                 <ul className={style.ul_change}>
                   {user.project.map((project, index) => (
                     <li key={index} className={style.li_change}>
@@ -403,6 +421,7 @@ export function CompanyPage() {
             {/* Change Experience */}
             {toggleExperince && (
               <div className={style.container_change}>
+                <p>Experiences not visible</p>
                 <ul className={style.ul_change}>
                   {user.someExperience.map((experience, index) => (
                     <li key={index} className={style.li_change}>

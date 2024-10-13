@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export function useUpdateUserDB(user) {
-  const handleSubmit = async () => {
+export function useUpdateUserDB() {
+  const handleSubmit = async (user) => {
     try {
       const response = await axios.put(
         `http://localhost:3001/api/users/${user.id}`,
