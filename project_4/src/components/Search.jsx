@@ -71,7 +71,7 @@ export function Search() {
       <form className={nav_container.form}>
         <input
           type="text"
-          placeholder="Search Your Professionist By Username..."
+          placeholder="Search Your Professionist..."
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
@@ -83,7 +83,7 @@ export function Search() {
             {usersFiltered.map((user) => (
               <div className={nav_container.drop_search_li} key={user.id} onClick={() => handleChoice(user)}>
                 <h3 className={nav_container.drop_search_name}>{user.username}</h3>
-                <p className={nav_container.drop_search_job}>{user.job}</p>
+                <p className={nav_container.drop_search_job}>{user.job.join(" ")}</p>
               </div>
             ))}
           </div>
