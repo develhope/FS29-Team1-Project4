@@ -1,7 +1,7 @@
 import { DATA } from "../database";
 import customSearch from "../styles/SearchPage.module.css";
 
-export function ProfSearchPage() {
+export function ProfSearchPage({ filtered }) {
   const profDb = DATA;
 
   return (
