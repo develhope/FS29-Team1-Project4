@@ -2,60 +2,61 @@ import { DATA } from "../database";
 import style from "../styles/PermissionUser.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
-import iconClose from "../assets/xmark-solid.svg";
+import iconClose from "../assets/iconX-white.svg";
+import { UsersContext } from "../contexts/UsersContext";
+import { UserContext } from "../contexts/UserContext";
+import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
+import { useRemoveUser } from "../hooks/useRemoveUser";
 
-const users = DATA;
 export function PermissionUser() {
-  // Da usare nel momento in cui avremo un database
-  const { id } = useParams();
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
   // Costante per navigare
   const navigate = useNavigate();
 
+  // recupero users e user da context
+  const { users, onRefresh } = useContext(UsersContext);
+  const { user, setUser } = useContext(UserContext);
+
+  // Setto lo stato dello user a cui devo modificare i permessi
+  const [userFind, setUserFind] = useState();
+  const { onUpdate } = useUpdateUserDB();
+
+  // Custom hook per gestire la rimozione dello user
+  const [userRemoved, setUserRemoved] = useState();
+  const { onRemove } = useRemoveUser(userRemoved);
   // Controllo stato per i toggle
   const [toggleProject, onToggleProject] = useShowToggle();
 
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Recupero User grazie a ID preso da useParams
-  const user = users.find((user) => user.id.toString() === id);
+  // Handle per cambiare user in admin e viceversa---------Da gestire con Form Data
+  function handleChangeAdmin(e) {
+    e.preventDefault();
+    console.log("Inizio handle", userFind, e.target.value);
+    const id = e.target.name;
+    const objFind = users.find((user) => user.id.toString() === id);
+    const value = e.target.value === "false" ? false : true;
+    setUserFind({ ...objFind, isAdmin: !value });
+    userFind.isAdmin = !value;
+    console.log(value, objFind.isAdmin, userFind.isAdmin);
+    setTimeout(() => {
+      onRefresh();
+    }, 1500);
+    onUpdate(userFind);
+  }
 
-  // Costanti per cambiare la descrizione
-  // const [inputDescription, setInputDescription] = useState("");
-  // const [userDescription, setUserDescription] = useState(user.description);
+  // Handle per rimuovere user
+  function handleRemoveUser(e, id) {
+    e.preventDefault();
+    const uRemoved = users.find((user) => user.id === id);
+    setUserRemoved(uRemoved);
 
-  // Handle Username
-  // function handleChangeUsername(e) {
-  //   e.preventDefault();
-  //   setUser(inputDescription);
-  // }
+    onRemove();
+    onRefresh();
+  }
 
-  // Handle Image
-  // function handleChangeLinkImage(e) {
-  //   setInputImage(e.target.value);
-  // }
-
-  // function handleChangeImage(e) {
-  //   e.preventDefault();
-  //   setUserImage(inputImage);
-  // }
-
-  // // Handle Description
-  // function handleChangeInputDescription(e) {
-  //   setInputDescription(e.target.value);
-  // }
-
-  // function handleChangeDescription(e) {
-  //   e.preventDefault();
-  //   setUserDescription(inputDescription);
-  // }
-
-  // Navigazione con passagio id
-  // User setting
   function handleNavigateUser() {
     if (user.isAdmin) {
       navigate(`/admin/${user.id}`);
@@ -187,31 +188,51 @@ export function PermissionUser() {
               name="image"
               onClick={onToggleProject}
             />
-            {/* Change Esperienze */}
+            {/* Change Permission */}
             {toggleProject && (
-              <div className={style.container_change}>
-                <input
-                  type="text"
-                  // onChange={handleChangeInputDescription}
-                  placeholder="Aggiungi Nome Progetto"
-                  className={style.input}
-                />
-                <button className={style.buttonSave}>Load file</button>
-                <input type="file" />
+              <div className={style.container_accept_change}>
+                <h3 className={style.h3}>Change Permission Admin</h3>
+                <div className={style.table}>
+                  <p className={style.p_table}>ID</p>
+                  <p className={style.p_table}>User</p>
+                  <p className={style.p_table}>Admin</p>
+                  <p className={style.p_table}>Remove</p>
+                </div>
+                {users.map((user, index) => (
+                  <div key={index} className={style.table_change}>
+                    <p className={style.p_table_change}>{user.id}</p>
+                    <p className={style.p_table_change}>{user.username}</p>
+                    <form className={style.p_table_change}>
+                      {user.isAdmin ? (
+                        <input
+                          onClick={handleChangeAdmin}
+                          name={user.id}
+                          value={user.isAdmin}
+                          className={style.circle_green_change}
+                        />
+                      ) : (
+                        <input
+                          onClick={handleChangeAdmin}
+                          name={user.id}
+                          value={user.isAdmin}
+                          className={style.circle_red_change}
+                        />
+                      )}
+                    </form>
+                    {/* Icon Remove */}
 
-                <input
-                  type="text"
-                  // value={inputImage}
-                  placeholder="Insert Link File"
-                  // onChange={handleChangeLinkImage}
-                  className={style.input}
-                />
-                <button
-                  // onClick={handleChangeUsername}
-                  className={style.buttonSave}
-                >
-                  Save
-                </button>
+                    <div
+                      className={style.remove_change}
+                      onClick={(e) => handleRemoveUser(e, user.id)}
+                    >
+                      <img
+                        src={iconClose}
+                        alt="Remove User"
+                        className={style.img}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>

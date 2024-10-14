@@ -1,31 +1,25 @@
 import Section from "../styles/ProfessionalCard.module.css";
 import iconX from "../assets/xmark-solid.svg";
-import { DATA } from "../database";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-
+import { useRef, useEffect } from "react";
 export function ProfessionalCard({ professional, onClose }) {
-  // const users = DATA;
-  // const [userProgram, setUserProgram] = useState([]);
+  const popupRef = useRef(null);
 
-  // setUserProgram(users);
-  // Recupero User grazie a ID preso da useParams
-  // const { id } = useParams();
-  // const id = "5";
-  // const user = professional;
-  // console.log(professional);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
 
-  // console.log(id);
-
-  // console.log(user);
-  // console.log(users);
-
-  // const findProgram = users.find((user) => user.program);
-  // console.log(findProgram);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={Section.box}>
-      <div className={Section.wrapper}>
+      <div className={Section.wrapper} ref={popupRef}>
         {/* Section 1 */}
         <div className={Section.name}>
           <h3>{professional.username}</h3>

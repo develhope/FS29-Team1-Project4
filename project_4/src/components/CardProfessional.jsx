@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { DATA } from "../database";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
