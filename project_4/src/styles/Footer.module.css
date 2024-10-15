@@ -16,7 +16,7 @@
 .links{
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   a{
@@ -24,14 +24,24 @@
   }
   img{
     height: auto;
-    width: 5rem;
+    width: 3rem;
   };
 }
 
 .copy{
   display: flex;
   justify-content: center;
+  padding: 0.5rem 0;
   p{
     color: var(--colore-bluChiaro);
+  }
+}
+
+@media (max-width: 1024px) {
+  .links{
+
+    img{
+      width: 3rem;
+    }
   }
 }

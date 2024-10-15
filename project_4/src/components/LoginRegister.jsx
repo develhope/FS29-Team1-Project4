@@ -86,12 +86,7 @@ export function LoginRegister() {
         <img src={userIcon} alt="User Icon" />
       </div>
       {isFormOpen && (
-        <div
-          ref={formRef}
-          className={`${NavLogin.background} ${
-            isFormOpen ? NavLogin.show : NavLogin.hide
-          }`}
-        >
+        <div ref={formRef} className={`${NavLogin.background} ${isFormOpen ? NavLogin.show : NavLogin.hide}`}>
           {!loggedIn ? (
             <form className={NavLogin.form}>
               <button onClick={closeForm} className={NavLogin.close_button}>
@@ -99,56 +94,28 @@ export function LoginRegister() {
               </button>
               <div className={NavLogin.user}>
                 <label>Username:</label>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={handleUsername}
-                  className={NavLogin.input}
-                />
+                <input type="text" value={username} onChange={handleUsername} className={NavLogin.input} />
                 <div className={NavLogin.label}>
                   Password:
-                  <input
-                    type={passVis ? "text" : "password"}
-                    value={password}
-                    onChange={handlePassword}
-                    className={NavLogin.input_password}
-                    aria-label="Password"
-                  />
+                  <input type={passVis ? "text" : "password"} value={password} onChange={handlePassword} className={NavLogin.input_password} aria-label="Password" />
                   <button
                     className={NavLogin.input_button}
                     type="button"
                     onClick={() => {
                       setPassVis((prev) => !prev); // Toggle visibilità password
                     }}
-                    aria-label={
-                      passVis ? "Nascondi password" : "Mostra password"
-                    }
+                    aria-label={passVis ? "Nascondi password" : "Mostra password"}
                   >
-                    {passVis ? (
-                      <img src={eyeIconOpen} alt="Show Password" />
-                    ) : (
-                      <img src={eyeIconClose} alt="Hide Password" />
-                    )}
+                    {passVis ? <img src={eyeIconOpen} alt="Show Password" /> : <img src={eyeIconClose} alt="Hide Password" />}
                   </button>
                 </div>
               </div>
               <div className={NavLogin.links}>
-                <button
-                  type="button"
-                  onClick={() =>
-                    username && password
-                      ? handleGoSettingPage()
-                      : alert("Inserisci l'utente e password")
-                  }
-                  className={NavLogin.link_button}
-                >
+                <button type="button" onClick={() => (username && password ? handleGoSettingPage() : alert("Inserisci l'utente e password"))} className={NavLogin.link_button}>
                   Login
                 </button>
                 <span>|</span>
-                <button
-                  className={NavLogin.link_button}
-                  onClick={handleClikLink}
-                >
+                <button className={NavLogin.link_button} onClick={handleClikLink}>
                   Register
                 </button>
               </div>
