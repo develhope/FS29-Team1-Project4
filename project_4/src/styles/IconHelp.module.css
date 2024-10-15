@@ -1,3 +1,6 @@
 .icon_help {
   rotate: 15deg;
 }
+
+@media (max-width: 1024px) {
+}

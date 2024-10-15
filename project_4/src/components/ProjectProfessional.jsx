@@ -71,8 +71,8 @@ export function ProjectProfessional() {
   };
 
   return (
-    <div className="w-full m-auto ">
-      <div className="max-w-7xl m-auto">
+    <div className="custom-class">
+      <div className=" m-auto">
         <Slider {...settings}>
           {filterUserForExamples.map((card) => (
             <div key={card.id} className=" bg-[#94c4f5] my-shadow mb-20 mt-20">
