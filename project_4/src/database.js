@@ -72,7 +72,7 @@ export const DATA = [
       "Experience 7",
     ],
     price: { max: 10000, min: 100 },
-    luogo: "Roma",
+    luogo: "Milano",
     transfert: true,
     contact: [
       {
@@ -104,7 +104,7 @@ export const DATA = [
     email: "esempio@gmail.com",
     isPro: true,
     isAdmin: false,
-    job: ["Back-end"],
+    job: ["Back-end", "Web Developer"],
     image:
       "https://th.bing.com/th/id/OIP.UEmMR4OfczDvWIUratzGkQHaFD?pid=ImgDet&rs=1",
     description:
@@ -183,7 +183,6 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
       { name: "TYPESCRIPT", icon: typescriptIcon },
@@ -379,7 +378,7 @@ export const DATA = [
     email: "esempio@gmail.com",
     isPro: true,
     isAdmin: false,
-    job: ["Full-stack", "Front-end", "Back-end"],
+    job: ["Full-stack", "Front-end", "Back-end", "Web Developer"],
     image:
       "https://th.bing.com/th/id/R.ddf77b58ca5a464ab8beb0576111a2a1?rik=pQSCB0LH8fslzA&pid=ImgRaw&r=0",
     description:

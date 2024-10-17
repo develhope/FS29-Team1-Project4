@@ -1,13 +1,12 @@
-import { DATA } from "../database";
+
 import customSearch from "../styles/SearchPage.module.css";
 
 export function ProfSearchPage() {
-  const profDb = DATA;
 
 
     return (
       <div className={customSearch.filtered}>
-        <ul className={customSearch.ul}>{profDb.map((card) => (
+        <ul className={customSearch.ul}>{filter.map((card) => (
             <li key={card.id} className={customSearch.li}>
                 <h2>{card.username}</h2>
                 <img src={card.image}/>

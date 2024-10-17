@@ -25,6 +25,7 @@
 
 .aside div div input, .aside_checkbox input{
     cursor: pointer;
+    border-radius: 10%;
 }
 
 .filtered{
