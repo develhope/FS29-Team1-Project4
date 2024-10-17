@@ -1,27 +1,21 @@
 import style from "../styles/AdminPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
-import { DATA } from "../database";
+import iconClose from "../assets/xmark-solid.svg";
+import { useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
-import iconClose from "../assets/xmark-solid.svg";
-
-// Database fittizio
-const users = DATA;
+import { UserContext } from "../contexts/UserContext";
+import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
 
 export function AdminPage() {
-  // Da usare nel momento in cui avremo un database
-  const { id } = useParams();
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
   // Recupero lo user usando il context
-  // const user = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   // Costante per navigare
   const navigate = useNavigate();
 
-  // Recupero User grazie a ID preso da useParams
-  const user = users.find((user) => user.id.toString() === id);
+  // Hook per aggiornare l'utente nel DB
+  const { onUpdate } = useUpdateUserDB();
 
   // Cambio elementi
   // Controllo stato per i toggle
@@ -40,8 +34,12 @@ export function AdminPage() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
+  // Costanti per cambiare username
+  const [inputUsername, setInputUsername] = useState("");
+
   // Costanti per cambiare l'immagine
   const [inputImage, setInputImage] = useState("");
+  const [fileImage, setFileImage] = useState();
   const [userImage, setUserImage] = useState(user.image);
 
   // Costanti per cambiare la descrizione
@@ -54,6 +52,13 @@ export function AdminPage() {
     setToggleClickProgram((p) => !p);
   };
 
+  // Handle Username
+  function handleChangeUsername(e) {
+    e.preventDefault();
+    setUser({ ...user, username: inputUsername });
+    onUpdate(user);
+  }
+
   // load file
   const fileInputRef = useRef(null);
 
@@ -61,32 +66,39 @@ export function AdminPage() {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
+    console.log(fileInputRef);
   };
-  // Handle Username
-  function handleChangeUsername(e) {
-    e.preventDefault();
-    setUser(inputDescription);
-  }
 
-  // Handle Image
-  function handleChangeLinkImage(e) {
-    setInputImage(e.target.value);
-  }
-
+  // Handle Change Image
   function handleChangeImage(e) {
     e.preventDefault();
-    setUserImage(inputImage);
+
+    if (!inputImage) {
+      setUser({ ...user, image: fileInputRef.current.value });
+      onUpdate(user);
+    } else {
+      setUser({ ...user, image: inputImage });
+      onUpdate(user);
+    }
   }
 
   // Handle Description
-  function handleChangeInputDescription(e) {
-    setInputDescription(e.target.value);
-  }
-
   function handleChangeDescription(e) {
     e.preventDefault();
-    setUserDescription(inputDescription);
+    setUser({ ...user, description: inputDescription });
+    onUpdate(user);
   }
+  // Filtraggio project tra visibili e non
+  // const projectVisible = user.project.filter((project) => project.isVisible);
+  // const projectNoVisible = user.project.filter((project) => !project.isVisible);
+
+  // Filtraggio experience tra visibili e non
+  const experienceVisible = user.someExperience.filter(
+    (experience) => experience.isVisible
+  );
+  const experienceNoVisible = user.someExperience.filter(
+    (experience) => !experience.isVisible
+  );
 
   // Navigazione con passaggio di ID
   function handleNavigateGeneral() {
@@ -191,9 +203,10 @@ export function AdminPage() {
             {/* Change username */}
             {toggleUsername && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Username</h3>
                 <input
                   type="text"
-                  onChange={handleChangeInputDescription}
+                  onChange={(e) => setInputUsername(e.target.value)}
                   placeholder={user.username}
                   className={style.input}
                 ></input>
@@ -211,7 +224,7 @@ export function AdminPage() {
           <li className={style.li}>
             <div className={style.container_accept}>
               <img
-                src={userImage}
+                src={user.image}
                 alt="Immagine di profilo"
                 className={style.img}
               />
@@ -227,55 +240,29 @@ export function AdminPage() {
             {/* Change image */}
             {toggle && (
               <div className={style.container_change}>
-                {/* Capire quale event handler usare
-                import { useRef } from 'react';
-                import './styles.css';
-                export const FileUploader = ({handleFile}) => {
-                // Create a reference to the hidden file input element
-                const hiddenFileInput = useRef(null);
-
-                // Programatically click the hidden file input element
-                // when the Button component is clicked
-                const handleClick = event => {
-                  hiddenFileInput.current.click();
-                };
-                // Call a function (passed as a prop from the parent component)
-                // to handle the user-selected file
-                const handleChange = event => {
-                  const fileUploaded = event.target.files[0];
-                  handleFile(fileUploaded);
-                };
-                return (
-                    <>
-                      <button className="button-upload" onClick={handleClick}>
-                        Upload a file
-                      </button>
-                      <input
-                        type="file"
-                        onChange={handleChange}
-                        ref={hiddenFileInput}
-                        style={{display: 'none'}} // Make the file input element invisible
-                      />
-                    </>
-                  );
-                */}
-                {/* <button className={style.buttonSave}>Load file</button>
-                <input type="file" /> */}
-                <div className="flex items-center space-x-4">
-                  <button
-                    onClick={handleClick}
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow"
-                  >
+                <h3 className={style.h3}>Change Image</h3>
+                <div>
+                  <button onClick={handleClick} className={style.buttonSave}>
                     Load file
                   </button>
-                  <input type="file" ref={fileInputRef} className="hidden" />
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+
+                      setFileImage(file);
+                      console.log(fileImage);
+                    }}
+                    className="hidden"
+                  />
                 </div>
 
                 <input
                   type="text"
                   value={inputImage}
                   placeholder="Insert Link File"
-                  onChange={handleChangeLinkImage}
+                  onChange={(e) => setInputImage(e.target.value)}
                   className={style.input}
                 />
                 <button
@@ -305,9 +292,10 @@ export function AdminPage() {
             {/* Change Description */}
             {toggleDescription && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Description</h3>
                 <textarea
-                  onChange={handleChangeInputDescription}
-                  placeholder={userDescription}
+                  onChange={(e) => setInputDescription(e.target.value)}
+                  placeholder={"Insert Description"}
                   className={style.textarea}
                   rows="7"
                   maxLength="500"
@@ -327,8 +315,8 @@ export function AdminPage() {
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {user.program.map((program, index) => (
-                  <li key={index} className={style.li}>
-                    <p className={style.p_change}>
+                  <li key={index} className={style.li_program}>
+                    <p className={style.p_program}>
                       {program.name.toUpperCase()}
                     </p>
                     <img
@@ -351,6 +339,7 @@ export function AdminPage() {
             {/* Change Program */}
             {toggleProgram && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Program</h3>
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
                     <li
@@ -414,6 +403,7 @@ export function AdminPage() {
             {toggleProject && (
               // map tutti i progetti
               <div className={style.container_change}>
+                <p className={style.h3}>Project not visible</p>
                 <ul className={style.ul_change}>
                   {user.project.map((project, index) => (
                     <li key={index} className={style.li_change}>
@@ -460,6 +450,7 @@ export function AdminPage() {
             {/* Change Experience */}
             {toggleExperince && (
               <div className={style.container_change}>
+                <p>Experiences not visible</p>
                 <ul className={style.ul_change}>
                   {user.someExperience.map((experience, index) => (
                     <li key={index} className={style.li_change}>
@@ -487,7 +478,11 @@ export function AdminPage() {
             {/* View comments */}
             {toggleComments && (
               <div className={style.container_change}>
-                {/* Lista Commenti delle aziende che hanno lavorato con questo professionista */}
+                <p>Comments by Company</p>
+                {/*
+                Lista Commenti delle aziende che hanno lavorato
+                con questo professionista
+              */}
                 <ul className={style.ul_change}>
                   {user.comments.map((comment, index) => (
                     <li key={index} className={style.li_change}>

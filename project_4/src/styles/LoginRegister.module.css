@@ -145,6 +145,24 @@
   background-color: var(--colore-nero);
 }
 
+.formLogged{
+  text-align: center;
+  font-size: 1.8rem;
+}
+.loggedin{
+  margin: 1rem 0;
+  text-transform: capitalize;
+
+}
+.close_button1{
+  position: absolute;
+  top: 0;
+  right: 1rem;
+}
+.log_btn{
+  text-decoration: underline var(--colore-bluChiaro);
+}
+
 @media (max-width: 768px) {
   .background.show {
       width: 90vw;

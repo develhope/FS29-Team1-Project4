@@ -121,7 +121,7 @@
   flex-flow: column;
   align-items: center;
   gap: 1.5rem;
-  /* background-color: var(--colore-nero); */
+  background-color: var(--colore-nero);
   box-shadow: var(--box-bluOpaco);
 }
 
@@ -152,7 +152,7 @@
   height: 5rem;
   text-align: center;
   font-size: 100%;
-  color: var(--colore-bluChiaro);
+  color: var(--colore-bianco);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,12 +176,68 @@
 .icon_change {
   position: relative;
   right: 0rem;
-  bottom: 1rem;
+  bottom: -1rem;
   align-self: flex-end;
   cursor: pointer;
   width: 1.5rem;
   aspect-ratio: 1/1;
 }
+
+.container_accept_change {
+  margin: 3rem 0;
+  border-radius: 0.5rem;
+  border-top: 0.3rem solid var(--colore-bluChiaro);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+.h3 {
+  color: var(--colore-bianco);
+  margin: 3rem 0;
+  font-size: 1.5rem;
+}
+.table_change {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.p_table_change {
+  border-radius: 0.5rem;
+  padding: 0.5em;
+  width: 30%;
+  height: 5rem;
+  text-align: center;
+  font-size: 100%;
+  color: var(--colore-bianco);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--colore-nero); */
+  box-shadow: var(--box-bluOpaco);
+  text-transform: uppercase;
+}
+.circle_green_change {
+  border-radius: 50%;
+  border: none;
+  width: 15%;
+  height: 60%;
+  background-color: green;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.circle_red_change {
+  border-radius: 50%;
+  border: none;
+  border: none;
+  width: 15%;
+  height: 60%;
+  background-color: red;
+  cursor: pointer;
+  font-size: 0;
+}
+
 .p_accept {
   border-radius: 0.5rem;
   padding: 0.5em;
@@ -227,25 +283,23 @@
   margin: 0 0 0.5rem 0;
 }
 .img {
-  width: 18rem;
-  border-radius: 50%;
-  box-shadow: 0 0 0.5rem var(--colore-nero);
+  height: 100%;
 }
-input[type="file"] {
-  display: none;
-}
-
-.input {
-  padding: 0.2rem 0.3rem;
+.remove_change {
   border-radius: 0.5rem;
-  border: none;
-  color: var(--colore-bluChiaro);
-  box-shadow: var(--box-bluOpaco);
-  background-color: var(--colore-nero);
+  padding: 0.5em;
+  width: 30%;
+  height: 5rem;
   text-align: center;
-  width: 20rem;
+  font-size: 100%;
+  color: var(--colore-bianco);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: var(--box-bluOpaco);
+  text-transform: uppercase;
 }
-
 /* Media Query */
 @media screen and (max-width: 769px) {
   .hamburger_container {

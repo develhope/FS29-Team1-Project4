@@ -1,19 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import NavLogin from "../styles/LoginRegister.module.css";
 import { DATA } from "../database";
 import eyeIconOpen from "../assets/eyeOpen.svg";
 import eyeIconClose from "../assets/eyeClose.svg";
 import userIcon from "../assets/userIcon.svg";
+import { UsersContext } from "../contexts/UsersContext";
+import { useFindUserID } from "../hooks/useFindUserID";
+import { UserContext } from "../contexts/UserContext";
 
 export function LoginRegister() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
   const [passVis, setPassVis] = useState(false);
   const formRef = useRef(null); // Riferimento al form
+
+  // Setto user a livello globale
+  const { users } = useContext(UsersContext);
+  const { user, setUser } = useContext(UserContext);
+
+  // Estraggo lo user usando password e username
+  const { userFind } = useFindUserID(username, password);
+
+  // Navigazione
   const navigate = useNavigate();
 
   const openForm = () => setIsFormOpen(true);
@@ -29,14 +40,14 @@ export function LoginRegister() {
     setPassword(e.target.value);
   }
 
-  function handleGoSettingPage() {
-    // Trova l'utente nel database
-    const user = DATA.find((user) => user.username.toUpperCase() === username.toUpperCase() && user.password === password);
+  // Effect per aggiornare user ogni volta che viene trovato
+  useEffect(() => {
+    setUser(userFind);
+  }, [userFind]);
 
+  function handleGoSettingPage() {
     if (user) {
-      setUser(user);
       setLoggedIn(true);
-      localStorage.setItem(`user ID ${user.id}`, JSON.stringify(user));
     } else {
       const errorMsg = "Username o password errati";
       alert(errorMsg); // Mostra solo un alert con l'errore
@@ -110,29 +121,32 @@ export function LoginRegister() {
               </div>
             </form>
           ) : (
-            <div className={NavLogin.form}>
-              <button onClick={closeForm} className={NavLogin.close_button}>
+            <div className={NavLogin.formLogged}>
+              <button onClick={closeForm} className={NavLogin.close_button1}>
                 X
               </button>
               <div className={NavLogin.user}>
                 <h2>Welcome {user.username}</h2>
-                <button
-                  onClick={() => {
-                    switch (true) {
-                      case user.isAdmin:
-                        navigate(`/admin/${user.id}`);
-                        break;
-                      case user.isPro:
-                        navigate(`/user_setting/${user.id}`);
-                        break;
-                      default:
-                        navigate(`/company_setting/${user.id}`);
-                        break;
-                    }
-                  }}
-                >
-                  Settings
-                </button>
+                <div className={NavLogin.loggedin}>
+                  <button
+                    onClick={() => {
+                      switch (true) {
+                        case user.isAdmin:
+                          navigate(`/admin/${user.id}`);
+                          break;
+                        case user.isPro:
+                          navigate(`/user_setting/${user.id}`);
+                          break;
+                        default:
+                          navigate(`/company_setting/${user.id}`);
+                          break;
+                      }
+                    }}
+                    className={NavLogin.log_btn}
+                  >
+                    Settings
+                  </button>
+                </div>
                 <button
                   onClick={() => {
                     localStorage.clear();
@@ -141,6 +155,7 @@ export function LoginRegister() {
                     setUsername("");
                     setPassword("");
                   }}
+                  className={NavLogin.log_btn}
                 >
                   Logout
                 </button>

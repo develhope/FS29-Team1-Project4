@@ -2,28 +2,21 @@ import style from "../styles/UserPage.module.css";
 import iconModify from "../assets/icon_modify.svg";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { DATA } from "../database";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useShowToggle } from "../hooks/useShowToggle";
 import iconClose from "../assets/xmark-solid.svg";
-
-// Database fittizio
-const users = DATA;
+import { UserContext } from "../contexts/UserContext";
+import { useUpdateUserDB } from "../hooks/useUpdateUserDB";
 
 export function UserPage() {
   // Da usare nel momento in cui avremo un database
-  const { id } = useParams();
-  //   const {data, error, mutate} = useSWR(`linkDatabase/${id}`)
-
-  // Recupero lo user usando il context
-  // const user = useContext(UserContext);
-
-  // Recupero user da localstorage e lo salvo nello State
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem(`user ID ${id}`)) || ""
-  );
+  const { user, setUser } = useContext(UserContext);
 
   // Costante per navigare
   const navigate = useNavigate();
+
+  // Hook per aggiornare l'utente nel DB
+  const { onUpdate } = useUpdateUserDB();
 
   // Cambio elementi
   // Controllo stato per i toggle
@@ -42,7 +35,7 @@ export function UserPage() {
   // Cambio classi
   const [toggleAsideHamburger, onToggleAsideHamburger] = useShowToggle();
 
-  // Cosstanti per cambiare username
+  // Costanti per cambiare username
   const [inputUsername, setInputUsername] = useState("");
 
   // Costanti per cambiare l'immagine
@@ -63,9 +56,8 @@ export function UserPage() {
   // Handle Username
   function handleChangeUsername(e) {
     e.preventDefault();
-    user.username = inputUsername;
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+    setUser({ ...user, username: inputUsername });
+    onUpdate(user);
   }
 
   // load file
@@ -81,28 +73,25 @@ export function UserPage() {
   function handleChangeImage(e) {
     e.preventDefault();
 
-    if (fileImage) {
-      user.image = URL.createObjectURL(fileImage);
+    if (!inputImage) {
+      setUser({ ...user, image: fileImage });
+      onUpdate(user);
     } else {
-      user.image = inputImage;
+      setUser({ ...user, image: inputImage });
+      onUpdate(user);
     }
-    // console.log(user.image);
-
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
   }
 
   // Handle Description
   function handleChangeDescription(e) {
     e.preventDefault();
-    user.description = inputDescription;
-    localStorage.setItem(`user ID ${id}`, JSON.stringify(user));
-    setUser(JSON.parse(localStorage.getItem(`user ID ${id}`)));
+    setUser({ ...user, description: inputDescription });
+    onUpdate(user);
   }
 
   // Filtraggio project tra visibili e non
-  const projectVisible = user.project.filter((project) => project.isVisible);
-  const projectNoVisible = user.project.filter((project) => !project.isVisible);
+  // const projectVisible = user.project.filter((project) => project.isVisible);
+  // const projectNoVisible = user.project.filter((project) => !project.isVisible);
 
   // Filtraggio experience tra visibili e non
   const experienceVisible = user.someExperience.filter(
@@ -190,16 +179,6 @@ export function UserPage() {
         <ul className={style.content}>
           <li className={style.li}>
             <div className={style.container_accept}>
-              <button
-                className={style.buttonSave}
-                onClick={() => {
-                  localStorage.clear();
-                  navigate("/");
-                }}
-              >
-                Clear LocalStorage
-              </button>
-
               <h1 className={style.h1}>Welcome back, {user.username}!</h1>
               <img
                 src={iconModify}
@@ -212,6 +191,7 @@ export function UserPage() {
             {/* Change username */}
             {toggleUsername && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Username</h3>
                 <input
                   type="text"
                   onChange={(e) => setInputUsername(e.target.value)}
@@ -232,7 +212,7 @@ export function UserPage() {
           <li className={style.li}>
             <div className={style.container_accept}>
               <img
-                src={userImage}
+                src={user.image}
                 alt="Immagine di profilo"
                 className={style.img}
               />
@@ -248,6 +228,7 @@ export function UserPage() {
             {/* Change image */}
             {toggle && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Image</h3>
                 <div>
                   <button onClick={handleClick} className={style.buttonSave}>
                     Load file
@@ -257,7 +238,9 @@ export function UserPage() {
                     ref={fileInputRef}
                     onChange={(e) => {
                       const file = e.target.files[0];
+
                       setFileImage(file);
+                      console.log(fileImage);
                     }}
                     className="hidden"
                   />
@@ -297,9 +280,10 @@ export function UserPage() {
             {/* Change Description */}
             {toggleDescription && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Description</h3>
                 <textarea
                   onChange={(e) => setInputDescription(e.target.value)}
-                  placeholder={userDescription}
+                  placeholder={"Insert Description"}
                   className={style.textarea}
                   rows="7"
                   maxLength="500"
@@ -319,8 +303,8 @@ export function UserPage() {
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {user.program.map((program, index) => (
-                  <li key={index} className={style.li}>
-                    <p className={style.p_change}>
+                  <li key={index} className={style.li_program}>
+                    <p className={style.p_program}>
                       {program.name.toUpperCase()}
                     </p>
                     <img
@@ -343,6 +327,7 @@ export function UserPage() {
             {/* Change Program */}
             {toggleProgram && (
               <div className={style.container_change}>
+                <h3 className={style.h3}>Change Program</h3>
                 <ul className={style.ul_change}>
                   {user.program.map((program, index) => (
                     <li
@@ -380,7 +365,7 @@ export function UserPage() {
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
                 {/* Map progetti accettati */}
-                {projectVisible.map((project, index) => (
+                {user.project.map((project, index) => (
                   <li key={index} className={style.li_change}>
                     <p className={style.p_change}>
                       {project.name.toUpperCase()}
@@ -406,7 +391,7 @@ export function UserPage() {
             {toggleProject && (
               // map progetti non scelti
               <div className={style.container_change}>
-                <p>Project not visible</p>
+                <p className={style.h3}>Project not visible</p>
                 <ul className={style.ul_change}>
                   {projectNoVisible.map((project, index) => (
                     <li key={index} className={style.li_change}>
@@ -435,9 +420,9 @@ export function UserPage() {
           <li className={style.li}>
             <div className={style.container_accept}>
               <ul className={style.ul_program}>
-                {experienceVisible.map((experience, index) => (
+                {user.someExperience.map((experience, index) => (
                   <li key={index} className={style.li}>
-                    <p className={style.p_accept}>{experience.name}</p>
+                    <p className={style.p_accept}>{experience}</p>
                   </li>
                 ))}
               </ul>

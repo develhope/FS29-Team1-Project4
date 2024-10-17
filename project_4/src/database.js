@@ -12,6 +12,7 @@ import nodeIcon from "./assets/nodejs.svg";
 import blenderIcon from "./assets/blender-2.svg";
 import rhinoIcon from "./assets/icons8-rhinoceros-6.svg";
 import unityIcon from "./assets/unity-69.svg";
+import iconX from "./assets/xmark-solid.svg";
 
 export const DATA = [
   {
@@ -27,11 +28,11 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "NODE", icon: nodeIcon },
     ],
@@ -150,7 +151,7 @@ export const DATA = [
     ],
     price: { max: 10000, min: 100 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -177,7 +178,7 @@ export const DATA = [
     email: "esempio@gmail.com",
     isPro: true,
     isAdmin: false,
-    job: ["Full-stack", "Front-end", "Back-end"],
+    job: ["Full-stack", "Front-end", "Back-end", "Software Engineer"],
     image:
       "https://th.bing.com/th/id/R.b1dca103a08fb09ab6093c1843206e62?rik=poC1LUfrAnasRg&riu=http%3a%2f%2fthesaturnherald.com%2fwp-content%2fuploads%2f2019%2f08%2fThe-Beatles.png&ehk=fRCOKcIZLuTKJTDe5UT%2fU0FlIEhc5Cv3L6jFWg5Rwmk%3d&risl=&pid=ImgRaw&r=0",
     description:
@@ -185,14 +186,14 @@ export const DATA = [
     program: [
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -233,7 +234,7 @@ export const DATA = [
     ],
     price: { max: 10000, min: 100 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -276,25 +277,25 @@ export const DATA = [
     email: "esempio@gmail.com",
     isPro: true,
     isAdmin: false,
-    job: ["Full-stack", "Front-end", "Back-end"],
+    job: ["Front-end", "Web Designer"],
     image:
       "https://th.bing.com/th/id/OIP.o2UpCnJR1l2GyvdN3wBcqwHaJL?pid=ImgDet&rs=1",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -335,7 +336,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -378,25 +379,29 @@ export const DATA = [
     email: "esempio@gmail.com",
     isPro: true,
     isAdmin: false,
+<<<<<<< HEAD
     job: ["Full-stack", "Front-end", "Back-end", "Web Developer"],
+=======
+    job: ["3D Designer"],
+>>>>>>> development
     image:
       "https://th.bing.com/th/id/R.ddf77b58ca5a464ab8beb0576111a2a1?rik=pQSCB0LH8fslzA&pid=ImgRaw&r=0",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -456,7 +461,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: false,
     contact: [
       {
         tipo: "telefono",
@@ -505,19 +510,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -605,19 +610,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -656,9 +661,9 @@ export const DATA = [
       "Experience 6",
       "Experience 7",
     ],
-    price: { max: 25050, min: 250 },
+    price: { max: 25050, min: 45 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -707,20 +712,21 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
+      { name: "MySQL", icon: iconX },
     ],
     project: [
       {
@@ -758,9 +764,9 @@ export const DATA = [
       "Experience 6",
       "Experience 7",
     ],
-    price: { max: 25050, min: 250 },
-    luogo: "Roma",
-    transfer: true,
+    price: { max: 25050, min: 149 },
+    luogo: "Torino",
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -809,19 +815,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -861,8 +867,8 @@ export const DATA = [
       "Experience 7",
     ],
     price: { max: 25050, min: 250 },
-    luogo: "Roma",
-    transfer: true,
+    luogo: "Parigi",
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -911,19 +917,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -963,8 +969,8 @@ export const DATA = [
       "Experience 7",
     ],
     price: { max: 25050, min: 250 },
-    luogo: "Roma",
-    transfer: true,
+    luogo: "Parlermo",
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1013,19 +1019,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1065,8 +1071,8 @@ export const DATA = [
       "Experience 7",
     ],
     price: { max: 25050, min: 250 },
-    luogo: "Roma",
-    transfer: true,
+    luogo: "Berlino",
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1115,19 +1121,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1167,11 +1173,11 @@ export const DATA = [
       "Experience 7",
     ],
     price: { max: 25050, min: 250 },
-    luogo: "Roma",
-    transfer: true,
+    luogo: "Madrid",
+    transfert: true,
     contact: [
       {
-        tipo: "telefono",
+        tipo: "whatsapp",
         name: 45756874,
       },
       {
@@ -1185,6 +1191,10 @@ export const DATA = [
       {
         tipo: "twitter",
         name: "tizio twitter",
+      },
+      {
+        tipo: "telegram",
+        name: "tizio telegram",
       },
       {
         tipo: "instagram",
@@ -1217,19 +1227,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1270,7 +1280,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1319,19 +1329,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1372,7 +1382,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1421,19 +1431,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1474,7 +1484,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1523,19 +1533,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1576,7 +1586,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1625,19 +1635,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1678,7 +1688,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1727,19 +1737,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1780,7 +1790,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1829,19 +1839,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1882,7 +1892,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
@@ -1931,19 +1941,19 @@ export const DATA = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quaerat unde quibusdam et facere quas magni molestias enim dolore dignissimos harum!",
     program: [
-      { name: "javascript", icon: jsIcon },
+      { name: "JS", icon: jsIcon },
       { name: "Python", icon: pythonIcon },
       { name: "HTML", icon: htmlIcon },
       { name: "CSS", icon: cssIcon },
       { name: "REACT", icon: reactIcon },
-      { name: "TYPESCRIPT", icon: typescriptIcon },
+      { name: "TS", icon: typescriptIcon },
       { name: "C++", icon: cPlusPlusIcon },
       { name: "GITHUB", icon: githubIcon },
       { name: "C#", icon: cSharpIcon },
       { name: "JAVA", icon: javaIcon },
       { name: "NODE", icon: nodeIcon },
       { name: "BLENDER", icon: blenderIcon },
-      { name: "RHINOCEROS 3D", icon: rhinoIcon },
+      { name: "RHINO 3D", icon: rhinoIcon },
       { name: "UNITY", icon: unityIcon },
     ],
     project: [
@@ -1984,7 +1994,7 @@ export const DATA = [
     ],
     price: { max: 25050, min: 250 },
     luogo: "Roma",
-    transfer: true,
+    transfert: true,
     contact: [
       {
         tipo: "telefono",
